@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Class 1 - GSLB &#8212; DNS Services  documentation</title>
+    <title>LTM &#8212; EXAMPLE.COM  documentation</title>
     
     <link rel="stylesheet" href="../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Settings" href="module1/module1.html" />
+    <link rel="next" title="DNS" href="../class2/class2.html" />
     <link rel="prev" title="Lab Environment" href="../intro.html" />
 <!--
 # Copyright 2017 F5 Networks
@@ -195,7 +195,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-md-3 sidebar">
-         <h4><a href="../">DNS Services </a></h4>
+         <h4><a href="../">EXAMPLE.COM </a></h4>
 <div id="searchbox" style="display: none" role="search">
   <form class="search" action="../search.html" method="get">
     <div>
@@ -212,19 +212,9 @@
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Lab Environment</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Class 1 - GSLB</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="module1/module1.html">1. Settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module2/module2.html">2. Listeners</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module3/module3.html">3. Datacenters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module4/module4.html">4. Pools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module5/module5.html">5. FQDN</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module6/module6.html">6. Delegation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module7/module7.html">7. Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module8/module8.html">8. Persistence</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module9/module9.html">9. LB Methods</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../class2/class2.html">Class 2 - Security</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">LTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class2/class2.html">DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class3/class3.html">ASM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../credits.html">Credits</a></li>
 </ul>
 
@@ -232,29 +222,18 @@
   <p class="topless"><a href="../intro.html"
                         title="previous chapter">Lab Environment</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="module1/module1.html"
-                        title="next chapter">1. Settings</a></p>
+  <p class="topless"><a href="../class2/class2.html"
+                        title="next chapter">DNS</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
         <h4>
-          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../index.html">DNS Services</a>
+          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../index.html">EXAMPLE.COM</a>
           <span class="right"><a href="../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="class-1-gslb">
-<h1>Class 1 - GSLB<a class="headerlink" href="#class-1-gslb" title="Permalink to this headline">¶</a></h1>
-<img alt="../_images/class1_availability.png" src="../_images/class1_availability.png" />
-<ul class="simple">
-<li>Students will configure F5 DNS servers to support GSLB services on a single device in site1.</li>
-<li>Join an additional F5 DNS server in site2 to the GSLB cluster.</li>
-<li>An Internal group of DNS servers is authoritative for the zone example.com and contains a static A record for “www.example.com”, which resolves to 203.0.113.9.</li>
-<li>Students will add glue records and delegate gslb.example.com to the F5 GSLB DNS servers.</li>
-<li>Convert the A record “www.example.com” to be a CNAME record pointing to <em>www.gslb.example.com</em>.</li>
-</ul>
-<p>At the end of the lab students will have configured F5 GSLB DNS servers to alternately resolve www.example.com to 203.0.113.9 and 198.51.100.41</p>
-<div class="toctree-wrapper compound">
-</div>
+  <div class="section" id="ltm">
+<h1>LTM<a class="headerlink" href="#ltm" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -265,7 +244,7 @@
 		        <a href="../intro.html" title="Lab Environment" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="module1/module1.html" title="1. Settings" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="../class2/class2.html" title="DNS" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>

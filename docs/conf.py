@@ -5,10 +5,10 @@
 # ------------
 #
 # REQUIRED: Your class/lab name
-classname = "DNS Services"
+classname = "EXAMPLE.COM"
 
 # OPTIONAL: The URL to the GitHub Repository for this class
-github_repo = "https://github.com/f5devcentral/f5-agility-labs-dns"
+github_repo = "https://github.com/robinhoodis/example.com"
 
 #
 # END CONFIG
@@ -24,7 +24,7 @@ sys.path.insert(0, os.path.abspath('.'))
 import f5_sphinx_theme
 
 year = time.strftime("%Y")
-eventname = "Agility %s Hands-on Lab Guide" % (year)
+eventname = "EXAMPLE Build Guide %s" % (year)
 
 rst_prolog = """
 .. |classname| replace:: %s

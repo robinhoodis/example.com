@@ -1,25 +1,15 @@
-Class 2 - Security
-======================================================
+DNS
+=====================================================
 
-The lab environment consists of a Lan of workstations in a remote location with internal DNS servers behind an F5 firewall.
+.. image:: /_static/class1/class1_availability.png
 
-The F5 device is directly connected to the internet.
+* Students will configure F5 DNS servers to support GSLB services on a single device in site1.
+* Join an additional F5 DNS server in site2 to the GSLB cluster.
+* An Internal group of DNS servers is authoritative for the zone example.com and contains a static A record for "www.example.com", which resolves to 203.0.113.9.
+* Students will add glue records and delegate gslb.example.com to the F5 GSLB DNS servers.
+* Convert the A record "www.example.com" to be a CNAME record pointing to *www.gslb.example.com*.
 
-.. image:: /_static/class2/class2_overview.png
-
-Students will work with the following concepts as part of a group of lab exercises.
-
-#. Transparent Cache
-
-#. Hidden Master
-
-#. DNSSec
-
-#. Validating Resolver
-
-#. RPZ
-
-#. URL Categorization
+At the end of the lab students will have configured F5 GSLB DNS servers to alternately resolve www.example.com to 203.0.113.9 and 198.51.100.41
 
 .. toctree::
    :hidden:
@@ -28,5 +18,3 @@ Students will work with the following concepts as part of a group of lab exercis
    :glob:
 
    module*/module*
-
-
