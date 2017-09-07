@@ -1,4 +1,4 @@
-Network
+Networking
 ======================
 
 Four dedicated WAF instances are deployed across two datacenters.
