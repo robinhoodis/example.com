@@ -1,5 +1,7 @@
-ASM
+WAF
 ======================================================
+
+Apply a WAF policy to an existing application.
 
 .. toctree::
    :hidden:

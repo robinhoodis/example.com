@@ -1,5 +1,5 @@
-DNS Services
-============
+Build Documentation
+=====================
 
 .. image:: /_static/html_front_cover.png
 

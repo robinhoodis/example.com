@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.2. DNS Profile &#8212; EXAMPLE.COM  documentation</title>
+    <title>1.4. LTM - SELFIP’s &#8212; EXAMPLE.COM  documentation</title>
     
     <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -28,8 +28,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.3. UDP Profile" href="lab3.html" />
-    <link rel="prev" title="2.1. Logging" href="lab1.html" />
+    <link rel="prev" title="1.3. LTM - VLAN’s" href="lab3.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -213,42 +212,22 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../intro.html">Lab Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">LTM</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../class2.html">DNS</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../module01/module1.html">1. Settings</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="module2.html">2. Listeners</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="lab1.html">2.1. Logging</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">2.2. DNS Profile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lab3.html">2.3. UDP Profile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lab4.html">2.4. TCP Profile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lab5.html">2.5. UDP IP Address</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lab6.html">2.6. TCP IP Address</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">DNS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class3.html">WAF</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="module1.html">1. Network</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lab1.html">1.1. ASM - VLAN’s</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lab2.html">1.2. ASM - SELFIP’s</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lab3.html">1.3. LTM - VLAN’s</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1.4. LTM - SELFIP’s</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../module03/module3.html">3. Datacenters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module04/module4.html">4. Pools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module05/module5.html">5. FQDN</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module06/module6.html">6. Delegation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module07/module7.html">7. Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module08/module8.html">8. Persistence</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module09/module9.html">9. LB Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module10/module1.html">10. Transparent Cache</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module11/module2.html">11. Listeners</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module12/module3.html">12. Hidden Master</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module13/module4.html">13. DNSSec</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module14/module5.html">14. Validating Resolver</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module15/module6.html">15. RPZ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module16/module7.html">16. URL Categorization</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">WAF</a></li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="lab1.html"
-                        title="previous chapter">2.1. Logging</a></p>
-  <h4>Next topic</h4>
   <p class="topless"><a href="lab3.html"
-                        title="next chapter">2.3. UDP Profile</a></p>
+                        title="previous chapter">1.3. LTM - VLAN’s</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
@@ -257,16 +236,17 @@
           <span class="right"><a href="../../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="dns-profile">
-<h1>2.2. DNS Profile<a class="headerlink" href="#dns-profile" title="Permalink to this headline">¶</a></h1>
-<p>A DNS profile controls the way a listener processes a query.</p>
+  <div class="section" id="ltm-selfip-s">
+<h1>1.4. LTM - SELFIP’s<a class="headerlink" href="#ltm-selfip-s" title="Permalink to this headline">¶</a></h1>
+<p>Create an IP address on each WAF instance</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last"><strong>It is required to complete the following task on both gtm1.site1 and gtm1.site2</strong></p>
+<p class="last"><strong>It is required to complete the following task on bigip1.site1 bigip2.site1 bigip1.site2 and bigip2.site2</strong></p>
 </div>
-<p>Navigate to: <strong>DNS &gt; Delivery &gt; Profiles &gt; DNS: Create</strong></p>
-<img alt="../../_images/dns_profile_flyout.png" src="../../_images/dns_profile_flyout.png" />
-<p>Create a new DNS profile as shown in the following table.</p>
+<p>Navigate to: <strong>Network  ››  Self IPs</strong></p>
+<ol class="arabic">
+<li><p class="first">bigip1.site1</p>
+<p>Create a new selfip on bigip1.site1 according to the following table.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="50%" />
@@ -279,34 +259,191 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Name</td>
-<td>example.com_dns_profile</td>
+<td>site1_waf_selfip</td>
 </tr>
-<tr class="row-odd"><td>Unhandled Query Action</td>
-<td>Drop</td>
+<tr class="row-odd"><td>IP Address</td>
+<td>10.1.50.2</td>
 </tr>
-<tr class="row-even"><td>Use BIND Server on Big-IP</td>
-<td>Disabled</td>
+<tr class="row-even"><td>Netmask</td>
+<td>255.255.255.0</td>
 </tr>
-<tr class="row-odd"><td>Logging</td>
-<td>Enabled</td>
-</tr>
-<tr class="row-even"><td>Logging Profile</td>
-<td>example_dns_logging_profile</td>
-</tr>
-<tr class="row-odd"><td>AVR statistics Sample Rate</td>
-<td>Enabled, 1/1 queries sampled</td>
+<tr class="row-odd"><td>VLAN/Tunnel</td>
+<td>site1_waf_vlan</td>
 </tr>
 </tbody>
 </table>
-<img alt="../../_images/dns_profile_settings.png" src="../../_images/dns_profile_settings.png" />
-<p><a class="reference external" href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/profile/dns/create.jsp">https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/profile/dns/create.jsp</a></p>
-<p><a class="reference external" href="https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/profile/dns/create.jsp">https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/profile/dns/create.jsp</a></p>
-<p>TMSH command for both gtm1.site1 and gtm1.site2:</p>
+<p><a class="reference external" href="https://bigip1.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/self_ip/create.jsp">https://bigip1.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/self_ip/create.jsp</a></p>
+<p>TMSH command for <strong>bigip1.site1</strong>:</p>
 <div class="admonition-tmsh admonition">
 <p class="first admonition-title">TMSH</p>
-<p class="last">tmsh create ltm profile dns example.com_dns_profile use-local-bind no unhandled-query-action drop log-profile example_dns_logging_profile enable-logging yes avr-dnsstat-sample-rate 1</p>
+<p class="last">tmsh create net self site1_waf_selfip { address 10.1.50.2/24 vlan site1_waf_vlan }</p>
 </div>
-<p><a class="reference external" href="https://support.f5.com/csp/article/K14510">https://support.f5.com/csp/article/K14510</a></p>
+</li>
+<li><p class="first">bigip2.site1</p>
+<p>Create a new selfip on <strong>bigip2.site1</strong> according to the following table.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>site1_waf_selfip</td>
+</tr>
+<tr class="row-odd"><td>IP Address</td>
+<td>10.1.50.3</td>
+</tr>
+<tr class="row-even"><td>Netmask</td>
+<td>255.255.255.0</td>
+</tr>
+<tr class="row-odd"><td>VLAN/Tunnel</td>
+<td>site1_waf_vlan</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference external" href="https://bigip2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/self_ip/create.jsp">https://bigip2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/self_ip/create.jsp</a></p>
+<p>TMSH command for <strong>bigip2.site1</strong>:</p>
+<div class="admonition-tmsh admonition">
+<p class="first admonition-title">TMSH</p>
+<p class="last">tmsh create net self site1_waf_selfip { address 10.1.50.3/24 vlan site1_waf_vlan }</p>
+</div>
+<p>Create a new <strong>floating</strong> selfip on <strong>bigip2.site1</strong> according to the following table.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>site1_waf_floating_selfip</td>
+</tr>
+<tr class="row-odd"><td>IP Address</td>
+<td>10.1.50.1</td>
+</tr>
+<tr class="row-even"><td>Netmask</td>
+<td>255.255.255.0</td>
+</tr>
+<tr class="row-odd"><td>VLAN/Tunnel</td>
+<td>site1_waf_vlan</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference external" href="https://bigip2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/self_ip/create.jsp">https://bigip2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/self_ip/create.jsp</a></p>
+<p>TMSH command for <strong>bigip2.site1</strong>:</p>
+<div class="admonition-tmsh admonition">
+<p class="first admonition-title">TMSH</p>
+<p class="last">tmsh create net self site1_waf_floating_selfip { address 10.1.50.1/24 vlan site1_waf_vlan }</p>
+</div>
+</li>
+<li><p class="first">bigip1.site2</p>
+<p>Create a new selfip on <strong>bigip1.site2</strong> according to the following table.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>site2_waf_selfip</td>
+</tr>
+<tr class="row-odd"><td>IP Address</td>
+<td>10.1.60.2</td>
+</tr>
+<tr class="row-even"><td>Netmask</td>
+<td>255.255.255.0</td>
+</tr>
+<tr class="row-odd"><td>VLAN/Tunnel</td>
+<td>site2_waf_vlan</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference external" href="https://bigip1.site2.example.com/tmui/Control/jspmap/tmui/locallb/network/self_ip/create.jsp">https://bigip1.site2.example.com/tmui/Control/jspmap/tmui/locallb/network/self_ip/create.jsp</a></p>
+<div class="admonition-tmsh admonition">
+<p class="first admonition-title">TMSH</p>
+<p class="last">tmsh create net self site2_waf_selfip { address 10.1.60.2/24 vlan site2_waf_vlan }</p>
+</div>
+</li>
+<li><p class="first">bigip2.site2</p>
+<p>Create a new selfip on <strong>bigip2.site2</strong> according to the following table.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>site2_waf_selfip</td>
+</tr>
+<tr class="row-odd"><td>IP Address</td>
+<td>10.1.60.3</td>
+</tr>
+<tr class="row-even"><td>Netmask</td>
+<td>255.255.255.0</td>
+</tr>
+<tr class="row-odd"><td>VLAN/Tunnel</td>
+<td>site2_waf_vlan</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference external" href="https://bigip2.site2.example.com/tmui/Control/jspmap/tmui/locallb/network/self_ip/create.jsp">https://bigip2.site2.example.com/tmui/Control/jspmap/tmui/locallb/network/self_ip/create.jsp</a></p>
+<div class="admonition-tmsh admonition">
+<p class="first admonition-title">TMSH</p>
+<p class="last">tmsh create net self site2_waf_selfip { address 10.1.60.3/24 vlan site2_waf_vlan }</p>
+</div>
+<p>Create a new <strong>floating</strong> selfip on <strong>bigip2.site2</strong> according to the following table.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>site1_waf_floating_selfip</td>
+</tr>
+<tr class="row-odd"><td>IP Address</td>
+<td>10.1.50.1</td>
+</tr>
+<tr class="row-even"><td>Netmask</td>
+<td>255.255.255.0</td>
+</tr>
+<tr class="row-odd"><td>VLAN/Tunnel</td>
+<td>site2_waf_vlan</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference external" href="https://bigip2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/self_ip/create.jsp">https://bigip2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/self_ip/create.jsp</a></p>
+<p>TMSH command for <strong>bigip2.site2</strong>:</p>
+<div class="admonition-tmsh admonition">
+<p class="first admonition-title">TMSH</p>
+<p class="last">tmsh create net self site2_waf_floating_selfip { address 10.1.50.1/24 vlan site2_waf_vlan }</p>
+</div>
+</li>
+</ol>
 </div>
 
 
@@ -314,10 +451,8 @@
 		     <div class="row next-prev-btn-row">
            <div class="col-lg-12">
            
-		        <a href="lab1.html" title="2.1. Logging" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+		        <a href="lab3.html" title="1.3. LTM - VLAN’s" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
-           
-              <a href="lab3.html" title="2.3. UDP Profile" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>
