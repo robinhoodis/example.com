@@ -20,3 +20,5 @@ TMSH command for asm1.site1:
 .. code-block:: tcl
 
    tmsh create ltm monitor https shared/example.com_https_monitor send "GET /login.php\r\n"
+
+https://support.f5.com/csp/article/K13397

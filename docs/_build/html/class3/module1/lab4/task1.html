@@ -224,6 +224,7 @@
 <li class="toctree-l4"><a class="reference internal" href="task2.html">Virtuals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../lab5/lab5.html">Security Policy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../module2/module2.html">Policy Tuning</a></li>
@@ -285,6 +286,42 @@
 <div class="admonition-tmsh admonition">
 <p class="first admonition-title">TMSH</p>
 <p class="last">tmsh create ltm pool site1_adc_https_pool monitor shared/example.com_https_monitor members add { site1_adc_https_node:443 { address 10.1.50.100 } }</p>
+</div>
+<p>Create a pool on asm1.site2 and asm2.site2 according to the following table.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>site2_adc_https_pool</td>
+</tr>
+<tr class="row-odd"><td>Health Monitors</td>
+<td>shared/example.com_https_monitor</td>
+</tr>
+<tr class="row-even"><td>New Members</td>
+<td>Node Name: site2_adc_https_node</td>
+</tr>
+<tr class="row-odd"><td>New Members</td>
+<td>Address: 10.1.60.100</td>
+</tr>
+<tr class="row-even"><td>Service Port</td>
+<td>443</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference external" href="https://asm1.site2.example.com/tmui/Control/jspmap/tmui/locallb/pool/create.jsp">https://asm1.site2.example.com/tmui/Control/jspmap/tmui/locallb/pool/create.jsp</a></p>
+<p><a class="reference external" href="https://asm2.site2.example.com/tmui/Control/jspmap/tmui/locallb/pool/create.jsp">https://asm2.site2.example.com/tmui/Control/jspmap/tmui/locallb/pool/create.jsp</a></p>
+<p>TMSH command for asm1.site2 and asm2.site2</p>
+<div class="admonition-tmsh admonition">
+<p class="first admonition-title">TMSH</p>
+<p class="last">tmsh create ltm pool site2_adc_https_pool monitor shared/example.com_https_monitor members add { site2_adc_https_node:443 { address 10.1.60.100 } }</p>
 </div>
 </div>
 
