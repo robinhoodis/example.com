@@ -16,4 +16,4 @@ After this module students will have enabled the BIG-IP to intercept and cache D
    :hidden:
    :glob:
 
-   lab*
+   task*

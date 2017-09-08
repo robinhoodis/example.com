@@ -1,4 +1,4 @@
-Networking
+Onboarding
 ======================
 
 Four dedicated WAF instances are deployed across two datacenters.
@@ -10,9 +10,6 @@ The dedicated WAF instances will be load balanced by the HA pair of F5 LTM's.
 In this module we will complete the Layer 2 and Layer 3 connectivity.
 
 .. toctree::
-   :hidden:
-   :numbered:
-   :maxdepth: 2
    :glob:
 
-   lab*
+   lab*/lab*
