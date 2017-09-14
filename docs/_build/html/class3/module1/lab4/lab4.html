@@ -288,12 +288,12 @@
 <td>Auto Map</td>
 </tr>
 <tr class="row-even"><td>Default Pool</td>
-<td>pool site1_adc_https_pool</td>
+<td>pool shared/site1_adc_https_pool</td>
 </tr>
 </tbody>
 </table>
 <p>TMSH command for asm1.site1:</p>
-<div class="highlight-tcl"><div class="highlight"><pre><span></span><span class="nv">tmsh</span> create ltm virtual site1_waf1_virtual <span class="k">{</span> <span class="nv">destination</span> <span class="mf">10.1</span>.50.101:https ip-protocol tcp profiles add <span class="k">{</span> <span class="nv">clientssl</span> <span class="k">{</span> <span class="nv">context</span> clientside <span class="k">}</span> serverssl <span class="k">{</span> <span class="nv">context</span> serverside <span class="k">}</span> shared<span class="o">/</span>example.com_http_profile <span class="k">{</span> <span class="k">}</span> shared<span class="o">/</span>example.com_tcp_profile <span class="k">{</span> <span class="k">}</span> <span class="k">}</span> source-address-translation <span class="k">{</span> <span class="nv">type</span> automap <span class="k">}</span> security-log-profiles add <span class="k">{</span> <span class="s2">&quot;Log all requests&quot;</span> <span class="k">}</span> pool site1_adc_https_pool <span class="k">}</span>
+<div class="highlight-tcl"><div class="highlight"><pre><span></span><span class="nv">tmsh</span> create ltm virtual site1_waf1_virtual <span class="k">{</span> <span class="nv">destination</span> <span class="mf">10.1</span>.50.101:https ip-protocol tcp profiles add <span class="k">{</span> <span class="nv">clientssl</span> <span class="k">{</span> <span class="nv">context</span> clientside <span class="k">}</span> serverssl <span class="k">{</span> <span class="nv">context</span> serverside <span class="k">}</span> shared<span class="o">/</span>example.com_http_profile <span class="k">{</span> <span class="k">}</span> shared<span class="o">/</span>example.com_tcp_profile <span class="k">{</span> <span class="k">}</span> <span class="k">}</span> source-address-translation <span class="k">{</span> <span class="nv">type</span> automap <span class="k">}</span> security-log-profiles add <span class="k">{</span> <span class="s2">&quot;Log all requests&quot;</span> <span class="k">}</span> pool shared<span class="o">/</span>site1_adc_https_pool <span class="k">}</span>
 </pre></div>
 </div>
 </li>
@@ -334,12 +334,12 @@
 <td>Auto Map</td>
 </tr>
 <tr class="row-even"><td>Default Pool</td>
-<td>pool site1_adc_https_pool</td>
+<td>pool shared/site1_adc_https_pool</td>
 </tr>
 </tbody>
 </table>
 <p>TMSH command for asm2.site1:</p>
-<div class="highlight-tcl"><div class="highlight"><pre><span></span><span class="nv">tmsh</span> create ltm virtual site1_waf2_virtual <span class="k">{</span> <span class="nv">destination</span> <span class="mf">10.1</span>.50.102:https ip-protocol tcp profiles add <span class="k">{</span> <span class="nv">clientssl</span> <span class="k">{</span> <span class="nv">context</span> clientside <span class="k">}</span> serverssl <span class="k">{</span> <span class="nv">context</span> serverside <span class="k">}</span> shared<span class="o">/</span>example.com_http_profile <span class="k">{</span> <span class="k">}</span> shared<span class="o">/</span>example.com_tcp_profile <span class="k">{</span> <span class="k">}</span> <span class="k">}</span> source-address-translation <span class="k">{</span> <span class="nv">type</span> automap <span class="k">}</span> security-log-profiles add <span class="k">{</span> <span class="s2">&quot;Log all requests&quot;</span> <span class="k">}</span> pool site1_adc_https_pool <span class="k">}</span>
+<div class="highlight-tcl"><div class="highlight"><pre><span></span><span class="nv">tmsh</span> create ltm virtual site1_waf2_virtual <span class="k">{</span> <span class="nv">destination</span> <span class="mf">10.1</span>.50.102:https ip-protocol tcp profiles add <span class="k">{</span> <span class="nv">clientssl</span> <span class="k">{</span> <span class="nv">context</span> clientside <span class="k">}</span> serverssl <span class="k">{</span> <span class="nv">context</span> serverside <span class="k">}</span> shared<span class="o">/</span>example.com_http_profile <span class="k">{</span> <span class="k">}</span> shared<span class="o">/</span>example.com_tcp_profile <span class="k">{</span> <span class="k">}</span> <span class="k">}</span> source-address-translation <span class="k">{</span> <span class="nv">type</span> automap <span class="k">}</span> security-log-profiles add <span class="k">{</span> <span class="s2">&quot;Log all requests&quot;</span> <span class="k">}</span> pool shared<span class="o">/</span>site1_adc_https_pool <span class="k">}</span>
 </pre></div>
 </div>
 </li>
@@ -380,12 +380,12 @@
 <td>Auto Map</td>
 </tr>
 <tr class="row-even"><td>Default Pool</td>
-<td>pool site2_adc_https_pool</td>
+<td>pool shared/site2_adc_https_pool</td>
 </tr>
 </tbody>
 </table>
 <p>TMSH command for asm1.site2:</p>
-<div class="highlight-tcl"><div class="highlight"><pre><span></span><span class="nv">tmsh</span> create ltm virtual site2_waf1_virtual <span class="k">{</span> <span class="nv">destination</span> <span class="mf">10.1</span>.60.101:https ip-protocol tcp profiles add <span class="k">{</span> <span class="nv">clientssl</span> <span class="k">{</span> <span class="nv">context</span> clientside <span class="k">}</span> serverssl <span class="k">{</span> <span class="nv">context</span> serverside <span class="k">}</span> shared<span class="o">/</span>example.com_http_profile <span class="k">{</span> <span class="k">}</span> shared<span class="o">/</span>example.com_tcp_profile <span class="k">{</span> <span class="k">}</span> <span class="k">}</span> source-address-translation <span class="k">{</span> <span class="nv">type</span> automap <span class="k">}</span> security-log-profiles add <span class="k">{</span> <span class="s2">&quot;Log all requests&quot;</span> <span class="k">}</span> pool site2_adc_https_pool <span class="k">}</span>
+<div class="highlight-tcl"><div class="highlight"><pre><span></span><span class="nv">tmsh</span> create ltm virtual site2_waf1_virtual <span class="k">{</span> <span class="nv">destination</span> <span class="mf">10.1</span>.60.101:https ip-protocol tcp profiles add <span class="k">{</span> <span class="nv">clientssl</span> <span class="k">{</span> <span class="nv">context</span> clientside <span class="k">}</span> serverssl <span class="k">{</span> <span class="nv">context</span> serverside <span class="k">}</span> shared<span class="o">/</span>example.com_http_profile <span class="k">{</span> <span class="k">}</span> shared<span class="o">/</span>example.com_tcp_profile <span class="k">{</span> <span class="k">}</span> <span class="k">}</span> source-address-translation <span class="k">{</span> <span class="nv">type</span> automap <span class="k">}</span> security-log-profiles add <span class="k">{</span> <span class="s2">&quot;Log all requests&quot;</span> <span class="k">}</span> pool shared<span class="o">/</span>site2_adc_https_pool <span class="k">}</span>
 </pre></div>
 </div>
 </li>
@@ -426,12 +426,12 @@
 <td>Auto Map</td>
 </tr>
 <tr class="row-even"><td>Default Pool</td>
-<td>pool site2_adc_https_pool</td>
+<td>pool shared/site2_adc_https_pool</td>
 </tr>
 </tbody>
 </table>
 <p>TMSH command for asm2.site2:</p>
-<div class="highlight-tcl"><div class="highlight"><pre><span></span><span class="nv">tmsh</span> create ltm virtual site2_waf2_virtual <span class="k">{</span> <span class="nv">destination</span> <span class="mf">10.1</span>.60.102:https ip-protocol tcp profiles add <span class="k">{</span> <span class="nv">clientssl</span> <span class="k">{</span> <span class="nv">context</span> clientside <span class="k">}</span> serverssl <span class="k">{</span> <span class="nv">context</span> serverside <span class="k">}</span> shared<span class="o">/</span>example.com_http_profile <span class="k">{</span> <span class="k">}</span> shared<span class="o">/</span>example.com_tcp_profile <span class="k">{</span> <span class="k">}</span> <span class="k">}</span> source-address-translation <span class="k">{</span> <span class="nv">type</span> automap <span class="k">}</span> security-log-profiles add <span class="k">{</span> <span class="s2">&quot;Log all requests&quot;</span> <span class="k">}</span> pool site2_adc_https_pool <span class="k">}</span>
+<div class="highlight-tcl"><div class="highlight"><pre><span></span><span class="nv">tmsh</span> create ltm virtual site2_waf2_virtual <span class="k">{</span> <span class="nv">destination</span> <span class="mf">10.1</span>.60.102:https ip-protocol tcp profiles add <span class="k">{</span> <span class="nv">clientssl</span> <span class="k">{</span> <span class="nv">context</span> clientside <span class="k">}</span> serverssl <span class="k">{</span> <span class="nv">context</span> serverside <span class="k">}</span> shared<span class="o">/</span>example.com_http_profile <span class="k">{</span> <span class="k">}</span> shared<span class="o">/</span>example.com_tcp_profile <span class="k">{</span> <span class="k">}</span> <span class="k">}</span> source-address-translation <span class="k">{</span> <span class="nv">type</span> automap <span class="k">}</span> security-log-profiles add <span class="k">{</span> <span class="s2">&quot;Log all requests&quot;</span> <span class="k">}</span> pool shared<span class="o">/</span>site2_adc_https_pool <span class="k">}</span>
 </pre></div>
 </div>
 </li>
