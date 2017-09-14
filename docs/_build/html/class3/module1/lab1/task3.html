@@ -235,7 +235,13 @@
 <h1>Default Route<a class="headerlink" href="#default-route" title="Permalink to this headline">¶</a></h1>
 <p>Create a default gateway on each WAF</p>
 <p>Navigate to: <strong>Network  ››  Routes</strong></p>
-<p>Create a default gateway according to the table below.</p>
+<img alt="../../../_images/waf_create_new_route_navigation.png" src="../../../_images/waf_create_new_route_navigation.png" />
+<ol class="arabic">
+<li><p class="first">Create a default gateway according to the table below.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>It is required to complete the following task on both asm1.site1 asm2.site1</strong></p>
+</div>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="50%" />
@@ -261,13 +267,19 @@
 </tr>
 </tbody>
 </table>
+<img alt="../../../_images/waf_create_new_route_properties.png" src="../../../_images/waf_create_new_route_properties.png" />
 <p><a class="reference external" href="https://asm1.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/route/create.jsp">https://asm1.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/route/create.jsp</a></p>
 <p>TMSH command for asm1.site1 and asm2.site1:</p>
 <div class="admonition-tmsh admonition">
 <p class="first admonition-title">TMSH</p>
 <p class="last">tmsh create net route default_route { gw 10.1.50.1 mtu 1500 network default }</p>
 </div>
-<p>Create a default gateway according to the table below.</p>
+</li>
+<li><p class="first">Create a default gateway according to the table below.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>It is required to complete the following task on both asm1.site1 asm2.site1</strong></p>
+</div>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="50%" />
@@ -299,6 +311,8 @@
 <p class="first admonition-title">TMSH</p>
 <p class="last">tmsh create net route default_route { gw 10.1.60.1 mtu 1500 network default }</p>
 </div>
+</li>
+</ol>
 </div>
 
 
