@@ -45,5 +45,5 @@ https://asm1.site1.example.com/tmui/Control/jspmap/tmui/locallb/pool/create.jsp
 
    .. admonition:: TMSH
 
-      tmsh create ltm pool site2_adc_https_pool monitor shared/example.com_https_monitor members add { shared/site2_adc_https_node:443 { address 10.1.60.100 } }
+      tmsh create ltm pool shared/site2_adc_https_pool monitor shared/example.com_https_monitor members add { shared/site2_adc_https_node:443 { address 10.1.60.100 } }
 
