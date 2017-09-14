@@ -1,53 +1,62 @@
 VLAN's
 =====================
 
+.. image:: /_static/class3/waf_create_new_vlans.png
+
 Create a vlan on each WAF
 
-.. note::  **It is required to complete the following task on both asm1.site1 asm2.site1**
+#. .. note::  **It is required to complete the following task on both asm1.site1 asm2.site1**
 
-Navigate to: **Network  ››  VLANs : VLAN List**
+   Navigate to: **Network  ››  VLANs : VLAN List**
 
-Create a new vlan according to the following table.
+   .. image:: /_static/class3/waf_create_new_vlan_navigation.png
 
-.. csv-table::
-   :header: "Setting", "Value"
-   :widths: 15, 15
+   Create a new vlan according to the following table.
 
-   "Name", "site1_waf_vlan"
-   "Tag", "50"
-   "Interface", "1.1 - Untagged"
+   .. csv-table::
+      :header: "Setting", "Value"
+      :widths: 15, 15
 
-https://asm1.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/vlan/create.jsp
+      "Name", "site1_waf_vlan"
+      "Tag", "50"
+      "Interface", "1.1 - Untagged"
 
-https://asm2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/vlan/create.jsp
+   .. image:: /_static/class3/waf_create_new_vlan_properties.png
 
-TMSH command for both asm1.site1 and asm2.site1:
+   https://asm1.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/vlan/create.jsp
 
-.. admonition:: TMSH
+   https://asm2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/vlan/create.jsp
 
-  tmsh create net vlan site1_waf_vlan { interfaces add { 1.1 { } } tag 50 }
+   TMSH command for both asm1.site1 and asm2.site1:
 
-.. note::  **It is required to complete the following task on both asm1.site2 asm2.site2**
+   .. admonition:: TMSH
 
-Navigate to: **Network  ››  VLANs : VLAN List**
+     tmsh create net vlan site1_waf_vlan { interfaces add { 1.1 { } } tag 50 }
 
-Create a new vlan according to the following table.
 
-.. csv-table::
-   :header: "Setting", "Value"
-   :widths: 15, 15
+#. .. note::  **It is required to complete the following task on both asm1.site2 asm2.site2**
 
-   "Name", "site2_waf_vlan"
-   "Tag", "60"
-   "Interface", "1.1 - Untagged"
+   Navigate to: **Network  ››  VLANs : VLAN List**
 
-https://asm1.site2.example.com/tmui/Control/jspmap/tmui/locallb/network/vlan/create.jsp
+   .. image:: /_static/class3/waf_create_new_vlan_navigation.png
 
-https://asm2.site2.example.com/tmui/Control/jspmap/tmui/locallb/network/vlan/create.jsp
+   Create a new vlan according to the following table.
 
-TMSH command for both asm1.site2 and asm2.site2:
+   .. csv-table::
+      :header: "Setting", "Value"
+      :widths: 15, 15
 
-.. admonition:: TMSH
+      "Name", "site2_waf_vlan"
+      "Tag", "60"
+      "Interface", "1.1 - Untagged"
 
-  tmsh create net vlan site2_waf_vlan { interfaces add { 1.1 { } } tag 60 }
+   https://asm1.site2.example.com/tmui/Control/jspmap/tmui/locallb/network/vlan/create.jsp
+
+   https://asm2.site2.example.com/tmui/Control/jspmap/tmui/locallb/network/vlan/create.jsp
+
+   TMSH command for both asm1.site2 and asm2.site2:
+
+   .. admonition:: TMSH
+
+     tmsh create net vlan site2_waf_vlan { interfaces add { 1.1 { } } tag 60 }
 

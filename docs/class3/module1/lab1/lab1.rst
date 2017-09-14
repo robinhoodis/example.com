@@ -1,10 +1,11 @@
-VLANS and IP
+Networking
 =======================
 
-Deploy new vlans and IP addresses
+.. image:: /_static/class3/big-ip-i5000-series.jpg
+
+Complete the tasks required to get the WAF devices onto a network.
 
 .. toctree::
-   :hidden:
    :maxdepth: 2
    :glob:
 

@@ -214,25 +214,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../intro.html">Topology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../class1/class1.html">LTM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../class2/class2.html">DNS</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../class3.html">WAF</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../module1.html">Onboarding</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="lab1.html">VLANS and IP</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="task1.html">VLAN’s</a></li>
-<li class="toctree-l4"><a class="reference internal" href="task2.html">SELFIP’s</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Default Route</a></li>
-<li class="toctree-l4"><a class="reference internal" href="task4..html">Results</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../lab2/lab2.html">Cluster</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lab3/lab3.html">Shared Objects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lab4/lab4.html">Traffic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lab5/lab5.html">Security Policy</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../module2/module2.html">Policy Tuning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../module3/module3.html">Hack and Defend</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../class3.html">WAF</a></li>
 </ul>
 
   <h4>Previous topic</h4>
@@ -275,7 +257,7 @@
 <td>0.0.0.0</td>
 </tr>
 <tr class="row-odd"><td>Gateway Address</td>
-<td>10.1.50.100</td>
+<td>10.1.50.1</td>
 </tr>
 </tbody>
 </table>
@@ -283,7 +265,7 @@
 <p>TMSH command for asm1.site1 and asm2.site1:</p>
 <div class="admonition-tmsh admonition">
 <p class="first admonition-title">TMSH</p>
-<p class="last">tmsh create net route default_route { gw 10.1.50.100 mtu 1500 network default }</p>
+<p class="last">tmsh create net route default_route { gw 10.1.50.1 mtu 1500 network default }</p>
 </div>
 <p>Create a default gateway according to the table below.</p>
 <table border="1" class="colwidths-given docutils">
@@ -307,7 +289,7 @@
 <td>0.0.0.0</td>
 </tr>
 <tr class="row-odd"><td>Gateway Address</td>
-<td>10.1.60.100</td>
+<td>10.1.60.1</td>
 </tr>
 </tbody>
 </table>
@@ -315,7 +297,7 @@
 <p>TMSH command for asm1.site2 and asm2.site2:</p>
 <div class="admonition-tmsh admonition">
 <p class="first admonition-title">TMSH</p>
-<p class="last">tmsh create net route default_route { gw 10.1.60.100 mtu 1500 network default }</p>
+<p class="last">tmsh create net route default_route { gw 10.1.60.1 mtu 1500 network default }</p>
 </div>
 </div>
 

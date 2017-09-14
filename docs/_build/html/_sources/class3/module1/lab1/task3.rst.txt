@@ -14,7 +14,7 @@ Create a default gateway according to the table below.
    "Name", "default_route"
    "Destination", "0.0.0.0"
    "Netmask", "0.0.0.0"
-   "Gateway Address", "10.1.50.100"
+   "Gateway Address", "10.1.50.1"
 
 https://asm1.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/route/create.jsp
 
@@ -22,7 +22,7 @@ TMSH command for asm1.site1 and asm2.site1:
 
 .. admonition:: TMSH
 
-    tmsh create net route default_route { gw 10.1.50.100 mtu 1500 network default }
+    tmsh create net route default_route { gw 10.1.50.1 mtu 1500 network default }
 
 Create a default gateway according to the table below.
 
@@ -33,7 +33,7 @@ Create a default gateway according to the table below.
    "Name", "default_route"
    "Destination", "0.0.0.0"
    "Netmask", "0.0.0.0"
-   "Gateway Address", "10.1.60.100"
+   "Gateway Address", "10.1.60.1"
 
 https://asm2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/route/create.jsp
 
@@ -41,4 +41,4 @@ TMSH command for asm1.site2 and asm2.site2:
 
 .. admonition:: TMSH
 
-    tmsh create net route default_route { gw 10.1.60.100 mtu 1500 network default }
+    tmsh create net route default_route { gw 10.1.60.1 mtu 1500 network default }

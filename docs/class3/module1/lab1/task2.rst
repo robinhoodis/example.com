@@ -1,11 +1,15 @@
 SELFIP's
 =====================
 
+.. image:: /_static/class3/waf_create_new_selfip.png
+
 Create an IP address on each WAF instance
 
 .. note::  **It is required to complete the following task on asm1.site1 asm2.site1 asm1.site2 and asm2.site2**
 
 Navigate to: **Network  ››  Self IPs**
+
+.. image:: /_static/class3/waf_create_new_selfip_navigation.png
 
 #. asm1.site1
 

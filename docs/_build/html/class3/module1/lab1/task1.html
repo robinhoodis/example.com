@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="SELFIP’s" href="task2.html" />
-    <link rel="prev" title="VLANS and IP" href="lab1.html" />
+    <link rel="prev" title="Networking" href="lab1.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -214,30 +214,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../intro.html">Topology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../class1/class1.html">LTM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../class2/class2.html">DNS</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../class3.html">WAF</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../module1.html">Onboarding</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="lab1.html">VLANS and IP</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">VLAN’s</a></li>
-<li class="toctree-l4"><a class="reference internal" href="task2.html">SELFIP’s</a></li>
-<li class="toctree-l4"><a class="reference internal" href="task3.html">Default Route</a></li>
-<li class="toctree-l4"><a class="reference internal" href="task4..html">Results</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../lab2/lab2.html">Cluster</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lab3/lab3.html">Shared Objects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lab4/lab4.html">Traffic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lab5/lab5.html">Security Policy</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../module2/module2.html">Policy Tuning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../module3/module3.html">Hack and Defend</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../class3.html">WAF</a></li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="lab1.html"
-                        title="previous chapter">VLANS and IP</a></p>
+                        title="previous chapter">Networking</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="task2.html"
                         title="next chapter">SELFIP’s</a></p>
@@ -251,12 +233,15 @@
         
   <div class="section" id="vlan-s">
 <h1>VLAN’s<a class="headerlink" href="#vlan-s" title="Permalink to this headline">¶</a></h1>
+<img alt="../../../_images/waf_create_new_vlans.png" src="../../../_images/waf_create_new_vlans.png" />
 <p>Create a vlan on each WAF</p>
-<div class="admonition note">
+<ol class="arabic">
+<li><div class="first admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last"><strong>It is required to complete the following task on both asm1.site1 asm2.site1</strong></p>
 </div>
 <p>Navigate to: <strong>Network  ››  VLANs : VLAN List</strong></p>
+<img alt="../../../_images/waf_create_new_vlan_navigation.png" src="../../../_images/waf_create_new_vlan_navigation.png" />
 <p>Create a new vlan according to the following table.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
@@ -280,6 +265,7 @@
 </tr>
 </tbody>
 </table>
+<img alt="../../../_images/waf_create_new_vlan_properties.png" src="../../../_images/waf_create_new_vlan_properties.png" />
 <p><a class="reference external" href="https://asm1.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/vlan/create.jsp">https://asm1.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/vlan/create.jsp</a></p>
 <p><a class="reference external" href="https://asm2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/vlan/create.jsp">https://asm2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/vlan/create.jsp</a></p>
 <p>TMSH command for both asm1.site1 and asm2.site1:</p>
@@ -287,11 +273,13 @@
 <p class="first admonition-title">TMSH</p>
 <p class="last">tmsh create net vlan site1_waf_vlan { interfaces add { 1.1 { } } tag 50 }</p>
 </div>
-<div class="admonition note">
+</li>
+<li><div class="first admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last"><strong>It is required to complete the following task on both asm1.site2 asm2.site2</strong></p>
 </div>
 <p>Navigate to: <strong>Network  ››  VLANs : VLAN List</strong></p>
+<img alt="../../../_images/waf_create_new_vlan_navigation.png" src="../../../_images/waf_create_new_vlan_navigation.png" />
 <p>Create a new vlan according to the following table.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
@@ -322,6 +310,8 @@
 <p class="first admonition-title">TMSH</p>
 <p class="last">tmsh create net vlan site2_waf_vlan { interfaces add { 1.1 { } } tag 60 }</p>
 </div>
+</li>
+</ol>
 </div>
 
 
@@ -329,7 +319,7 @@
 		     <div class="row next-prev-btn-row">
            <div class="col-lg-12">
            
-		        <a href="lab1.html" title="VLANS and IP" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+		        <a href="lab1.html" title="Networking" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
               <a href="task2.html" title="SELFIP’s" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
