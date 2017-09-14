@@ -5,7 +5,7 @@ Build Documentation
 
 .. toctree::
    :hidden:
-   :maxdepth: 1
+   :maxdepth: 5
    :caption: Contents:
    :glob:
 
