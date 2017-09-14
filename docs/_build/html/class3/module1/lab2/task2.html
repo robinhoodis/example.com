@@ -214,7 +214,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../intro.html">Topology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../class1/class1.html">LTM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../class2/class2.html">DNS</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../class3.html">WAF</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../class3.html">WAF</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../module1.html">Onboarding</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../lab1/lab1.html">Networking</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="lab2.html">Cluster</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="task1.html">ConfigSync IP</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Trust Members</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task3.html">Changes Pending</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task4.html">Device Groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task5.html">Sync… Again</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lab3/lab3.html">Shared Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab4/lab4.html">Virtuals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab5/lab5.html">Security Policy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../module2/module2.html">Policy Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../module3/module3.html">Hack and Defend</a></li>
+</ul>
+</li>
 </ul>
 
   <h4>Previous topic</h4>
@@ -235,6 +254,7 @@
 <h1>Trust Members<a class="headerlink" href="#trust-members" title="Permalink to this headline">¶</a></h1>
 <p>The following task only needs to be completed from <strong>asm1.site1</strong></p>
 <p>Navigate to: <strong>Device Management  ››  Device Trust : Device Trust Members</strong></p>
+<p><a class="reference external" href="https://asm1.site1.example.com/tmui/Control/jspmap/tmui/devmgmt/device_trust/create.jsp">https://asm1.site1.example.com/tmui/Control/jspmap/tmui/devmgmt/device_trust/create.jsp</a></p>
 <img alt="../../../_images/waf_device_trust_navigate.png" src="../../../_images/waf_device_trust_navigate.png" />
 <p>From the asm1.site1 UI repeate the steps for adding trust with asm2.site1 asm1.site2 and asm2.site2</p>
 <table border="1" class="colwidths-given docutils">
@@ -243,25 +263,24 @@
 <col width="50%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Setting</th>
-<th class="head">Value</th>
+<tr class="row-odd"><th class="head">Hostname</th>
+<th class="head">Device IP Address</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>asm2.site1</td>
+<tr class="row-even"><td>asm2.site1.example.com</td>
 <td>10.1.10.15</td>
 </tr>
-<tr class="row-odd"><td>asm1.site2</td>
+<tr class="row-odd"><td>asm1.site2.example.com</td>
 <td>10.1.10.24</td>
 </tr>
-<tr class="row-even"><td>asm2.site2</td>
+<tr class="row-even"><td>asm2.site2.example.com</td>
 <td>10.1.10.25</td>
 </tr>
 </tbody>
 </table>
 <img alt="../../../_images/device_trust.png" src="../../../_images/device_trust.png" />
 <img alt="../../../_images/all_members_trusted.png" src="../../../_images/all_members_trusted.png" />
-<p><a class="reference external" href="https://asm1.site1.example.com/tmui/Control/jspmap/tmui/devmgmt/device_trust/create.jsp">https://asm1.site1.example.com/tmui/Control/jspmap/tmui/devmgmt/device_trust/create.jsp</a></p>
 </div>
 
 

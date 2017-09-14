@@ -30,7 +30,7 @@ Navigate to: **Network  ››  Routes**
 
    .. admonition:: TMSH
 
-       tmsh create net route default_route { gw 10.1.50.1 mtu 1500 network default }
+       tmsh create net route default_route { gw 10.1.50.1 network default }
 
 #. Create a default gateway according to the table below.
 
@@ -53,4 +53,4 @@ Navigate to: **Network  ››  Routes**
 
    .. admonition:: TMSH
 
-       tmsh create net route default_route { gw 10.1.60.1 mtu 1500 network default }
+       tmsh create net route default_route { gw 10.1.60.1 network default }

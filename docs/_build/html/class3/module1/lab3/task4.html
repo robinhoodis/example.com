@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Traffic" href="../lab4/lab4.html" />
+    <link rel="next" title="Pools" href="task5.html" />
     <link rel="prev" title="TCP Profile" href="task3.html" />
 <!--
 # Copyright 2017 F5 Networks
@@ -214,15 +214,34 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../intro.html">Topology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../class1/class1.html">LTM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../class2/class2.html">DNS</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../class3.html">WAF</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../class3.html">WAF</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../module1.html">Onboarding</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../lab1/lab1.html">Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab2/lab2.html">Cluster</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="lab3.html">Shared Objects</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="task1.html">Sync Folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task2.html">HTTP Profile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task3.html">TCP Profile</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Health Monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task5.html">Pools</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lab4/lab4.html">Virtuals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab5/lab5.html">Security Policy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../module2/module2.html">Policy Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../module3/module3.html">Hack and Defend</a></li>
+</ul>
+</li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="task3.html"
                         title="previous chapter">TCP Profile</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../lab4/lab4.html"
-                        title="next chapter">Traffic</a></p>
+  <p class="topless"><a href="task5.html"
+                        title="next chapter">Pools</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
@@ -235,6 +254,7 @@
 <h1>Health Monitor<a class="headerlink" href="#health-monitor" title="Permalink to this headline">¶</a></h1>
 <p>Create a common health monitor</p>
 <p>Navigate to: <strong>Local Traffic  ››  Monitors  ››  New Monitor…</strong></p>
+<img alt="../../../_images/waf_create_health_monitor.png" src="../../../_images/waf_create_health_monitor.png" />
 <p>Create a health monitor on asm1.site1 according to the following table.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
@@ -254,10 +274,11 @@
 <td>HTTPS</td>
 </tr>
 <tr class="row-even"><td>Send String</td>
-<td>GET /login.phprn</td>
+<td>GET /login.php\r\n</td>
 </tr>
 </tbody>
 </table>
+<img alt="../../../_images/waf_create_health_monitor_properties.png" src="../../../_images/waf_create_health_monitor_properties.png" />
 <p>TMSH command for asm1.site1:</p>
 <div class="highlight-tcl"><div class="highlight"><pre><span></span><span class="nv">tmsh</span> create ltm monitor https shared<span class="o">/</span>example.com_https_monitor send <span class="s2">&quot;GET /login.php\r\n&quot;</span>
 </pre></div>
@@ -273,7 +294,7 @@
 		        <a href="task3.html" title="TCP Profile" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="../lab4/lab4.html" title="Traffic" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="task5.html" title="Pools" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>

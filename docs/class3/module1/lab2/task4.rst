@@ -7,7 +7,7 @@ Create a sync-only group that contains all four ASM devices
 
 Navigate to: **Device Management  ››  Device Groups**
 
-.. image:: /_static/class3/create_sync_group.png
+.. image:: /_static/class3/waf_create_device-group_navigation.png
 
 Create the device group according to the following table:
 
@@ -20,6 +20,8 @@ Create the device group according to the following table:
    "Members", "Add all four WAF devices"
    "Sync Type", "Automatic with Full Sync"
    "Save on Automatic Sync", "Checked"
+
+.. image:: /_static/class3/create_sync_group.png
 
 https://asm1.site1.example.com/tmui/Control/jspmap/tmui/devmgmt/devicegroups/create.jsp
 

@@ -5,6 +5,8 @@ Create a common health monitor
 
 Navigate to: **Local Traffic  ››  Monitors  ››  New Monitor...**
 
+.. image:: /_static/class3/waf_create_health_monitor.png
+
 Create a health monitor on asm1.site1 according to the following table.
 
 .. csv-table::
@@ -13,7 +15,9 @@ Create a health monitor on asm1.site1 according to the following table.
 
    "Name", "shared/example.com_https_monitor"
    "Type", "HTTPS"
-   "Send String", "GET /login.php\r\n"
+   "Send String", "GET /login.php\\r\\n"
+
+.. image:: /_static/class3/waf_create_health_monitor_properties.png
 
 TMSH command for asm1.site1:
 
