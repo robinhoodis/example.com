@@ -1,7 +1,7 @@
 ConfigSync IP
 ======================
 
-An HA vlan and IP address have already been provisioned on each WAF device.
+HA vlan and IP address have already been provisioned on each WAF device.
 
 Log into each WAF and configure the system to use the IP address on the "ha_vlan" as the "Local Address" for ConfigSync.
 

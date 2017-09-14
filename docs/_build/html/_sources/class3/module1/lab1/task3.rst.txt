@@ -24,6 +24,8 @@ Navigate to: **Network  ››  Routes**
 
    https://asm1.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/route/create.jsp
 
+   https://asm2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/route/create.jsp
+
    TMSH command for asm1.site1 and asm2.site1:
 
    .. admonition:: TMSH
@@ -43,7 +45,9 @@ Navigate to: **Network  ››  Routes**
       "Netmask", "0.0.0.0"
       "Gateway Address", "10.1.60.1"
 
-   https://asm2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/route/create.jsp
+   https://asm1.site2.example.com/tmui/Control/jspmap/tmui/locallb/network/route/create.jsp
+
+   https://asm2.site2.example.com/tmui/Control/jspmap/tmui/locallb/network/route/create.jsp
 
    TMSH command for asm1.site2 and asm2.site2:
 
