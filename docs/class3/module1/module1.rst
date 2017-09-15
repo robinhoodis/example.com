@@ -1,7 +1,7 @@
 Onboarding
 ======================
 
-.. image:: /_static/class3/deploy_new_WAF.png
+.. image:: /_static/class3/deploy_new_waf.png
 
 Four dedicated WAF instances are deployed across two datacenters.
 
