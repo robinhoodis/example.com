@@ -98,3 +98,5 @@ Create VIPS on all four WAF devices according to the follwing tables
    .. code-block:: tcl
 
       tmsh create ltm virtual site2_waf2_virtual { destination 10.1.60.102:https ip-protocol tcp profiles add { clientssl { context clientside } serverssl { context serverside } shared/example.com_http_profile { } shared/example.com_tcp_profile { } } source-address-translation { type automap } security-log-profiles add { "Log all requests" } pool shared/site2_adc_https_pool }
+
+https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/asm-implementations-11-1-0/4.html#conceptid

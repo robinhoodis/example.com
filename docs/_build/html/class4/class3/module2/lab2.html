@@ -1,0 +1,914 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>4.2.1. NPM and Exception Handling &#8212; EXAMPLE.COM  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/f5_agility_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<!--
+# Copyright 2017 F5 Networks
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+-->
+<link href="https://cdn.f5.com/favicon.ico" rel="icon">
+<script src="https://use.fontawesome.com/21fb8a09c3.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+  </head>
+  <body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="row corp-header">
+      <div class="container corp-header">
+        <div class="container corp-menu">
+          <ul>
+            <li><a href="https://f5.com" class="internalLink">F5.com</a></li>
+            <li><a href="https://support.f5.com">Support</a></li>
+            <li><a href="https://devcentral.f5.com">Community</a></li>
+            <li><a href="https://github.com/F5Networks">GitHub</a></li>
+            <li><a href="https://f5.com/about-us/careers">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row pageHeader">
+      <div class="container stat">
+        <div class="col-xs-12 stat">
+          <a class="internalLink" href="https://f5.com">
+            <img class="logo" src="https://cdn.f5.com/websites/support/assets/images/logo.svg" width="50" height="44" alt="F5 Networks" title="F5 Networks" border="0">
+          </a>
+            <ul id="MainMenu" class="main-menu">
+              <li>
+                <a href="#">Products
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+
+                <div class="menu-panel soft-hide" id="ProductsSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third"><span class="a-mm-h">Connectors</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/marathon-bigip-ctlr/latest" data-link-type="Nav: Mega">F5 Marathon BIG-IP Controller</a></li>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/marathon-asp-ctlr/latest" data-link-type="Nav: Mega">F5 Marathon ASP Controller</a></li>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/k8s-bigip-ctlr/latest" data-link-type="Nav: Mega">F5 Kubernetes BIG-IP Controller</a></li>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/f5-kube-proxy/latest" data-link-type="Nav: Mega">F5 Kubernetes Proxy</a></li>
+                        </ul>
+                        <!--span class="seemore"><a data-link-type="Nav: Mega" href="/products/connectors">See all </a></--span-->
+                      </li>
+                      <li class="divider"></li>
+                      <li class="third"><span class="a-mm-h">Application Service Proxy</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/products/asp/latest" data-link-type="Nav: Mega">F5 Application Service Proxy</a></li>
+                        </ul>
+                        <!--span class="seemore"><a href="/products/">See all </a></span-->
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#">Container Integrations
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+
+                <div class="menu-panel soft-hide" id="ContainersSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third"><span class="a-mm-h">Container Integrations</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/containers/latest/marathon/" data-link-type="Nav: Mega">Mesos Marathon</a></li>
+                          <li><a href="http://clouddocs.f5.com/containers/latest/kubernetes/" data-link-type="Nav: Mega">Kubernetes</a></li>
+                          <li><a href="http://clouddocs.f5.com/containers/latest/openshift/" data-link-type="Nav: Mega">RedHat OpenShift</a></li>
+                        </ul>
+                        <span class="seemore"><a data-link-type="Nav: Mega" href="http://clouddocs.f5.com/containers/latest">View details </a></span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#">Clouds
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+
+                <div class="menu-panel soft-hide" id="CloudsSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third"><span class="a-mm-h">Cloud Integrations</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/cloud/openstack/" data-link-type="Nav: Mega">OpenStack</a></li>
+                        </ul>
+                        <!--span class="seemore"><a data-link-type="Nav: Mega" href="/cloud/">See all </a></span-->
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#">Resources
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+                <div class="menu-panel soft-hide" id="UPCProgramSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third">
+                        <span class="a-mm-h">Downloads</span>
+                        <ul>
+                          <li><a target="_blank" data-link-type="Nav: Mega" href="https://hub.docker.com/r/f5networks/" class="internalLink">Docker Hub</a></li>
+                          <li><a target="_blank" data-link-type="Nav: Mega" href="https://store.docker.com/images/f5networks" class="internalLink">Docker Store</a></li>
+                        </ul>
+                      </li>
+                      <li class="divider"></li>
+
+                      <li class="third">
+                        <span class="a-mm-h">OpenSource</span>
+                        <ul>
+                          <li><a target="_blank" data-link-type="Nav: Mega" href="https://github.com/F5Networks" class="internalLink">GitHub</a></li>
+                        </ul>
+                      </li>
+                      <li class="divider"></li>
+
+                      <li class="third">
+                        <a href="//university.f5.com" class="a-mm-h internalLink" target="_blank" data-link-type="Nav: Mega">F5 University</a>
+                        <ul>
+                          <li>
+                            <p>Get up to speed with free self-paced courses</p>
+                          </li>
+                        </ul>
+                        <a data-ng-href="https://devcentral.f5.com" class="a-mm-h internalLink" target="_blank" data-link-type="Nav: Mega" href="https://devcentral.f5.com">DevCentral</a>
+                        <ul>
+                          <li>
+                            <p>Join the community of 250,000+ technical peers</p>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div> <!-- /container-fluid -->
+</nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-3 sidebar">
+         <h4><a href="../../../">EXAMPLE.COM </a></h4>
+<div id="searchbox" style="display: none" role="search">
+  <form class="search" action="../../../search.html" method="get">
+    <div>
+      <input type="text" name="q" placeholder="Search" style="padding-left: 6px;"/>
+      <!-- <input type="submit" value="Go" style="margin-top: 4px;"/> -->
+      <button type="submit" class="btn btn-primary btn-xs">Go</button>
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <p class="caption">
+   <span class="caption-text">Current Page</span>
+  </p>
+  <ul>
+<li><a class="reference internal" href="#">4.2.1. NPM and Exception Handling</a><ul>
+<li><a class="reference internal" href="#test-and-review-the-existing-configuration">4.2.1.1. Test and Review the Existing Configuration</a></li>
+<li><a class="reference internal" href="#irules-lx-code-update-behavior">4.2.1.2. iRules LX Code Update Behavior</a></li>
+<li><a class="reference internal" href="#error-logs">4.2.1.3. Error Logs</a></li>
+<li><a class="reference internal" href="#exception-handling">4.2.1.4. Exception Handling</a><ul>
+<li><a class="reference internal" href="#handle-errors-in-javascript">4.2.1.4.1. Handle Errors in JavaScript</a></li>
+<li><a class="reference internal" href="#rpc-status-return-value">4.2.1.4.2. RPC Status Return Value</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installing-packages-with-npm">4.2.1.5. Installing Packages with NPM</a><ul>
+<li><a class="reference internal" href="#installing-the-validator-module-from-npm">4.2.1.5.1. Installing the Validator Module from NPM</a></li>
+<li><a class="reference internal" href="#using-the-validator-module">4.2.1.5.2. Using the Validator Module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">Topology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class1/class1.html">LTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class2/class2.html">DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class3/class3.html">WAF</a></li>
+</ul>
+
+        
+      </div>
+      <div class="col-md-offset-3 col-sm-offset-3 main">
+        <h4>
+          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../../../index.html">EXAMPLE.COM</a>
+          <span class="right"><a href="../../../genindex.html">Index</a></span>
+        </h4>
+        
+  <div class="section" id="npm-and-exception-handling">
+<h1>4.2.1. NPM and Exception Handling<a class="headerlink" href="#npm-and-exception-handling" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="test-and-review-the-existing-configuration">
+<h2>4.2.1.1. Test and Review the Existing Configuration<a class="headerlink" href="#test-and-review-the-existing-configuration" title="Permalink to this headline">¶</a></h2>
+<p>In this lab we will be working from the file ilxlab2_steps.js. You will
+be <strong>cutting and pasting</strong> code from this file as directed. We will be
+working with the virtual server (10.0.0.21) &amp; workspace named <em>ilxlab2</em>
+which already has some base code in it. The plugin has already been created
+and the TCL iRule are already assigned to the virtual server.</p>
+<p>To start off we have a web application with a web form that we enter
+some information into and submit. The response of the POST will show our
+form data and “Content-Type” header. This web app is configured on our
+BIG-IP at the URL <a class="reference external" href="http://10.0.0.21/ilxlab2/">http://10.0.0.21/ilxlab2/</a>. Now lets look at the web
+app in the browser. Here is the example of the web form:</p>
+<p><a class="reference internal" href="_static/class3/image7.png"><img alt="image6" src="_static/class3/image7.png" style="width: 3.35047in; height: 2.74171in;" /></a></p>
+<p>While we may never have a real use case with JSON in a web form, doing
+this allows us to use a web browser for the lab rather than having to
+use command line tools.</p>
+<p>Without modifying any text in the form, pressing the submit button
+should result in this:</p>
+<p><a class="reference internal" href="_static/class3/image8.png"><img alt="image7" src="_static/class3/image8.png" style="width: 3.61001in; height: 2.08705in;" /></a></p>
+<p>Push the back button and modify the JSON text to so that it will be
+invalid:</p>
+<p><a class="reference internal" href="_static/class3/image9.png"><img alt="image8" src="_static/class3/image9.png" style="width: 3.15999in; height: 2.42508in;" /></a></p>
+<p>Then press submit and you should see this:</p>
+<p><a class="reference internal" href="_static/class3/image10.png"><img alt="image9" src="_static/class3/image10.png" style="width: 4.44534in; height: 1.55393in;" /></a></p>
+<p>This error came from our webserver. You can tell this because the
+webpage has the logo, header and horizontal rules. Later in this lab we
+will see errors from the BIG-IP that will be text only.</p>
+<p>Now, go back to the web form and click refresh to clear the incorrect
+JSON.</p>
+</div>
+<div class="section" id="irules-lx-code-update-behavior">
+<h2>4.2.1.2. iRules LX Code Update Behavior<a class="headerlink" href="#irules-lx-code-update-behavior" title="Permalink to this headline">¶</a></h2>
+<p>Because the way iRules LX transitions new generations of an LX Plugin,
+when we make changes to the code we will not see these changes in our
+original browser window because it is using the same TCP connection and
+is being serviced by the previous version of the LX plugin. To force the
+BIG-IP to give us the new generation of the LX plugin, we will be
+running the following TMSH command after every workspace change:</p>
+<div class="admonition-tmsh admonition">
+<p class="first admonition-title">TMSH</p>
+<p class="last">restart ilx plugin &lt;plugin_name&gt; immediate</p>
+</div>
+</div>
+<div class="section" id="error-logs">
+<h2>4.2.1.3. Error Logs<a class="headerlink" href="#error-logs" title="Permalink to this headline">¶</a></h2>
+<p>In lab exercises from here on out we will need to view the output of
+STDOUT/STDERR of our Node.js processes. By default, it will be directed
+to the log files /var/log/ltm. Starting in version 13.0, we introduced a
+new feature to iRules LX allowing for STDOUT/STDERR to be sent to a
+dedicated log file for each Node.js process for an extension within an
+LX Plugin.</p>
+<p>The extension <code class="docutils literal"><span class="pre">ilxlab2_ext</span></code> of plugin <code class="docutils literal"><span class="pre">ilxlab2_pl</span></code> is already
+configured with the following settings so we can make the logs of the
+lab easier to find -</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="15%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">New Value</th>
+<th class="head">Reason</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Concurrency Mode</td>
+<td>Single</td>
+<td>Keep logs for all connections in a single file.</td>
+</tr>
+<tr class="row-odd"><td>iRules LX Logging</td>
+<td>Checked</td>
+<td>Will make extension send logs to dedicated file.</td>
+</tr>
+</tbody>
+</table>
+<p>To see these settings for yourself, click on the <em>ilxlab2_pl</em> LX plugin
+and then click on the <em>ilxlab2_ext</em> extension. The dedicated log files
+can be found in the directory <em>/var/log/ilx/</em> and will be named in the
+format <em>&lt;partition_name&gt;.&lt;plugin_name&gt;.&lt;ext_name&gt;&lt;tmm_id_if_dedicated_mode&gt;</em>.
+Here are some examples of file names -</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">Common.ilxlab2_pl.ilxlab2_ext</span>
+<span class="go">Common.ilxlab99_pl.some_ext0</span>
+<span class="go">Common.ilxlab99_pl.some_ext1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exception-handling">
+<h2>4.2.1.4. Exception Handling<a class="headerlink" href="#exception-handling" title="Permalink to this headline">¶</a></h2>
+<p>Good software development incorporates exception handling into the code.
+Without it, our programs would simply crash when there is an uncaught
+exception. On iRules TCL, the TCL interpreter crashes for an uncaught
+exception, but the worst consequence is that a single client connection
+is reset.</p>
+<p>Because Node.js in iRules LX is external from TMM, a crash is much more
+serious. Any connection being serviced by that Node.js process will get
+reset and all state for any outstanding RPC calls will be lost. A crash
+triggered from a single function call has the potential to reset
+hundreds or even thousands of connections on the BIG-IP. Also, any new
+connections that are trying to establish while Node.js is rebooting
+could also be reset.</p>
+<p>Therefore, it is imperative that we learn proper exception handling.</p>
+<div class="section" id="handle-errors-in-javascript">
+<h3>4.2.1.4.1. Handle Errors in JavaScript<a class="headerlink" href="#handle-errors-in-javascript" title="Permalink to this headline">¶</a></h3>
+<p>Right now the LX workspace code does not have any function call that can
+throw an exception, but we would like to add more functionality to it.
+Here is the addMethod function that we have in the Node.js code:</p>
+<div class="highlight-javascript"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">ilx</span><span class="p">.</span><span class="nx">addMethod</span><span class="p">(</span><span class="s1">&#39;jsonParse&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Extract JSON from POST data</span>
+  <span class="kd">var</span> <span class="nx">postData</span> <span class="o">=</span> <span class="nx">qs</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">()[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">JSON</span><span class="p">;</span>
+
+  <span class="c1">// Send data back to TCL</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">reply</span><span class="p">(</span><span class="nx">postData</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</td></tr></table></div>
+<p>All we are doing is extracting the form input box labeled “JSON”. But we
+would like to insert more data into the JSON that we send to the
+application. In order to do that, we must first parse the JSON to a JS
+object, then stringify it again. Go to the <em>code_instructions</em> and
+complete <strong>code step 1</strong> (remember to copy and paste). The ILX addMethod code should look like this
+after you are done (changes are highlighted) -</p>
+<p><strong>Code Step 1</strong></p>
+<div class="highlight-javascript"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">ilx</span><span class="p">.</span><span class="nx">addMethod</span><span class="p">(</span><span class="s1">&#39;jsonParse&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Extract JSON from POST data</span>
+  <span class="kd">var</span> <span class="nx">postData</span> <span class="o">=</span> <span class="nx">qs</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">()[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">JSON</span><span class="p">;</span>
+<span class="hll">  <span class="kd">var</span> <span class="nx">jsonData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">postData</span><span class="p">);</span>
+</span>
+<span class="hll">  <span class="nx">res</span><span class="p">.</span><span class="nx">reply</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">));</span>
+</span><span class="p">});</span>
+</pre></div>
+</td></tr></table></div>
+<p>Save and reload the workpsace. Now submit some invalid JSON in the form
+like we did earlier. You will see an text only error like this:</p>
+<p><a class="reference internal" href="_static/class3/image11.png"><img alt="image10" src="_static/class3/image11.png" style="width: 5.28966in; height: 0.88318in;" /></a></p>
+<p>This error is coming from the iRules TCL code in our “catch” of the ILX
+call. If we look at the logs we will see the following:</p>
+<p>..code-block:: console</p>
+<blockquote>
+<div><p># tail -1 /var/log/ltm
+Jul 11 16:02:15 bigip1 err tmm1[14567]: Rule /Common/ilxlab2_pl/json_parse &lt;HTTP_REQUEST_DATA&gt;: Client - 10.0.0.  10, ILX failure: ILX timeout.     invoked from within “ILX::call $handle jsonParse [HTTP::payload]” “</p>
+<p># tail -1 /var/log/ltm
+Jul 11 16:02:15 bigip1 err tmm1[14567]: Rule /Common/ilxlab2_pl/json_parse &lt;HTTP_REQUEST_DATA&gt;: Client - 10.0.0.  10, ILX failure: ILX timeout.     invoked from within “ILX::call $handle jsonParse [HTTP::payload]”</p>
+</div></blockquote>
+<p>The log file for the extension should have some entries similar to this:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> tail -20 /var/log/ilx/Common.ilxlab2_pl.ilxlab2_ext
+<span class="go">Jul 11 16:02:12 pid[15201] undefined:5</span>
+<span class="go">Jul 11 16:02:12 pid[15201] randomtext</span>
+<span class="go">Jul 11 16:02:12 pid[15201] ^</span>
+<span class="go">Jul 11 16:02:12 pid[15201] SyntaxError: Unexpected token w</span>
+<span class="go">Jul 11 16:02:12 pid[15201]     at Object.parse (native)</span>
+<span class="go">Jul 11 16:02:12 pid[15201]     at Object.jsonParse (/var/sdm/plugin_store/plugins/:Common:   ilxlab2_pl_62102_2/extensions/ilxlab2_ext/index.js:13:23)</span>
+<span class="go">Jul 11 16:02:12 pid[15201]     at ILXClient.&lt;anonymous&gt; (/var/sdm/plugin_store/plugins/:Common:   ilxlab2_pl_62102_2/extensions/ilxlab2_ext/node_modules/f5-nodejs/lib/ilx_server.js:100:46)</span>
+<span class="go">&lt;--------------Rest of output truncated --------------&gt;</span>
+</pre></div>
+</div>
+<p>As you can see, our bad JSON threw an exception that crashed the Node.js
+process which caused an ILX timeout in TCL. This is the stack track for our exception.</p>
+<p>To prevent Node.js from crashing we need to put JSON.parse in a try/catch block. Perform
+code step 2 on the workspace to do this. The Node function should end up like this –</p>
+<p><strong>Code Step 2</strong></p>
+<div class="highlight-javascript"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">ilx</span><span class="p">.</span><span class="nx">addMethod</span><span class="p">(</span><span class="s1">&#39;jsonParse&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Extract JSON from POST data</span>
+  <span class="kd">var</span> <span class="nx">postData</span> <span class="o">=</span> <span class="nx">qs</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">()[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">JSON</span><span class="p">;</span>
+<span class="hll">  <span class="k">try</span> <span class="p">{</span>
+</span><span class="hll">    <span class="kd">var</span> <span class="nx">jsonData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">postData</span><span class="p">);</span>
+</span><span class="hll">  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Error with JSON.parse: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</span><span class="hll">    <span class="k">return</span><span class="p">;</span> <span class="c1">// Stop processing this function</span>
+</span><span class="hll">  <span class="p">}</span>
+</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">reply</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</td></tr></table></div>
+<p>Save and reload the workspace. Now if you try bad JSON again, you will still
+get the same error on the web browser, but we will not crash the Node.js
+process. Doing a tail of the log files again, you will see an error message
+similar to this:</p>
+<p><code class="docutils literal"><span class="pre">Jul</span> <span class="pre">11</span> <span class="pre">16:14:55</span> <span class="pre">pid[15456]</span> <span class="pre">Error</span> <span class="pre">with</span> <span class="pre">JSON.parse:</span> <span class="pre">Unexpected</span> <span class="pre">token</span> <span class="pre">w</span></code></p>
+<p><strong>Note</strong>: Try/catch is only for synchronous functions. Most asynchronous
+functions handle exceptions/errors in the callback function or with
+event handlers and vary greatly from one module to the next. You will
+have to consult the documentation for the module you wish to use.</p>
+</div>
+<div class="section" id="rpc-status-return-value">
+<h3>4.2.1.4.2. RPC Status Return Value<a class="headerlink" href="#rpc-status-return-value" title="Permalink to this headline">¶</a></h3>
+<p>While try/catch did help to prevent the Node process from crashing, the
+error the client received does not help them very much. It would be
+better if we could give some more info to the client via iRules TCL, but
+TCL does not know about the issue that happen with Node.js. Therefore,
+we should return some type of status to TCL if it the RPC to Node fails.</p>
+<p>One way we can accomplish this is by the return of multiple values from
+Node.js. Our first value could be some type of RPC status value (say an
+RPC error value) and the rest of the value(s) could be our result from
+the RPC. It is quite common in programming to make an error value would
+be 0 if everything was okay but would be an integer to indicate a
+specific error code.</p>
+<p>For this next step, we will make changes to both Node and TCL to create
+the error communication between Node and TMM. Perform code step 3a and 3b
+on the workspace. This is what the Node method and the TCL
+<em>HTTP_REQUEST_DATA</em> event should look like after you make the changes:</p>
+<p><strong>Code Step 3 Node.js</strong></p>
+<div class="highlight-javascript"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nx">ilx</span><span class="p">.</span><span class="nx">addMethod</span><span class="p">(</span><span class="s1">&#39;jsonParse&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Extract JSON from POST data</span>
+  <span class="kd">var</span> <span class="nx">postData</span> <span class="o">=</span> <span class="nx">qs</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">()[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">JSON</span><span class="p">;</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">jsonData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">postData</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Error with JSON.parse: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="hll">    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">reply</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span>  <span class="p">}</span>
+
+<span class="hll">  <span class="nx">res</span><span class="p">.</span><span class="nx">reply</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">)]);</span>
+</span><span class="p">});</span>
+</pre></div>
+</td></tr></table></div>
+<p>As you can see in the res.resply function, we can return multiple values
+back to TCL if we put an array as the argument. TCL will then see these
+values returned as a TCL list.</p>
+<p><strong>Code Step 3 TCL</strong></p>
+<div class="highlight-tcl"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nv">when</span> HTTP_REQUEST_DATA <span class="k">{</span>
+    <span class="c"># Send data to Node.js</span>
+    <span class="k">set</span> handle <span class="k">[</span><span class="nv">ILX</span><span class="o">::</span>init <span class="s2">&quot; ilxlab2_pl&quot;</span> <span class="s2">&quot;ilxlab2_ext&quot;</span><span class="k">]</span>
+    <span class="k">if</span> <span class="k">{[catch</span> <span class="k">{</span><span class="nv">ILX</span><span class="o">::</span>call <span class="nv">$handle</span> jsonParse <span class="k">[</span><span class="nv">HTTP</span><span class="o">::</span>payload<span class="k">]}</span> result<span class="k">]}</span> <span class="k">{</span>
+      <span class="nv">log</span> local0.error  <span class="s2">&quot;Client - [IP::client_addr], ILX failure: $result&quot;</span>
+      <span class="nv">HTTP</span><span class="o">::</span>respond <span class="mi">400</span> content <span class="s2">&quot;&lt;html&gt;There has been an error.&lt;/html&gt;&quot;</span>
+      <span class="k">return</span>
+    <span class="k">}</span>
+
+<span class="hll">    <span class="k">if</span> <span class="k">{[</span><span class="nb">lindex</span> <span class="nv">$result</span> <span class="mi">0</span><span class="k">]</span> <span class="o">&gt;</span> <span class="nv">0</span><span class="k">}</span> <span class="k">{</span>
+</span><span class="hll">      <span class="c"># What is our error code?</span>
+</span><span class="hll">      <span class="k">switch</span> <span class="k">[</span><span class="nb">lindex</span> <span class="nv">$result</span> <span class="mi">0</span><span class="k">]</span> <span class="k">{</span>
+</span><span class="hll">        <span class="nv">1</span> <span class="k">{</span> <span class="k">set</span> error_msg <span class="s2">&quot;Invalid JSON&quot;</span><span class="k">}</span>
+</span><span class="hll">      <span class="k">}</span>
+</span><span class="hll">      <span class="nv">HTTP</span><span class="o">::</span>respond <span class="mi">400</span> content <span class="s2">&quot;&lt;html&gt;The following error occured: $error_msg&lt;/html&gt;&quot;</span>
+</span><span class="hll">    <span class="k">}</span> <span class="k">else</span> <span class="k">{</span>
+</span><span class="hll">      <span class="c">#Replace Content-Type header and POST payload</span>
+</span><span class="hll">      <span class="nv">HTTP</span><span class="o">::</span>header replace <span class="s2">&quot;Content-Type&quot;</span> <span class="s2">&quot;application/json&quot;</span>
+</span><span class="hll">      <span class="nv">HTTP</span><span class="o">::</span>payload replace <span class="mi">0</span> <span class="nv">$cl</span> <span class="k">[</span><span class="nb">lindex</span> <span class="nv">$result</span> <span class="mi">1</span><span class="k">]</span>
+</span><span class="hll">    <span class="k">}</span>
+</span><span class="hll"><span class="k">}</span>
+</span></pre></div>
+</td></tr></table></div>
+<p>Here we are checking the value of index 0 of the TCL list to see if it is
+greater than zero. Based upon what that value is we can tailor our return
+message back to the client. What we have done is allowed Node.js to
+communicate specific errors that we define back to the client. You would
+never want to send back all errors because stack traces could reveal
+sensitive data about your iRule.</p>
+<p>Save and reload the workspace. Now when you submit invalid JSON in the
+browser you should see an error like this –</p>
+<p><a class="reference internal" href="_static/class3/image12.png"><img alt="image11" src="_static/class3/image12.png" style="width: 3.67347in; height: 0.59130in;" /></a></p>
+<p>Now that we have the exception handling taken care of, lets add some
+more functionality to this iRule. We mentioned a little while ago we
+would like to add some more data to the JSON that gets sent to the
+server.</p>
+<p>Let’s say we wanted to insert random data to act as some type of nonce.
+In code step 4 let’s use the crypto module to insert the random text.
+This code snippet will show what all the node.js code should look like
+after this step:</p>
+<p><strong>Code Step 4</strong></p>
+<div class="highlight-javascript"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="s1">&#39;use strict&#39;</span><span class="p">;</span> <span class="c1">// Just for best practices</span>
+<span class="c1">// Import modules here</span>
+<span class="kd">var</span> <span class="nx">f5</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;f5-nodejs&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">qs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;querystring&#39;</span><span class="p">);</span>
+<span class="hll"><span class="kd">var</span> <span class="nx">crypto</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;crypto&#39;</span><span class="p">);</span>
+</span>
+<span class="c1">// Create an ILX server instance</span>
+<span class="kd">var</span> <span class="nx">ilx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">f5</span><span class="p">.</span><span class="nx">ILXServer</span><span class="p">();</span>
+
+<span class="c1">// This method will transform POST data into JSON</span>
+<span class="nx">ilx</span><span class="p">.</span><span class="nx">addMethod</span><span class="p">(</span><span class="s1">&#39;jsonParse&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Extract JSON from POST data</span>
+  <span class="kd">var</span> <span class="nx">postData</span> <span class="o">=</span> <span class="nx">qs</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">()[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">JSON</span><span class="p">;</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">jsonData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">postData</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Error with JSON.parse: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">reply</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="hll">  <span class="nx">jsonData</span><span class="p">.</span><span class="nx">token</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">randomBytes</span><span class="p">(</span><span class="mi">8</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">);</span>
+</span>  <span class="nx">res</span><span class="p">.</span><span class="nx">reply</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">)]);</span>
+<span class="p">});</span>
+
+<span class="nx">ilx</span><span class="p">.</span><span class="nx">listen</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+<p>Save and reload the workspace.</p>
+<p><strong>Note</strong>: This is not really a proper use of a cryptographic nonce, it
+is just to show how we can extend functionality with Node.js.</p>
+<p>Now this time, send valid JSON text via the web form and we should see a
+result like this:</p>
+<p><a class="reference internal" href="_static/class3/image13.png"><img alt="image12" src="_static/class3/image13.png" style="width: 3.42615in; height: 2.18037in;" /></a></p>
+<p>You can see our token has been added to the JSON.</p>
+<p>This concludes the exception handling exercise.</p>
+</div>
+</div>
+<div class="section" id="installing-packages-with-npm">
+<h2>4.2.1.5. Installing Packages with NPM<a class="headerlink" href="#installing-packages-with-npm" title="Permalink to this headline">¶</a></h2>
+<p>You can install modules from NPM when you want to get extra
+functionality that is not provided with the built in Node.js modules.
+NPM and the active community around it is one of the primary reasons
+that Node.js was chosen for iRules LX.</p>
+<p>We have a use case requiring us to do syntax validation of an email
+address that is in the JSON text from a web form. We won’t be checking
+if the email address itself is a working address, just that the syntax
+is in the correct form. We will download a package from NPM to handle
+the this.</p>
+<div class="section" id="installing-the-validator-module-from-npm">
+<h3>4.2.1.5.1. Installing the Validator Module from NPM<a class="headerlink" href="#installing-the-validator-module-from-npm" title="Permalink to this headline">¶</a></h3>
+<p>The first thing we must do is install a NPM module for validating email
+addresses. We will accomplish this with the <em>validator</em> module. To
+install the module into the workspace, we need to access the BASH prompt
+of our BIG-IP, then <code class="docutils literal"><span class="pre">cd</span></code> into the workspace directory and run the
+commands:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">[root@localhost] #</span> <span class="nb">cd</span> /var/ilx/workspaces/Common /ilxlab2/extensions/ilxlab2_ext/
+<span class="gp">[root@localhost] #</span> npm install validator --save
+<span class="go">validator@6.1.0 node_modules/validator</span>
+<span class="gp">[root@localhost] #</span> ls node_modules/
+<span class="go">f5-nodejs  validator</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">--save</span></code> option saves the module to the package.json file
+dependencies as shown here in the workspace:</p>
+<p><a class="reference internal" href="_static/class3/image14.png"><img alt="image13" src="_static/class3/image14.png" style="width: 5.63090in; height: 1.78672in;" /></a></p>
+</div>
+<div class="section" id="using-the-validator-module">
+<h3>4.2.1.5.2. Using the Validator Module<a class="headerlink" href="#using-the-validator-module" title="Permalink to this headline">¶</a></h3>
+<p>To use this module, we must import it into out Node.js code and
+then call it. In code step 5, we will “require” the module in
+Node.js, then put some code that will validate if our email address
+has the proper format. We will also need to add some extra code to TCL
+to hand 2 more error conditions that email validation brings. The first
+check ensures that the email value is in our JSON,  the second uses the
+validator module to validate the syntax of the email address. Here is
+what the code will look like once you are finished:</p>
+<p><strong>Code Step 5 Node.js</strong></p>
+<div class="highlight-javascript"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="s1">&#39;use strict&#39;</span> <span class="c1">// Just for best practices</span>
+<span class="c1">// Import modules here</span>
+<span class="kd">var</span> <span class="nx">f5</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;f5-nodejs&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">qs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;querystring&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">crypto</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;crypto&#39;</span><span class="p">);</span>
+<span class="hll"><span class="kd">var</span> <span class="nx">validator</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;validator&#39;</span><span class="p">);</span>
+</span>
+<span class="c1">// Create an ILX server instance</span>
+<span class="kd">var</span> <span class="nx">ilx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">f5</span><span class="p">.</span><span class="nx">ILXServer</span><span class="p">();</span>
+
+<span class="c1">// This method will transform POST data into JSON</span>
+<span class="nx">ilx</span><span class="p">.</span><span class="nx">addMethod</span><span class="p">(</span><span class="s1">&#39;jsonParse&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Extract JSON from POST data</span>
+  <span class="kd">var</span> <span class="nx">postData</span> <span class="o">=</span> <span class="nx">qs</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">()[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">JSON</span><span class="p">;</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">jsonData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">postData</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Error with JSON.parse: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">reply</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="hll">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="p">(</span><span class="s1">&#39;email&#39;</span> <span class="k">in</span> <span class="nx">jsonData</span><span class="p">))</span> <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">reply</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">//</span>
+</span><span class="hll">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">validator</span><span class="p">.</span><span class="nx">isEmail</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">.</span><span class="nx">email</span><span class="p">))</span> <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">reply</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</span>  <span class="nx">postData</span><span class="p">.</span><span class="nx">token</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">randomBytes</span><span class="p">(</span><span class="mi">8</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">)</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">reply</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">)]);</span>
+<span class="p">});</span>
+
+<span class="nx">ilx</span><span class="p">.</span><span class="nx">listen</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+<p>You will notice that we check first for the existence of the email property
+in the JSON and then check if the string in the JSON is valid. If you
+attempted to only do the email validation but the email property was not
+present, this would throw an exception for a missing property in the JS
+object and crash Node.</p>
+<p><strong>Code Step 5 TCL</strong></p>
+<div class="highlight-tcl"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nv">when</span> HTTP_REQUEST_DATA <span class="k">{</span>
+    <span class="c"># Send data to Node.js</span>
+    <span class="k">set</span> handle <span class="k">[</span><span class="nv">ILX</span><span class="o">::</span>init <span class="s2">&quot;json_parser_pl&quot;</span> <span class="s2">&quot;parser_ext&quot;</span><span class="k">]</span>
+    <span class="k">if</span> <span class="k">{[catch</span> <span class="k">{</span><span class="nv">ILX</span><span class="o">::</span>call <span class="nv">$handle</span> jsonParse <span class="k">[</span><span class="nv">HTTP</span><span class="o">::</span>payload<span class="k">]}</span> result<span class="k">]}</span> <span class="k">{</span>
+      <span class="nv">log</span> local0.error  <span class="s2">&quot;Client - [IP::client_addr], ILX failure: $result&quot;</span>
+      <span class="nv">HTTP</span><span class="o">::</span>respond <span class="mi">400</span> content <span class="s2">&quot;&lt;html&gt;There has been an error.&lt;/html&gt;&quot;</span>
+      <span class="k">return</span>
+    <span class="k">}</span>
+
+    <span class="k">if</span> <span class="k">{[</span><span class="nb">lindex</span> <span class="nv">$result</span> <span class="mi">0</span><span class="k">]</span> <span class="o">&gt;</span> <span class="nv">0</span><span class="k">}</span> <span class="k">{</span>
+      <span class="c"># What is our error code?</span>
+      <span class="k">switch</span> <span class="k">[</span><span class="nb">lindex</span> <span class="nv">$result</span> <span class="mi">0</span><span class="k">]</span> <span class="k">{</span>
+        <span class="nv">1</span> <span class="k">{</span> <span class="k">set</span> error_msg <span class="s2">&quot;Invalid JSON&quot;</span><span class="k">}</span>
+<span class="hll">        <span class="nv">2</span> <span class="k">{</span> <span class="k">set</span> error_msg <span class="s2">&quot;Property \&quot;email\&quot; missing from JSON.&quot;</span><span class="k">}</span>
+</span><span class="hll">        <span class="nv">3</span> <span class="k">{</span> <span class="k">set</span> error_msg <span class="s2">&quot;Property \&quot;email\&quot; not a valid email address.&quot;</span><span class="k">}</span>
+</span>      <span class="k">}</span>
+      <span class="nv">HTTP</span><span class="o">::</span>respond <span class="mi">400</span> content <span class="s2">&quot;&lt;html&gt;The following error occured: $error_msg&lt;/html&gt;&quot;</span>
+    <span class="k">}</span> <span class="k">else</span> <span class="k">{</span>
+      <span class="c">#Replace Content-Type header and POST payload</span>
+      <span class="nv">HTTP</span><span class="o">::</span>header replace <span class="s2">&quot;Content-Type&quot;</span> <span class="s2">&quot;application/json&quot;</span>
+      <span class="nv">HTTP</span><span class="o">::</span>payload replace <span class="mi">0</span> <span class="nv">$cl</span> <span class="k">[</span><span class="nb">lindex</span> <span class="nv">$result</span> <span class="mi">1</span><span class="k">]</span>
+    <span class="k">}</span>
+<span class="k">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Both the email property presence check and invalid email error get an
+error code that we pass over to TCL to give the client a useable error
+message. Now we can test these error conditions.</p>
+<p>Save and reload the workspace. Go to your browser and remove the email
+property and trailing comma from the password property like so:</p>
+<p><a class="reference internal" href="_static/class3/image15.png"><img alt="image14" src="_static/class3/image15.png" style="width: 2.58703in; height: 2.41944in;" /></a></p>
+<p>When you press submit, you should see an error like this:</p>
+<p><a class="reference internal" href="_static/class3/image16.png"><img alt="image15" src="_static/class3/image16.png" style="width: 5.17619in; height: 0.60586in;" /></a></p>
+<p>Now go back to the form and refresh the web form back
+to normal. Now remove the “&#64;” symbol the email address:</p>
+<p><a class="reference internal" href="_static/class3/image17.png"><img alt="image16" src="_static/class3/image17.png" style="width: 2.75043in; height: 2.37327in;" /></a></p>
+<p>Then submit the form and you should see the following:</p>
+<p><a class="reference internal" href="_static/class3/image18.png"><img alt="image17" src="_static/class3/image18.png" style="width: 5.45094in; height: 0.40864in;" /></a></p>
+</div>
+</div>
+</div>
+
+
+        
+      </div>
+    </div>
+  </div>
+
+
+  <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="content-fluid pre-footer">
+            <div class="blocks-container">
+              <div class="block">
+                <h3>Support Programs</h3>
+                <p>Regionally located support centers enable F5 to provide support in a number of languages through native-speaking support engineers.</p>
+                <a class="btn internalLink" data-ng-href="https://f5.com/support/support-offerings" target="_blank" href="https://f5.com/support/support-offerings">See more
+                  <span class="icon-1x-right icon-new-window" data-icon="new-window">​</span>
+                </a>
+              </div>
+              <div class="block">
+                <h3>Contact Support</h3>
+                <p>
+                  North America: 1-888-882-7535<br>
+                  Outside North America: 800-11-275-435
+                </p>
+                <a class="btn internalLink" data-ng-href="https://f5.com/about-us/contact#regional-support" target="_blank" href="https://f5.com/about-us/contact#regional-support">Local Support Numbers
+                  <span class="icon-1x-right icon-new-window" data-icon="new-window">​</span>
+                </a>
+              </div>
+              <div class="block">
+                <h3>Feedback and Help</h3>
+                <p>Have questions, suggestions, or just want to get something off your chest? Let us know.</p>
+                <a class="btn" data-ui-sref="siteFeedback" target="_blank" href="https://support.f5.com/csp/siteFeedback">Leave feedback</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="footer">
+            <div class="container">
+              <div class="col-sm-3 col-md-2">
+                <h4>About F5</h4>
+                <ul>
+                  <li><a data-ng-href="https://f5.com/about-us/contact" target="_blank" data-link-type="footer" href="https://f5.com/about-us/contact" class="internalLink">Contact F5</a>
+                  </li>
+                  <li><a data-ng-href="https://f5.com/about-us/careers" target="_blank" data-link-type="footer" href="https://f5.com/about-us/careers" class="internalLink">Careers</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-sm-3 col-md-2">
+                <h4>Education</h4>
+                <ul>
+                  <li><a data-ng-href="https://f5.com/education/training" target="_blank" data-link-type="footer" href="https://f5.com/education/training" class="internalLink">Training</a>
+                  </li>
+                  <li><a data-ng-href="https://f5.com/education/certification" target="_blank" data-link-type="footer" href="https://f5.com/education/certification" class="internalLink">Certification</a>
+                  </li>
+                  <li><a data-ng-href="https://f5.com/education/training/free-courses" target="_blank" data-link-type="footer" href="https://f5.com/education/training/free-courses" class="internalLink">Free Online Training</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="col-sm-3 col-md-2">
+                <h4>F5 sites</h4>
+                <ul>
+                <li><a data-ng-href="https://f5.com" target="_blank" data-link-type="footer" href="https://f5.com" class="internalLink">F5.com</a>
+                </li>
+                <li><a data-ng-href="https://devcentral.f5.com" target="_blank" data-link-type="footer" href="https://devcentral.f5.com" class="internalLink">Community</a>
+                </li>
+                <li><a data-ng-href="https://partners.f5.com" target="_blank" data-link-type="footer" href="https://partners.f5.com" class="internalLink">Partners</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-3 col-md-2">
+            <h4>Support Tasks</h4>
+            <ul>
+                <li><a data-ui-sref="mySupport.createServiceRequest" data-link-type="footer" href="https://support.f5.com/csp/my-support/service-request">Create Service Request </a>
+                </li>
+                <li><a data-ng-href="https://f5.com/about-us/contact#regional-support" target="_blank" data-link-type="footer" href="https://f5.com/about-us/contact#regional-support" class="internalLink">Contact Support</a>
+                </li>
+                <li><a data-ui-sref="siteFeedback" target="_blank" data-link-type="footer" href="https://support.f5.com/csp/siteFeedback">Leave feedback [+]</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-xs-12 col-md-3 right">
+            <h4>Connect with us</h4>
+            <ul class="social_icons">
+                <li><a href="//twitter.com/f5networks" target="_blank" data-name="twitter" data-type="" data-prefix="social" data-utf="E032" title="Twitter" class="externalLink"><i class="icon-1x icon-twitter icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a href="//www.linkedin.com/companies/f5-networks" target="_blank" class="linkedin externalLink" title="LinkedIn"><i class="icon-1x icon-linkedin icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a href="//www.facebook.com/f5networksinc" target="_blank" class="facebook externalLink" title="Facebook"><i class="icon-1x icon-facebook icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a href="//www.youtube.com/f5networksinc" target="_blank" class="youtube externalLink" title="YouTube"><i class="icon-1x icon-youtube icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a data-ng-href="https://devcentral.f5.com" target="_blank" class="devcentral internalLink" title="DevCentral" href="https://devcentral.f5.com"><i class="icon-1x icon-dc-pos icon-inverse-circle" data-link-type="footer"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="content-fluid left">
+            <div class="col-xs-12">
+                <p>
+                    © Copyright <span class="ng-binding">2017</span> by F5 Networks, Inc. |
+                    <a data-ng-href="https://f5.com/about-us/policies" target="_blank" data-link-type="footer" href="https://f5.com/about-us/policies" class="internalLink">Policies</a> |
+                    <a data-ng-href="https://f5.com/about-us/policies/trademarks" target="_blank" data-link-type="footer" href="https://f5.com/about-us/policies/trademarks" class="internalLink">Trademarks</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+</footer>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../../../_static/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    jQuery.noConflict(true)
+  </script>
+  </body>
+</html>

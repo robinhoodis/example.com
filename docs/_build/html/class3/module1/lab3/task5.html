@@ -228,6 +228,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../lab4/lab4.html">Virtuals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../lab5/lab5.html">Security Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab6/lab6.html">Cut-Over</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../module2/module2.html">Policy Tuning</a></li>
@@ -325,7 +326,7 @@
 <p>TMSH command for asm1.site1</p>
 <div class="admonition-tmsh admonition">
 <p class="first admonition-title">TMSH</p>
-<p class="last">tmsh create ltm pool site2_adc_https_pool monitor shared/example.com_https_monitor members add { shared/site2_adc_https_node:443 { address 10.1.60.100 } }</p>
+<p class="last">tmsh create ltm pool shared/site2_adc_https_pool monitor shared/example.com_https_monitor members add { shared/site2_adc_https_node:443 { address 10.1.60.100 } }</p>
 </div>
 </li>
 </ol>

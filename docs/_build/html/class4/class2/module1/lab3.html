@@ -1,0 +1,489 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.1.3. Lab 3 - HSTS / HPKP &#8212; EXAMPLE.COM  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/f5_agility_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<!--
+# Copyright 2017 F5 Networks
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+-->
+<link href="https://cdn.f5.com/favicon.ico" rel="icon">
+<script src="https://use.fontawesome.com/21fb8a09c3.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+  </head>
+  <body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="row corp-header">
+      <div class="container corp-header">
+        <div class="container corp-menu">
+          <ul>
+            <li><a href="https://f5.com" class="internalLink">F5.com</a></li>
+            <li><a href="https://support.f5.com">Support</a></li>
+            <li><a href="https://devcentral.f5.com">Community</a></li>
+            <li><a href="https://github.com/F5Networks">GitHub</a></li>
+            <li><a href="https://f5.com/about-us/careers">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row pageHeader">
+      <div class="container stat">
+        <div class="col-xs-12 stat">
+          <a class="internalLink" href="https://f5.com">
+            <img class="logo" src="https://cdn.f5.com/websites/support/assets/images/logo.svg" width="50" height="44" alt="F5 Networks" title="F5 Networks" border="0">
+          </a>
+            <ul id="MainMenu" class="main-menu">
+              <li>
+                <a href="#">Products
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+
+                <div class="menu-panel soft-hide" id="ProductsSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third"><span class="a-mm-h">Connectors</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/marathon-bigip-ctlr/latest" data-link-type="Nav: Mega">F5 Marathon BIG-IP Controller</a></li>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/marathon-asp-ctlr/latest" data-link-type="Nav: Mega">F5 Marathon ASP Controller</a></li>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/k8s-bigip-ctlr/latest" data-link-type="Nav: Mega">F5 Kubernetes BIG-IP Controller</a></li>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/f5-kube-proxy/latest" data-link-type="Nav: Mega">F5 Kubernetes Proxy</a></li>
+                        </ul>
+                        <!--span class="seemore"><a data-link-type="Nav: Mega" href="/products/connectors">See all </a></--span-->
+                      </li>
+                      <li class="divider"></li>
+                      <li class="third"><span class="a-mm-h">Application Service Proxy</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/products/asp/latest" data-link-type="Nav: Mega">F5 Application Service Proxy</a></li>
+                        </ul>
+                        <!--span class="seemore"><a href="/products/">See all </a></span-->
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#">Container Integrations
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+
+                <div class="menu-panel soft-hide" id="ContainersSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third"><span class="a-mm-h">Container Integrations</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/containers/latest/marathon/" data-link-type="Nav: Mega">Mesos Marathon</a></li>
+                          <li><a href="http://clouddocs.f5.com/containers/latest/kubernetes/" data-link-type="Nav: Mega">Kubernetes</a></li>
+                          <li><a href="http://clouddocs.f5.com/containers/latest/openshift/" data-link-type="Nav: Mega">RedHat OpenShift</a></li>
+                        </ul>
+                        <span class="seemore"><a data-link-type="Nav: Mega" href="http://clouddocs.f5.com/containers/latest">View details </a></span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#">Clouds
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+
+                <div class="menu-panel soft-hide" id="CloudsSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third"><span class="a-mm-h">Cloud Integrations</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/cloud/openstack/" data-link-type="Nav: Mega">OpenStack</a></li>
+                        </ul>
+                        <!--span class="seemore"><a data-link-type="Nav: Mega" href="/cloud/">See all </a></span-->
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#">Resources
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+                <div class="menu-panel soft-hide" id="UPCProgramSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third">
+                        <span class="a-mm-h">Downloads</span>
+                        <ul>
+                          <li><a target="_blank" data-link-type="Nav: Mega" href="https://hub.docker.com/r/f5networks/" class="internalLink">Docker Hub</a></li>
+                          <li><a target="_blank" data-link-type="Nav: Mega" href="https://store.docker.com/images/f5networks" class="internalLink">Docker Store</a></li>
+                        </ul>
+                      </li>
+                      <li class="divider"></li>
+
+                      <li class="third">
+                        <span class="a-mm-h">OpenSource</span>
+                        <ul>
+                          <li><a target="_blank" data-link-type="Nav: Mega" href="https://github.com/F5Networks" class="internalLink">GitHub</a></li>
+                        </ul>
+                      </li>
+                      <li class="divider"></li>
+
+                      <li class="third">
+                        <a href="//university.f5.com" class="a-mm-h internalLink" target="_blank" data-link-type="Nav: Mega">F5 University</a>
+                        <ul>
+                          <li>
+                            <p>Get up to speed with free self-paced courses</p>
+                          </li>
+                        </ul>
+                        <a data-ng-href="https://devcentral.f5.com" class="a-mm-h internalLink" target="_blank" data-link-type="Nav: Mega" href="https://devcentral.f5.com">DevCentral</a>
+                        <ul>
+                          <li>
+                            <p>Join the community of 250,000+ technical peers</p>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div> <!-- /container-fluid -->
+</nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-3 sidebar">
+         <h4><a href="../../../">EXAMPLE.COM </a></h4>
+<div id="searchbox" style="display: none" role="search">
+  <form class="search" action="../../../search.html" method="get">
+    <div>
+      <input type="text" name="q" placeholder="Search" style="padding-left: 6px;"/>
+      <!-- <input type="submit" value="Go" style="margin-top: 4px;"/> -->
+      <button type="submit" class="btn btn-primary btn-xs">Go</button>
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <p class="caption">
+   <span class="caption-text">Current Page</span>
+  </p>
+  <ul>
+<li><a class="reference internal" href="#">3.1.3. Lab 3 - HSTS / HPKP</a><ul>
+<li><a class="reference internal" href="#the-irule">3.1.3.1. The iRule</a></li>
+<li><a class="reference internal" href="#analysis">3.1.3.2. Analysis</a></li>
+<li><a class="reference internal" href="#testing">3.1.3.3. Testing</a></li>
+</ul>
+</li>
+</ul>
+
+
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">Topology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class1/class1.html">LTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class2/class2.html">DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class3/class3.html">WAF</a></li>
+</ul>
+
+        
+      </div>
+      <div class="col-md-offset-3 col-sm-offset-3 main">
+        <h4>
+          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../../../index.html">EXAMPLE.COM</a>
+          <span class="right"><a href="../../../genindex.html">Index</a></span>
+        </h4>
+        
+  <div class="section" id="lab-3-hsts-hpkp">
+<h1>3.1.3. Lab 3 - HSTS / HPKP<a class="headerlink" href="#lab-3-hsts-hpkp" title="Permalink to this headline">¶</a></h1>
+<p>Per OWASP and RFC 6797, HTTP Strict Transport Security (HSTS) is an
+opt-in security enhancement that is specified by a web application
+through the use of a special response header. Once a supported browser
+receives this header that browser will prevent any communications from
+being sent over HTTP to the specified domain and will instead send all
+communications over HTTPS. It also prevents HTTPS click-through prompts
+on browsers. In layman’s terms, HSTS is an HTTP header sent from the
+server to the client browser. The information within that header
+indicates to the browser that any communication with that domain must be
+over HTTPS, regardless of any HTTP URL’s encoded into the HTML pages, or
+what the user types into the browser address bar. This information is
+also placed into the browser’s long term storage, so that subsequent
+requests will immediately communicate over HTTPS. The header looks like
+this:</p>
+<p><code class="docutils literal"><span class="pre">Strict-Transport</span> <span class="pre">Security:</span> <span class="pre">max-age=31536000;</span> <span class="pre">includeSubDomains</span></code></p>
+<p>The max-age attribute defines how long the browser should store this
+information, in this case 1 year. The includeSubDomains attribute is
+optional and indicates that the browser must communicate over HTTPS to
+this and any sub-domain of the current domain. To be most effective,
+this response header should a) only be transmitted over HTTPS in the
+first place to prevent stripping, and b) be transmitted at the lowest
+possible point in the domain to include all sub-domains. For example, to
+cover all sub-domains of domain.com, you might initially redirect a
+client to <a class="reference external" href="https://domain.com">https://domain.com</a> and then send an immediate redirect back to
+the requested HTTPS URL and include the HSTS header.</p>
+<p>Per OWASP and RFC 7469, HTTP Public Key Pinning (HPKP) is a new HTTP
+header that allows SSL servers to declare hashes of their certificates
+with time scope in which these certificates should not be changes. In
+other words, it is a method by which a server can indicate to a browser
+the certificate that the client browser should see. This technology
+helps to prevent active man-in-the-middle attacks whereby an agent is
+able to silently decrypt and re-encrypt traffic between a client and
+server. Without knowledge of the server’s private key, the agent won’t
+possibly be able to spoof the server’s real certificate, therefore the
+“forged” certificate coming from the agent will not match the
+certificate embedded in the HPKP header. That header looks like this:</p>
+<p><code class="docutils literal"><span class="pre">Public-Key-Pins:</span> <span class="pre">max-age=2592000;</span></code></p>
+<p><code class="docutils literal"><span class="pre">pin-sha256=&quot;E9CZ9INDbd+2eRQozYqqbQ2yXLVKB9+xcprMF+44U1g=&quot;;</span></code></p>
+<p><code class="docutils literal"><span class="pre">pin-sha256=&quot;LPJNul+wow4m6DsqxbninhsWHlwfp0JecwQzYpOLmCQ=&quot;;</span></code></p>
+<p><code class="docutils literal"><span class="pre">report-uri=&quot;http://example.com/pkp-report&quot;</span></code></p>
+<p>The header name is <code class="docutils literal"><span class="pre">Public-Key-Pins</span></code> and has a similar max-age attribute
+as HSTS. The header can include multiple encoded certificate hashes
+indicated as the <code class="docutils literal"><span class="pre">pin-sha256</span></code> values. If the incoming certificate does
+not match one of these values, a “report-uri” attribute can send the
+browser to a reporting facility to report this error (possible attack).
+To be most effective, this response header should only be transmitted
+over HTTPS to prevent stripping. To create the encoded value for a given
+certificate, use the following OpenSSL commands:</p>
+<p><code class="docutils literal"><span class="pre">openssl</span> <span class="pre">x509</span> <span class="pre">–in</span> <span class="pre">&lt;cert&gt;</span> <span class="pre">-pubkey</span> <span class="pre">–noout</span> <span class="pre">|</span> <span class="pre">openssl</span> <span class="pre">rsa</span> <span class="pre">–pubin</span> <span class="pre">–outform</span> <span class="pre">der</span> <span class="pre">|</span> <span class="pre">openssl</span> <span class="pre">dgst</span> <span class="pre">–sha256</span> <span class="pre">–binary</span> <span class="pre">|</span> <span class="pre">openssl</span> <span class="pre">enc</span> <span class="pre">–base64</span></code></p>
+<p>The following iRule demonstrates how to deploy both HSTS and HPKP.</p>
+<p>Objectives:</p>
+<ul class="simple">
+<li>Deploy and test the example HSTS/HPKP iRule code</li>
+</ul>
+<p>Lab Requirements:</p>
+<ul class="simple">
+<li>BIG-IP LTM, web server, client browser, and SSL server certificate.
+If you don’t have certificates to test with, you can use the CA
+certificate and server certificate and private key provided in the
+previous lab</li>
+</ul>
+<div class="section" id="the-irule">
+<h2>3.1.3.1. The iRule<a class="headerlink" href="#the-irule" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-tcl"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nv">when</span> RULE_INIT <span class="k">{</span>
+    <span class="k">set</span> static::fqdn_pin1 <span class="s2">&quot;X3pGTSOuJeEVw989IJ/cEtXUEmy52zs1TZQrU06KUKg=&quot;</span>
+
+    <span class="c"># Set max_age to 180 days</span>
+    <span class="k">set</span> static::max_age <span class="mi">15552000</span>
+<span class="k">}</span>
+<span class="nv">when</span> HTTP_RESPONSE <span class="k">{</span>
+    <span class="c"># Insert an HSTS header</span>
+    <span class="nv">HTTP</span><span class="o">::</span>header insert Strict-Transport-Security <span class="s2">&quot;max-age=$static::max_age; includeSubDomains&quot;</span>
+    <span class="c"># Insert an HPKP header</span>
+    <span class="nv">HTTP</span><span class="o">::</span>header insert Public-Key-Pins <span class="s2">&quot;pin-sha256=\&quot;$static::fqdn_pin1\&quot; max-age=$static::max_age; includeSubDomains&quot;</span>
+<span class="k">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Apply this iRule to an HTTPS virtual server (VIP).</p>
+</div>
+<div class="section" id="analysis">
+<h2>3.1.3.2. Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The above iRule example will perform two functions. Upon receipt of
+the HSTS header, any attempt to communicate with that VIP again will
+only use HTTPS. With the injection of the HPKP header, if the
+certificate (CA or server certificate) does not match the one
+provided in the SSL handshake, the browser will either end the
+connection and potentially follow a report-uri URL if it exists.</li>
+</ul>
+</div>
+<div class="section" id="testing">
+<h2>3.1.3.3. Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Repeatedly navigate to the HTTP URL <a class="reference external" href="http://www.f5test.local">http://www.f5test.local</a> to
+verify that you are indeed talking to the HTTP VIP.</li>
+<li>Navigate to the HTTPS URL <a class="reference external" href="https://www.f5test.local">https://www.f5test.local</a> one time to
+verify that you can access it.</li>
+<li>Now attempt to go to the HTTP URL <a class="reference external" href="http://www.f5test.local">http://www.f5test.local</a> again.
+Depending on the browser it should immediately go to the HTTPS URL.</li>
+<li>If you’re using a Chrome browser, you can navigate to
+<code class="docutils literal"><span class="pre">chrome://net-internals/#hsts</span></code> to see this URL value now added to
+Chrome’s HSTS list.  Under Query Domain, enter <code class="docutils literal"><span class="pre">www.f5test.local</span></code> to
+Domain: entry box and click Query.  <code class="docutils literal"><span class="pre">Be</span> <span class="pre">sure</span> <span class="pre">to</span> <span class="pre">delete</span> <span class="pre">domain</span> <span class="pre">before</span>
+<span class="pre">moving</span> <span class="pre">on</span> <span class="pre">or</span> <span class="pre">else</span> <span class="pre">you</span> <span class="pre">will</span> <span class="pre">have</span> <span class="pre">an</span> <span class="pre">issue</span> <span class="pre">with</span> <span class="pre">a</span> <span class="pre">later</span> <span class="pre">lab.</span></code></li>
+<li>Unfortunately, unless you’re using a server certificate that chains
+up to a public root, you won’t be able to test HPKP here. Per the
+Mozilla Developer Network, “Firefox (and Chrome) disable Pin
+Validation for Pinned Hosts whose validated certificate chain
+terminates at a user-defined trust anchor (rather than a built-in
+trust anchor). This means that for users who imported custom root
+certificates all pinning violations are ignored.”</li>
+</ol>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">You can still use Chrome Developer Tools to see the HPKP header.</p>
+</div>
+</div>
+</div>
+
+
+        
+      </div>
+    </div>
+  </div>
+
+
+  <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="content-fluid pre-footer">
+            <div class="blocks-container">
+              <div class="block">
+                <h3>Support Programs</h3>
+                <p>Regionally located support centers enable F5 to provide support in a number of languages through native-speaking support engineers.</p>
+                <a class="btn internalLink" data-ng-href="https://f5.com/support/support-offerings" target="_blank" href="https://f5.com/support/support-offerings">See more
+                  <span class="icon-1x-right icon-new-window" data-icon="new-window">​</span>
+                </a>
+              </div>
+              <div class="block">
+                <h3>Contact Support</h3>
+                <p>
+                  North America: 1-888-882-7535<br>
+                  Outside North America: 800-11-275-435
+                </p>
+                <a class="btn internalLink" data-ng-href="https://f5.com/about-us/contact#regional-support" target="_blank" href="https://f5.com/about-us/contact#regional-support">Local Support Numbers
+                  <span class="icon-1x-right icon-new-window" data-icon="new-window">​</span>
+                </a>
+              </div>
+              <div class="block">
+                <h3>Feedback and Help</h3>
+                <p>Have questions, suggestions, or just want to get something off your chest? Let us know.</p>
+                <a class="btn" data-ui-sref="siteFeedback" target="_blank" href="https://support.f5.com/csp/siteFeedback">Leave feedback</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="footer">
+            <div class="container">
+              <div class="col-sm-3 col-md-2">
+                <h4>About F5</h4>
+                <ul>
+                  <li><a data-ng-href="https://f5.com/about-us/contact" target="_blank" data-link-type="footer" href="https://f5.com/about-us/contact" class="internalLink">Contact F5</a>
+                  </li>
+                  <li><a data-ng-href="https://f5.com/about-us/careers" target="_blank" data-link-type="footer" href="https://f5.com/about-us/careers" class="internalLink">Careers</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-sm-3 col-md-2">
+                <h4>Education</h4>
+                <ul>
+                  <li><a data-ng-href="https://f5.com/education/training" target="_blank" data-link-type="footer" href="https://f5.com/education/training" class="internalLink">Training</a>
+                  </li>
+                  <li><a data-ng-href="https://f5.com/education/certification" target="_blank" data-link-type="footer" href="https://f5.com/education/certification" class="internalLink">Certification</a>
+                  </li>
+                  <li><a data-ng-href="https://f5.com/education/training/free-courses" target="_blank" data-link-type="footer" href="https://f5.com/education/training/free-courses" class="internalLink">Free Online Training</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="col-sm-3 col-md-2">
+                <h4>F5 sites</h4>
+                <ul>
+                <li><a data-ng-href="https://f5.com" target="_blank" data-link-type="footer" href="https://f5.com" class="internalLink">F5.com</a>
+                </li>
+                <li><a data-ng-href="https://devcentral.f5.com" target="_blank" data-link-type="footer" href="https://devcentral.f5.com" class="internalLink">Community</a>
+                </li>
+                <li><a data-ng-href="https://partners.f5.com" target="_blank" data-link-type="footer" href="https://partners.f5.com" class="internalLink">Partners</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-3 col-md-2">
+            <h4>Support Tasks</h4>
+            <ul>
+                <li><a data-ui-sref="mySupport.createServiceRequest" data-link-type="footer" href="https://support.f5.com/csp/my-support/service-request">Create Service Request </a>
+                </li>
+                <li><a data-ng-href="https://f5.com/about-us/contact#regional-support" target="_blank" data-link-type="footer" href="https://f5.com/about-us/contact#regional-support" class="internalLink">Contact Support</a>
+                </li>
+                <li><a data-ui-sref="siteFeedback" target="_blank" data-link-type="footer" href="https://support.f5.com/csp/siteFeedback">Leave feedback [+]</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-xs-12 col-md-3 right">
+            <h4>Connect with us</h4>
+            <ul class="social_icons">
+                <li><a href="//twitter.com/f5networks" target="_blank" data-name="twitter" data-type="" data-prefix="social" data-utf="E032" title="Twitter" class="externalLink"><i class="icon-1x icon-twitter icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a href="//www.linkedin.com/companies/f5-networks" target="_blank" class="linkedin externalLink" title="LinkedIn"><i class="icon-1x icon-linkedin icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a href="//www.facebook.com/f5networksinc" target="_blank" class="facebook externalLink" title="Facebook"><i class="icon-1x icon-facebook icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a href="//www.youtube.com/f5networksinc" target="_blank" class="youtube externalLink" title="YouTube"><i class="icon-1x icon-youtube icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a data-ng-href="https://devcentral.f5.com" target="_blank" class="devcentral internalLink" title="DevCentral" href="https://devcentral.f5.com"><i class="icon-1x icon-dc-pos icon-inverse-circle" data-link-type="footer"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="content-fluid left">
+            <div class="col-xs-12">
+                <p>
+                    © Copyright <span class="ng-binding">2017</span> by F5 Networks, Inc. |
+                    <a data-ng-href="https://f5.com/about-us/policies" target="_blank" data-link-type="footer" href="https://f5.com/about-us/policies" class="internalLink">Policies</a> |
+                    <a data-ng-href="https://f5.com/about-us/policies/trademarks" target="_blank" data-link-type="footer" href="https://f5.com/about-us/policies/trademarks" class="internalLink">Trademarks</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+</footer>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../../../_static/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    jQuery.noConflict(true)
+  </script>
+  </body>
+</html>

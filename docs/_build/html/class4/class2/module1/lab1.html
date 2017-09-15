@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.1.1. Lab 1 - HTTP Throttling &#8212; EXAMPLE.COM  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/f5_agility_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<!--
+# Copyright 2017 F5 Networks
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+-->
+<link href="https://cdn.f5.com/favicon.ico" rel="icon">
+<script src="https://use.fontawesome.com/21fb8a09c3.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+  </head>
+  <body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="row corp-header">
+      <div class="container corp-header">
+        <div class="container corp-menu">
+          <ul>
+            <li><a href="https://f5.com" class="internalLink">F5.com</a></li>
+            <li><a href="https://support.f5.com">Support</a></li>
+            <li><a href="https://devcentral.f5.com">Community</a></li>
+            <li><a href="https://github.com/F5Networks">GitHub</a></li>
+            <li><a href="https://f5.com/about-us/careers">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row pageHeader">
+      <div class="container stat">
+        <div class="col-xs-12 stat">
+          <a class="internalLink" href="https://f5.com">
+            <img class="logo" src="https://cdn.f5.com/websites/support/assets/images/logo.svg" width="50" height="44" alt="F5 Networks" title="F5 Networks" border="0">
+          </a>
+            <ul id="MainMenu" class="main-menu">
+              <li>
+                <a href="#">Products
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+
+                <div class="menu-panel soft-hide" id="ProductsSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third"><span class="a-mm-h">Connectors</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/marathon-bigip-ctlr/latest" data-link-type="Nav: Mega">F5 Marathon BIG-IP Controller</a></li>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/marathon-asp-ctlr/latest" data-link-type="Nav: Mega">F5 Marathon ASP Controller</a></li>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/k8s-bigip-ctlr/latest" data-link-type="Nav: Mega">F5 Kubernetes BIG-IP Controller</a></li>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/f5-kube-proxy/latest" data-link-type="Nav: Mega">F5 Kubernetes Proxy</a></li>
+                        </ul>
+                        <!--span class="seemore"><a data-link-type="Nav: Mega" href="/products/connectors">See all </a></--span-->
+                      </li>
+                      <li class="divider"></li>
+                      <li class="third"><span class="a-mm-h">Application Service Proxy</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/products/asp/latest" data-link-type="Nav: Mega">F5 Application Service Proxy</a></li>
+                        </ul>
+                        <!--span class="seemore"><a href="/products/">See all </a></span-->
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#">Container Integrations
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+
+                <div class="menu-panel soft-hide" id="ContainersSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third"><span class="a-mm-h">Container Integrations</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/containers/latest/marathon/" data-link-type="Nav: Mega">Mesos Marathon</a></li>
+                          <li><a href="http://clouddocs.f5.com/containers/latest/kubernetes/" data-link-type="Nav: Mega">Kubernetes</a></li>
+                          <li><a href="http://clouddocs.f5.com/containers/latest/openshift/" data-link-type="Nav: Mega">RedHat OpenShift</a></li>
+                        </ul>
+                        <span class="seemore"><a data-link-type="Nav: Mega" href="http://clouddocs.f5.com/containers/latest">View details </a></span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#">Clouds
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+
+                <div class="menu-panel soft-hide" id="CloudsSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third"><span class="a-mm-h">Cloud Integrations</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/cloud/openstack/" data-link-type="Nav: Mega">OpenStack</a></li>
+                        </ul>
+                        <!--span class="seemore"><a data-link-type="Nav: Mega" href="/cloud/">See all </a></span-->
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#">Resources
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+                <div class="menu-panel soft-hide" id="UPCProgramSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third">
+                        <span class="a-mm-h">Downloads</span>
+                        <ul>
+                          <li><a target="_blank" data-link-type="Nav: Mega" href="https://hub.docker.com/r/f5networks/" class="internalLink">Docker Hub</a></li>
+                          <li><a target="_blank" data-link-type="Nav: Mega" href="https://store.docker.com/images/f5networks" class="internalLink">Docker Store</a></li>
+                        </ul>
+                      </li>
+                      <li class="divider"></li>
+
+                      <li class="third">
+                        <span class="a-mm-h">OpenSource</span>
+                        <ul>
+                          <li><a target="_blank" data-link-type="Nav: Mega" href="https://github.com/F5Networks" class="internalLink">GitHub</a></li>
+                        </ul>
+                      </li>
+                      <li class="divider"></li>
+
+                      <li class="third">
+                        <a href="//university.f5.com" class="a-mm-h internalLink" target="_blank" data-link-type="Nav: Mega">F5 University</a>
+                        <ul>
+                          <li>
+                            <p>Get up to speed with free self-paced courses</p>
+                          </li>
+                        </ul>
+                        <a data-ng-href="https://devcentral.f5.com" class="a-mm-h internalLink" target="_blank" data-link-type="Nav: Mega" href="https://devcentral.f5.com">DevCentral</a>
+                        <ul>
+                          <li>
+                            <p>Join the community of 250,000+ technical peers</p>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div> <!-- /container-fluid -->
+</nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-3 sidebar">
+         <h4><a href="../../../">EXAMPLE.COM </a></h4>
+<div id="searchbox" style="display: none" role="search">
+  <form class="search" action="../../../search.html" method="get">
+    <div>
+      <input type="text" name="q" placeholder="Search" style="padding-left: 6px;"/>
+      <!-- <input type="submit" value="Go" style="margin-top: 4px;"/> -->
+      <button type="submit" class="btn btn-primary btn-xs">Go</button>
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <p class="caption">
+   <span class="caption-text">Current Page</span>
+  </p>
+  <ul>
+<li><a class="reference internal" href="#">3.1.1. Lab 1 - HTTP Throttling</a><ul>
+<li><a class="reference internal" href="#the-irule">3.1.1.1. The iRule</a></li>
+<li><a class="reference internal" href="#analysis">3.1.1.2. Analysis</a></li>
+<li><a class="reference internal" href="#testing">3.1.1.3. Testing</a></li>
+<li><a class="reference internal" href="#bonus-version">3.1.1.4. Bonus version</a></li>
+</ul>
+</li>
+</ul>
+
+
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">Topology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class1/class1.html">LTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class2/class2.html">DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class3/class3.html">WAF</a></li>
+</ul>
+
+        
+      </div>
+      <div class="col-md-offset-3 col-sm-offset-3 main">
+        <h4>
+          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../../../index.html">EXAMPLE.COM</a>
+          <span class="right"><a href="../../../genindex.html">Index</a></span>
+        </h4>
+        
+  <div class="section" id="lab-1-http-throttling">
+<h1>3.1.1. Lab 1 - HTTP Throttling<a class="headerlink" href="#lab-1-http-throttling" title="Permalink to this headline">¶</a></h1>
+<p>There are a number of well-known vulnerabilities that focus on attacking
+HTTP (web servers) with large numbers of requests, or large request
+payloads (ex. Slow Loris, Slow Post) to produce a denial of service. As
+mentioned in the introduction, custom code should never replace a solid
+security product that can handle these types of vulnerabilities, and
+indeed F5’s Application Security Manager (ASM) is well-versed at
+protecting against HTTP attacks. That said, you may still want to do
+some HTTP request throttling in an iRule, if only for a specific URL,
+request method, or any number of other HTTP attributes. Here’s an
+example of what that might look like.</p>
+<p>Objectives:</p>
+<ul class="simple">
+<li>Deploy and test the example HTTP throttling iRule code</li>
+</ul>
+<p>Lab Requirements:</p>
+<ul class="simple">
+<li>BIG-IP LTM, web server and client (Linux command line client
+preferred)</li>
+<li>HTTP throttling scripts under scripts directory in Cygwin Terminal</li>
+</ul>
+<div class="section" id="the-irule">
+<h2>3.1.1.1. The iRule<a class="headerlink" href="#the-irule" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-tcl"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="nv">when</span> RULE_INIT <span class="k">{</span>
+     <span class="c"># This is the life timer of the subtable object</span>
+     <span class="c"># Defines how long this object exists in the subtable</span>
+     <span class="k">set</span> static::maxRate <span class="mi">10</span>
+     <span class="c"># This defines how long is the sliding window to count the requests.</span>
+     <span class="c"># This example allows 10 requests in 10 seconds</span>
+     <span class="k">set</span> static::windowSecs <span class="mi">10</span>
+     <span class="k">set</span> static::timeout <span class="mi">30</span>
+ <span class="k">}</span>
+ <span class="nv">when</span> HTTP_REQUEST <span class="k">{</span>
+     <span class="k">if</span> <span class="k">{</span> <span class="k">[</span><span class="nv">HTTP</span><span class="o">::</span>method<span class="k">]</span> <span class="nv">eq</span> <span class="s2">&quot;GET&quot;</span> <span class="k">}</span> <span class="k">{</span>
+         <span class="k">set</span> getCount <span class="k">[</span><span class="nv">table</span> key <span class="o">-</span>count <span class="o">-</span>subtable <span class="k">[</span><span class="nv">IP</span><span class="o">::</span>client_addr<span class="k">]]</span>
+<span class="hll">         <span class="nv">log</span> local0. <span class="s2">&quot;getCount=$getCount&quot;</span>
+</span>         <span class="k">if</span> <span class="k">{</span> <span class="nv">$getCount</span> <span class="o">&lt;</span> <span class="nv">$static::maxRate</span> <span class="k">}</span> <span class="k">{</span>
+             <span class="nb">incr</span> getCount <span class="mi">1</span>
+             <span class="nv">table</span> set <span class="o">-</span>subtable <span class="k">[</span><span class="nv">IP</span><span class="o">::</span>client_addr<span class="k">]</span> <span class="nv">$getCount</span> <span class="s2">&quot;ignore&quot;</span> <span class="nv">$static::timeout</span>     <span class="nv">$static::windowSecs</span>
+         <span class="k">}</span> <span class="k">else</span> <span class="k">{</span>
+<span class="hll">             <span class="nv">log</span> local0. <span class="s2">&quot;[IP::client_addr] has exceeded the number of requests allowed.&quot;</span>
+</span>             <span class="nv">HTTP</span><span class="o">::</span>respond <span class="mi">501</span> content <span class="s2">&quot;Request blocked Exceeded requests/sec limit.&quot;</span>
+             <span class="k">return</span>
+         <span class="k">}</span>
+     <span class="k">}</span>
+ <span class="k">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Apply this iRule to an HTTP virtual server (VIP).</p>
+</div>
+<div class="section" id="analysis">
+<h2>3.1.1.2. Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Notice that RULE_INIT sets up a set of variables that respectively
+define the maximum rate of requests, the sliding window for timing
+the rate, and a separate timeout value. Alter these values according
+to your local preferences.</li>
+<li>The iRule creates an internal table for each client source address,
+and an entry for each request is added to this table.</li>
+<li>As each new request arrives, the iRule counts the number of entries
+in the respective table. If the count doesn’t exceed the maxRate
+threshold, a new entry is created and the request is allowed through.</li>
+<li>If the request exceeds the maxRate threshold, the iRule returns an
+HTTP error response to the client.</li>
+<li>The <strong>WindowSecs</strong> static variable defines an idle timeout for each
+request entry, and the <strong>timeout</strong> static variable defines a total
+lifetime for that table entry, irrespective of the idle time.</li>
+</ul>
+</div>
+<div class="section" id="testing">
+<h2>3.1.1.3. Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
+<p>A very simple way to test this iRule implementation is with a cURL
+script from the Cygwin Terminal command line. Here’s a Bash representation
+of that script.</p>
+<div class="highlight-console"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">#</span>!/bin/bash
+<span class="go">while [ 1 ]</span>
+<span class="go">do</span>
+<span class="go">   curl http://www.f5test.local --write-out &quot;%{http_code}\n&quot; --silent -o /dev/null</span>
+<span class="go">done</span>
+</pre></div>
+</td></tr></table></div>
+<p>Under Cygwin Terminal, cd to scripts directory and run <code class="docutils literal"><span class="pre">bash</span> <span class="pre">http_trottling</span></code>.
+To view logging information, open a tail of the BIG-IP LTM log from command line.</p>
+<p><code class="docutils literal"><span class="pre">tail</span> <span class="pre">–f</span> <span class="pre">/var/log/ltm</span></code></p>
+<p>The script will make repeated HTTP GET requests. When it exceeds the
+threshold the iRule will generate a 501 error response and prevent
+access to the web server until the <strong>timeout</strong> static variable time
+is reached. Use the CTRL-C keyboard combination to stop the script.</p>
+</div>
+<div class="section" id="bonus-version">
+<h2>3.1.1.4. Bonus version<a class="headerlink" href="#bonus-version" title="Permalink to this headline">¶</a></h2>
+<p>The above iRule presents an extremely simple approach to HTTP
+request throttling and is based solely on client source address. The
+following bonus example extends that functionality to allow for
+throttling of specific URLs.</p>
+<div class="highlight-tcl"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nv">when</span> RULE_INIT <span class="k">{</span>
+    <span class="c"># The max requests served within the timing interval per the static::timeout variable</span>
+    <span class="k">set</span> static::maxReqs <span class="mi">4</span>
+    <span class="c"># Timer Interval in seconds within which only static::maxReqs Requests are allowed.</span>
+    <span class="c"># (i.e: 10 req per 2 sec == 5 req per sec)</span>
+    <span class="c"># If this timer expires, it means that the limit was not reached for this interval and</span>
+    <span class="c"># the request counting starts over. Making this timeout large increases memory usage.</span>
+    <span class="c"># Making it too small negatively affects performance.</span>
+    <span class="k">set</span> static::timeout <span class="mi">2</span>
+<span class="k">}</span>
+<span class="nv">when</span> HTTP_REQUEST <span class="k">{</span>
+    <span class="c"># Allows throttling for only specific URIs. List the URIs_to_throttle in a data group.</span>
+    <span class="c"># Note: a URI is everything after the hostname: e.g. /path1/login.aspx?name=user1</span>
+    <span class="k">if</span> <span class="k">{</span> <span class="k">[</span><span class="nv">class</span> match <span class="k">[</span><span class="nv">HTTP</span><span class="o">::</span>uri<span class="k">]</span> equals URIs_to_throttle<span class="k">]</span> <span class="k">}</span> <span class="k">{</span>
+        <span class="c"># The following expects the IP addresses in multiple X-forwarded-for headers.</span>
+        <span class="c"># It picks the first one. If XFF isn’t defined it can grab the true source IP.</span>
+        <span class="k">if</span> <span class="k">{</span> <span class="k">[</span><span class="nv">HTTP</span><span class="o">::</span>header exists X-forwarded-for<span class="k">]</span> <span class="k">}</span> <span class="k">{</span>
+            <span class="k">set</span> cIP_addr <span class="k">[</span><span class="nv">getfield</span> <span class="k">[</span><span class="nb">lindex</span>  <span class="k">[</span><span class="nv">HTTP</span><span class="o">::</span>header values X-Forwarded-For<span class="k">]</span>  <span class="mi">0</span><span class="k">]</span> <span class="s2">&quot;,&quot;</span> <span class="mi">1</span><span class="k">]</span>
+        <span class="k">}</span> <span class="k">else</span> <span class="k">{</span>
+            <span class="k">set</span> cIP_addr <span class="k">[</span><span class="nv">IP</span><span class="o">::</span>client_addr<span class="k">]</span>
+        <span class="k">}</span>
+        <span class="k">set</span> getcount <span class="k">[</span><span class="nv">table</span> lookup <span class="o">-</span>notouch <span class="nv">$cIP_addr</span><span class="k">]</span>
+        <span class="k">if</span> <span class="k">{</span> <span class="nv">$getcount</span> <span class="nv">equals</span> <span class="s2">&quot;&quot;</span> <span class="k">}</span> <span class="k">{</span>
+            <span class="nv">table</span> set <span class="nv">$cIP_addr</span> <span class="s2">&quot;1&quot;</span> <span class="nv">$static::timeout</span> <span class="nv">$static::timeout</span>
+            <span class="c"># Record of this session does not exist, starting new record</span>
+            <span class="c"># Request is allowed.</span>
+        <span class="k">}</span> <span class="k">else</span> <span class="k">{</span>
+            <span class="k">if</span> <span class="k">{</span> <span class="nv">$getcount</span> <span class="o">&lt;</span> <span class="nv">$static::maxReqs</span> <span class="k">}</span> <span class="k">{</span>
+                <span class="c"># log local0. &quot;Request Count for $cIP_addr is $getcount&quot;</span>
+                <span class="nv">table</span> incr <span class="o">-</span>notouch <span class="nv">$cIP_addr</span>
+                <span class="c"># record of this session exists but request is allowed.</span>
+            <span class="k">}</span> <span class="k">else</span> <span class="k">{</span>
+                <span class="nv">HTTP</span><span class="o">::</span>respond <span class="mi">403</span> content <span class="k">{</span>
+                <span class="o">&lt;</span><span class="nv">html</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nv">head</span><span class="o">&gt;&lt;</span>title<span class="o">&gt;</span>HTTP Request denied<span class="o">&lt;/</span>title<span class="o">&gt;&lt;/</span>head<span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nv">body</span><span class="o">&gt;</span>Your HTTP requests are being throttled.<span class="o">&lt;/</span>body<span class="o">&gt;</span>
+                <span class="o">&lt;/</span><span class="nv">html</span><span class="o">&gt;</span>
+                <span class="k">}</span>
+            <span class="k">}</span>
+        <span class="k">}</span>
+    <span class="k">}</span>
+<span class="k">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>By running the <code class="docutils literal"><span class="pre">http_throttling_bonus</span></code> script, you are checking HTTP requests
+limits against the URL paths in the <code class="docutils literal"><span class="pre">URIs_to_throttle</span></code> datagroup. Here’s a
+Bash representation of that script.</p>
+<div class="highlight-console"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">#</span>!/bin/bash
+<span class="go">while [ 1 ]</span>
+<span class="go">do</span>
+<span class="go">   curl http://www.f5test.local/admin --write-out &quot;%{http_code}\n&quot; --silent -o /dev/null</span>
+<span class="go">done</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+        
+      </div>
+    </div>
+  </div>
+
+
+  <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="content-fluid pre-footer">
+            <div class="blocks-container">
+              <div class="block">
+                <h3>Support Programs</h3>
+                <p>Regionally located support centers enable F5 to provide support in a number of languages through native-speaking support engineers.</p>
+                <a class="btn internalLink" data-ng-href="https://f5.com/support/support-offerings" target="_blank" href="https://f5.com/support/support-offerings">See more
+                  <span class="icon-1x-right icon-new-window" data-icon="new-window">​</span>
+                </a>
+              </div>
+              <div class="block">
+                <h3>Contact Support</h3>
+                <p>
+                  North America: 1-888-882-7535<br>
+                  Outside North America: 800-11-275-435
+                </p>
+                <a class="btn internalLink" data-ng-href="https://f5.com/about-us/contact#regional-support" target="_blank" href="https://f5.com/about-us/contact#regional-support">Local Support Numbers
+                  <span class="icon-1x-right icon-new-window" data-icon="new-window">​</span>
+                </a>
+              </div>
+              <div class="block">
+                <h3>Feedback and Help</h3>
+                <p>Have questions, suggestions, or just want to get something off your chest? Let us know.</p>
+                <a class="btn" data-ui-sref="siteFeedback" target="_blank" href="https://support.f5.com/csp/siteFeedback">Leave feedback</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="footer">
+            <div class="container">
+              <div class="col-sm-3 col-md-2">
+                <h4>About F5</h4>
+                <ul>
+                  <li><a data-ng-href="https://f5.com/about-us/contact" target="_blank" data-link-type="footer" href="https://f5.com/about-us/contact" class="internalLink">Contact F5</a>
+                  </li>
+                  <li><a data-ng-href="https://f5.com/about-us/careers" target="_blank" data-link-type="footer" href="https://f5.com/about-us/careers" class="internalLink">Careers</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-sm-3 col-md-2">
+                <h4>Education</h4>
+                <ul>
+                  <li><a data-ng-href="https://f5.com/education/training" target="_blank" data-link-type="footer" href="https://f5.com/education/training" class="internalLink">Training</a>
+                  </li>
+                  <li><a data-ng-href="https://f5.com/education/certification" target="_blank" data-link-type="footer" href="https://f5.com/education/certification" class="internalLink">Certification</a>
+                  </li>
+                  <li><a data-ng-href="https://f5.com/education/training/free-courses" target="_blank" data-link-type="footer" href="https://f5.com/education/training/free-courses" class="internalLink">Free Online Training</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="col-sm-3 col-md-2">
+                <h4>F5 sites</h4>
+                <ul>
+                <li><a data-ng-href="https://f5.com" target="_blank" data-link-type="footer" href="https://f5.com" class="internalLink">F5.com</a>
+                </li>
+                <li><a data-ng-href="https://devcentral.f5.com" target="_blank" data-link-type="footer" href="https://devcentral.f5.com" class="internalLink">Community</a>
+                </li>
+                <li><a data-ng-href="https://partners.f5.com" target="_blank" data-link-type="footer" href="https://partners.f5.com" class="internalLink">Partners</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-3 col-md-2">
+            <h4>Support Tasks</h4>
+            <ul>
+                <li><a data-ui-sref="mySupport.createServiceRequest" data-link-type="footer" href="https://support.f5.com/csp/my-support/service-request">Create Service Request </a>
+                </li>
+                <li><a data-ng-href="https://f5.com/about-us/contact#regional-support" target="_blank" data-link-type="footer" href="https://f5.com/about-us/contact#regional-support" class="internalLink">Contact Support</a>
+                </li>
+                <li><a data-ui-sref="siteFeedback" target="_blank" data-link-type="footer" href="https://support.f5.com/csp/siteFeedback">Leave feedback [+]</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-xs-12 col-md-3 right">
+            <h4>Connect with us</h4>
+            <ul class="social_icons">
+                <li><a href="//twitter.com/f5networks" target="_blank" data-name="twitter" data-type="" data-prefix="social" data-utf="E032" title="Twitter" class="externalLink"><i class="icon-1x icon-twitter icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a href="//www.linkedin.com/companies/f5-networks" target="_blank" class="linkedin externalLink" title="LinkedIn"><i class="icon-1x icon-linkedin icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a href="//www.facebook.com/f5networksinc" target="_blank" class="facebook externalLink" title="Facebook"><i class="icon-1x icon-facebook icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a href="//www.youtube.com/f5networksinc" target="_blank" class="youtube externalLink" title="YouTube"><i class="icon-1x icon-youtube icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a data-ng-href="https://devcentral.f5.com" target="_blank" class="devcentral internalLink" title="DevCentral" href="https://devcentral.f5.com"><i class="icon-1x icon-dc-pos icon-inverse-circle" data-link-type="footer"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="content-fluid left">
+            <div class="col-xs-12">
+                <p>
+                    © Copyright <span class="ng-binding">2017</span> by F5 Networks, Inc. |
+                    <a data-ng-href="https://f5.com/about-us/policies" target="_blank" data-link-type="footer" href="https://f5.com/about-us/policies" class="internalLink">Policies</a> |
+                    <a data-ng-href="https://f5.com/about-us/policies/trademarks" target="_blank" data-link-type="footer" href="https://f5.com/about-us/policies/trademarks" class="internalLink">Trademarks</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+</footer>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../../../_static/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    jQuery.noConflict(true)
+  </script>
+  </body>
+</html>

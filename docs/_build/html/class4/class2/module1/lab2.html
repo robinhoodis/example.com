@@ -1,0 +1,595 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.1.2. Lab 2 - Client Certificate Inspection &#8212; EXAMPLE.COM  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/f5_agility_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<!--
+# Copyright 2017 F5 Networks
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+-->
+<link href="https://cdn.f5.com/favicon.ico" rel="icon">
+<script src="https://use.fontawesome.com/21fb8a09c3.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+  </head>
+  <body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="row corp-header">
+      <div class="container corp-header">
+        <div class="container corp-menu">
+          <ul>
+            <li><a href="https://f5.com" class="internalLink">F5.com</a></li>
+            <li><a href="https://support.f5.com">Support</a></li>
+            <li><a href="https://devcentral.f5.com">Community</a></li>
+            <li><a href="https://github.com/F5Networks">GitHub</a></li>
+            <li><a href="https://f5.com/about-us/careers">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row pageHeader">
+      <div class="container stat">
+        <div class="col-xs-12 stat">
+          <a class="internalLink" href="https://f5.com">
+            <img class="logo" src="https://cdn.f5.com/websites/support/assets/images/logo.svg" width="50" height="44" alt="F5 Networks" title="F5 Networks" border="0">
+          </a>
+            <ul id="MainMenu" class="main-menu">
+              <li>
+                <a href="#">Products
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+
+                <div class="menu-panel soft-hide" id="ProductsSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third"><span class="a-mm-h">Connectors</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/marathon-bigip-ctlr/latest" data-link-type="Nav: Mega">F5 Marathon BIG-IP Controller</a></li>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/marathon-asp-ctlr/latest" data-link-type="Nav: Mega">F5 Marathon ASP Controller</a></li>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/k8s-bigip-ctlr/latest" data-link-type="Nav: Mega">F5 Kubernetes BIG-IP Controller</a></li>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/f5-kube-proxy/latest" data-link-type="Nav: Mega">F5 Kubernetes Proxy</a></li>
+                        </ul>
+                        <!--span class="seemore"><a data-link-type="Nav: Mega" href="/products/connectors">See all </a></--span-->
+                      </li>
+                      <li class="divider"></li>
+                      <li class="third"><span class="a-mm-h">Application Service Proxy</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/products/asp/latest" data-link-type="Nav: Mega">F5 Application Service Proxy</a></li>
+                        </ul>
+                        <!--span class="seemore"><a href="/products/">See all </a></span-->
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#">Container Integrations
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+
+                <div class="menu-panel soft-hide" id="ContainersSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third"><span class="a-mm-h">Container Integrations</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/containers/latest/marathon/" data-link-type="Nav: Mega">Mesos Marathon</a></li>
+                          <li><a href="http://clouddocs.f5.com/containers/latest/kubernetes/" data-link-type="Nav: Mega">Kubernetes</a></li>
+                          <li><a href="http://clouddocs.f5.com/containers/latest/openshift/" data-link-type="Nav: Mega">RedHat OpenShift</a></li>
+                        </ul>
+                        <span class="seemore"><a data-link-type="Nav: Mega" href="http://clouddocs.f5.com/containers/latest">View details </a></span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#">Clouds
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+
+                <div class="menu-panel soft-hide" id="CloudsSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third"><span class="a-mm-h">Cloud Integrations</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/cloud/openstack/" data-link-type="Nav: Mega">OpenStack</a></li>
+                        </ul>
+                        <!--span class="seemore"><a data-link-type="Nav: Mega" href="/cloud/">See all </a></span-->
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#">Resources
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+                <div class="menu-panel soft-hide" id="UPCProgramSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third">
+                        <span class="a-mm-h">Downloads</span>
+                        <ul>
+                          <li><a target="_blank" data-link-type="Nav: Mega" href="https://hub.docker.com/r/f5networks/" class="internalLink">Docker Hub</a></li>
+                          <li><a target="_blank" data-link-type="Nav: Mega" href="https://store.docker.com/images/f5networks" class="internalLink">Docker Store</a></li>
+                        </ul>
+                      </li>
+                      <li class="divider"></li>
+
+                      <li class="third">
+                        <span class="a-mm-h">OpenSource</span>
+                        <ul>
+                          <li><a target="_blank" data-link-type="Nav: Mega" href="https://github.com/F5Networks" class="internalLink">GitHub</a></li>
+                        </ul>
+                      </li>
+                      <li class="divider"></li>
+
+                      <li class="third">
+                        <a href="//university.f5.com" class="a-mm-h internalLink" target="_blank" data-link-type="Nav: Mega">F5 University</a>
+                        <ul>
+                          <li>
+                            <p>Get up to speed with free self-paced courses</p>
+                          </li>
+                        </ul>
+                        <a data-ng-href="https://devcentral.f5.com" class="a-mm-h internalLink" target="_blank" data-link-type="Nav: Mega" href="https://devcentral.f5.com">DevCentral</a>
+                        <ul>
+                          <li>
+                            <p>Join the community of 250,000+ technical peers</p>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div> <!-- /container-fluid -->
+</nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-3 sidebar">
+         <h4><a href="../../../">EXAMPLE.COM </a></h4>
+<div id="searchbox" style="display: none" role="search">
+  <form class="search" action="../../../search.html" method="get">
+    <div>
+      <input type="text" name="q" placeholder="Search" style="padding-left: 6px;"/>
+      <!-- <input type="submit" value="Go" style="margin-top: 4px;"/> -->
+      <button type="submit" class="btn btn-primary btn-xs">Go</button>
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <p class="caption">
+   <span class="caption-text">Current Page</span>
+  </p>
+  <ul>
+<li><a class="reference internal" href="#">3.1.2. Lab 2 - Client Certificate Inspection</a><ul>
+<li><a class="reference internal" href="#the-irule">3.1.2.1. The iRule</a></li>
+<li><a class="reference internal" href="#analysis">3.1.2.2. Analysis</a></li>
+<li><a class="reference internal" href="#testing">3.1.2.3. Testing</a></li>
+</ul>
+</li>
+</ul>
+
+
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">Topology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class1/class1.html">LTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class2/class2.html">DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class3/class3.html">WAF</a></li>
+</ul>
+
+        
+      </div>
+      <div class="col-md-offset-3 col-sm-offset-3 main">
+        <h4>
+          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../../../index.html">EXAMPLE.COM</a>
+          <span class="right"><a href="../../../genindex.html">Index</a></span>
+        </h4>
+        
+  <div class="section" id="lab-2-client-certificate-inspection">
+<h1>3.1.2. Lab 2 - Client Certificate Inspection<a class="headerlink" href="#lab-2-client-certificate-inspection" title="Permalink to this headline">¶</a></h1>
+<p>The use of smart card technology to perform client certificate
+authentication is, arguably, one of the most secure and reliable
+two-factor authentication systems in use today. Even without a physical
+smart card, software-based client certificates still offer an advantage
+over many other authentication mechanisms. F5 iRules have complete
+access to the x509 properties of a client certificate during that
+authentication, so there is almost no limit to what can be done here.
+The following iRule is a very simple, but very power example of some of
+that capability.</p>
+<p>Objectives:</p>
+<ul class="simple">
+<li>Deploy and test the example client certificate inspection iRule code</li>
+</ul>
+<p>Lab Requirements:</p>
+<ul class="simple">
+<li>BIG-IP LTM, web server, client browser, SSL server and client
+certificates</li>
+</ul>
+<div class="section" id="the-irule">
+<h2>3.1.2.1. The iRule<a class="headerlink" href="#the-irule" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-tcl"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nv">when</span> RULE_INIT <span class="k">{</span>
+    <span class="k">set</span> static::debug <span class="mi">1</span>
+<span class="k">}</span>
+<span class="nv">when</span> CLIENTSSL_CLIENTCERT <span class="k">{</span>
+    <span class="c"># Example subject:</span>
+    <span class="c"># C=US, O=f5test.local, OU=User Certificate, CN=user/emailAddress=user@f5test.local</span>
+    <span class="k">set</span> subject_dn <span class="k">[</span><span class="nv">X509</span><span class="o">::</span>subject <span class="k">[</span><span class="nv">SSL</span><span class="o">::</span>cert <span class="mi">0</span><span class="k">]]</span>
+    <span class="k">if</span> <span class="k">{</span> <span class="nv">$subject_dn</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="k">}</span> <span class="k">{</span>
+        <span class="k">if</span> <span class="k">{</span> <span class="nv">$static::debug</span> <span class="k">}</span> <span class="k">{</span> <span class="nv">log</span> <span class="s2">&quot;Client Certificate received: $subject_dn&quot;</span> <span class="k">}</span>
+    <span class="k">}</span>
+<span class="k">}</span>
+<span class="nv">when</span> HTTP_REQUEST <span class="k">{</span>
+    <span class="k">if</span> <span class="k">{</span> <span class="k">[</span><span class="nv">HTTP</span><span class="o">::</span>uri<span class="k">]</span> <span class="nv">starts_with</span> <span class="s2">&quot;/&quot;</span> <span class="k">}</span> <span class="k">{</span>
+        <span class="k">if</span> <span class="k">{</span> <span class="nv">$subject_dn</span> <span class="nv">contains</span> <span class="s2">&quot;CN=Whitfield Diffe&quot;</span> <span class="k">}</span> <span class="k">{</span>
+            <span class="nv">HTTP</span><span class="o">::</span>uri <span class="o">/</span>whitfielddiffe<span class="o">/</span>index.html
+        <span class="k">}</span> <span class="k">elseif</span> <span class="k">{</span> <span class="nv">$subject_dn</span> <span class="nv">contains</span> <span class="s2">&quot;CN=Martin Hellman&quot;</span> <span class="k">}</span> <span class="k">{</span>
+                <span class="nv">HTTP</span><span class="o">::</span>uri <span class="o">/</span>martinhellman<span class="o">/</span>index.html
+        <span class="k">}</span> <span class="k">{</span>
+                <span class="nv">reject</span>
+        <span class="k">}</span>
+    <span class="k">}</span>
+<span class="k">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Certificates and keys are provided for you in the lab, but here are test
+certificates and private keys.</p>
+<p>CA certificate (f5test.local)</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">-----BEGIN CERTIFICATE-----</span>
+<span class="go">MIIDqTCCApGgAwIBAgIJAJoOn2YSIE76MA0GCSqGSIb3DQEBCwUAMFsxCzAJBgNV</span>
+<span class="go">BAYTAlVTMRUwEwYDVQQKEwxmNXRlc3QubG9jYWwxHjAcBgNVBAsTFUNlcnRpZmlj</span>
+<span class="go">YXRlIEF1dGhvcml0eTEVMBMGA1UEAxMMZjV0ZXN0LmxvY2FsMB4XDTE3MDcxMjA3</span>
+<span class="go">MzkyOVoXDTIwMDUwMTA3MzkyOVowWzELMAkGA1UEBhMCVVMxFTATBgNVBAoTDGY1</span>
+<span class="go">dGVzdC5sb2NhbDEeMBwGA1UECxMVQ2VydGlmaWNhdGUgQXV0aG9yaXR5MRUwEwYD</span>
+<span class="go">VQQDEwxmNXRlc3QubG9jYWwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB</span>
+<span class="go">AQDVrAXCQS0w9sjGRkwiPYpHmc+aMff6HwHYH6aNwIg93P4a5wEUmIFh+ym4aJjf</span>
+<span class="go">Tmfpsnk2fmbHpygfZU2LEhcxXQuiKB/1euXYizXqlESfFROIScQnCn59Ph+FukVB</span>
+<span class="go">6eNV0+yc0mVpvu5u9LViZCICYGPaqoIOquPF9r9LoP1j1ZutGtHkt0VjiR0/uTiE</span>
+<span class="go">BWo3RVuVi/Q6hack2+uhMrepGN045ilCJWfTnfBJoFFE/d6JVanccD9LAyuUxFbl</span>
+<span class="go">ReSxs6aQNb/nZ/eO1gGts9W16E5XaFv+72wbVgSesTxjXiWnCYnGef/qHkCMxnXg</span>
+<span class="go">/bLRjWzYeBeiHHLUWUp2wfo/AgMBAAGjcDBuMC8GCWCGSAGG+EIBDQQiFiBPcGVu</span>
+<span class="go">U1NMIGdlbmVyYXRlZCBDQSBjZXJ0aWZpY2F0ZTAdBgNVHQ4EFgQUp1RR2qzOWUoZ</span>
+<span class="go">T921koMLiOwHOFIwDwYDVR0TAQH/BAUwAwEB/zALBgNVHQ8EBAMCAYYwDQYJKoZI</span>
+<span class="go">hvcNAQELBQADggEBAG29bNrTH9DSpe92p6/GBMAvyPku+sB7ksXn5Ww6PN+isUZo</span>
+<span class="go">NHY9xfe6GqRVnxafIoad4GkOghwNLFnb2DSzTY7mVGLtlh6oz3sYhbmnh8d8CdKT</span>
+<span class="go">OSQr+rsnZjaQHPX4SK4+PXkWDi6OlAGOAHAx7llOmk5yyIvQ8EsgnOS8MzAFoxJI</span>
+<span class="go">/SSkxFtZ6WC5sYfaEX/hz+7OaDO/ck62u/0Xvy9QYGn9Noib1+25Jz1Ti77znB9k</span>
+<span class="go">FpLnQcaLIOsNChX/MbOQ2m9A0AFKYWKl4uyK2LxItxF1nld3gQYLEKJkRwy45TxR</span>
+<span class="go">4tNLuR5MCYspKEKkdZFs97xZhQyHkQhBekwthNg=</span>
+<span class="go">-----END CERTIFICATE-----</span>
+</pre></div>
+</div>
+<p>Server certificate (www.f5test.local)</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">-----BEGIN CERTIFICATE-----</span>
+<span class="go">MIIEmzCCA4OgAwIBAgIBDDANBgkqhkiG9w0BAQsFADBbMQswCQYDVQQGEwJVUzEV</span>
+<span class="go">MBMGA1UEChMMZjV0ZXN0LmxvY2FsMR4wHAYDVQQLExVDZXJ0aWZpY2F0ZSBBdXRo</span>
+<span class="go">b3JpdHkxFTATBgNVBAMTDGY1dGVzdC5sb2NhbDAeFw0xNzA3MTIxMjA3MjNaFw0y</span>
+<span class="go">MDA1MDExMjA3MjNaMGAxCzAJBgNVBAYTAlVTMRUwEwYDVQQKEwxmNXRlc3QubG9j</span>
+<span class="go">YWwxHzAdBgNVBAsTFldlYiBTZXJ2ZXIgQ2VydGlmaWNhdGUxGTAXBgNVBAMTEHd3</span>
+<span class="go">dy5mNXRlc3QubG9jYWwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDL</span>
+<span class="go">MnIIwinW9MQIJ8hwK7TwXHzFoTL6KkBX/5KTOU727nFjiNYMB5o0o//p3qHfHYim</span>
+<span class="go">lWDD2UgKIyx2lAg+DThEX0r6wDb4MXW+tGZKoOm+xbMl6GGXnB+ppQEnGAexki+c</span>
+<span class="go">fYmhrS6QloBBHSTmJ6pKGNEKFn+18v3T2ELsZXQLEFOMc7oWO5oUc4yPbPKHgh8s</span>
+<span class="go">9MoOdNA6vxAff7p0MmyzVDSdxlGYMSRz274z/BfEaL3uOSthzdghDX5e+Wf9Crtx</span>
+<span class="go">drC4rigoMePEuviV3DjSco4hb43TW8FS6tkgBonBx/53A+zJcoKnwkqMsWkvqVvX</span>
+<span class="go">Lx3u4e65z6s2sgJv+i7/AgMBAAGjggFjMIIBXzA3BglghkgBhvhCAQ0EKhYoT3Bl</span>
+<span class="go">blNTTCBnZW5lcmF0ZWQgd2ViIHNlcnZlciBjZXJ0aWZpY2F0ZTAdBgNVHQ4EFgQU</span>
+<span class="go">boBGjDryjx/CGFvQT1eZTJ3VNq8wgY0GA1UdIwSBhTCBgoAUp1RR2qzOWUoZT921</span>
+<span class="go">koMLiOwHOFKhX6RdMFsxCzAJBgNVBAYTAlVTMRUwEwYDVQQKEwxmNXRlc3QubG9j</span>
+<span class="go">YWwxHjAcBgNVBAsTFUNlcnRpZmljYXRlIEF1dGhvcml0eTEVMBMGA1UEAxMMZjV0</span>
+<span class="go">ZXN0LmxvY2FsggkAmg6fZhIgTvowGwYDVR0RBBQwEoIQd3d3LmY1dGVzdC5sb2Nh</span>
+<span class="go">bDAjBgNVHSAEHDAaMAsGCWCGSAFlAgELBTALBglghkgBZQIBCxIwIwYDVR0lBBww</span>
+<span class="go">GgYIKwYBBQUHAwEGCCsGAQUFCAICBgRVHSUAMA4GA1UdDwEB/wQEAwIFoDANBgkq</span>
+<span class="go">hkiG9w0BAQsFAAOCAQEAieguCjEV7tQ+ocoMfWsebTMJUiK+oOOZ95H5FPW5Yz7N</span>
+<span class="go">abRTTGEimncrAyJYqFQgjBhaPV+5o/zn53OQpTe7sJsIzJwWWwktFGJu4zYtpet/</span>
+<span class="go">llGU4/PDdHKmy9ipYEtBlutQP9OLf/PGWuKLnEQ2cT2J2mpDsnELwyJm2YiVoVZp</span>
+<span class="go">wRf4/gcMZK07YrRigZl6Rr33yw8hBRprLyhL9O+tH72sEofX6+m0Z/qEqre6uveR</span>
+<span class="go">3LO+WaxRxCk08ZSobiVJh/lbKEnMCOVL4DsIBDCprcMwxEzdHFtrMwCZg/iQEvZR</span>
+<span class="go">Aasj6BRzEM+e92jAVluUbNja26kd6ImGZaLqul/Elw==</span>
+<span class="go">-----END CERTIFICATE-----</span>
+</pre></div>
+</div>
+<p>Server private key</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">-----BEGIN RSA PRIVATE KEY-----</span>
+<span class="go">MIIEpAIBAAKCAQEAyzJyCMIp1vTECCfIcCu08Fx8xaEy+ipAV/+SkzlO9u5xY4jW</span>
+<span class="go">DAeaNKP/6d6h3x2IppVgw9lICiMsdpQIPg04RF9K+sA2+DF1vrRmSqDpvsWzJehh</span>
+<span class="go">l5wfqaUBJxgHsZIvnH2Joa0ukJaAQR0k5ieqShjRChZ/tfL909hC7GV0CxBTjHO6</span>
+<span class="go">FjuaFHOMj2zyh4IfLPTKDnTQOr8QH3+6dDJss1Q0ncZRmDEkc9u+M/wXxGi97jkr</span>
+<span class="go">Yc3YIQ1+Xvln/Qq7cXawuK4oKDHjxLr4ldw40nKOIW+N01vBUurZIAaJwcf+dwPs</span>
+<span class="go">yXKCp8JKjLFpL6lb1y8d7uHuuc+rNrICb/ou/wIDAQABAoIBADeEduextSDIC292</span>
+<span class="go">/yq2pl8txeFxY646MQ5aA8A53jtVdqGNV3497YIIdPl/HJcLSLTLB387NJWgepuD</span>
+<span class="go">YqUhk4gKyT+tmNdDHDqYq4IkaPj4pzPqRA/aVkRRkvkNdbyshlmpaxtDZ/+VP0GL</span>
+<span class="go">JvPDTqGkGik5cHdUBsoEwnQ4W/ZRaP+hrvFDguYlwZAe+iN35AXWdviuU7Iz1dZN</span>
+<span class="go">mcsmpEyqQoHlWvmS15i9IqSkUabbvt/fWCZQTmAQHDc4J+gyYekcLf+ubVgEzB4C</span>
+<span class="go">Yh/cibO+MMLHOw6aG2lzdnAwPephhhsRYvKdC4GqmxHaNMNdnXuI02HpY8ySL2Ue</span>
+<span class="go">cPmlnSECgYEA5gixIlmQTNOTbq0VP0YFs09/GD1lk57rQmXQ4FTTd0t++tSyV/oX</span>
+<span class="go">ugDXeHA10/K3iufaJNfKtj7bUAlux740nqgOqaq/NENiLvF3RMWFVn0UJOO8loHx</span>
+<span class="go">4ZcpuWfSt/6TRgrHg+V+H0OMCEwUcebG6123Wd43b3JipHttLWFxQpkCgYEA4iI+</span>
+<span class="go">4bIN61ptzZDmWc7hvIDdvFnyqotOjlwL5RAucV6W0T6SYCuOJb6UXYeDfoisHQqv</span>
+<span class="go">i5c+oEqVvZHly53+Bx6zRT9zpEhJfDoF929BC3KB44XQDF2MnXzr34gRw0GvJuaR</span>
+<span class="go">P0lZJqXrN93GXGX80bvqU/eMtOST1BoWkPH2FVcCgYB+TMFs+b334KbvOosS7ZBN</span>
+<span class="go">rlU66uLtlXDYSOzRbuGYe1QhxkyRb1g9oR6tGvcDAx3xX3FvjyfWvlZN8I/pja54</span>
+<span class="go">eg9q6rwGpwSuf5ebo9Oc9BnuUzgFbx1uXj/jc3TH3zffWiXHbma8JasqFxOWoj4P</span>
+<span class="go">lqoH5rGLOEOeycHdC8ZS6QKBgQCXr7MQf/h4TANlpfHugijH4oVah9eQcLu0IKhV</span>
+<span class="go">8gHFSFbQazGS0wSZ6vnotzMMWK9jF7zjXQPET+Ob8tb7O7KfogdMxyBSLa8lZmKE</span>
+<span class="go">NJukCx53uVXyRXpCVf5+xe5sVI4iAP2jPxdPJnLe2aPqbPsm0O+BfYdj/APxfcJv</span>
+<span class="go">Xe7dJwKBgQDgeLXskt1ymndPfDy9XphX/DksZThxy3gFZPicns4mTJ7l6VRpoAd3</span>
+<span class="go">tJUawHyG97Gdo6XSfVn4Ge7FhMgskqZxHHgr6dtmxdbdheY4uyZp+Kep5gmVmynq</span>
+<span class="go">2Kz+pBg3E5IaF/A1mxCGEe7EDTZUpgCuTeIRKslBBPGm6ir2vLFNTA==</span>
+<span class="go">-----END RSA PRIVATE KEY-----</span>
+</pre></div>
+</div>
+<p>Client certificate (<a class="reference external" href="mailto:user&#37;&#52;&#48;f5test&#46;local">user<span>&#64;</span>f5test<span>&#46;</span>local</a>)</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">-----BEGIN CERTIFICATE-----</span>
+<span class="go">MIIElDCCA3ygAwIBAgIBBDANBgkqhkiG9w0BAQsFADBbMQswCQYDVQQGEwJVUzEV</span>
+<span class="go">MBMGA1UEChMMZjV0ZXN0LmxvY2FsMR4wHAYDVQQLExVDZXJ0aWZpY2F0ZSBBdXRo</span>
+<span class="go">b3JpdHkxFTATBgNVBAMTDGY1dGVzdC5sb2NhbDAeFw0xNzA3MTIwODA2MjdaFw0y</span>
+<span class="go">MDA1MDEwODA2MjdaMH0xCzAJBgNVBAYTAlVTMRUwEwYDVQQKEwxmNXRlc3QubG9j</span>
+<span class="go">YWwxGTAXBgNVBAsTEFVzZXIgQ2VydGlmaWNhdGUxGjAYBgNVBAMTEXVzZXIuZjV0</span>
+<span class="go">ZXN0LmxvY2FsMSAwHgYJKoZIhvcNAQkBFhF1c2VyQGY1dGVzdC5sb2NhbDCCASIw</span>
+<span class="go">DQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJmy1XU/hJCbvIT5Dsb4s59yep4j</span>
+<span class="go">zR0OScuFi0keAaZhqdKxW69LN61/M4a7ohRQHj1YEHTRMLQuzSo1keoVqm52KKEy</span>
+<span class="go">Ws9lkpq3S00nB+jCN1ZcvYbW7FDVBPne4Z+Rkd5VsSwhX2wE7B+is5L0XhKUPb4B</span>
+<span class="go">WXdOnHmS/TUH5M5nxiFQnygxr69qMK+pfLqHCk8H8g84zpujE9QSks5iV1xeRdEq</span>
+<span class="go">bOME/VYrllzvYrBRhCzcftJp+PtbY57i/CSawg0P/GeRvPmJoe9HO/vcoG9HmtDX</span>
+<span class="go">s8mtdg6mUKCYBVhED2362bj1KiDZ6t7IoCafBXM94oPlDAG8tAucGbH5gJcCAwEA</span>
+<span class="go">AaOCAT8wggE7MDsGCWCGSAGG+EIBDQQuFixPcGVuU1NMIGdlbmVyYXRlZCBzbWFy</span>
+<span class="go">dGNhcmQgdXNlciBjZXJ0aWZpY2F0ZTAdBgNVHQ4EFgQUwaMwNzNNL4dhB/AzQBaj</span>
+<span class="go">AkindiUwHwYDVR0jBBgwFoAUp1RR2qzOWUoZT921koMLiOwHOFIwDgYDVR0PAQH/</span>
+<span class="go">BAQDAgbAMCkGA1UdJQQiMCAGCCsGAQUFBwMCBgorBgEEAYI3FAICBggrBgEFBQcD</span>
+<span class="go">BDA/BgNVHREEODA2gRF1c2VyQGY1dGVzdC5sb2NhbKAhBgorBgEEAYI3FAIDoBMM</span>
+<span class="go">EXVzZXJAZjV0ZXN0LmxvY2FsMCMGA1UdIAQcMBowCwYJYIZIAWUCAQsJMAsGCWCG</span>
+<span class="go">SAFlAgELEzAbBgNVHQkEFDASMBAGCCsGAQUFBwkEMQQTAlVTMA0GCSqGSIb3DQEB</span>
+<span class="go">CwUAA4IBAQAFKi84V5UX1BiY/XG4gkCwP63JmWwBl9DgFjdG9eXPlFfZIGw/mlEj</span>
+<span class="go">uULGdHLVqOJ1nseuNdbbHic3anxN7TFlZTm+92xX6/mQhumabvXGqq5s9FjvzmQl</span>
+<span class="go">6LSEH8U1oGBr1ByV44U3ifJXuSJyrUtfcZN0BifskcAa05C2pJTkDMxHnG1n/s2C</span>
+<span class="go">lu+Cf2AqAoOgZCz2PsgJtbV5VXckzX+AsWAp2R4ltNWqIbaKEFGsOb9lJa53qmQc</span>
+<span class="go">25iGpuAGm/ierJoVDfDfLnEWK6vWKiQ7MnbwVG6Rot08uYnyBvgK2JzoGMVhjys0</span>
+<span class="go">peMa0CNvHv2B/PtbPaNtCKqHJhz6zOI3</span>
+<span class="go">-----END CERTIFICATE-----</span>
+</pre></div>
+</div>
+<p>Client private key</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">-----BEGIN RSA PRIVATE KEY-----</span>
+<span class="go">MIIEogIBAAKCAQEAmbLVdT+EkJu8hPkOxvizn3J6niPNHQ5Jy4WLSR4BpmGp0rFb</span>
+<span class="go">r0s3rX8zhruiFFAePVgQdNEwtC7NKjWR6hWqbnYooTJaz2WSmrdLTScH6MI3Vly9</span>
+<span class="go">htbsUNUE+d7hn5GR3lWxLCFfbATsH6KzkvReEpQ9vgFZd06ceZL9NQfkzmfGIVCf</span>
+<span class="go">KDGvr2owr6l8uocKTwfyDzjOm6MT1BKSzmJXXF5F0Sps4wT9ViuWXO9isFGELNx+</span>
+<span class="go">0mn4+1tjnuL8JJrCDQ/8Z5G8+Ymh70c7+9ygb0ea0Nezya12DqZQoJgFWEQPbfrZ</span>
+<span class="go">uPUqINnq3sigJp8Fcz3ig+UMAby0C5wZsfmAlwIDAQABAoIBAGlmF7d1vWSlR5ww</span>
+<span class="go">Zw/PUO5QxQFZL7lzKOvmQmP7rcn5Q0n20hbdj+rsRdtpJHalknciwvY41htZ1NvT</span>
+<span class="go">LKLIBL4HTUltjJSY5PYwJ/VahLP7K5OPuXCURi4QRn9LdpHEc7FyNjM7F4KtxXbU</span>
+<span class="go">TizCYxh+i/CWYFHOmMNOJ1GMfj2EIFsUh7i3D9W3A/HKaEn7RWfFWBpF8OwfF7Bl</span>
+<span class="go">k/qyhjIjv8ux3f7K9izvUiVWH/T9FMPXhb89ieT6Up5Qgrq1ejq6JnHkUhZvrA3N</span>
+<span class="go">AFWUI2SxMGMy+jS7HCwj5fM3it/FkkG2uf2v3CXx5CP//lmBWid3nCCr9FtB0UgK</span>
+<span class="go">BwrQ7nECgYEAyxViZTBuPdH0q/GVHcknlIXvl0B4Ah5pNdgfl345fkOLjtXe5HoR</span>
+<span class="go">MMuLHGACD0/mVn4rl/obU/359ANOOrDGT/66AAD24VhNRtvoeMzDRXJ+Y9QNdBwo</span>
+<span class="go">tNHntZzp4msolFkSiHUObHG5jXcxryDig2Y54ZLeRJClCFqBXr1HfTsCgYEAwb8+</span>
+<span class="go">LJYC/SIsbSq6O7cUhiOgcyTkKmKueFUH7ic8JzYXNOTu/mAJuVWb9X1rzCRLc6wj</span>
+<span class="go">MXj9lKZoyVHaoY7aAtd0y75MuoH0FEZG7btE6iba48ZTiAKc3hZXFOszYdPwWUjI</span>
+<span class="go">fRQK3g0aRPfrgXhkTFG/aXc6rWFbxZCd9x1YBFUCgYATMmNJs2lIWLdrJXv2A9TE</span>
+<span class="go">+mAqiQKPGLbTSym5VUo0AEiJ6PeX214Sobr1pLGtJt1cIbMXO6Inr2NYSJO1go5M</span>
+<span class="go">c4S7iVvM817iqtjvylNPFkKSRzI6XosOhKUFit6k84Ize7P/yCjj4WAr2i+NIWuo</span>
+<span class="go">BhrEkvCFxLKE9qEyBmxijwKBgFzlVGtOVgqHGyQQq5C8PKQAawsqchf8jsj1hELl</span>
+<span class="go">Hwtx/PiImCrxY1gwuwGe7FPKRz8kFw++gl+G1pFIpPp3owJfyglyqhl2+8/IznNo</span>
+<span class="go">KifXD3bM/folvo8hyQknqNBMLV6x7idCt982CxVshcfjMLwDKjLoTwMYvkbhC0yU</span>
+<span class="go">DkKtAoGABYODvNIuhUQGk8sKcjByZIpMBeeaFBqPSn0dClUvZnTDTA5sKpblnzQ7</span>
+<span class="go">xj1IK+ZEQQewJ4TifT4CtskkUYDoGz21vsqlBJGXzq/mQPjbyYmeE43jxik7hZ1E</span>
+<span class="go">M33AhM3mAkOT6tnFoD78DNZn8HlHKuaqtlljYCCCiH7tkA59Cuw=</span>
+<span class="go">-----END RSA PRIVATE KEY-----</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="analysis">
+<h2>3.1.2.2. Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The above iRule inspects the x509 subject value in the client’s
+certificate and makes an access decision based on that value. In this
+very simple example, a specific set of users may access different
+corporate resources hosted behind the same VIP.</li>
+</ul>
+</div>
+<div class="section" id="testing">
+<h2>3.1.2.3. Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>In the Client Authentication section of the client SSL
+profile <code class="docutils literal"><span class="pre">f5test</span></code>, set Client Certificate to <code class="docutils literal"><span class="pre">Require</span></code>, and
+assign <code class="docutils literal"><span class="pre">ca_f5test</span></code> to the Trusted Certificate Authorities option.</li>
+<li>Test accessing the HTTPS URL <a class="reference external" href="https://www.f5test.local">https://www.f5test.local</a> from the
+client. The client browser should prompt you to select a certificate.
+Upon selecting this certificate, you should be able to pass through
+to the application.</li>
+</ol>
+</div>
+</div>
+
+
+        
+      </div>
+    </div>
+  </div>
+
+
+  <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="content-fluid pre-footer">
+            <div class="blocks-container">
+              <div class="block">
+                <h3>Support Programs</h3>
+                <p>Regionally located support centers enable F5 to provide support in a number of languages through native-speaking support engineers.</p>
+                <a class="btn internalLink" data-ng-href="https://f5.com/support/support-offerings" target="_blank" href="https://f5.com/support/support-offerings">See more
+                  <span class="icon-1x-right icon-new-window" data-icon="new-window">​</span>
+                </a>
+              </div>
+              <div class="block">
+                <h3>Contact Support</h3>
+                <p>
+                  North America: 1-888-882-7535<br>
+                  Outside North America: 800-11-275-435
+                </p>
+                <a class="btn internalLink" data-ng-href="https://f5.com/about-us/contact#regional-support" target="_blank" href="https://f5.com/about-us/contact#regional-support">Local Support Numbers
+                  <span class="icon-1x-right icon-new-window" data-icon="new-window">​</span>
+                </a>
+              </div>
+              <div class="block">
+                <h3>Feedback and Help</h3>
+                <p>Have questions, suggestions, or just want to get something off your chest? Let us know.</p>
+                <a class="btn" data-ui-sref="siteFeedback" target="_blank" href="https://support.f5.com/csp/siteFeedback">Leave feedback</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="footer">
+            <div class="container">
+              <div class="col-sm-3 col-md-2">
+                <h4>About F5</h4>
+                <ul>
+                  <li><a data-ng-href="https://f5.com/about-us/contact" target="_blank" data-link-type="footer" href="https://f5.com/about-us/contact" class="internalLink">Contact F5</a>
+                  </li>
+                  <li><a data-ng-href="https://f5.com/about-us/careers" target="_blank" data-link-type="footer" href="https://f5.com/about-us/careers" class="internalLink">Careers</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-sm-3 col-md-2">
+                <h4>Education</h4>
+                <ul>
+                  <li><a data-ng-href="https://f5.com/education/training" target="_blank" data-link-type="footer" href="https://f5.com/education/training" class="internalLink">Training</a>
+                  </li>
+                  <li><a data-ng-href="https://f5.com/education/certification" target="_blank" data-link-type="footer" href="https://f5.com/education/certification" class="internalLink">Certification</a>
+                  </li>
+                  <li><a data-ng-href="https://f5.com/education/training/free-courses" target="_blank" data-link-type="footer" href="https://f5.com/education/training/free-courses" class="internalLink">Free Online Training</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="col-sm-3 col-md-2">
+                <h4>F5 sites</h4>
+                <ul>
+                <li><a data-ng-href="https://f5.com" target="_blank" data-link-type="footer" href="https://f5.com" class="internalLink">F5.com</a>
+                </li>
+                <li><a data-ng-href="https://devcentral.f5.com" target="_blank" data-link-type="footer" href="https://devcentral.f5.com" class="internalLink">Community</a>
+                </li>
+                <li><a data-ng-href="https://partners.f5.com" target="_blank" data-link-type="footer" href="https://partners.f5.com" class="internalLink">Partners</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-3 col-md-2">
+            <h4>Support Tasks</h4>
+            <ul>
+                <li><a data-ui-sref="mySupport.createServiceRequest" data-link-type="footer" href="https://support.f5.com/csp/my-support/service-request">Create Service Request </a>
+                </li>
+                <li><a data-ng-href="https://f5.com/about-us/contact#regional-support" target="_blank" data-link-type="footer" href="https://f5.com/about-us/contact#regional-support" class="internalLink">Contact Support</a>
+                </li>
+                <li><a data-ui-sref="siteFeedback" target="_blank" data-link-type="footer" href="https://support.f5.com/csp/siteFeedback">Leave feedback [+]</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-xs-12 col-md-3 right">
+            <h4>Connect with us</h4>
+            <ul class="social_icons">
+                <li><a href="//twitter.com/f5networks" target="_blank" data-name="twitter" data-type="" data-prefix="social" data-utf="E032" title="Twitter" class="externalLink"><i class="icon-1x icon-twitter icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a href="//www.linkedin.com/companies/f5-networks" target="_blank" class="linkedin externalLink" title="LinkedIn"><i class="icon-1x icon-linkedin icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a href="//www.facebook.com/f5networksinc" target="_blank" class="facebook externalLink" title="Facebook"><i class="icon-1x icon-facebook icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a href="//www.youtube.com/f5networksinc" target="_blank" class="youtube externalLink" title="YouTube"><i class="icon-1x icon-youtube icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a data-ng-href="https://devcentral.f5.com" target="_blank" class="devcentral internalLink" title="DevCentral" href="https://devcentral.f5.com"><i class="icon-1x icon-dc-pos icon-inverse-circle" data-link-type="footer"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="content-fluid left">
+            <div class="col-xs-12">
+                <p>
+                    © Copyright <span class="ng-binding">2017</span> by F5 Networks, Inc. |
+                    <a data-ng-href="https://f5.com/about-us/policies" target="_blank" data-link-type="footer" href="https://f5.com/about-us/policies" class="internalLink">Policies</a> |
+                    <a data-ng-href="https://f5.com/about-us/policies/trademarks" target="_blank" data-link-type="footer" href="https://f5.com/about-us/policies/trademarks" class="internalLink">Trademarks</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+</footer>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../../../_static/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    jQuery.noConflict(true)
+  </script>
+  </body>
+</html>
