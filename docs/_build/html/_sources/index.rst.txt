@@ -1,8 +1,6 @@
 Build Documentation
 =====================
 
-Welcome
-
 .. image:: /_static/html_front_cover.png
 
 .. toctree::

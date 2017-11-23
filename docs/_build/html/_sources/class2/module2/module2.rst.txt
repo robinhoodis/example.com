@@ -23,8 +23,6 @@ Students will work with the following concepts as part of a group of lab exercis
 
 .. toctree::
    :hidden:
-   :numbered:
-   :maxdepth: 2
    :glob:
 
    lab*/lab*
