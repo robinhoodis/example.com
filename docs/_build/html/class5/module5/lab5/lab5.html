@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>WAF Whitelist &#8212; EXAMPLE.COM  documentation</title>
+    <title>Source Address &#8212; EXAMPLE.COM  documentation</title>
     
     <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -28,8 +28,7 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Source Address" href="../lab5/lab5.html" />
-    <link rel="prev" title="Empty Cart" href="../lab3/lab3.html" />
+    <link rel="prev" title="WAF Whitelist" href="../lab4/lab4.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -224,10 +223,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../lab1/lab1.html">DNS is B0rk3n</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../lab2/lab2.html">SSL Hell</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../lab3/lab3.html">Empty Cart</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">WAF Whitelist</a><ul class="simple">
+<li class="toctree-l3"><a class="reference internal" href="../lab4/lab4.html">WAF Whitelist</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Source Address</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../lab5/lab5.html">Source Address</a></li>
 </ul>
 </li>
 </ul>
@@ -235,11 +234,8 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../lab3/lab3.html"
-                        title="previous chapter">Empty Cart</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="../lab5/lab5.html"
-                        title="next chapter">Source Address</a></p>
+  <p class="topless"><a href="../lab4/lab4.html"
+                        title="previous chapter">WAF Whitelist</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
@@ -248,9 +244,11 @@
           <span class="right"><a href="../../../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="waf-whitelist">
-<h1>WAF Whitelist<a class="headerlink" href="#waf-whitelist" title="Permalink to this headline">¶</a></h1>
-<p>All traffic is going through a WAF, we need to whitelist an IP address.</p>
+  <div class="section" id="source-address">
+<h1>Source Address<a class="headerlink" href="#source-address" title="Permalink to this headline">¶</a></h1>
+<p>The “backend” servers need to see the IP address of the client.</p>
+<p>Currently web server logs are all reporting the IP address of the ADC.</p>
+<p>The “backend” servers are a third party app that does not support an X-Forwarded-For header.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -260,10 +258,8 @@
 		     <div class="row next-prev-btn-row">
            <div class="col-lg-12">
            
-		        <a href="../lab3/lab3.html" title="Empty Cart" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+		        <a href="../lab4/lab4.html" title="WAF Whitelist" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
-           
-              <a href="../lab5/lab5.html" title="Source Address" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>
