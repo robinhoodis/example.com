@@ -1,20 +1,19 @@
 Support
 =====================================================
 
-.. image:: /_static/class1/class1_availability.png
 
-* Students will configure F5 DNS servers to support GSLB services on a single device in site1.
-* Join an additional F5 DNS server in site2 to the GSLB cluster.
-* An Internal group of DNS servers is authoritative for the zone example.com and contains a static A record for "www.example.com", which resolves to 203.0.113.9.
-* Students will add glue records and delegate gslb.example.com to the F5 GSLB DNS servers.
-* Convert the A record "www.example.com" to be a CNAME record pointing to *www.gslb.example.com*.
+North America:
+(888) 882-7535
 
-At the end of the lab students will have configured F5 GSLB DNS servers to alternately resolve www.example.com to 203.0.113.9 and 198.51.100.41 ;
+Outside North America:
++800 11 ASK 4 F5
+(800 11275 435)
 
-Support -
-  Security Response
-  Ticketing System
-  iHealth
+https://support.f5.com/csp/my-support/home
+
+Register for a support account. Proide a supported serial number at sign-up.
+
+https://login.f5.com/resource/registerEmail.jsp
 
 .. toctree::
    :hidden:

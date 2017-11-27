@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1.3.2. Device Trust &#8212; EXAMPLE.COM  documentation</title>
+    <title>Device Trust &#8212; EXAMPLE.COM  documentation</title>
     
     <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="1.3.3. Sync Group" href="task3.html" />
-    <link rel="prev" title="1.3.1.4. site2_ha-pair" href="lab1/task4.html" />
+    <link rel="next" title="Sync Group" href="task3.html" />
+    <link rel="prev" title="site2_ha-pair" href="lab1/task4.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -214,24 +214,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../intro.html">Topology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../class1/class1.html">LTM</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../class2.html">DNS</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../module1.html">1. Availability</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../lab1/lab1.html">1.1. Settings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lab2/lab2.html">1.2. Listeners</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="lab3.html">1.3. Datacenters</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="task1.html">1.3.1. Servers</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">1.3.2. Device Trust</a></li>
-<li class="toctree-l4"><a class="reference internal" href="task3.html">1.3.3. Sync Group</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../module1.html">Availability</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../lab1/lab1.html">Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab2/lab2.html">Listeners</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="lab3.html">Datacenters</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="task1.html">Servers</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Device Trust</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task3.html">Sync Group</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../lab4/lab4.html">1.4. Pools</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lab5/lab5.html">1.5. FQDN</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lab6/lab6.html">1.6. Delegation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lab7/lab7.html">1.7. Results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lab8/lab8.html">1.8. Persistence</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lab9/lab9.html">1.9. LB Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab4/lab4.html">Pools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab5/lab5.html">FQDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab6/lab6.html">Delegation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab7/lab7.html">Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab8/lab8.html">Persistence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab9/lab9.html">LB Methods</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../module2/module2.html">2. Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../module2/module2.html">Security</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../class3/class3.html">WAF</a></li>
@@ -240,10 +240,10 @@
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="lab1/task4.html"
-                        title="previous chapter">1.3.1.4. site2_ha-pair</a></p>
+                        title="previous chapter">site2_ha-pair</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="task3.html"
-                        title="next chapter">1.3.3. Sync Group</a></p>
+                        title="next chapter">Sync Group</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
@@ -253,7 +253,7 @@
         </h4>
         
   <div class="section" id="device-trust">
-<h1>1.3.2. Device Trust<a class="headerlink" href="#device-trust" title="Permalink to this headline">¶</a></h1>
+<h1>Device Trust<a class="headerlink" href="#device-trust" title="Permalink to this headline">¶</a></h1>
 <p>A mesh of F5 DNS servers need to exchange keys to establish a trusted mechanism for HA communications.</p>
 <img alt="../../../_images/establish_trust.png" src="../../../_images/establish_trust.png" />
 <p>Launch Putty and login to gtm1.site1.example.com</p>
@@ -274,10 +274,10 @@
 		     <div class="row next-prev-btn-row">
            <div class="col-lg-12">
            
-		        <a href="lab1/task4.html" title="1.3.1.4. site2_ha-pair" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+		        <a href="lab1/task4.html" title="site2_ha-pair" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="task3.html" title="1.3.3. Sync Group" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="task3.html" title="Sync Group" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>

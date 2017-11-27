@@ -5,7 +5,6 @@ DNS
 
 .. toctree::
    :hidden:
-   :numbered:
    :maxdepth: 2
    :glob:
 
