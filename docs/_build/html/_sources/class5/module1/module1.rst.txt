@@ -1,6 +1,7 @@
 Support
 =====================================================
 
+.. image:: /_static/class5/support-f5-com.png
 
 North America:
 (888) 882-7535
