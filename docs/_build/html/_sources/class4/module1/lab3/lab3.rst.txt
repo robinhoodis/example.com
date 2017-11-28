@@ -1,0 +1,13 @@
+Devcentral
+=====================================================
+
+Sign up for a Devcentral account.
+
+Navigate to:: https://devcentral.f5.com/register
+
+.. image:: /_static/class4/devcentral_join.png
+
+.. toctree::
+   :hidden:
+   :glob:
+
