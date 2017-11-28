@@ -1,7 +1,7 @@
 Troubleshooting
 =====================================================
 
-.. image:: /_static/class1/class1_availability.png
+.. image:: /_static/site1_site2_remote.png
 
 .. toctree::
    :hidden:
