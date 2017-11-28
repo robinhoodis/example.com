@@ -1,18 +1,13 @@
 Service Request
 =====================================================
 
-https://askf5.f5.com/csp/my-support/service-request
+Tickets may be created over the phone, or online.
 
-North America:
-(888) 882-7535
+To create a ticket online navigate to: https://askf5.f5.com/csp/my-support/service-request
 
-Outside North America:
-+800 11 ASK 4 F5
-(800 11275 435)
+To create a ticket over the phone call: 1 (888) 882-7535
 
 https://support.f5.com/csp/my-support/home
-
-Register for a support account. Proide a supported serial number at sign-up.
 
 .. toctree::
    :hidden:
