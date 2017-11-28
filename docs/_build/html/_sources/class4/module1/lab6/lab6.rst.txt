@@ -1,8 +1,6 @@
 iHealth
 =====================================================
 
-Navigate to: https://ihealth.f5.com
-
 Manually upload your qkview file or use the automated upload in version 13
 
 .. image:: /_static/class4/ihealth-f5-com.png
@@ -22,6 +20,8 @@ Click "New Support Snapshot"
 Optionally supply a support Case ID
 
 .. image:: /_static/class4/qkview_upload.png
+
+Navigate to: https://ihealth.f5.com
 
 .. toctree::
    :hidden:
