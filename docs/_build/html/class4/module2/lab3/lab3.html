@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>tshark &#8212; EXAMPLE.COM  documentation</title>
+    <title>ssldump &#8212; EXAMPLE.COM  documentation</title>
     
     <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="ssldump" href="../lab4/lab4.html" />
+    <link rel="next" title="iqdump" href="../lab5/lab5.html" />
     <link rel="prev" title="Wireshark" href="../lab2/lab2.html" />
 <!--
 # Copyright 2017 F5 Networks
@@ -220,10 +220,9 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../module2.html">Packet Capture</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../lab1/lab1.html">tcpdump</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../lab2/lab2.html">Wireshark</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">tshark</a><ul class="simple">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ssldump</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../lab4/lab4.html">ssldump</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../lab5/lab5.html">iqdump</a></li>
 </ul>
 </li>
@@ -238,8 +237,8 @@
   <p class="topless"><a href="../lab2/lab2.html"
                         title="previous chapter">Wireshark</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../lab4/lab4.html"
-                        title="next chapter">ssldump</a></p>
+  <p class="topless"><a href="../lab5/lab5.html"
+                        title="next chapter">iqdump</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
@@ -248,8 +247,21 @@
           <span class="right"><a href="../../../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="tshark">
-<h1>tshark<a class="headerlink" href="#tshark" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="ssldump">
+<h1>ssldump<a class="headerlink" href="#ssldump" title="Permalink to this headline">¶</a></h1>
+<p>Using Putty log into the Active bigip in site1</p>
+<p>execute the following command</p>
+<div class="admonition-tmsh admonition">
+<p class="first admonition-title">TMSH</p>
+<p class="last">ssldump -A -d -k /config/ssl/ssl.key/default.key -n -isp1_vlan host 203.0.113.9 and port 443</p>
+</div>
+<p>Open a CMD prompt and run the following command</p>
+<div class="admonition-tmsh admonition">
+<p class="first admonition-title">TMSH</p>
+<p class="last">curl -k <a class="reference external" href="https://203.0.113.9/info.php">https://203.0.113.9/info.php</a></p>
+</div>
+<p>Observe the information captured in the ssldump</p>
+<p>For more information research <a class="reference external" href="https://devcentral.f5.com/articles/troubleshooting-tls-problems-with-ssldump">https://devcentral.f5.com/articles/troubleshooting-tls-problems-with-ssldump</a></p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -262,7 +274,7 @@
 		        <a href="../lab2/lab2.html" title="Wireshark" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="../lab4/lab4.html" title="ssldump" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="../lab5/lab5.html" title="iqdump" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>
