@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="iRules" href="lab1/lab1.html" />
+    <link rel="next" title="Fixit" href="../module5/module5.html" />
     <link rel="prev" title="Counters" href="../module3/lab4/lab4.html" />
 <!--
 # Copyright 2017 F5 Networks
@@ -219,9 +219,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../module1/module1.html">Support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">Packet Capture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">Diagnostics</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Debug</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="lab1/lab1.html">iRules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lab2/lab2.html">Monitors</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Debug</a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../module5/module5.html">Fixit</a></li>
@@ -233,8 +231,8 @@
   <p class="topless"><a href="../module3/lab4/lab4.html"
                         title="previous chapter">Counters</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="lab1/lab1.html"
-                        title="next chapter">iRules</a></p>
+  <p class="topless"><a href="../module5/module5.html"
+                        title="next chapter">Fixit</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
@@ -247,6 +245,16 @@
 <h1>Debug<a class="headerlink" href="#debug" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
+<p>Navigate to: <a class="reference external" href="https://devcentral.f5.com/codeshare/log-http-headers">https://devcentral.f5.com/codeshare/log-http-headers</a></p>
+<p>Copy the iRule code.</p>
+<p>Navigate to: <strong>Local Traffic  ››  iRules : iRule List</strong></p>
+<p><a class="reference external" href="https://bigip1.site1.example.com/tmui/Control/jspmap/tmui/locallb/rule/create.jsp">https://bigip1.site1.example.com/tmui/Control/jspmap/tmui/locallb/rule/create.jsp</a></p>
+<p>Create a new iRule named “shared/log_headers_irule” and paste the copied code from devcentral</p>
+<p>Modify the LTM virtual server on bigip1.site1 isp1_site1_www.example.com_tcp_http_virtual</p>
+<p>Associate the log_headers_irule to the virtual server</p>
+<p>on the active bigip in site1 run “tail -f /var/log/ltm”</p>
+<p>From the Windows jumpbox CMD prompt run</p>
+<p>curl <a class="reference external" href="http://203.0.113.9">http://203.0.113.9</a></p>
 </div>
 
 
@@ -257,7 +265,7 @@
 		        <a href="../module3/lab4/lab4.html" title="Counters" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="lab1/lab1.html" title="iRules" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="../module5/module5.html" title="Fixit" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>
