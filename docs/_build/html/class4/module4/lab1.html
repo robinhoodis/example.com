@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Fixit &#8212; EXAMPLE.COM  documentation</title>
+    <title>Logging Headers &#8212; EXAMPLE.COM  documentation</title>
     
     <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="DNS is B0rk3n" href="lab1/lab1.html" />
-    <link rel="prev" title="Monitors" href="../module4/lab2.html" />
+    <link rel="next" title="Monitors" href="lab2.html" />
+    <link rel="prev" title="Debug" href="module4.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -219,25 +219,24 @@
 <li class="toctree-l2"><a class="reference internal" href="../module1/module1.html">Support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">Packet Capture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">Diagnostics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module4/module4.html">Debug</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Fixit</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="lab1/lab1.html">DNS is B0rk3n</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lab2/lab2.html">SSL Hell</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lab3/lab3.html">Empty Cart</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lab4/lab4.html">WAF Whitelist</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lab5/lab5.html">Source Address</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="module4.html">Debug</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Logging Headers</a><ul class="simple">
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="lab2.html">Monitors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../module5/module5.html">Fixit</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../module4/lab2.html"
-                        title="previous chapter">Monitors</a></p>
+  <p class="topless"><a href="module4.html"
+                        title="previous chapter">Debug</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="lab1/lab1.html"
-                        title="next chapter">DNS is B0rk3n</a></p>
+  <p class="topless"><a href="lab2.html"
+                        title="next chapter">Monitors</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
@@ -246,11 +245,20 @@
           <span class="right"><a href="../../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="fixit">
-<h1>Fixit<a class="headerlink" href="#fixit" title="Permalink to this headline">¶</a></h1>
-<img alt="../../_images/broken-computer-internet-outage.jpeg" src="../../_images/broken-computer-internet-outage.jpeg" />
+  <div class="section" id="logging-headers">
+<h1>Logging Headers<a class="headerlink" href="#logging-headers" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
+<p>Navigate to: <a class="reference external" href="https://devcentral.f5.com/codeshare/log-http-headers">https://devcentral.f5.com/codeshare/log-http-headers</a></p>
+<p>Copy the iRule code.</p>
+<p>Navigate to: <strong>Local Traffic  ››  iRules : iRule List</strong></p>
+<p><a class="reference external" href="https://bigip1.site1.example.com/tmui/Control/jspmap/tmui/locallb/rule/create.jsp">https://bigip1.site1.example.com/tmui/Control/jspmap/tmui/locallb/rule/create.jsp</a></p>
+<p>Create a new iRule named “shared/log_headers_irule” and paste the copied code from devcentral</p>
+<p>Modify the LTM virtual server on bigip1.site1 isp1_site1_www.example.com_tcp_http_virtual</p>
+<p>Associate the log_headers_irule to the virtual server</p>
+<p>on the active bigip in site1 run “tail -f /var/log/ltm”</p>
+<p>From the Windows jumpbox CMD prompt run</p>
+<p>curl <a class="reference external" href="http://203.0.113.9">http://203.0.113.9</a></p>
 </div>
 
 
@@ -258,10 +266,10 @@
 		     <div class="row next-prev-btn-row">
            <div class="col-lg-12">
            
-		        <a href="../module4/lab2.html" title="Monitors" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+		        <a href="module4.html" title="Debug" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="lab1/lab1.html" title="DNS is B0rk3n" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="lab2.html" title="Monitors" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>

@@ -1,11 +1,8 @@
-Debug
+Monitors
 =====================================================
 
 .. toctree::
    :hidden:
    :glob:
 
-   lab*
-
-TODO: insert a picture here
-
+https://support.f5.com/csp/article/K12531
