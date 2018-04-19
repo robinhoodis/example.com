@@ -40,7 +40,17 @@ To simulate an outage, disable interfaces and observe the effects.
 
 #. Refresh statistics on gtm1.site1 and make sure DNS requests are still resolving.
 
+#. ROBIN - fix this section
+
    https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A
+
+     .. image:: /_static/class1/gtm1_site1_disable_interfaces.png
+
+   TMSH command to run on only gtm1.site2:
+
+   .. admonition:: TMSH
+   
+      show gtm wideip
 
 #. Re-enable interfaces on gtm1.site2, disable interfaces on gtm1.site1.
    Observe statistics on gtm1.site2 and make sure DNS requests are still resolving.

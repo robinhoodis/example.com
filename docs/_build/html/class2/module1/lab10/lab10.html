@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Servers &#8212; EXAMPLE.COM  documentation</title>
+    <title>Anycast &#8212; EXAMPLE.COM  documentation</title>
     
     <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="gtm1.site1" href="lab1/task1.html" />
-    <link rel="prev" title="Datacenters" href="lab3.html" />
+    <link rel="next" title="Listeners" href="../lab2/lab2.html" />
+    <link rel="prev" title="Settings" href="../lab1/lab1.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -216,20 +216,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../class2.html">DNS</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../module1.html">Availability</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../lab1/lab1.html">Settings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lab10/lab10.html">Anycast</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Anycast</a><ul class="simple">
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../lab2/lab2.html">Listeners</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="lab3.html">Datacenters</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Servers</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="lab1/task1.html">gtm1.site1</a></li>
-<li class="toctree-l5"><a class="reference internal" href="lab1/task2.html">gtm1.site2</a></li>
-<li class="toctree-l5"><a class="reference internal" href="lab1/task3.html">site1_ha-pair</a></li>
-<li class="toctree-l5"><a class="reference internal" href="lab1/task4.html">site2_ha-pair</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="task2.html">Device Trust</a></li>
-<li class="toctree-l4"><a class="reference internal" href="task3.html">Sync Group</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../lab3/lab3.html">Datacenters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../lab4/lab4.html">Pools</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../lab5/lab5.html">FQDN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../lab6/lab6.html">Delegation</a></li>
@@ -247,11 +238,11 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="lab3.html"
-                        title="previous chapter">Datacenters</a></p>
+  <p class="topless"><a href="../lab1/lab1.html"
+                        title="previous chapter">Settings</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="lab1/task1.html"
-                        title="next chapter">gtm1.site1</a></p>
+  <p class="topless"><a href="../lab2/lab2.html"
+                        title="next chapter">Listeners</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
@@ -260,16 +251,46 @@
           <span class="right"><a href="../../../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="servers">
-<h1>Servers<a class="headerlink" href="#servers" title="Permalink to this headline">¶</a></h1>
-<p>Server objects need to be defined and grouped into a Datacenter</p>
-<p>Navigate to: <strong>DNS  ››  GSLB : Servers : Server List</strong></p>
-<div class="figure">
-<img alt="../../../_images/gslb_servers_flyout.png" src="../../../_images/gslb_servers_flyout.png" />
-</div>
-<p><a class="reference external" href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/server/list.jsp">https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/server/list.jsp</a></p>
+  <div class="section" id="anycast">
+<h1>Anycast<a class="headerlink" href="#anycast" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
+<p><a class="reference external" href="https://tools.ietf.org/html/rfc5398">https://tools.ietf.org/html/rfc5398</a>
+<a class="reference external" href="https://support.f5.com/csp/article/K13802">https://support.f5.com/csp/article/K13802</a>
+<a class="reference external" href="https://support.f5.com/csp/article/K13804">https://support.f5.com/csp/article/K13804</a></p>
+<p>A site specific sync group name will be created, and synchronization will be enabled.</p>
+<p>Navigate to: <strong>DNS  ››  Settings : GSLB : General</strong></p>
+<p>Configure the global settings for GSLB according to the following table:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Synchronize</td>
+<td>checked</td>
+</tr>
+<tr class="row-odd"><td>Group Name</td>
+<td>EXAMPLE_group</td>
+</tr>
+<tr class="row-even"><td>Synchronize DNS Zone Files</td>
+<td>checked</td>
+</tr>
+</tbody>
+</table>
+<img alt="../../../_images/gtm_global_settings.png" src="../../../_images/gtm_global_settings.png" />
+<p><a class="reference external" href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/settings/gslb/properties_general.jsp">https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/settings/gslb/properties_general.jsp</a></p>
+<div class="admonition-tmsh admonition">
+<p class="first admonition-title">TMSH</p>
+<p class="last">tmsh modify gtm global-settings general synchronization yes synchronization-group-name EXAMPLE_group synchronize-zone-files yes</p>
+</div>
+<p><a class="reference external" href="https://support.f5.com/csp/article/K13734">https://support.f5.com/csp/article/K13734</a></p>
+<p><a class="reference external" href="https://support.f5.com/kb/en-us/products/big-ip-dns/manuals/product/bigip-dns-implementations-12-0-0/4.html">https://support.f5.com/kb/en-us/products/big-ip-dns/manuals/product/bigip-dns-implementations-12-0-0/4.html</a></p>
 </div>
 
 
@@ -277,10 +298,10 @@
 		     <div class="row next-prev-btn-row">
            <div class="col-lg-12">
            
-		        <a href="lab3.html" title="Datacenters" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+		        <a href="../lab1/lab1.html" title="Settings" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="lab1/task1.html" title="gtm1.site1" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="../lab2/lab2.html" title="Listeners" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>

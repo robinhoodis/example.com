@@ -21,6 +21,11 @@ Results
 
    https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A
 
+Troubleshooting
+=================================
+
+To simulate an outage, disable interfaces and observe the effects.
+
 #. Disable physical interfaces on gtm1.site2:
 
    https://gtm1.site2.example.com/tmui/Control/form?__handler=/tmui/locallb/network/interface/list&__source=disable&__linked=false&__fromError=false
