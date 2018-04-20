@@ -1,4 +1,4 @@
-Build Documentation
+Reference Architecture
 =====================
 
 .. image:: /_static/html_front_cover.png
