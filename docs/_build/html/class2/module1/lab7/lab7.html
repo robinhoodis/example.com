@@ -223,9 +223,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../class1/class1.html">LTM</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../class2.html">DNS</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../module1.html">Availability</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../lab1/lab1.html">Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab01/lab01.html">Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab02/lab02.html">Listeners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../lab10/lab10.html">Anycast</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lab2/lab2.html">Listeners</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../lab3/lab3.html">Datacenters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../lab4/lab4.html">Pools</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../lab5/lab5.html">FQDN</a></li>
@@ -291,7 +291,17 @@
 </div>
 </li>
 <li><p class="first">Refresh statistics on gtm1.site1 and make sure DNS requests are still resolving.</p>
+</li>
+<li><p class="first">ROBIN - fix this section</p>
 <p><a class="reference external" href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&amp;type=1&amp;identity=www.gslb.example.com+%3A+A">https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&amp;type=1&amp;identity=www.gslb.example.com+%3A+A</a></p>
+<blockquote>
+<div><img alt="../../../_images/gtm1_site1_disable_interfaces.png" src="../../../_images/gtm1_site1_disable_interfaces.png" />
+</div></blockquote>
+<p>TMSH command to run on only gtm1.site2:</p>
+<div class="admonition-tmsh admonition">
+<p class="first admonition-title">TMSH</p>
+<p class="last">show gtm wideip</p>
+</div>
 </li>
 <li><p class="first">Re-enable interfaces on gtm1.site2, disable interfaces on gtm1.site1.
 Observe statistics on gtm1.site2 and make sure DNS requests are still resolving.</p>
