@@ -1,12 +1,12 @@
 Reference Architecture
-=====================
+=======================
 
 .. image:: /_static/html_front_cover.png
 
 .. toctree::
    :hidden:
    :maxdepth: 5
-   :caption: Contents:
+   :titlesonly:
    :glob:
 
    intro.rst
