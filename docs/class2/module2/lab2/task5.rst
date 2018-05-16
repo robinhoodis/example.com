@@ -12,7 +12,7 @@ https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/pool/list.jsp
 Create a DNS pool according to the tables below:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "branch01_dns_pool"

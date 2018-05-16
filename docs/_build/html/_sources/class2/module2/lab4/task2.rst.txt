@@ -8,7 +8,7 @@ Navigate to: **DNS  ››  Delivery : Keys : DNSSEC Key List**
 Create a key signing key according to the following table:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    Name, example.com_ksk

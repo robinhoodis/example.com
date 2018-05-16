@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Results &#8212; EXAMPLE.COM  documentation</title>
+    <title>TCP Listeners &#8212; EXAMPLE.COM  documentation</title>
     
     <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Hidden Master" href="../lab3/lab3.html" />
-    <link rel="prev" title="TCP Listeners" href="task6.html" />
+    <link rel="next" title="Results" href="task8.html" />
+    <link rel="prev" title="UDP Listener" href="task6.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -209,7 +209,6 @@
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
 
-<p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../intro.html">Topology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../class1/class1.html">LTM</a></li>
@@ -222,9 +221,10 @@
 <li class="toctree-l4"><a class="reference internal" href="task2.html">DNS Profile</a></li>
 <li class="toctree-l4"><a class="reference internal" href="task3.html">UDP Profile</a></li>
 <li class="toctree-l4"><a class="reference internal" href="task4.html">TCP Profile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="task5.html">UDP Listener</a></li>
-<li class="toctree-l4"><a class="reference internal" href="task6.html">TCP Listeners</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task5.html">DNS Servers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task6.html">UDP Listener</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">TCP Listeners</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task8.html">Results</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../lab3/lab3.html">Hidden Master</a></li>
@@ -239,14 +239,15 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../class3/class3.html">WAF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../class4/class4.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../google68a0f3f25ab55c69.html">Analytics</a></li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="task6.html"
-                        title="previous chapter">TCP Listeners</a></p>
+                        title="previous chapter">UDP Listener</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../lab3/lab3.html"
-                        title="next chapter">Hidden Master</a></p>
+  <p class="topless"><a href="task8.html"
+                        title="next chapter">Results</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
@@ -255,43 +256,98 @@
           <span class="right"><a href="../../../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="results">
-<h1>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h1>
-<ol class="arabic">
-<li><p class="first">From the jumpbox open a command prompt, perform several recursive queries to your new listener to test.</p>
-<p>Repeat some of the same queries multiple times</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">dig www.f5.com</span>
-<span class="go">dig www.wikipedia.org</span>
-<span class="go">dig www.ncsu.edu</span>
-<span class="go">dig www.example.com</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">Viewing Cache Entries</p>
-<p>Navigate to: <strong>DNS  ››  Caches : Cache List  ››  Properties : transparent_cache</strong></p>
-<img alt="../../../_images/router01_cache_select_statistics.png" src="../../../_images/router01_cache_select_statistics.png" />
-<p><a class="reference external" href="https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/cache/properties.jsp?name=%2FCommon%2Ftransparent_cache">https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/cache/properties.jsp?name=%2FCommon%2Ftransparent_cache</a></p>
-<p>Navigate to: <strong>Statistics  ››  Module Statistics : DNS : Caches  ››  Caches</strong></p>
-<img alt="../../../_images/router01_cache_click_view.png" src="../../../_images/router01_cache_click_view.png" />
-<p>Navigate to: <strong>Statistics  ››  Module Statistics : DNS : Caches  ››  Caches : transparent_cache</strong></p>
-<img alt="../../../_images/router01_cache_view_details.png" src="../../../_images/router01_cache_view_details.png" />
-<p><a class="reference external" href="https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/cache/stats_detail.jsp?name=/Common/transparent_cache">https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/cache/stats_detail.jsp?name=/Common/transparent_cache</a></p>
+  <div class="section" id="tcp-listeners">
+<h1>TCP Listeners<a class="headerlink" href="#tcp-listeners" title="Permalink to this headline">¶</a></h1>
+<p>A TCP listener is an IP address that will receive DNS queries.</p>
+<p>Navigate to: <strong>DNS  ››  Delivery : Listeners : Listener List</strong></p>
+<img alt="../../../_images/router01_create_virtual_flyout.png" src="../../../_images/router01_create_virtual_flyout.png" />
+<p><a class="reference external" href="https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/listener/list.jsp">https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/listener/list.jsp</a></p>
+<p>Create two TCP listeners according to the table below:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>DC01_tcp_53_virtual</td>
+</tr>
+<tr class="row-odd"><td>Destination</td>
+<td>10.1.70.200</td>
+</tr>
+<tr class="row-even"><td>Service Port</td>
+<td>DNS 53</td>
+</tr>
+<tr class="row-odd"><td>VLAN and Tunnel Traffic -&gt; Enabled on..</td>
+<td>branch01_vlan</td>
+</tr>
+<tr class="row-even"><td>Protocol</td>
+<td>TCP</td>
+</tr>
+<tr class="row-odd"><td>Protocol Profile (Client)</td>
+<td>example.com_tcp-dns_profile</td>
+</tr>
+<tr class="row-even"><td>DNS Profile</td>
+<td>example.com_dns_profile</td>
+</tr>
+<tr class="row-odd"><td>Pool</td>
+<td>branch01_dns_pool</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>DC02_tcp_53_virtual</td>
+</tr>
+<tr class="row-odd"><td>Destination</td>
+<td>10.1.70.210</td>
+</tr>
+<tr class="row-even"><td>Service Port</td>
+<td>DNS 53</td>
+</tr>
+<tr class="row-odd"><td>VLAN and Tunnel Traffic -&gt; Enabled on..</td>
+<td>branch01_vlan</td>
+</tr>
+<tr class="row-even"><td>Protocol</td>
+<td>TCP</td>
+</tr>
+<tr class="row-odd"><td>Protocol Profile (Client)</td>
+<td>example.com_tcp-dns_profile</td>
+</tr>
+<tr class="row-even"><td>DNS Profile</td>
+<td>example.com_dns_profile</td>
+</tr>
+<tr class="row-odd"><td>Pool</td>
+<td>branch01_dns_pool</td>
+</tr>
+</tbody>
+</table>
+<img alt="../../../_images/router01_create_virtual_tcp_properties.png" src="../../../_images/router01_create_virtual_tcp_properties.png" />
+<p><a class="reference external" href="https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/listener/create.jsp">https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/listener/create.jsp</a></p>
 <div class="admonition-tmsh admonition">
 <p class="first admonition-title">TMSH</p>
-<p class="last">tmsh show ltm dns cache records rrset cache transparent_cache</p>
+<p class="last">tmsh create gtm listener DC01_tcp_virtual address 10.1.70.200 port 53 ip-protocol tcp pool branch01_dns_pool profiles add { example.com_dns_profile  example.com_tcp-dns_profile } vlans add { branch01_vlan } vlans-enabled</p>
 </div>
-<img alt="../../../_images/tmsh_show_ltm_dns_cache_records.png" src="../../../_images/tmsh_show_ltm_dns_cache_records.png" />
 <div class="admonition-tmsh admonition">
 <p class="first admonition-title">TMSH</p>
-<p class="last">show ltm dns cache transparent transparent_cache</p>
+<p class="last">tmsh create gtm listener DC02_tcp_virtual address 10.1.70.210 port 53 ip-protocol tcp pool branch01_dns_pool profiles add { example.com_dns_profile  example.com_tcp-dns_profile } vlans add { branch01_vlan } vlans-enabled</p>
 </div>
-</li>
-<li><p class="first">Clearing Entire Cache</p>
-<p>Navigate to <strong>Statistics &gt; Module Statistics &gt; DNS &gt; Caches</strong></p>
-<p>Set “Statistics Type” to “Caches”.</p>
-<p>Select the cache and click “Clear Cache” to empty the cache.</p>
-</li>
-</ol>
+<p><a class="reference external" href="https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-dns-cache-implementations-11-3-0/2.html">https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-dns-cache-implementations-11-3-0/2.html</a></p>
 </div>
 
 
@@ -299,10 +355,10 @@
 		     <div class="row next-prev-btn-row">
            <div class="col-lg-12">
            
-		        <a href="task6.html" title="TCP Listeners" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+		        <a href="task6.html" title="UDP Listener" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="../lab3/lab3.html" title="Hidden Master" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="task8.html" title="Results" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>

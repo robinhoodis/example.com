@@ -12,7 +12,7 @@ https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/profile/tcp/l
 Create a TCP profile as shown in the following table.
  
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "example.com_tcp-dns_profile"

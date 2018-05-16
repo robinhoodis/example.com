@@ -25,7 +25,7 @@ Navigate to **DNS  ››  Caches : Cache List**
 Create a transparent cache
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "transparent_cache"

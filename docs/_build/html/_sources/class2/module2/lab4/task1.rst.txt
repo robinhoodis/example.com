@@ -8,7 +8,7 @@ Navigate to: **DNS  ››  Delivery : Keys : DNSSEC Key List**
 Create zone signing key according the following table:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    Name, example.com_zsk

@@ -12,7 +12,7 @@ Navigate to: **DNS  ››  Delivery : Listeners : Listener List**
 Create a UDP listener according to the following table:
 
 .. csv-table::
-   :header: "Setting", "gtm1.site1", "gtm1.site2"
+   :header: "Field", "gtm1.site1", "gtm1.site2"
    :widths: 6, 10, 10
 
    "Name", "isp1_site1_ns1.example.com_udp_53_virtual", "isp1_site2_ns2.example.com_udp_53_virtual"

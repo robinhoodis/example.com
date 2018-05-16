@@ -10,7 +10,7 @@ Navigate to **DNS  ››  Delivery : Nameservers : Nameserver List**
 Create a nameserver according to the following table:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "dc01.example.com"

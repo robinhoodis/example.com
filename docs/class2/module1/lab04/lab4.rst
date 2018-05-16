@@ -10,7 +10,7 @@ Navigate to: **DNS  ››  GSLB : Pools : Pool List**
 Create a Pool of LTM Virtuals according to the following table:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "www.example.com_pool"

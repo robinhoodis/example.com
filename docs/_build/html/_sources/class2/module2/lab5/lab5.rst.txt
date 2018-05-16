@@ -25,7 +25,7 @@ https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/cache/list.js
 Create a validating resolver cache according to the table below:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "validating-resolver_cache"

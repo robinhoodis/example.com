@@ -10,7 +10,7 @@ https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/rule/list.jsp
 Create new iRule, copy the content below and paste it.
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    Name, DNS-query-filtering  

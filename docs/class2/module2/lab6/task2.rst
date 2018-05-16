@@ -10,7 +10,7 @@ https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/nameserver/li
 Create a nameserver according to the following table:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "localhost"

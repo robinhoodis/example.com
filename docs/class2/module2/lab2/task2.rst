@@ -10,7 +10,7 @@ Navigate to: **DNS  ››  Delivery : Profiles : DNS**
 Create a DNS profile as shown in the table below.
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "example.com_dns_profile"

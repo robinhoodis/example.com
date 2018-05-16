@@ -12,7 +12,7 @@ Configure DNS query and response logging.
    Create a local syslog publisher as shown in the table below:
 
    .. csv-table::
-      :header: "Setting", "Value"
+      :header: "Field", "Value"
       :widths: 15, 15
 
       "Name", "local-syslog-publisher"
@@ -35,7 +35,7 @@ Configure DNS query and response logging.
    Create a DNS logging profile as shown in the table below:
 
    .. csv-table::
-      :header: "Setting", "Value"
+      :header: "Field", "Value"
       :widths: 15, 15
 
       "Name", "example_dns_logging_profile"

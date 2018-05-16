@@ -17,7 +17,7 @@ Navigate to: **DNS  ››  Settings : GSLB : General**
 Configure the global settings for GSLB according to the following table:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Synchronize", "checked"

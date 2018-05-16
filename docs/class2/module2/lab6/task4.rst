@@ -16,7 +16,7 @@ https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/cache/local_z
 Create a local zone entry according to the following table:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "sorry.example.com"

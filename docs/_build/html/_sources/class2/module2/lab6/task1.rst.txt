@@ -14,7 +14,7 @@ https://router01.branch01.example.com/tmui/Control/jspmap/tmui/globallb/zfd/zone
 Create a zone according to the following table:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "View Name", "external"
@@ -41,7 +41,7 @@ https://router01.branch01.example.com/tmui/Control/jspmap/tmui/globallb/zfd/reco
 Create a resource record according to the following table:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "View Name", "external"

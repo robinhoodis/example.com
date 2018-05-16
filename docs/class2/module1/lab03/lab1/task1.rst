@@ -8,7 +8,7 @@ All GTM devices need to be defined. Create a server object for gtm1.site1
 Click "Create" to define gtm1.site1 as defined in the table below:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "gtm1.site1_server"

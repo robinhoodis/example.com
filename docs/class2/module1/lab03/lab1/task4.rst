@@ -8,7 +8,7 @@ LTM devices need to be defined. Create a server object for the bigip1.site2 and 
 Create a Server Object as defined in the table below:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "site2_ha-pair"

@@ -10,7 +10,7 @@ https://router01.branch01.example.com/tmui/Control/form?__handler=/tmui/dns/dnss
 Create DNS Express zone signed by DNSSEC
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    Name, example.com

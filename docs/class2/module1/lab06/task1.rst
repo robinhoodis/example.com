@@ -4,7 +4,7 @@ A Records
 Create two new A records for the new BIGP-IP nameservers.
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "ns1", "203.0.113.8"

@@ -14,7 +14,7 @@ https://gtm1.site1.example.com/tmui/Control/jspmap/xsl/gtm_dc/list
 Create two data centers according to the table below:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "site1_datacenter"

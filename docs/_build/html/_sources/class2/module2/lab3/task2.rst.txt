@@ -10,7 +10,7 @@ Navigate to **DNS  ››  Zones : Zones : Zone List**
 Create a DNS Express zone according to the following table:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "example.com"

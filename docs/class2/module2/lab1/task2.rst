@@ -10,7 +10,7 @@ Navigate to: **Delivery : Load Balancing : Pools : Pool List**
 Create a pool according to the following table:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "branch01_dns_pool"

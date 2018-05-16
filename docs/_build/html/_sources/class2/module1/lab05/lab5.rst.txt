@@ -10,7 +10,7 @@ Navigate to: **DNS  ››  GSLB : Wide IPs : Wide IP List**
 Create an F5 "wide IP"
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "www.gslb.example.com"

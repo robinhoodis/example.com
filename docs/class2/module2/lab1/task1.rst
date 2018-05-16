@@ -14,7 +14,7 @@ https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/monitor/list.
 Create a monitor according to the following table:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "example.com_dns_monitor"

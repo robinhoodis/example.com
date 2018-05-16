@@ -12,7 +12,7 @@ https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/listener/list
 Create two TCP listeners according to the table below:
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "DC01_tcp_53_virtual"
@@ -25,7 +25,7 @@ Create two TCP listeners according to the table below:
    "Pool", "branch01_dns_pool"
 
 .. csv-table::
-   :header: "Setting", "Value"
+   :header: "Field", "Value"
    :widths: 15, 15
 
    "Name", "DC02_tcp_53_virtual"

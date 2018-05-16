@@ -12,7 +12,7 @@ Navigate to: **DNS  ››  Delivery : Listeners : Listener List**
 Create a TCP listener.
 
 .. csv-table::
-   :header: "Setting", "gtm1.site1", "gtm1.site2"
+   :header: "Field", "gtm1.site1", "gtm1.site2"
    :widths: 6, 10, 10
 
    "Name", "isp1_site1_ns1.example.com_tcp_53_virtual", "isp1_site2_ns2.example.com_tcp_53_virtual"

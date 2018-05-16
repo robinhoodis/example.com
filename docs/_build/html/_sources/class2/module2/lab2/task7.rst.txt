@@ -1,50 +1,52 @@
-Results
-##################################
+TCP Listeners
+####################################
 
-#. From the jumpbox open a command prompt, perform several recursive queries to your new listener to test.
+A TCP listener is an IP address that will receive DNS queries.
 
-   Repeat some of the same queries multiple times
+Navigate to: **DNS  ››  Delivery : Listeners : Listener List**
 
-   .. code-block:: console
+.. image:: /_static/class2/router01_create_virtual_flyout.png
 
-      dig www.f5.com
-      dig www.wikipedia.org
-      dig www.ncsu.edu
-      dig www.example.com
+https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/listener/list.jsp
 
-#. Viewing Cache Entries
+Create two TCP listeners according to the table below:
 
-   Navigate to: **DNS  ››  Caches : Cache List  ››  Properties : transparent_cache**
+.. csv-table::
+   :header: "Field", "Value"
+   :widths: 15, 15
 
-   .. image:: /_static/class2/router01_cache_select_statistics.png
+   "Name", "DC01_tcp_53_virtual"
+   "Destination", "10.1.70.200"
+   "Service Port", "DNS 53"
+   "VLAN and Tunnel Traffic -> Enabled on..", "branch01_vlan"
+   "Protocol", "TCP"
+   "Protocol Profile (Client)", "example.com_tcp-dns_profile"
+   "DNS Profile", "example.com_dns_profile"
+   "Pool", "branch01_dns_pool"
 
-   https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/cache/properties.jsp?name=%2FCommon%2Ftransparent_cache
+.. csv-table::
+   :header: "Field", "Value"
+   :widths: 15, 15
 
-   Navigate to: **Statistics  ››  Module Statistics : DNS : Caches  ››  Caches**
+   "Name", "DC02_tcp_53_virtual"
+   "Destination", "10.1.70.210"
+   "Service Port", "DNS 53"
+   "VLAN and Tunnel Traffic -> Enabled on..", "branch01_vlan"
+   "Protocol", "TCP"
+   "Protocol Profile (Client)", "example.com_tcp-dns_profile"
+   "DNS Profile", "example.com_dns_profile"
+   "Pool", "branch01_dns_pool"
 
-   .. image:: /_static/class2/router01_cache_click_view.png
+.. image:: /_static/class2/router01_create_virtual_tcp_properties.png
 
-   Navigate to: **Statistics  ››  Module Statistics : DNS : Caches  ››  Caches : transparent_cache**
+https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/listener/create.jsp
 
-   .. image:: /_static/class2/router01_cache_view_details.png
+.. admonition:: TMSH
 
-   https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/cache/stats_detail.jsp?name=/Common/transparent_cache
+   tmsh create gtm listener DC01_tcp_virtual address 10.1.70.200 port 53 ip-protocol tcp pool branch01_dns_pool profiles add { example.com_dns_profile  example.com_tcp-dns_profile } vlans add { branch01_vlan } vlans-enabled
 
-   .. admonition:: TMSH
+.. admonition:: TMSH
 
-      tmsh show ltm dns cache records rrset cache transparent_cache
+   tmsh create gtm listener DC02_tcp_virtual address 10.1.70.210 port 53 ip-protocol tcp pool branch01_dns_pool profiles add { example.com_dns_profile  example.com_tcp-dns_profile } vlans add { branch01_vlan } vlans-enabled
 
-   .. image:: /_static/class2/tmsh_show_ltm_dns_cache_records.png
-
-   .. admonition:: TMSH
-
-      show ltm dns cache transparent transparent_cache
-
-#. Clearing Entire Cache
-
-   Navigate to **Statistics > Module Statistics > DNS > Caches**
-
-   Set "Statistics Type" to "Caches".
-
-   Select the cache and click "Clear Cache" to empty the cache.
-
+https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-dns-cache-implementations-11-3-0/2.html
