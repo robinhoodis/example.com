@@ -22,7 +22,7 @@ Create two UDP listeners according to the tables below:
    "Protocol", "UDP"
    "Protocol Profile (Client)", "example.com_udp-dns_profile"
    "DNS Profile", "example.com_dns_profile"
-   "Default Pool", "branch01_dns_pool"
+   "Default Pool", "example.com_dns_pool"
 
 .. csv-table::
    :header: "Field", "Value"
@@ -35,7 +35,7 @@ Create two UDP listeners according to the tables below:
    "Protocol", "UDP"
    "Protocol Profile (Client)", "example.com_udp-dns_profile"
    "DNS Profile", "example.com_dns_profile"
-   "Default Pool", "branch01_dns_pool"
+   "Default Pool", "example.com_dns_pool"
 
 .. image:: /_static/class2/router01_create_virtual_udp_properties.png
 
@@ -43,9 +43,9 @@ https://router01.branch01.example.com/tmui/Control/jspmap/tmui/locallb/virtual_s
 
 .. admonition:: TMSH
 
-   tmsh create gtm listener DC01_udp_virtual address 10.1.70.200 port 53 ip-protocol udp pool branch01_dns_pool profiles add { example.com_dns_profile  example.com_udp-dns_profile } vlans add { branch01_vlan } vlans-enabled
+   tmsh create gtm listener DC01_udp_virtual address 10.1.70.200 port 53 ip-protocol udp pool example.com_dns_pool profiles add { example.com_dns_profile  example.com_udp-dns_profile } vlans add { branch01_vlan } vlans-enabled
 
 .. admonition:: TMSH
 
-   tmsh create gtm listener DC02_udp_virtual address 10.1.70.210 port 53 ip-protocol udp pool branch01_dns_pool profiles add { example.com_dns_profile  example.com_udp-dns_profile } vlans add { branch01_vlan } vlans-enabled
+   tmsh create gtm listener DC02_udp_virtual address 10.1.70.210 port 53 ip-protocol udp pool example.com_dns_pool profiles add { example.com_dns_profile  example.com_udp-dns_profile } vlans add { branch01_vlan } vlans-enabled
 
