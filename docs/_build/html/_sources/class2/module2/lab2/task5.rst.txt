@@ -1,7 +1,28 @@
 DNS Servers
 ################################
 
-Create a pool for the Internal DNS servers.
+Create a monitor and a pool for the Internal DNS servers.
+
+Navigate to: **DNS  ››  Delivery : Load Balancing : Monitors**
+
+.. image:: /_static/class2/router01_create_monitor_flyout.png
+
+https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/monitor/create.jsp
+
+Create a DNS monitor according to the table below:
+
+.. csv-table::
+   :header: "Field", "Value"
+   :widths: 15, 15
+
+   "Name", "example.com_dns_pool"
+   "Health Monitors", "example.com_dns_monitor"
+   "Node1 Name:", "dc01.example.com_node"
+
+.. image:: /_static/class2/router01_create_monitor_properties.png
+.. admonition:: TMSH
+
+   tmsh create ltm monitor dns example.com_dns_monitors qname www.example.com
 
 Navigate to: **DNS  ››  Delivery : Load Balancing : Pools : Pool List**
 
@@ -9,7 +30,7 @@ Navigate to: **DNS  ››  Delivery : Load Balancing : Pools : Pool List**
 
 https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/pool/list.jsp
 
-Create a DNS pool according to the tables below:
+Create a DNS pool according to the table below:
 
 .. csv-table::
    :header: "Field", "Value"

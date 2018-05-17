@@ -258,11 +258,42 @@
         
   <div class="section" id="dns-servers">
 <h1>DNS Servers<a class="headerlink" href="#dns-servers" title="Permalink to this headline">¶</a></h1>
-<p>Create a pool for the Internal DNS servers.</p>
+<p>Create a monitor and a pool for the Internal DNS servers.</p>
+<p>Navigate to: <strong>DNS  ››  Delivery : Load Balancing : Monitors</strong></p>
+<img alt="../../../_images/router01_create_monitor_flyout.png" src="../../../_images/router01_create_monitor_flyout.png" />
+<p><a class="reference external" href="https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/monitor/create.jsp">https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/monitor/create.jsp</a></p>
+<p>Create a DNS monitor according to the table below:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>example.com_dns_pool</td>
+</tr>
+<tr class="row-odd"><td>Health Monitors</td>
+<td>example.com_dns_monitor</td>
+</tr>
+<tr class="row-even"><td>Node1 Name:</td>
+<td>dc01.example.com_node</td>
+</tr>
+</tbody>
+</table>
+<img alt="../../../_images/router01_create_monitor_properties.png" src="../../../_images/router01_create_monitor_properties.png" />
+<div class="admonition-tmsh admonition">
+<p class="first admonition-title">TMSH</p>
+<p class="last">tmsh create ltm monitor dns example.com_dns_monitors qname www.example.com</p>
+</div>
 <p>Navigate to: <strong>DNS  ››  Delivery : Load Balancing : Pools : Pool List</strong></p>
 <img alt="../../../_images/router01_create_dns_pool_flyout.png" src="../../../_images/router01_create_dns_pool_flyout.png" />
 <p><a class="reference external" href="https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/pool/list.jsp">https://router01.branch01.example.com/tmui/Control/jspmap/tmui/dns/pool/list.jsp</a></p>
-<p>Create a DNS pool according to the tables below:</p>
+<p>Create a DNS pool according to the table below:</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="50%" />
