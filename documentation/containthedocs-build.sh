@@ -15,5 +15,4 @@ COMMAND="make -C docs html"
 exec docker run --rm -it \
   -v "$PWD":"$PWD" --workdir "$PWD" \
   ${DOCKER_RUN_ARGS} \
-  -e  LOCAL_USER_ID=0 \
   ${DOC_IMG} ${COMMAND}
