@@ -15,9 +15,9 @@ Create a DNS monitor according to the table below:
    :header: "Field", "Value"
    :widths: 15, 15
 
-   "Name", "example.com_dns_pool"
-   "Health Monitors", "example.com_dns_monitor"
-   "Node1 Name:", "dc01.example.com_node"
+   "Name", "example.com_dns_monitor"
+   "Type", "DNS"
+   "Query Name", "www.example.com"
 
 .. image:: /_static/class2/router01_create_monitor_properties.png
 .. admonition:: TMSH
