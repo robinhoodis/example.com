@@ -1,0 +1,24 @@
+---
+- name: Onboarding BIG-IP
+  hosts: bigip
+  gather_facts: false
+
+  tasks:
+
+  - name: System Global
+    include_role:
+      name: bigip_global
+
+  - name: Network Time Protocol
+    include_role:
+      name: bigip_ntp
+
+  - name: Domain Name System
+    include_role:
+      name: bigip_dns
+
+  - name: Management UI
+    include_role:
+      name: bigip_httpd
+
+...

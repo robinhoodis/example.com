@@ -1,0 +1,13 @@
+---
+
+- name: Provision Local Traffic Manager at "nominal" level
+  bigip_provision:
+    server: "{{ inventory_hostname }}"
+    module: ltm
+    level: nominal
+    password: "admin"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+...

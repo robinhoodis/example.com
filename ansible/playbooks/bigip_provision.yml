@@ -1,0 +1,42 @@
+---
+- name: Provisioning WAF
+  hosts: waf
+  gather_facts: false
+
+  tasks:
+
+  - name: Provisioning WAF
+    include_role:
+      name: bigip_provision_waf
+
+- name: Provisioning ADC
+  hosts: adc
+  gather_facts: false
+
+  tasks:
+
+  - name: Provisioning Application Delivery Controller
+    include_role:
+      name: bigip_provision_adc
+
+- name: Provisioning Global Server Load Balancing
+  hosts: gslb
+  gather_facts: false
+
+  tasks:
+
+  - name: Provisioning Global Server Load Balancing
+    include_role:
+      name: bigip_provision_gslb
+
+- name: Provisioning Branch Gateway
+  hosts: gateway
+  gather_facts: false
+
+  tasks:
+
+  - name: Provisioning Branch Gateway
+    include_role:
+      name: bigip_provision_gateway
+
+...

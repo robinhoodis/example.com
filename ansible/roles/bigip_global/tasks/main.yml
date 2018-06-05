@@ -1,0 +1,16 @@
+---
+
+- name: Disable the setup utility
+  bigip_sys_global:
+    gui_setup: no
+    banner_text: "Property of EXAMPLE.COM"
+    quiet_boot: no
+    mgmt_dhcp: no
+    server: "{{ inventory_hostname }}"
+    state: present
+    password: "admin"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+...

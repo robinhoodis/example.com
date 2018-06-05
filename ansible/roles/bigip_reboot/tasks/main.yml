@@ -1,0 +1,8 @@
+---
+  - set_fact:
+      ansible_host: "{{ inventory_hostname }}"
+
+  - name: Reboot BIG-IQ
+    command: /sbin/reboot
+
+...

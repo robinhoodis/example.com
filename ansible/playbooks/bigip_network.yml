@@ -1,0 +1,40 @@
+---
+- name: gtm1.site1 network config
+  hosts: 10.1.10.13
+  gather_facts: false
+  vars:
+    setup_user: "admin"
+    setup_pass: "admin"
+  environment:
+    F5_SERVER: "{{ ansible_host }}"
+    F5_USER: admin
+    F5_PASSWORD: admin
+    F5_SERVER_PORT: 443
+    F5_VALIDATE_CERTS: no
+
+  tasks:
+
+  - name: 
+    include_role:
+      name: bigip_network_gtm1.site1
+
+- name: gtm1.site2 network config
+  hosts: 10.1.10.23
+  gather_facts: false
+  environment:
+    F5_SERVER: "{{ ansible_host }}"
+    F5_USER: admin
+    F5_PASSWORD: admin
+    F5_SERVER_PORT: 443
+    F5_VALIDATE_CERTS: no
+  vars:
+    setup_user: "admin"
+    setup_pass: "admin"
+
+  tasks:
+
+  - name:
+    include_role:
+      name: bigip_network_gtm1.site2
+
+...

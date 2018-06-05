@@ -1,0 +1,17 @@
+---
+
+- name: Set NTP server
+  bigip_device_ntp:
+      ntp_servers:
+          - "0.us.pool.ntp.org"
+          - "1.us.pool.ntp.org"
+          - "2.us.pool.ntp.org"
+          - "3.us.pool.ntp.org"
+      password: "admin"
+      server: "{{ inventory_hostname }}"
+      timezone: "America/Los_Angeles"
+      user: "admin"
+      validate_certs: "false"
+  delegate_to: localhost
+
+...

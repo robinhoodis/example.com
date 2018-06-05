@@ -1,0 +1,93 @@
+---
+
+- name: Provision Application Firewall Manager at "nominal" level
+  bigip_provision:
+    server: "{{ inventory_hostname }}"
+    module: afm
+    level: nominal
+    password: "admin"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Provision Access Policy Manager at "nominal" level
+  bigip_provision:
+    server: "{{ inventory_hostname }}"
+    module: apm
+    level: nominal
+    password: "admin"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+#- name: Provision Web Application Firewall at "none" level
+#  bigip_provision:
+#    server: "{{ inventory_hostname }}"
+#    module: asm
+#    level: none
+#    password: "admin"
+#    user: admin
+#    validate_certs: no
+#  delegate_to: localhost
+
+- name: Provision Analytics Visibility Reporting at "nominal" level
+  bigip_provision:
+    server: "{{ inventory_hostname }}"
+    module: avr
+    level: nominal
+    password: "admin"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+#- name: Provision Fraud Prevention at "none" level
+#  bigip_provision:
+#    server: "{{ inventory_hostname }}"
+#    module: fps
+#    level: none
+#    password: "admin"
+#    user: admin
+#    validate_certs: no
+#  delegate_to: localhost
+
+- name: Provision Global Traffic Manager at "nominal" level
+  bigip_provision:
+    server: "{{ inventory_hostname }}"
+    module: gtm
+    level: nominal
+    password: "admin"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Provision iRulesLX at "nominal" level
+  bigip_provision:
+    server: "{{ inventory_hostname }}"
+    module: ilx
+    level: nominal
+    password: "admin"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Provision Local Traffic Manager at "nominal" level
+  bigip_provision:
+    server: "{{ inventory_hostname }}"
+    module: ltm
+    level: nominal
+    password: "admin"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Provision Secure Web Gateway at "nominal" level
+  bigip_provision:
+    server: "{{ inventory_hostname }}"
+    module: swg
+    level: nominal
+    password: "admin"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+...

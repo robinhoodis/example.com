@@ -1,0 +1,13 @@
+---
+
+- name: Set the auth pam timeout to 36000 seconds
+  bigip_device_httpd:
+    auth_pam_idle_timeout: 36000
+    redirect_http_to_https: yes
+    user: admin
+    password: "admin"
+    server: "{{ inventory_hostname }}"
+    validate_certs: no
+  delegate_to: localhost
+
+...

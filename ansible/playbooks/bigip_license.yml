@@ -1,0 +1,12 @@
+---
+- name: Onboarding BIG-IP
+  hosts: bigip
+  gather_facts: false
+
+  tasks:
+
+  - name: Activate License
+    include_role:
+      name: bigip_license
+
+...

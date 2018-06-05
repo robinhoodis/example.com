@@ -1,0 +1,12 @@
+---
+- name: Reboot BIG-IP
+  hosts: bigip
+  gather_facts: false
+
+  tasks:
+
+  - name: Reboot BIG-IP
+    include_role:
+      name: bigip_reboot
+
+...

@@ -1,0 +1,17 @@
+---
+
+- name: Create data center "site1_datacenter"
+  bigip_gtm_datacenter:
+      server: "10.1.10.13"
+      name: "site1_datacenter"
+      location: "55 Hudson"
+  delegate_to: localhost
+
+- name: Create data center "site2_datacenter"
+  bigip_gtm_datacenter:
+      server: "10.1.10.13"
+      name: "site2_datacenter"
+      location: "151 Front"
+  delegate_to: localhost
+
+...

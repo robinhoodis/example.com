@@ -1,0 +1,23 @@
+---
+
+- name: Provision Global Traffic Manager at "nominal" level
+  bigip_provision:
+    server: "{{ inventory_hostname }}"
+    module: gtm
+    level: nominal
+    password: "admin"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Provision Analytics Visibility Reporting at "nominal" level
+  bigip_provision:
+    server: "{{ inventory_hostname }}"
+    module: avr
+    level: nominal
+    password: "admin"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+...

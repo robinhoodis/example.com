@@ -1,0 +1,8 @@
+---
+  - set_fact:
+      ansible_host: "{{ inventory_hostname }}"
+
+  - name: install new base reg key
+    command: /usr/local/bin/SOAPLicenseClient --basekey "{{ base_key }}"
+
+...

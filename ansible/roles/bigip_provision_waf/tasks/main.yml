@@ -1,0 +1,43 @@
+---
+
+- name: Provision Application Security Manager at "nominal" level
+  bigip_provision:
+    server: "{{ inventory_hostname }}"
+    module: asm
+    level: nominal
+    password: "admin"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Provision Analytics Visibility Reporting at "nominal" level
+  bigip_provision:
+    server: "{{ inventory_hostname }}"
+    module: avr
+    level: nominal
+    password: "admin"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Provision Fraud Prevention at "nominal" level
+  bigip_provision:
+    server: "{{ inventory_hostname }}"
+    module: fps
+    level: nominal
+    password: "admin"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Provision iRulesLX at "nominal" level
+  bigip_provision:
+    server: "{{ inventory_hostname }}"
+    module: ilx
+    level: nominal
+    password: "admin"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+...

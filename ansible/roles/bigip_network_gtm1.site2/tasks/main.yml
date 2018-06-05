@@ -1,0 +1,78 @@
+---
+
+- name: Create isp2.site2 vlan
+  bigip_vlan:
+    name: "isp2_vlan"
+    untagged_interfaces: "1.2"
+    description: "Service Provider 1 in Site 2"
+    server: "10.1.10.23"
+    password: "admin"
+    user: admin
+    validate_certs: no
+    tag: "7"
+  delegate_to: localhost
+
+- name: Create Self IP gtm1.site2 for isp2
+  bigip_selfip:
+    address: "198.51.100.39"
+    name: "isp2_selfip"
+    netmask: "255.255.255.224"
+    password: "admin"
+    server: "10.1.10.23"
+    user: "admin"
+    validate_certs: "no"
+    vlan: "isp2_vlan"
+  delegate_to: localhost
+
+- name: Add default gateway node
+  bigip_node:
+    server: "10.1.10.23"
+    description: "site2 isp2 router"
+    user: "admin"
+    password: "admin"
+    state: "present"
+    partition: "Common"
+    host: "198.51.100.33"
+    name: "gateway.isp2.site2_node"
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Create default_gateway_pool
+  bigip_pool:
+    server: "10.1.10.23"
+    description: "Site 2 Default Gateway Pool"
+    user: "admin"
+    password: "admin"
+    monitors: gateway_icmp
+    state: "present"
+    name: "default_gateway_pool"
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Add gateway node to default_gateway_pool
+  bigip_pool_member:
+    server: "10.1.10.23"
+    description: "Site 2 Default Gateway Pool"
+    user: "admin"
+    password: "admin"
+    state: "present"
+    pool: "default_gateway_pool"
+    name: "gateway.isp2.site2_node"
+    port: "0"
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Create static route with gateway address
+  bigip_static_route:
+    destination: 0.0.0.0
+    description: "default route"
+    netmask: 0.0.0.0
+    pool: "default_gateway_pool"
+    name: "default_route"
+    password: admin
+    server: "10.1.10.23"
+    user: admin
+    validate_certs: no
+  delegate_to: localhost
+
+...
