@@ -21,4 +21,12 @@
     include_role:
       name: bigip_httpd
 
+  - name: AS3
+    include_role:
+      name: bigip_as3
+
+  - name: Save Config
+    include_role:
+      name: bigip_config_save
+
 ...

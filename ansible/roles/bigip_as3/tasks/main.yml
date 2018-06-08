@@ -1,0 +1,15 @@
+---
+
+- name: Touch file /var/config/rest/iapps/enable
+  command: touch /var/config/rest/iapps/enable
+  args:
+    creates: /var/config/rest/iapps/enable
+
+- name: install App Services rpm
+  dnf:
+    name: 'https://github.com/F5Networks/f5-appsvcs-extension/blob/master/dist/f5-appsvcs-3.1.0-4.noarch.rpm'
+    state: present
+
+
+
+...
