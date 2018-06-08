@@ -2,13 +2,13 @@
 #
 
 # docker login --username=$DOCKER_USER --password=$DOCKER_PASS $DOCKER_HOST
-#docker login --username=examplecom --password=4F6-Mqf-4WQ-VrV
-#docker network create -d macvlan --subnet=10.1.40.0/24 --gateway=10.1.40.1 -o parent=ens5 site2
-#docker network create -d macvlan --subnet=10.1.40.0/24 --gateway=10.1.30.1 -o parent=ens4 site1
+#docker network create -d macvlan --subnet=10.1.40.0/24 --gateway=10.1.40.1 -o parent=eth0 site2
+#docker network create -d macvlan --subnet=10.1.40.0/24 --gateway=10.1.30.1 -o parent=eth0 site1
 #docker volume create HOME
 #docker volume create FTPLOGS
 #docker volume create HTTPLOGS
 #docker volume create HTTPD_DATA_PATH
+exit
 
 DOMAIN="example.com"
 #declare -a SITES
