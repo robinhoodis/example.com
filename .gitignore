@@ -1,3 +1,4 @@
 docs/_build
 ansible/playbooks/*.retry
 ansible/ansible.log
+*.swp
