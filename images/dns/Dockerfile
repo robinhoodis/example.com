@@ -1,25 +1,16 @@
-#
-# Super simple example of a Dockerfile
-#
-FROM centos:7
+FROM examplecom/image:base
 
-# install main packages:
 RUN yum -y install bind-utils bind && \
     yum clean all
 
 ADD container-image-root /
 
-# set up the BIND env and gen rndc key
 RUN rndc-confgen -a -c /etc/rndc.key && \
     chown named:named /etc/rndc.key && \
     chmod 755 /entrypoint
 
 VOLUME [ "/named" ]
 
-# start services:
 ENTRYPOINT [ "/entrypoint"]
 CMD [ "/usr/sbin/named" ]
-
-ENV TZ=America/Toronto
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 

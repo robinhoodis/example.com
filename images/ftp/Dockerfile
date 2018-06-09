@@ -1,9 +1,5 @@
-#
-# Super simple example of a Dockerfile
-#
-FROM centos:7
+FROM examplecom/image:base
 
-RUN yum -y update && yum clean all
 RUN yum install -y \
 	vsftpd \
 	db4-utils \
@@ -19,7 +15,4 @@ COPY ftpd.conf /etc/vsftpd/vsftpd.conf
 COPY ftpd.sh /
 RUN chmod +x /ftpd.sh
 CMD ["/ftpd.sh"]
-
-ENV TZ=America/Toronto
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 

@@ -1,3 +1,6 @@
 [submodule "ansible/f5-ansible"]
 	path = ansible/f5-ansible
 	url = https://github.com/F5Networks/f5-ansible.git
+[submodule "f5-super-netops-container"]
+	path = f5-super-netops-container
+	url = https://github.com/f5devcentral/f5-super-netops-container.git
