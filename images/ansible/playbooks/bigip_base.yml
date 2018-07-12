@@ -1,32 +1,36 @@
 ---
 - name: Onboarding BIG-IP
-  hosts: bigip
+  hosts: 10.1.10.11
   gather_facts: false
 
   tasks:
 
-  - name: System Global
-    include_role:
-      name: bigip_global
+#  - name: System Global
+#    include_role:
+#      name: bigip_global
 
-  - name: Network Time Protocol
-    include_role:
-      name: bigip_ntp
+#  - name: Network Time Protocol
+#    include_role:
+#      name: bigip_ntp
 
-  - name: Domain Name System
-    include_role:
-      name: bigip_dns
+#  - name: Domain Name System
+#    include_role:
+#      name: bigip_dns
 
-  - name: Management UI
-    include_role:
-      name: bigip_httpd
+#  - name: Management UI
+#    include_role:
+#      name: bigip_httpd
 
-  - name: AS3
-    include_role:
-      name: bigip_as3
+#  - name: AS3
+#    include_role:
+#      name: bigip_as3
 
-  - name: Save Config
+#  - name: Save Config
+#    include_role:
+#      name: bigip_config_save
+
+  - name: Slack Notify
     include_role:
-      name: bigip_config_save
+      name: slack_notify
 
 ...

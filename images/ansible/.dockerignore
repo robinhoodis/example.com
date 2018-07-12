@@ -1,0 +1,14 @@
+Dockerfile
+.ssh/
+.ansible/
+.DS_Store
+.gitignore
+README.md
+env.*
+.bash_history
+ansible.cfg
+ansible.log
+files/
+inventory/
+playbooks/
+roles/

@@ -5,11 +5,53 @@
   args:
     creates: /var/config/rest/iapps/enable
 
-- name: install App Services rpm
-  dnf:
-    name: 'https://github.com/F5Networks/f5-appsvcs-extension/blob/master/dist/f5-appsvcs-3.1.0-4.noarch.rpm'
-    state: present
+#- name: install App Services rpm
+#  yum:
+#    name: 'https://github.com/F5Networks/f5-appsvcs-extension/blob/master/dist/f5-appsvcs-3.1.0-4.noarch.rpm'
+#    state: present
 
+#- name: Copy the f5-appsvcs-3.1.0-4.noarch.rpm
+#  copy:
+#    src: f5-appsvcs-3.1.0-4.noarch.rpm
+#    dest: /shared/f5-appsvcs-3.1.0-4.noarch.rpm
 
+#- name: Install the AS3 RPM
+#  command: rpm -ivh https://github.com/F5Networks/f5-appsvcs-extension/raw/master/dist/f5-appsvcs-3.1.0-4.noarch.rpm
+
+- name: Get an API token
+  uri:
+    url: "https://10.1.10.11/mgmt/shared/authn/login"
+    method: POST
+    body: |
+      {
+        "username": "admin",
+        "password": "admin",
+        "loginProviderName": "tmos"
+      }
+    status_code: 200
+    body_format: json
+    validate_certs: "no"
+  register: auth
+
+- name: Run a selftest
+  uri:
+    url: "https://10.1.10.11/mgmt/shared/appsvcs/selftest"
+    method: POST
+    body: "{}"
+    headers:
+      X-F5-Auth-Token: "{{ auth['json']['token']['name'] }}"
+    validate_certs: "no"
+
+- name: Declare an HTTP application
+  uri:
+    url: "https://10.1.10.11/mgmt/shared/appsvcs/declare"
+    method: POST
+    body_format: json
+    body: "{{ lookup('file','myvalues.json') }}"
+    headers:
+      X-F5-Auth-Token: "{{ auth['json']['token']['name'] }}"
+    status_code: [200,404]
+    validate_certs: "no"
+  register: pool
 
 ...

@@ -27,11 +27,10 @@ DOMAIN="example.com"
 declare -A SITES=( [site1]="10.1.30" [site2]="10.1.40" ) 
 declare -A SERVICES=( [ftp]='--mount source=HOME,target=/home --mount source=FTPLOGS,target=/var/log/vsftpd' [http]='--mount source=HOME,target=/home --mount source=HTTPD_DATA_PATH,target=/var/www --mount source=HTTPLOGS,target=/var/log/httpd' [dns]='--volume /srv/docker/bind9:/named' )
 
-#docker run -d --name ansible --hostname ansible.example.com --net mgmt --ip 10.1.10.61 --rm examplecom/image:ansible
+#docker run --rm -it --name ansible --hostname ansible.example.com --volume /home/user/example.com/images/ansible:/home/user -v /home/user/.ssh/id_rsa:/home/user/.ssh/id_rsa -v /home/user/.ssh/id_rsa.pub:/home/user/.ssh/id_rsa.pub examplecom/image:ansible "$@"
+#docker run --rm -it --name ansible --hostname ansible.example.com --volume /home/user/example.com/images/ansible:/home/user/ansible -v /home/user/.ssh/:/home/user/.ssh/ examplecom/image:ansible "$@"
+#docker run --rm -it --name ansible --hostname ansible.example.com --volume /home/user/example.com/images/ansible/playbooks:/home/user/playbooks --volume /home/user/example.com/images/ansible/inventory:/home/user/inventory --volume /home/user/example.com/images/ansible/roles:/home/user/roles  --volume /home/user/example.com/images/ansible/ansible.cfg:/home/user/ansible.cfg -v /home/user/.ssh/:/home/user/.ssh/ --volume /home/user/example.com/images/ansible/files:/home/user/files examplecom/image:ansible "$@"
 
-docker run --rm -it --name ansible --hostname ansible.example.com --volume /home/user/example.com/images/ansible:/home/user -v /home/user/.ssh/id_rsa:/home/user/.ssh/id_rsa -v /home/user/.ssh/id_rsa.pub:/home/user/.ssh/id_rsa.pub examplecom/image:ansible "$@"
-
-exit
 
 i=7
 for SERVICENAME in "${!SERVICES[@]}"
@@ -40,7 +39,7 @@ for SERVICENAME in "${!SERVICES[@]}"
       for CONTAINER in 1 2 3; do
         docker stop ${SITENAME}.${SERVICENAME}${CONTAINER} || true
         echo "docker run -d --name ${SITENAME}.${SERVICENAME}${CONTAINER} --hostname ${SITENAME}.${SERVICENAME}${CONTAINER}.${DOMAIN} --net ${SITENAME} --ip ${SITES[$SITENAME]}.${i}${CONTAINER} --rm ${SERVICES[$SERVICENAME]} examplecom/image:${SERVICENAME}"
-        docker run -d --name ${SITENAME}.${SERVICENAME}${CONTAINER}  --hostname ${SITENAME}.${SERVICENAME}${CONTAINER}.${DOMAIN} --net ${SITENAME} --ip ${SITES[$SITENAME]}.${i}${CONTAINER} --rm ${SERVICES[$SERVICENAME]} examplecom/image:${SERVICENAME}
+        docker run -d --name ${SITENAME}.${SERVICENAME}${CONTAINER} --hostname ${SITENAME}.${SERVICENAME}${CONTAINER}.${DOMAIN} --net ${SITENAME} --ip ${SITES[$SITENAME]}.${i}${CONTAINER} --rm ${SERVICES[$SERVICENAME]} examplecom/image:${SERVICENAME}
      done
    done
   ((i++))
