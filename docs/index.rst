@@ -10,5 +10,5 @@ Reference Architecture
    :glob:
 
    intro.rst
-   class*/class*
+   class2/class*
    google68a0f3f25ab55c69.rst
