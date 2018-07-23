@@ -26,6 +26,7 @@ Configure the global settings for GSLB according to the following table:
 
 .. image:: /_static/class1/gtm_global_settings.png
 
+The above work may alternatively be completed using the command line. Using Putty log into gtm1.site1 and issue the following command.
 
 .. admonition:: TMSH
 
