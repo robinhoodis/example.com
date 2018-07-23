@@ -6,9 +6,13 @@ Settings
    :maxdepth: 2
    :glob:
 
-A site specific sync group name will be created, and synchronization will be enabled.
+A site specific sync group name will be created, and synchronization will be enabled
 
-Navigate to: **DNS  ››  Settings : GSLB : General**
+Using Internet Explorer Log into the management interface of gtm1.site
+
+Navigate to: **DNS  ››  Settings : GSLB : General** or click the link below
+
+https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/settings/gslb/properties_general.jsp
 
 Configure the global settings for GSLB according to the following table:
 
@@ -22,7 +26,6 @@ Configure the global settings for GSLB according to the following table:
 
 .. image:: /_static/class1/gtm_global_settings.png
 
-https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/settings/gslb/properties_general.jsp
 
 .. admonition:: TMSH
 
