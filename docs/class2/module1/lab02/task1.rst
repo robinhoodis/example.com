@@ -1,17 +1,32 @@
 Logging
 ############################################
 
-Configure DNS query and response logging. Create a "Log Publisher", and a "Logging Profile"
+|location_link|
 
-.. note::  **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
+.. |location_link| raw:: html
 
-#. Navigate to: **System  ››  Logs : Configuration : Log Publishers**
+   <a href="https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-external-monitoring-implementations-13-1-0/4.html" target="_blank">Configure DNS query and response logging</a>
 
-   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/system/log/create_publisher.jsp
+#. Create a "Log Publisher"
 
-   https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/system/log/create_publisher.jsp
+   .. note::  **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
+
+   Navigate to: **System  ››  Logs : Configuration : Log Publishers**
+
+   |site1_create_publisher|
+
+   .. |site1_create_publisher| raw:: html
+
+      <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/system/log/create_publisher.jsp" target="_blank">gtm1.<b>site1</b></a>
+
+   |site2_create_publisher|
+
+   .. |site2_create_publisher| raw:: html
+
+      <a href="https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/system/log/create_publisher.jsp" target="_blank">gtm1.<b>site2</b></a>
 
    .. image:: /_static/class1/system_log_publisher_flyout.png
+      :align: left
 
    Create a local syslog publisher according to the table below:
 
@@ -23,6 +38,7 @@ Configure DNS query and response logging. Create a "Log Publisher", and a "Loggi
       "Destinations", "local-syslog"
 
    .. image:: /_static/class1/sys_syslog_publisher_details.png
+      :align: left
 
    **TMSH command for both gtm1.site1 and gtm1.site2:**
    
@@ -30,15 +46,26 @@ Configure DNS query and response logging. Create a "Log Publisher", and a "Loggi
 
       tmsh create sys log-config publisher local-syslog-publisher { destinations replace-all-with { local-syslog { } } }
 
-.. note::  **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
+#. Create a "Logging Profile"
 
-#. Navigate to: **DNS > Delivery > Profiles > Other > DNS Logging: Create**
+   .. note::  **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
 
-   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/profile/dns_log/create.jsp
+   Navigate to: **DNS > Delivery > Profiles > Other > DNS Logging: Create**
 
-   https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/profile/dns_log/create.jsp
+   |site1_create_profile|
+
+   .. |site1_create_profile| raw:: html
+
+      <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/profile/dns_log/create.jsp" target="_blank">gtm1.<b>site1</b></a>
+
+   |site2_create_profile|
+
+   .. |site2_create_profile| raw:: html
+
+      <a href="https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/profile/dns_log/create.jsp" target="_blank">gtm1.<b>site2</b></a>
 
    .. image:: /_static/class1/dns_logging_profile_flyout.png
+      :align: left
 
    Create a new DNS logging profile as shown in the table below.
 
@@ -52,6 +79,7 @@ Configure DNS query and response logging. Create a "Log Publisher", and a "Loggi
       "Include Query ID", "enabled"
 
    .. image:: /_static/class1/dns_logging_profile_create.png
+      :align: left
 
    **TMSH command for both gtm1.site1 and gtm1.site2:**
 
@@ -59,4 +87,3 @@ Configure DNS query and response logging. Create a "Log Publisher", and a "Loggi
 
       tmsh create ltm profile dns-logging example_dns_logging_profile enable-response-logging yes include-query-id yes log-publisher local-syslog-publisher
 
-https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-external-monitoring-implementations-12-0-0/5.html
