@@ -7,6 +7,10 @@ Configure DNS query and response logging. Create a "Log Publisher", and a "Loggi
 
 #. Navigate to: **System  ››  Logs : Configuration : Log Publishers**
 
+   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/system/log/create_publisher.jsp
+
+   https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/system/log/create_publisher.jsp
+
    .. image:: /_static/class1/system_log_publisher_flyout.png
 
    Create a local syslog publisher according to the table below:
@@ -20,17 +24,19 @@ Configure DNS query and response logging. Create a "Log Publisher", and a "Loggi
 
    .. image:: /_static/class1/sys_syslog_publisher_details.png
 
-   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/system/log/create_publisher.jsp
-
-   https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/system/log/create_publisher.jsp
-
-   On both gtm1.site1 and gtm1.site run the following command:
+   **TMSH command for both gtm1.site1 and gtm1.site2:**
    
    .. admonition:: TMSH
 
       tmsh create sys log-config publisher local-syslog-publisher { destinations replace-all-with { local-syslog { } } }
 
+.. note::  **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
+
 #. Navigate to: **DNS > Delivery > Profiles > Other > DNS Logging: Create**
+
+   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/profile/dns_log/create.jsp
+
+   https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/profile/dns_log/create.jsp
 
    .. image:: /_static/class1/dns_logging_profile_flyout.png
 
@@ -46,10 +52,6 @@ Configure DNS query and response logging. Create a "Log Publisher", and a "Loggi
       "Include Query ID", "enabled"
 
    .. image:: /_static/class1/dns_logging_profile_create.png
-
-   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/profile/dns_log/create.jsp
-
-   https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/profile/dns_log/create.jsp
 
    **TMSH command for both gtm1.site1 and gtm1.site2:**
 
