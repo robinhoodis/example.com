@@ -5,9 +5,20 @@ A UDP profile is associated with a listener.
 
 .. note::  **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
 
-Navigate to: **DNS  ››  Delivery : Profiles : Protocol : UDP**
+|site1-udp-profile_link|
+
+.. |site1-udp-profile_link| raw:: html
+
+   On gtm1.site<b>1</b> navigate to: <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/profile/udp/create.jsp" target="_blank">DNS  ››  Delivery : Profiles : Protocol : UDP</a>
+
+|site2-udp-profile_link|
+
+.. |site2-udp-profile_link| raw:: html
+
+   On gtm1.site<b>2</b> navigate to: <a href="https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/profile/udp/create.jsp" target="_blank">DNS  ››  Delivery : Profiles : Protocol : UDP</a>
 
 .. image:: /_static/class1/udp-dns_profile_flyout.png
+   :align: left
 
 Create a new UDP profile as shown in the following table:
 
@@ -19,10 +30,7 @@ Create a new UDP profile as shown in the following table:
    "Parent Profile", "udp_gtm_dns"
 
 .. image:: /_static/class1/udp-dns_profile.png
-
-https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/profile/udp/create.jsp
-
-https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/profile/udp/create.jsp
+   :align: left
 
 TMSH command for both gtm1.site1 and gtm1.site2:
 

@@ -11,19 +11,17 @@ Logging
 
    .. note::  **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
 
-   Navigate to: **System  ››  Logs : Configuration : Log Publishers**
-
    |site1_create_publisher|
 
    .. |site1_create_publisher| raw:: html
 
-      <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/system/log/create_publisher.jsp" target="_blank">gtm1.<b>site1</b></a>
+      On gtm1.site<b>1</b> navigate to: <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/system/log/create_publisher.jsp" target="_blank">System  ››  Logs : Configuration : Log Publishers</a>
 
    |site2_create_publisher|
 
    .. |site2_create_publisher| raw:: html
 
-      <a href="https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/system/log/create_publisher.jsp" target="_blank">gtm1.<b>site2</b></a>
+      On gtm1.site<b>2</b> navigate to: <a href="https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/system/log/create_publisher.jsp" target="_blank">System  ››  Logs : Configuration : Log Publishers</a>
 
    .. image:: /_static/class1/system_log_publisher_flyout.png
       :align: left
@@ -50,19 +48,17 @@ Logging
 
    .. note::  **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
 
-   Navigate to: **DNS > Delivery > Profiles > Other > DNS Logging: Create**
-
    |site1_create_profile|
 
    .. |site1_create_profile| raw:: html
 
-      <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/profile/dns_log/create.jsp" target="_blank">gtm1.<b>site1</b></a>
+      On gtm1.site<b>1</b> navigate to: <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/profile/dns_log/create.jsp" target="_blank">DNS >> Delivery : Profiles : Other : DNS Logging</a>
 
    |site2_create_profile|
 
    .. |site2_create_profile| raw:: html
 
-      <a href="https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/profile/dns_log/create.jsp" target="_blank">gtm1.<b>site2</b></a>
+      On gtm1.site<b>2</b> navigate to: <a href="https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/profile/dns_log/create.jsp" target="_blank">DNS >> Delivery : Profiles : Other : DNS Logging</a>
 
    .. image:: /_static/class1/dns_logging_profile_flyout.png
       :align: left
