@@ -5,9 +5,20 @@ A TCP listener will receive and process DNS queries.
 
 .. note:: **It is required to complete the following task on both gtm1.site and gtm1.site2**
 
-Navigate to: **DNS  ››  Delivery : Listeners : Listener List**
+|site1_create_listener_link|
+
+.. |site1_create_listener_link| raw:: html
+
+   On gtm1.site<b>1</b> navigate to: <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/listener/create.jsp" target="_blank">DNS  ››  Delivery : Listeners : Listener List</a>
+
+|site2_create_listener_link|
+
+.. |site2_create_listener_link| raw:: html
+
+   On gtm1.site<b>2</b> navigate to: <a href="https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/listener/create.jsp" target="_blank">DNS  ››  Delivery : Listeners : Listener List</a>
 
 .. image:: /_static/class1/listener_flyout.png
+   :align: left
 
 Create a TCP listener.
 
@@ -20,11 +31,13 @@ Create a TCP listener.
    "Protocol Profile (Client)", "example.com_tcp-dns_profile", "example.com_tcp-dns_profile"
    "DNS Profile", "example.com_dns_profile", "example.com_dns_profile"
 
-.. image:: /_static/class1/listener_tcp_settings.png
+.. image:: /_static/class1/listener_site1_tcp_settings.png
+   :align: left
 
-https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/listener/create.jsp
+Be sure to create the 198.51.100.40 address on gtm1.site2
 
-https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/listener/create.jsp
+.. image:: /_static/class1/listener_site2_tcp_settings.png
+   :align: left
 
 gtm1.site1 TMSH command:
 

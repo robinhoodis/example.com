@@ -5,9 +5,20 @@ A UDP listener will receive and process DNS queries.
 
 .. note:: **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
 
-Navigate to: **DNS  ››  Delivery : Listeners : Listener List**
+|site1_create_listener_link|
+
+.. |site1_create_listener_link| raw:: html
+
+   On gtm1.site<b>1</b> navigate to: <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/listener/create.jsp" target="_blank">DNS  ››  Delivery : Listeners : Listener List</a>
+
+|site2_create_listener_link|
+
+.. |site2_create_listener_link| raw:: html
+
+   On gtm1.site<b>2</b> navigate to: <a href="https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/listener/create.jsp" target="_blank">DNS  ››  Delivery : Listeners : Listener List</a>
 
 .. image:: /_static/class1/listener_flyout.png
+   :align: left
 
 Create a UDP listener according to the following table:
 
@@ -20,11 +31,13 @@ Create a UDP listener according to the following table:
    "Protocol Profile (Client)", "example.com_udp-dns_profile", "example.com_udp-dns_profile"
    "DNS Profile", "example.com_dns_profile", "example.com_dns_profile"
 
-https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/listener/create.jsp
+.. image:: /_static/class1/listener_site1-udp_settings.png
+   :align: left
 
-https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/listener/create.jsp
+Make sure you create the IP addresses on the correct devices.
 
-.. image:: /_static/class1/listener_settings.png
+.. image:: /_static/class1/listener_site2-udp_settings.png
+   :align: left
 
 gtm1.site1 TMSH command:
 
