@@ -1,11 +1,16 @@
 site1_ha-pair
 ###############################################
 
-LTM devices need to be defined. Create a server object for the bigip1.site1 and bigip2.site1 HA pair
+LTM devices need to be defined. Create a server object for the SITE1 LTM HA pair
 
 .. image:: /_static/class1/server_create_gtm1-gtm2.png
+   :align: left
 
-Create a Server Object as defined in the table below:
+|site1-create_site1_ha-pair_link|
+
+.. |site1-create_site1_ha-pair_link| raw:: html
+
+   On gtm1.site<b>1</b> <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/server/create.jsp" target="_blank">create a server object</a> according the table below:
 
 .. csv-table::
    :header: "Field", "Value"
@@ -22,28 +27,32 @@ Create a Server Object as defined in the table below:
 #. Fill in the Name and Datacenter
 
    .. image:: /_static/class1/site1_click-addserver.png
+      :align: left
 
 #. Click the "Add" button to define IP addresses
 
    .. image:: /_static/class1/site_ha_pair_bigip1_add.png
+      :align: left
 
 #. Click "Add" again to define the other BIG-IP in the HA pair.
 
    .. image:: /_static/class1/site1_click-addserver_again.png
+      :align: left
 
 #. Click the "Add" button to define IP addresses
 
    .. image:: /_static/class1/site_ha_pair_bigip2_add.png
+      :align: left
 
 #. Complete the form and associate the "bigip" "Health Monitor"
 
    .. image:: /_static/class1/site1-HA_pair_create.png
+      :align: left
 
 #. Make sure to enable both "Virtual Server" and "Link" discovery
 
    .. image:: /_static/class1/VS_and_link_auto_discovery.png
-
-https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/server/create.jsp
+      :align: left
 
 .. admonition:: TMSH
 

@@ -1,11 +1,11 @@
-gtm1.site1
+gtm1.SITE1
 ###############################################
 
-All GTM devices need to be defined. Create a server object for gtm1.site1
+|site1-create_gtm1.SITE1_link|
 
-.. image:: /_static/class1/server_create_none.png
+.. |site1-create_gtm1.SITE1_link| raw:: html
 
-Click "Create" to define gtm1.site1 as defined in the table below:
+   On gtm1.site<b>1</b> <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/server/create.jsp" target="_blank">create a server object</a> according the table below:
 
 .. csv-table::
    :header: "Field", "Value"
@@ -19,16 +19,17 @@ Click "Create" to define gtm1.site1 as defined in the table below:
 #. Fill in the Name and Datacenter
 
    .. image:: /_static/class1/gtm1-click_add.png
+      :align: left
 
 #. Click the "Add" button to define IP addresses
 
    .. image:: /_static/class1/gtm1_click-addserver.png
+      :align: left
 
 #. Complete the form and associate the "bigip" "Health Monitor"
 
    .. image:: /_static/class1/gtm1.site1_create.png
-
-https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/server/create.jsp
+      :align: left
 
 .. admonition:: TMSH
 
