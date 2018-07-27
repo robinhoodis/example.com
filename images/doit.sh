@@ -1,8 +1,9 @@
 #!/bin/bash
 #
+sleep 60
 
 # docker login --username=$DOCKER_USER --password=$DOCKER_PASS $DOCKER_HOST
-docker login --username=examplecom --password=4F6-Mqf-4WQ-VrV
+#docker login --username=examplecom --password=XXXXXXXX
 #docker network create -d macvlan --subnet=10.1.40.0/24 --gateway=10.1.40.1 -o parent=ens5 site2
 #docker network create -d macvlan --subnet=10.1.30.0/24 --gateway=10.1.30.1 -o parent=ens4 site1
 #docker network create -d macvlan --subnet=10.1.10.0/24 --gateway=10.1.10.1 -o parent=eth0 mgmt
@@ -38,6 +39,7 @@ for SERVICENAME in "${!SERVICES[@]}"
     for SITENAME in ${!SITES[@]}; do
       for CONTAINER in 1 2 3; do
         docker stop ${SITENAME}.${SERVICENAME}${CONTAINER} || true
+        sleep 10
         echo "docker run -d --name ${SITENAME}.${SERVICENAME}${CONTAINER} --hostname ${SITENAME}.${SERVICENAME}${CONTAINER}.${DOMAIN} --net ${SITENAME} --ip ${SITES[$SITENAME]}.${i}${CONTAINER} --rm ${SERVICES[$SERVICENAME]} examplecom/image:${SERVICENAME}"
         docker run -d --name ${SITENAME}.${SERVICENAME}${CONTAINER} --hostname ${SITENAME}.${SERVICENAME}${CONTAINER}.${DOMAIN} --net ${SITENAME} --ip ${SITES[$SITENAME]}.${i}${CONTAINER} --rm ${SERVICES[$SERVICENAME]} examplecom/image:${SERVICENAME}
      done
