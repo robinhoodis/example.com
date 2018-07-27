@@ -1,4 +1,4 @@
-Datacenters
+Data Centers
 ############################################
 
 .. toctree::
