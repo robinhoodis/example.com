@@ -3,11 +3,20 @@ Pools
 
 LTM virtual server objects are grouped together into GTM pools.
 
-Navigate to: **DNS  ››  GSLB : Pools : Pool List**
+|site1_pool_list_link|
+
+.. |site1_pool_list_link| raw:: html
+
+   On gtm1.site<b>1</b> navigate to: <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/pool/list.jsp" target="_blank">DNS  ››  GSLB : Pools : Pool List</a>
 
 .. image:: /_static/class1/gtm_pool_list.png
+   :align: left
 
-Create a Pool of LTM Virtuals according to the following table:
+|site1_pool_create_link|
+
+.. |site1_pool_create_link| raw:: html
+
+   On gtm1.site<b>1</b> <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/pool/create.jsp" target="_blank">Create a Pool</a> of LTM Virtuals according to the following table:
 
 .. csv-table::
    :header: "Field", "Value"
@@ -18,9 +27,8 @@ Create a Pool of LTM Virtuals according to the following table:
    "member", "isp1_site1_www.example.com_tcp_https_virtual"
    "member", "isp2_site2_www.example.com_tcp_https_virtual"
 
-https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/pool/create.jsp
-
 .. image:: /_static/class1/create_gtm_pool.png
+   :align: left
 
 TMSH command to run on only gtm1.site1:
 

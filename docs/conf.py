@@ -121,7 +121,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = classname
-copyright = u'2018, F5 Networks, Inc.'
+copyright = u'F5 Networks, Inc.'
 author = u'F5 Networks, Inc.'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -159,7 +159,8 @@ todo_include_todos = True
 
 html_theme = 'f5_sphinx_theme'
 html_theme_path = f5_sphinx_theme.get_html_theme_path()
-html_sidebars = {'**': ['searchbox.html', 'localtoc.html', 'globaltoc.html','relations.html']}
+#html_sidebars = {'**': ['searchbox.html', 'localtoc.html', 'globaltoc.html','relations.html']}
+html_sidebars = {'**': ['localtoc.html', 'globaltoc.html']}
 html_theme_options = {
                         'site_name': 'Community Training Classes & Labs',
                         'next_prev_link': True
