@@ -1,5 +1,5 @@
-Analytics
-==============
+Google Analytics
+=================
 
 .. toctree::
    :hidden:

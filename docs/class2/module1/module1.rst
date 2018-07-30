@@ -1,4 +1,4 @@
-Availability
+GSLB
 =====================================================
 
 .. image:: /_static/class1/class1_availability.png

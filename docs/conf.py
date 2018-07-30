@@ -5,7 +5,7 @@
 # ------------
 #
 # REQUIRED: Your class/lab name
-classname = "EXAMPLE.COM"
+classname = "Reference Architecture"
 
 # OPTIONAL: The URL to the GitHub Repository for this class
 github_repo = "https://github.com/robinhoodis/example.com"
@@ -24,7 +24,7 @@ sys.path.insert(0, os.path.abspath('.'))
 import f5_sphinx_theme
 
 year = time.strftime("%Y")
-eventname = "EXAMPLE Build Guide %s" % (year)
+eventname = "GSLB Build Guide %s" % (year)
 
 rst_prolog = """
 .. |classname| replace:: %s
@@ -162,7 +162,7 @@ html_theme_path = f5_sphinx_theme.get_html_theme_path()
 #html_sidebars = {'**': ['searchbox.html', 'localtoc.html', 'globaltoc.html','relations.html']}
 html_sidebars = {'**': ['localtoc.html', 'globaltoc.html']}
 html_theme_options = {
-                        'site_name': 'Docs',
+                        'site_name': 'F5 Cloud Docs',
                         'next_prev_link': True
                      }
 

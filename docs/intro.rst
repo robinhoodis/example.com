@@ -1,4 +1,4 @@
-Topology
+Network Map
 ===============
 
 .. image:: /_static/site1_site2_remote.png
