@@ -44,6 +44,12 @@ Logging
 
       tmsh create sys log-config publisher local-syslog-publisher { destinations replace-all-with { local-syslog { } } }
 
+   |local-syslog-publisher_restui_link|
+
+   .. |local-syslog-publisher_restui_link| raw:: html
+
+      <a href="https://gtm1.site1.example.com/restui/default/default.html?$display=/mgmt/tm/sys/log-config/publisher/~Common~local-syslog-publisher#/" target="_blank">RestUI</a>
+
 #. Create a "Logging Profile"
 
    .. note::  **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
@@ -82,4 +88,10 @@ Logging
    .. admonition:: TMSH
 
       tmsh create ltm profile dns-logging example_dns_logging_profile enable-response-logging yes include-query-id yes log-publisher local-syslog-publisher
+
+   |local-syslog-profile_restui_link|
+
+   .. |local-syslog-profile_restui_link| raw:: html
+
+      <a href="https://gtm1.site1.example.com/restui/default/default.html?$display=/mgmt/tm/ltm/profile/dns-logging/~Common~example_dns_logging_profile#/" target="_blank">RestUI</a>
 
