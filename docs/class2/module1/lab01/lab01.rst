@@ -36,3 +36,9 @@ The above work may alternatively be completed using the command line. Using Putt
 .. admonition:: TMSH
 
    tmsh modify gtm global-settings general synchronization yes synchronization-group-name EXAMPLE_group synchronize-zone-files yes
+
+|settings_restui_link|
+
+.. |settings_restui_link| raw:: html
+
+   <a href="https://gtm1.site1.example.com/restui/default/default.html?$display=/mgmt/tm/gtm/global-settings/general#/" target="_blank">RestUI</a>
