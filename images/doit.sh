@@ -1,6 +1,5 @@
 #!/bin/bash
 #
-sleep 60
 
 # docker login --username=$DOCKER_USER --password=$DOCKER_PASS $DOCKER_HOST
 #docker login --username=examplecom --password=XXXXXXXX
@@ -39,7 +38,6 @@ for SERVICENAME in "${!SERVICES[@]}"
     for SITENAME in ${!SITES[@]}; do
       for CONTAINER in 1 2 3; do
         docker stop ${SITENAME}.${SERVICENAME}${CONTAINER} || true
-        sleep 10
         echo "docker run -d --name ${SITENAME}.${SERVICENAME}${CONTAINER} --hostname ${SITENAME}.${SERVICENAME}${CONTAINER}.${DOMAIN} --net ${SITENAME} --ip ${SITES[$SITENAME]}.${i}${CONTAINER} --rm ${SERVICES[$SERVICENAME]} examplecom/image:${SERVICENAME}"
         docker run -d --name ${SITENAME}.${SERVICENAME}${CONTAINER} --hostname ${SITENAME}.${SERVICENAME}${CONTAINER}.${DOMAIN} --net ${SITENAME} --ip ${SITES[$SITENAME]}.${i}${CONTAINER} --rm ${SERVICES[$SERVICENAME]} examplecom/image:${SERVICENAME}
      done
