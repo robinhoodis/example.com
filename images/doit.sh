@@ -44,6 +44,8 @@ for SERVICENAME in "${!SERVICES[@]}"
    done
   ((i++))
 done
+
+sudo docker run -d --rm --name ansible --hostname ansible.example.com --ip 10.1.10.74 --net bridge --volume /home/user/example.com/images/ansible:/home/user -v /home/user/.ssh/id_rsa:/home/user/.ssh/id_rsa -v /home/user/.ssh/id_rsa.pub:/home/user/.ssh/id_rsa.pub examplecom/image:ansible
 exit
 
 #docker system prune
