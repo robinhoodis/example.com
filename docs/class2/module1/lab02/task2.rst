@@ -1,11 +1,13 @@
 DNS Profile
 ############################################
 
+We are now going to configure a DNS profile to associate with the listener we have just created. The DNS profile is where we define how to handle DNS traffic received by the listener, this includes DNS specific features such as DNSSEC, DNS Express and many others. Please refer to the article below for more details on DNS profiles.
+
 |dns-profile_link|
 
 .. |dns-profile_link| raw:: html
 
-   <a href="https://support.f5.com/csp/article/K21520582" target="_blank">A DNS profile controls the way a listener processes a query</a>
+   <a href="https://support.f5.com/csp/article/K21520582" target="_blank">More information on DNS profiles</a>
 
 .. note::  **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
 

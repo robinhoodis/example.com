@@ -6,11 +6,14 @@ Settings
    :maxdepth: 2
    :glob:
 
+
+First of all, we will configure a Sync-Group between our BIG-IP DNS servers. This will allow for GSLB configurations to be kept in a consistent state between both servers at all times. Please see the article below for more information on BIG-IP DNS synchronization.
+
 |settings_KB_link|
 
 .. |settings_KB_link| raw:: html
 
-   <a href="https://support.f5.com/csp/article/K13734" target="_blank">A site specific sync-group name will synchronize configuration settings and metrics information</a>
+   <a href="https://support.f5.com/csp/article/K13734" target="_blank">More on BIG-IP DNS Synchronization</a>
 
 |site1-settings_link|
 
@@ -37,8 +40,12 @@ The above work may alternatively be completed using the command line. Using Putt
 
    tmsh modify gtm global-settings general synchronization yes synchronization-group-name EXAMPLE_group synchronize-zone-files yes
 
+
+The link below will take you to our RestUI which can accomplish a similar result as what you did above in the GUI or TMSH. 
+
 |settings_restui_link|
 
 .. |settings_restui_link| raw:: html
 
    <a href="https://gtm1.site1.example.com/restui/default/default.html?$display=/mgmt/tm/gtm/global-settings/general#/" target="_blank">RestUI</a>
+
