@@ -3,10 +3,12 @@ Results
 
 From the Jumpbox use "dig" from the CMD prompt
 
-This time, allow your DNS requests to use your locally configured DNS server.
+This time, allow your DNS requests to use your locally configured DNS server. 
 
 .. image:: /_static/class2/jumpbox_dig_wwwexamplecom.png
    :align: left
+
+The results you receive should be similar to that of the results in the screenshot above. The first request for the CNAME www.example.com was responded to with www.gslb.example.com which then resolved to 203.0.113.9; the IP address of gtm1.site1. The next DNS query resolved to 198.51.100.41 as this subsequent request was load balanced to gtm1.site2.
 
 |site1_wideip_statistics-flyout_link|
 

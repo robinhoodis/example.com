@@ -1,6 +1,8 @@
 Sub Domain
 =================================
 
+Below we will have you configure the delegation of gslb.example.com to ns1 and ns2, the A records we created in the previous step.
+
 #. Expand "Forward Lookup Zones", and right click on "EXAMPLE.com
 
    .. image:: /_static/class1/dc01_new_delegation.png
