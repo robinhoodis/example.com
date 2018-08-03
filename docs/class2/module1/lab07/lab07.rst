@@ -1,16 +1,18 @@
 API
 =====================
 
+The BIG-IP DNS has many options for programmability, this includes Ansible, RESTui, REST, Puppet and Chef to name a few. In this task, our example company has an additional service for FTP that requires the necessary BIG-IP DNS configuration. We will perform all configuration on the BIG-IP DNS via Postman which uses REST to perform confguration changes.
+
 .. toctree::
    :hidden:
    :maxdepth: 2
    :glob:
 
-|settings_KB_link|
+|rest_link|
 
-.. |settings_KB_link| raw:: html
+.. |rest_link| raw:: html
 
-   <a href="https://support.f5.com/csp/article/K13734" target="_blank">A site specific sync-group name will synchronize configuration settings and metrics information</a>
+   <a href="https://devcentral.f5.com/d/icontrolr-rest-api-user-guide-version-1300-241" target="_blank">More information on REST on BIG-IP</a>
 
 |site1-settings_link|
 
