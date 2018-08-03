@@ -8,9 +8,18 @@ Data Centers
 
    task*
 
-Datacenters are logical groupings of devices that share a gateway.
+Datacenters are logical groupings of services or applications that are typically located within the same physical location such as a Data Center. The Data Center configuration will allow BIG-IP DNS to understand the location of your services for the purposes of high availibility. For more information on Data Centers, please refer to the link below.
 
-.. note::   The tasks in this section are to be only completed on gtm1.site1
+In the next 3 tasks, we will only be performing configuration changes on gtm1.site1. The reason for this, is that at the end of this section we will demonstrate how BIG-IP DNS Synchronization works to ensure configuration consistency is maintained between both BIG-IP DNS devices. Once Synchronization is established, gtm1.site2 will receive a copy of the same configuration.
+
+|datacenter_link|
+
+.. |datacenter_link| raw:: html
+
+   <a href="https://support.f5.com/csp/article/K62640222" target="_blank">More information on Data Centers</a>
+
+
+.. note::   The tasks in this section are to be only completed on gtm1.site1 
 
 |site1-datacenter_link|
 

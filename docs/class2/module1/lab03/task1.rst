@@ -8,7 +8,14 @@ Servers
 
    lab1/task*
 
-Server objects need to be defined and grouped into a Datacenter
+Server objects represent a system such as an application delivery controller which host a service. A server can be a BIG-IP system, a third party ADC or a third-party host server such as a web or database server. In this task we will create a server on gtm1.site1 referencing gtm1.site2, this is required for config synchronization. For more information on Servers, please refer to the link below.
+
+|servers_link|
+
+.. |servers_link| raw:: html
+
+   <a href="https://support.f5.com/kb/en-us/products/big-ip-dns/manuals/product/bigip-dns-concepts-12-0-0/5.html" target="_blank">More information on Servers</a>
+
 
 |site1_list_servers_link|
 
