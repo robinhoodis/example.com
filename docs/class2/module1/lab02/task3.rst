@@ -1,7 +1,13 @@
 UDP Profile
 ============================
 
-A UDP profile is associated with a listener.
+Next, we are going to define a UDP profile. The UDP profile will instruct the BIG-IP DNS listener on how to handle UDP traffic. The DNS profile we created earlier instructs the BIG-IP DNS on how to process the layer 7 data isnide of the UDP packets, but not how to handle the UDP protocol itself. For more information on UDP profiles, please refer to the link below. 
+
+|udp-profile_link|
+
+.. |udp-profile_link| raw:: html
+
+   <a href="https://support.f5.com/csp/article/K7535" target="_blank">More information on UDP profiles</a>
 
 .. note::  **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
 
