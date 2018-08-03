@@ -1,11 +1,13 @@
 TCP Profile
 ============================
 
+Similarily, we will now define a TCP profile. The TCP profile will instruct the BIG-IP DNS listener on how to handle TCP traffic. For more information on TCP profiles, please refer to the link below.
+
 |tpc-profile_link|
 
 .. |tpc-profile_link| raw:: html
 
-   <a href="https://support.f5.com/csp/article/K10711911" target="_blank">A TCP profile is associated with a listener</a>
+   <a href="https://support.f5.com/csp/article/K10711911" target="_blank">More information on TCP profiles</a>
 
 .. note:: **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
 

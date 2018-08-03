@@ -1,7 +1,7 @@
 TCP IP Address
 ############################################
 
-A TCP listener will receive and process DNS queries.
+The IP address we configured in the previous task is not sufficient on its own in most cases. We need to also configure an IP address that is associated with a TCP profile to ensure that the BIG-IP DNS can process incoming TCP requests in addition to UDP.
 
 .. note:: **It is required to complete the following task on both gtm1.site and gtm1.site2**
 
@@ -50,5 +50,3 @@ gtm1.site2 TMSH command:
 .. admonition:: TMSH
 
    tmsh create gtm listener isp1_site2_ns2.example.com_tcp_53_virtual address 198.51.100.40 ip-protocol tcp mask 255.255.255.255 port 53 profiles add { example.com_dns_profile example.com_tcp-dns_profile }
-
-https://support.f5.com/csp/article/K14923

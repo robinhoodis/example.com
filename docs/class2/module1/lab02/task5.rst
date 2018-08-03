@@ -1,7 +1,7 @@
 UDP IP Address
 ############################################
 
-A UDP listener will receive and process DNS queries.
+We will now begn to put the pieces together. In this task, we will integrate the logging, DNS and UDP profiles we created earlier with an IP address. The IP address configured on the BIG-IP DNS will listen for queries and process them in accordance with the associated profiles. 
 
 .. note:: **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
 
