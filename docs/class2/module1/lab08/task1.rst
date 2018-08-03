@@ -1,7 +1,5 @@
-﻿BIG-IQ Integration - Part 1
+﻿BIG-IQ Integration - Part 2
 =====================
-
-BIG-IQ is an F5 product that offers centralized management and monitorting as well as data collection and reporting of BIG-IP products. In this exercise we will add both of our BIG-IP DNS systems into BIG-IQ to demonstrate the power of BIG-IQ.
 
 .. toctree::
    :hidden:
