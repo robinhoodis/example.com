@@ -1,7 +1,14 @@
 FQDN
 ==============================
 
-F5 refers to an FQDN as a "wide-ip", or "wip".
+F5 refers to an FQDN as a "wide-ip", or "wip". The Wide IP maps a FQDN (fully qualified domain name) to one or more pools of virtual servers. For more information on Wide IPs, please refer to the link below.
+
+|wip_link|
+
+.. |wip_link| raw:: html
+
+   <a href="https://support.f5.com/kb/en-us/products/big-ip-dns/manuals/product/bigip-dns-concepts-12-0-0/5.html" target="_blank">More information on Wide IPs</a>
+
 
 |site1_wideip_create_link|
 
@@ -19,13 +26,14 @@ Create an F5 "wide IP" according to the following table:
    :widths: 15, 15
 
    "Name", "www.example.com"
-   "Alias List", "www.gslb.example.com"
    "Type", "A"
-   "Pool", "www.example.com_pool"
+   "Alias List", "www.gslb.example.com"
    "Load-Balancing Decision Log - Pool Selection", "Checked"
    "Load-Balancing Decision Log - Pool Traversal", "Checked"
    "Load-Balancing Decision Log - Pool Member Selection", "Checked"
    "Load-Balancing Decision Log - Pool Member Traversal", "Checked"
+   "Pool", "www.example.com_pool"
+
 
 .. image:: /_static/class1/gtm_wideip_create.png
    :align: left
@@ -38,7 +46,9 @@ TMSH command to run on only gtm1.site1:
 
 **Results**
 
-From the Jumpbox use "dig" from the CMD prompt
+From the Jumpbox use "dig" from the CMD prompt. The first command below will query 203.0.113.8 for the A record of www.example.com. You will then query 203.0.113.8 for www.gslb.example.com.
+
+.. note::  **Your result may differ from below**
 
 .. image:: /_static/class2/dns_gslb_site1_widepip_results.png
    :align: left

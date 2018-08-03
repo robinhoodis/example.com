@@ -45,3 +45,6 @@ A group of F5 DNS servers need to exchange keys to establish a trusted mechanism
 
    .. image:: /_static/class1/green_green_green.png
       :align: left
+      
+.. note::  **If your server list is not green, do not proceed to the next step. Please confirm that the device trust is complete and troubleshoot the issue.**
+

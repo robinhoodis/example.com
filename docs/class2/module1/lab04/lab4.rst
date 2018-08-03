@@ -1,7 +1,14 @@
 Pools
 ===========================
 
-LTM virtual server objects are grouped together into GTM pools.
+Pools are a grouping of related virtual servers. Pools will typically reference virtual servers on a BIG-IP LTM system. The pool we create below will be later referenced by a Wide-IP (FQDN). For more information on pools, please refer to the link below.
+
+|pools_link|
+
+.. |pools_link| raw:: html
+
+   <a href="https://support.f5.com/kb/en-us/products/big-ip-dns/manuals/product/bigip-dns-concepts-12-0-0/5.html" target="_blank">More information on BIG-IP DNS Pools</a>
+
 
 |site1_pool_list_link|
 
