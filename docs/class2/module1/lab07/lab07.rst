@@ -1,7 +1,7 @@
-API
+API - Part 1
 =====================
 
-The BIG-IP DNS has many options for programmability, this includes Ansible, RESTui, REST, Puppet and Chef to name a few. In this task, our example company has an additional service for FTP that requires the necessary BIG-IP DNS configuration. We will perform all configuration on the BIG-IP DNS via Postman which uses REST to perform confguration changes.
+The BIG-IP DNS has many APIs (Application Programmable Interfaces) including TMSH, WebUI, iControlREST and SNMP to name a few. In this task, our example company has deployed an additional service for FTP that requires geographic high availability. We will perform all configuration on the BIG-IP DNS via Postman in this section, which uses iControlREST for interaction with the BIG-IP.
 
 .. toctree::
    :hidden:
@@ -12,7 +12,13 @@ The BIG-IP DNS has many options for programmability, this includes Ansible, REST
 
 .. |rest_link| raw:: html
 
-   <a href="https://devcentral.f5.com/d/icontrolr-rest-api-user-guide-version-1300-241" target="_blank">More information on REST on BIG-IP</a>
+   <a href="https://devcentral.f5.com/d/icontrolr-rest-api-user-guide-version-1300-241" target="_blank">More information on the BIG-IP REST interface</a>
+
+.. note::  **If you recall from the previous exercises, we have already enabled Config Sync. Due to this, all of our iControlREST configuration changes will be performed only on gtm1.site1 as they will become automatically synchronized with gtm1.site2**
+
+From your RDP session, open up Postman (It should have booted automatically) and navigate to the "API" section under the Collections on the left. In order to use the iControlREST API, we must first authenticate with the BIG-IP. 
+
+Click on "Authenticate and Obtain Token from gtm1.site1" and click on the "Send" button in the top right. Observe the output to confirm that a token was sucessfully received, indicating that the authentication was successful. This token will be used for all actions going forward.
 
 |site1-settings_link|
 
@@ -22,19 +28,3 @@ The BIG-IP DNS has many options for programmability, this includes Ansible, REST
 
 .. image:: /_static/class1/gtm_global_settings.png
    :align: left
-
-Configure the global settings for GSLB according to the following table:
-
-.. csv-table::
-   :header: "Field", "Value"
-   :widths: 15, 15
-
-   "Synchronize", "checked"
-   "Group Name", "EXAMPLE_group"
-   "Synchronize DNS Zone Files", "checked"
-
-The above work may alternatively be completed using the command line. Using Putty log into gtm1.site1 and issue the following command.
-
-.. admonition:: TMSH
-
-   tmsh modify gtm global-settings general synchronization yes synchronization-group-name EXAMPLE_group synchronize-zone-files yes
