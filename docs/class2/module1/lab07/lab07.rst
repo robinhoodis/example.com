@@ -16,7 +16,7 @@ The BIG-IP DNS has many APIs (Application Programmable Interfaces) including TMS
 
 .. note::  **If you recall from the previous exercises, we have already enabled Config Sync. Due to this, all of our iControlREST configuration changes will be performed only on gtm1.site1 as they will become automatically synchronized with gtm1.site2**
 
-From your RDP session, open up Postman (It should have booted automatically) and navigate to the "API" section under the Collections on the left. In order to use the iControlREST API, we must first authenticate with the BIG-IP. 
+From your RDP session, open up Postman (It should have loaded automatically) and navigate to the "API" section under the Collections on the left. In order to use the iControlREST API, we must first authenticate with the BIG-IP. 
 
 Click on "Authenticate and Obtain Token from gtm1.site1" and click on the "Send" button in the top right. Observe the output to confirm that a token was sucessfully received, indicating that the authentication was successful. This token will be used for all actions going forward.
 
