@@ -1,7 +1,7 @@
 API - Part 2
 =====================
 
-Now that we have a token, we will make use of it to create new BIG-IP DNS configurations. Given that we are creating a new FTP service, we will create a new pool and a Wide-IP.
+Now that we have the authentication token, we will make use of it to create new BIG-IP DNS configurations. Given that we are creating a new FTP service, we need to create a new pool and a Wide-IP.
 
 .. toctree::
    :hidden:

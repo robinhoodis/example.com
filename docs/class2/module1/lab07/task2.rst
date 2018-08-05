@@ -1,14 +1,12 @@
 API - Part 3
 =====================
 
-Now lets test our new service via BIG-IP DNS. The related configuration on the BIG-IP LTM and DNS server are already completed for you. Please open up FileZilla from your client workstation and connect to the DNS service gslb2.example.com. This is a CNAME for FTP.example.com
+Now lets test our new service via BIG-IP DNS. The related configuration on the BIG-IP LTM and DNS server are already completed for you. Open up FileZilla from your client workstation and connect to the DNS service gslb2.example.com. This is a CNAME for FTP.example.com
 
 .. toctree::
    :hidden:
    :maxdepth: 2
    :glob:
-
-In Postman, inside of the "API" collection, navigate to each request and click Send.
 
 |site1-settings_link|
 
