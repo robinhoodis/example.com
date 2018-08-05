@@ -1,25 +1,79 @@
 BIG-IP DNS in Action
 =====================
 
-We have deployed two applications; FTP and HTTP in geographic high availability using both BIG-IP LTM and BIG-IP DNS. We have seen that in the event of subsequent queries to our BIG-IP DNS for GSLB.example.com or GSLB2.example.com we provided the querier with round-robin responses. Lets now look at a scenario where our primary data center fails and we require BIG-IP DNS to respond by sending our clients to the secondary data center.
+From the Workstation command prompt type "dig www.example.com"
 
+   .. image:: /_static/class1/dc01_new_delegation_create_cname_results.png
 
-.. toctree::
-   :hidden:
-   :maxdepth: 2
-   :glob:
+Observe WIDEIP statistics on gtm1.site1: **Statistics  ››  Module Statistics : DNS : GSLB  ››  Wide IPs : www.gslb.example.com : A**
 
-|rest_link|
+   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A
 
-.. |rest_link| raw:: html
+   .. image:: /_static/class1/gtm1_site1_wideip_statistics_flyout.png
 
-   <a href="https://devcentral.f5.com/d/icontrolr-rest-api-user-guide-version-1300-241" target="_blank">More information on the BIG-IP REST interface</a>
+   .. image:: /_static/class1/gtm1_site1_wideip_statistics_detail.png
 
-|site1-settings_link|
+   .. admonition:: TMSH
 
-.. |site1-settings_link| raw:: html
+      tmsh show gtm wideip a www.gslb.example.com
 
-   On gtm1.site<b>1</b> navigate to: <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/settings/gslb/properties_general.jsp" target="_blank">DNS  ››  Settings : GSLB : General</a>
+Observe WIDEIP statistics on gtm1.site2: **Statistics  ››  Module Statistics : DNS : GSLB  ››  Wide IPs : www.gslb.example.com : A**
 
-.. image:: /_static/class1/gtm_global_settings.png
-   :align: left
+   https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A
+
+Troubleshooting
+=================================
+
+To simulate an outage, disable interfaces and observe the effects.
+
+Disable physical interfaces on gtm1.site2:
+
+   https://gtm1.site2.example.com/tmui/Control/form?__handler=/tmui/locallb/network/interface/list&__source=disable&__linked=false&__fromError=false
+
+   .. image:: /_static/class1/gtm1_site1_disable_interfaces.png
+
+   TMSH command to run on only gtm1.site2:
+
+   .. admonition:: TMSH
+   
+      tmsh modify net interface all disabled
+
+Refresh statistics on gtm1.site1 and make sure DNS requests are still resolving.
+
+#. ROBIN - fix this section
+
+   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A
+
+     .. image:: /_static/class1/gtm1_site1_disable_interfaces.png
+
+   TMSH command to run on only gtm1.site2:
+
+   .. admonition:: TMSH
+   
+      show gtm wideip
+
+Re-enable interfaces on gtm1.site2, disable interfaces on gtm1.site1.
+   Observe statistics on gtm1.site2 and make sure DNS requests are still resolving.
+
+   TMSH command to run on only gtm1.site2:
+
+   .. admonition:: TMSH
+   
+      tmsh modify net interface all enabled
+
+Observe pool statistics on gtm1.site1: **Statistics  ››  Module Statistics : DNS : GSLB  ››  Pools : www.example.com_pool : A**
+
+   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/pool/stats_detail.jsp?name=%2FCommon%2Fwww.example.com_pool&pool_type=1&identity=www.example.com_pool+%3A+A
+
+   .. image:: /_static/class1/results_pool_statistics.png
+
+   .. admonition:: TMSH
+
+      show gtm pool a www.example.com_pool
+
+Using Putty, ssh into gtm1.site1 and run the following command to watch logs:
+
+   .. admonition:: TMSH
+
+      tail -f /var/log/ltm 
+
