@@ -1,4 +1,4 @@
-﻿BIG-IQ Integration - Part 2
+﻿BIG-IQ Reporting
 =====================
 
 .. toctree::

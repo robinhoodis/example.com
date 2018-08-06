@@ -1,4 +1,4 @@
-﻿BIG-IQ & BIG-IP DNS
+﻿BIG-IQ
 =====================
 
 .. toctree::

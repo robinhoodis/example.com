@@ -1,7 +1,9 @@
 site1_ha-pair
 ###############################################
 
-LTM devices need to be defined. Create a server object for the SITE1 LTM HA pair
+We will now add both BIG-IP clusters to our list of servers. Doing so, allows the BIG-IP DNS to perform monitoring of each cluster to evaluate their capability to process traffic. 
+
+In this configuration we will enable both virtual server discovery and link discovery. Virtual server discovery allows BIG-IP DNS to find the list of all virtual servers that are created on each BIG-IP cluster, you will see the benefit of this later. Link discovery allows BIG-IP DNS to automatically add and monitor the upstream link that the BIG-IP LTM cluster is dependent on for Internet access; this can be then used to evaluate failover decision. 
 
 .. image:: /_static/class1/server_create_gtm1-gtm2.png
    :align: left

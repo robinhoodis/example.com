@@ -1,7 +1,7 @@
 site2_ha-pair
 ###############################################
 
-LTM devices need to be defined. Create a server object for the SITE2 LTM HA pair
+Contiue the same configuration for the BIG-IP cluster in site 2.
 
 .. image:: /_static/class1/server_create_gtm1-gtm2-site1-hapair.png
    :align: left

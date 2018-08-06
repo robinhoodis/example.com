@@ -8,6 +8,8 @@ Now lets test the new service we created. The related configuration on the BIG-I
    :maxdepth: 2
    :glob:
 
+.. note::  **Use FTP credentials admin/admin**
+
 |site1-settings_link|
 
 .. |site1-settings_link| raw:: html

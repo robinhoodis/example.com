@@ -3,7 +3,7 @@ Results
 
 From the Jumpbox use "dig" from the CMD prompt
 
-This time, allow your DNS requests to use your locally configured DNS server. 
+This time, allow your DNS requests to use your locally configured DNS server (the DC01 server).
 
 .. image:: /_static/class2/jumpbox_dig_wwwexamplecom.png
    :align: left

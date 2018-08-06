@@ -1,6 +1,8 @@
 gtm1.SITE2
 ###############################################
 
+Continue the same configuration for gtm1.site2.
+
 .. image:: /_static/class1/server_create_gtm1.png
    :align: left
 

@@ -1,6 +1,8 @@
 gtm1.SITE1
 ###############################################
 
+The first server we will create is that of gtm1.site1. It is required that we add both gtm1.site1 and gtm1.site2 to establish confgiuration synchronization between them.
+
 |site1-create_gtm1.SITE1_link|
 
 .. |site1-create_gtm1.SITE1_link| raw:: html

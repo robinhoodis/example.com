@@ -10,7 +10,7 @@ Data Centers
 
 Datacenters are logical groupings of services or applications that are typically located within the same physical location such as a Data Center. The Data Center configuration will allow BIG-IP DNS to understand the location of your services for the purposes of high availibility. For more information on Data Centers, please refer to the link below.
 
-In the next 3 tasks, we will only be performing configuration changes on gtm1.site1. The reason for this, is that at the end of this section we will demonstrate how BIG-IP DNS Synchronization works to ensure configuration consistency is maintained between both BIG-IP DNS devices. Once Synchronization is established, gtm1.site2 will receive a copy of the same configuration.
+In this section, we will only be performing configuration changes on gtm1.site1. The reason for this, is that at the end of this section we will demonstrate how BIG-IP DNS Synchronization works to ensure configuration consistency is maintained between both BIG-IP DNS devices. Once Synchronization is established, gtm1.site2 will receive a copy of the same configuration.
 
 |datacenter_link|
 

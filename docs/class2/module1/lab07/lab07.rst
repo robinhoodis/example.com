@@ -20,13 +20,7 @@ The BIG-IP DNS has many APIs (Application Programmable Interfaces) including TMS
 
 From your RDP session to client01, open up Postman (It should have loaded automatically) and navigate to the "API" section under the Collections on the left. In order to use the iControlREST API, we must first authenticate with the BIG-IP. 
 
-Click on "Authenticate and Obtain Token from gtm1.site1" and click on the "Send" button in the top right. Observe the output to confirm that a token was sucessfully received, indicating that the authentication was successful. This token will be used for all actions going forward.
+Click on "Authenticate and Obtain Token from gtm1.site1" and click on the "Send" button in the top right. This token will be used for all actions going forward.
 
-|site1-settings_link|
-
-.. |site1-settings_link| raw:: html
-
-   On gtm1.site<b>1</b> navigate to: <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/settings/gslb/properties_general.jsp" target="_blank">DNS  ››  Settings : GSLB : General</a>
-
-.. image:: /_static/class1/gtm_global_settings.png
+.. image:: /_static/API1.png
    :align: left
