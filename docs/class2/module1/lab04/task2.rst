@@ -1,7 +1,7 @@
 Device Trust
 ###############################################
 
-A group of F5 DNS servers need to exchange keys to establish a trusted mechanism for HA communicationsa and Config Sync. In this task we will establish device trust between gtm1.site1 and gtm1.site2. For more information on device trust, please refer to the link below. 
+A group of F5 DNS servers must exchange keys to establish a trusted mechanism for HA communications and Config Sync. In this task we will establish device trust between gtm1.site1 and gtm1.site2. For more information on device trust, please refer to the link below. 
 
 |device-trust_link|
 

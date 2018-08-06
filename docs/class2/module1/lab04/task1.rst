@@ -8,9 +8,9 @@ Servers
 
    lab1/task*
 
-Server objects represent a system such as an application delivery controller which host a service. A server can be a BIG-IP system, a third party ADC or a third-party host server such as a web or database server. In this task we will create a server on gtm1.site1 referencing gtm1.site2, this is required for config synchronization. 
+Server objects represent a system such as an application delivery controller which host a service. A server can be a BIG-IP system, a third party ADC or a third-party host server such as a web or database server. In this task we will create a server on gtm1.site1 referencing gtm1.site2, which is required for config synchronization. 
 
-When we create a BIG-IP server with auto-discovery enabled, BIG-IP DNS will discover all of the virtual servers on the BIG-IP LTM. For more information on Servers, please refer to the link below.
+When we create a BIG-IP server with auto-discovery enabled (which we will do), BIG-IP DNS will discover all of the virtual servers defined on the BIG-IP LTM. For more information on Servers, please refer to the link below.
 
 |servers_link|
 

@@ -1,7 +1,7 @@
 Pools
 ===========================
 
-Pools are a grouping of related virtual servers. Pools will typically reference virtual servers on a BIG-IP LTM system. The pool we create below will be later referenced by a Wide-IP (FQDN). For more information on pools, please refer to the link below.
+Pools are a grouping of related virtual servers. Pools will typically reference virtual servers on BIG-IP LTM systems. The pool we create below will be later referenced by a Wide-IP (FQDN). For more information on pools, please refer to the link below.
 
 |pools_link|
 

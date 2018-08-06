@@ -28,6 +28,8 @@ The results you receive should be similar to that of the results in the screensh
 .. image:: /_static/class2/gtm_wideip_statistics.png
    :align: left
 
+.. note:: At this point you have enabled a geographically redundant Web service by using BIG-IP DNS! **Great job!**
+
 .. admonition:: TMSH
 
    tmsh show gtm wideip A www.example.com detail
