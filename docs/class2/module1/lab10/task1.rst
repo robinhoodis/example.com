@@ -1,79 +1,57 @@
-BIG-IP DNS in Action
+BIG-IP DNS in Action Pt.2
 =====================
 
-From the Workstation command prompt type "dig www.example.com"
+#. Introduce a network problem in the ISP at site1
 
-   .. image:: /_static/class1/dc01_new_delegation_create_cname_results.png
+   Log into the router and disable interface 1.6 connecting ISP1 to site1
 
-Observe WIDEIP statistics on gtm1.site1: **Statistics  ››  Module Statistics : DNS : GSLB  ››  Wide IPs : www.gslb.example.com : A**
+   https://router01.branch01.example.com/tmui/Control/jspmap/tmui/locallb/network/interface/list.jsp
 
-   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A
+   .. image:: /_static/class1/router_disable_isp1_site_interface.png
 
-   .. image:: /_static/class1/gtm1_site1_wideip_statistics_flyout.png
-
-   .. image:: /_static/class1/gtm1_site1_wideip_statistics_detail.png
+   TMSH command to run on the router01 to simulate an ISP failure   
 
    .. admonition:: TMSH
 
-      tmsh show gtm wideip a www.gslb.example.com
+      tmsh modify interface 1.6 disabled
 
-Observe WIDEIP statistics on gtm1.site2: **Statistics  ››  Module Statistics : DNS : GSLB  ››  Wide IPs : www.gslb.example.com : A**
+#. View the effect
 
-   https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A
+   Log into gtm1.site2 and observe the status of "Link" objects:
 
-Troubleshooting
-=================================
+   .. image:: /_static/class1/dns_gslb1_site2_links.png
 
-To simulate an outage, disable interfaces and observe the effects.
-
-Disable physical interfaces on gtm1.site2:
-
-   https://gtm1.site2.example.com/tmui/Control/form?__handler=/tmui/locallb/network/interface/list&__source=disable&__linked=false&__fromError=false
-
-   .. image:: /_static/class1/gtm1_site1_disable_interfaces.png
-
-   TMSH command to run on only gtm1.site2:
-
-   .. admonition:: TMSH
-   
-      tmsh modify net interface all disabled
-
-Refresh statistics on gtm1.site1 and make sure DNS requests are still resolving.
-
-#. ROBIN - fix this section
-
-   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A
-
-     .. image:: /_static/class1/gtm1_site1_disable_interfaces.png
-
-   TMSH command to run on only gtm1.site2:
-
-   .. admonition:: TMSH
-   
-      show gtm wideip
-
-Re-enable interfaces on gtm1.site2, disable interfaces on gtm1.site1.
-   Observe statistics on gtm1.site2 and make sure DNS requests are still resolving.
-
-   TMSH command to run on only gtm1.site2:
-
-   .. admonition:: TMSH
-   
-      tmsh modify net interface all enabled
-
-Observe pool statistics on gtm1.site1: **Statistics  ››  Module Statistics : DNS : GSLB  ››  Pools : www.example.com_pool : A**
-
-   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/pool/stats_detail.jsp?name=%2FCommon%2Fwww.example.com_pool&pool_type=1&identity=www.example.com_pool+%3A+A
-
-   .. image:: /_static/class1/results_pool_statistics.png
+   https://gtm1.site2.example.com/tmui/Control/jspmap/xsl/gtm_link/list
 
    .. admonition:: TMSH
 
-      show gtm pool a www.example.com_pool
+      tmsh show gtm link
 
-Using Putty, ssh into gtm1.site1 and run the following command to watch logs:
+#. Set the site1 isp link back up
+
+   Log into the router and enable the interface 1.6 connecting ISP1 to site1
+
+   https://router01.branch01.example.com/tmui/Control/jspmap/tmui/locallb/network/interface/list.jsp
+
+   .. image:: /_static/class1/router_enable_isp1_site_interface.png
 
    .. admonition:: TMSH
 
-      tail -f /var/log/ltm 
+      tmsh modify interface 1.6 enabled
+
+Note: Even though you re-enabled the primary site1, a persistence record from the previous lab is still in place.
+
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+   :glob:
+
+|links_link|
+
+.. |links_link| raw:: html
+
+   <a href="https://support.f5.com/csp/article/K13827" target="_blank">More information on DNS Delegation</a>
+
+.. image:: /_static/class1/gtm_global_settings.png
+   :align: left
 

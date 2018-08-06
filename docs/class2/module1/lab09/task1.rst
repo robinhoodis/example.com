@@ -1,4 +1,4 @@
-﻿BIG-IQ Reporting
+﻿BIG-IQ with DNS Reporting
 =====================
 
 .. toctree::
