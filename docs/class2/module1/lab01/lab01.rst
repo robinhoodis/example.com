@@ -5,7 +5,8 @@ Settings
    :hidden:
    :maxdepth: 2
    :glob:
-
+   
+   task*
 
 First of all, we will configure a Sync-Group between our BIG-IP DNS servers. This will allow for DNS-related configurations to be kept in a consistent state between both BIG-IP DNS servers at all times. Please see the article below for more information on BIG-IP DNS synchronization.
 
