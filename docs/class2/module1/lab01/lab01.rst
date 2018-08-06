@@ -8,13 +8,15 @@ Settings
    
    task*
 
-First of all, we will configure a Sync-Group between our BIG-IP DNS servers. This will allow for DNS-related configurations to be kept in a consistent state between both BIG-IP DNS servers at all times. Please see the article below for more information on BIG-IP DNS synchronization.
+First of all, we will begin to configure a Sync-Group between our BIG-IP DNS servers. This will allow for DNS-related configurations to be kept in a consistent state between both BIG-IP DNS servers at all times. Please see the article below for more information on BIG-IP DNS synchronization.
 
 |settings_KB_link|
 
 .. |settings_KB_link| raw:: html
 
    <a href="https://support.f5.com/csp/article/K13734" target="_blank">More on BIG-IP DNS Synchronization</a>
+
+.. note::  **This enables Config Sync on gtm1.site1 only. Config Sync for gtm1.site2 will be enabled at a later step**
 
 |site1-settings_link|
 

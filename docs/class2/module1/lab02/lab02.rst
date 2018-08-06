@@ -1,7 +1,7 @@
 Logging
 ############################################
 
-Before getting into the details of the DNS confguration, we are first going to create a DNS logging profile. In order to begin the logging of DNS queries and responses, we must first create a log publisher and a DNS logging profile and then tie them together. The DNS logging profile we create will then be associated to a DNS listener in a later task. For more informaton on DNS logging, please refer to the link below.
+Before getting into the details of DNS confguration, we are first going to create a DNS logging profile. In order to allow for the logging of DNS queries and responses, we must first create a log publisher and a DNS logging profile and then tie them together. The DNS logging profile we create will then be associated to a DNS listener in a later task. For more informaton on DNS logging, please refer to the link below.
 
 |location_link|
 
