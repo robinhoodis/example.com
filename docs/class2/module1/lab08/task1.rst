@@ -1,38 +1,11 @@
-﻿BIG-IQ Reporting
+API - Part 2
 =====================
 
-.. toctree::
-   :hidden:
-   :maxdepth: 2
-   :glob:
+Now that we have the authentication token, we will make use of it to create new BIG-IP DNS configurations. Given that we are creating a new FTP service, we need to create a new pool and a Wide-IP.
 
-|settings_KB_link|
+In Postman, inside of the "API" collection, navigate to each of the next 4 requests and click Send for each.
 
-.. |settings_KB_link| raw:: html
-
-   <a href="https://support.f5.com/csp/article/K13734" target="_blank">A site specific sync-group name will synchronize configuration settings and metrics information</a>
-
-|site1-settings_link|
-
-.. |site1-settings_link| raw:: html
-
-   On gtm1.site<b>1</b> navigate to: <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/settings/gslb/properties_general.jsp" target="_blank">DNS  ››  Settings : GSLB : General</a>
-
-.. image:: /_static/class1/gtm_global_settings.png
+.. image:: /_static/API2.png
    :align: left
 
-Configure the global settings for GSLB according to the following table:
-
-.. csv-table::
-   :header: "Field", "Value"
-   :widths: 15, 15
-
-   "Synchronize", "checked"
-   "Group Name", "EXAMPLE_group"
-   "Synchronize DNS Zone Files", "checked"
-
-The above work may alternatively be completed using the command line. Using Putty log into gtm1.site1 and issue the following command.
-
-.. admonition:: TMSH
-
-   tmsh modify gtm global-settings general synchronization yes synchronization-group-name EXAMPLE_group synchronize-zone-files yes
+Once complete, login to gtm1.site1 via Web interface and look for the new configuration elements to confirm that they were successfully created. Do the same on gtm1.site2.

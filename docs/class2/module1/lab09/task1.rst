@@ -1,79 +1,38 @@
-BIG-IP DNS in Action
+﻿BIG-IQ Reporting
 =====================
 
-From the Workstation command prompt type "dig www.example.com"
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+   :glob:
 
-   .. image:: /_static/class1/dc01_new_delegation_create_cname_results.png
+|settings_KB_link|
 
-Observe WIDEIP statistics on gtm1.site1: **Statistics  ››  Module Statistics : DNS : GSLB  ››  Wide IPs : www.gslb.example.com : A**
+.. |settings_KB_link| raw:: html
 
-   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A
+   <a href="https://support.f5.com/csp/article/K13734" target="_blank">A site specific sync-group name will synchronize configuration settings and metrics information</a>
 
-   .. image:: /_static/class1/gtm1_site1_wideip_statistics_flyout.png
+|site1-settings_link|
 
-   .. image:: /_static/class1/gtm1_site1_wideip_statistics_detail.png
+.. |site1-settings_link| raw:: html
 
-   .. admonition:: TMSH
+   On gtm1.site<b>1</b> navigate to: <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/settings/gslb/properties_general.jsp" target="_blank">DNS  ››  Settings : GSLB : General</a>
 
-      tmsh show gtm wideip a www.gslb.example.com
+.. image:: /_static/class1/gtm_global_settings.png
+   :align: left
 
-Observe WIDEIP statistics on gtm1.site2: **Statistics  ››  Module Statistics : DNS : GSLB  ››  Wide IPs : www.gslb.example.com : A**
+Configure the global settings for GSLB according to the following table:
 
-   https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A
+.. csv-table::
+   :header: "Field", "Value"
+   :widths: 15, 15
 
-Troubleshooting
-=================================
+   "Synchronize", "checked"
+   "Group Name", "EXAMPLE_group"
+   "Synchronize DNS Zone Files", "checked"
 
-To simulate an outage, disable interfaces and observe the effects.
+The above work may alternatively be completed using the command line. Using Putty log into gtm1.site1 and issue the following command.
 
-Disable physical interfaces on gtm1.site2:
+.. admonition:: TMSH
 
-   https://gtm1.site2.example.com/tmui/Control/form?__handler=/tmui/locallb/network/interface/list&__source=disable&__linked=false&__fromError=false
-
-   .. image:: /_static/class1/gtm1_site1_disable_interfaces.png
-
-   TMSH command to run on only gtm1.site2:
-
-   .. admonition:: TMSH
-   
-      tmsh modify net interface all disabled
-
-Refresh statistics on gtm1.site1 and make sure DNS requests are still resolving.
-
-#. ROBIN - fix this section
-
-   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A
-
-     .. image:: /_static/class1/gtm1_site1_disable_interfaces.png
-
-   TMSH command to run on only gtm1.site2:
-
-   .. admonition:: TMSH
-   
-      show gtm wideip
-
-Re-enable interfaces on gtm1.site2, disable interfaces on gtm1.site1.
-   Observe statistics on gtm1.site2 and make sure DNS requests are still resolving.
-
-   TMSH command to run on only gtm1.site2:
-
-   .. admonition:: TMSH
-   
-      tmsh modify net interface all enabled
-
-Observe pool statistics on gtm1.site1: **Statistics  ››  Module Statistics : DNS : GSLB  ››  Pools : www.example.com_pool : A**
-
-   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/pool/stats_detail.jsp?name=%2FCommon%2Fwww.example.com_pool&pool_type=1&identity=www.example.com_pool+%3A+A
-
-   .. image:: /_static/class1/results_pool_statistics.png
-
-   .. admonition:: TMSH
-
-      show gtm pool a www.example.com_pool
-
-Using Putty, ssh into gtm1.site1 and run the following command to watch logs:
-
-   .. admonition:: TMSH
-
-      tail -f /var/log/ltm 
-
+   tmsh modify gtm global-settings general synchronization yes synchronization-group-name EXAMPLE_group synchronize-zone-files yes

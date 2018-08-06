@@ -1,11 +1,32 @@
-API - Part 2
-=====================
+A Records
+=================================
 
-Now that we have the authentication token, we will make use of it to create new BIG-IP DNS configurations. Given that we are creating a new FTP service, we need to create a new pool and a Wide-IP.
+An A record is by far the most common DNS query. In this type of query, 'A' refers to an IP address - the querier is asking for the IP address of the domain name being queried. Below we will create two A records, one for each BIG-IP DNS server.
 
-In Postman, inside of the "API" collection, navigate to each of the next 4 requests and click Send for each.
+#. Expand the sub-menus to expose EXAMPLE.COM in the "Forward Lookup Zones"
 
-.. image:: /_static/API2.png
-   :align: left
+   .. image:: /_static/class2/dc01_expand_dns.png
+      :align: left
 
-Once complete, login to gtm1.site1 via Web interface and look for the new configuration elements to confirm that they were successfully created. Do the same on gtm1.site2.
+#. Right click on EXAMPLE.COM and select "New Host (A or AAAA)"
+
+   .. image:: /_static/class2/dc01_right_click.png
+      :align: left
+
+#. Create two new A records for the new BIGP-IP nameservers.
+
+   .. csv-table::
+      :header: "Field", "Value"
+      :widths: 15, 15
+
+      "ns1", "203.0.113.8"
+      "ns2", "198.51.100.40"
+
+
+   .. image:: /_static/class2/dc01_create_ns1.png
+      :align: left
+
+   Create ns2.example.com
+
+   .. image:: /_static/class1/dc01_new_A_ns2.png
+      :align: left

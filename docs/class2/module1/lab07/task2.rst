@@ -1,11 +1,39 @@
-API - Part 3
-=====================
+Sub Domain
+=================================
 
-Now lets test the new service we created. The related configuration on the BIG-IP LTM and on the DNS server are already complete for you. Open up FileZilla from your client workstation and connect to the DNS service gslb2.example.com. This is a CNAME for FTP.example.com
+Below you will configure the delegation of gslb.example.com to ns1 and ns2, the A records we created in the previous step.
 
-.. note::  **Use FTP credentials admin/admin**
+#. Expand "Forward Lookup Zones", and right click on "EXAMPLE.com
 
-.. image:: /_static/API3.png
-   :align: left
+   .. image:: /_static/class1/dc01_new_delegation.png
+      :align: left
 
-You've just successfully created a highly available service on BIG-IP DNS all through a few very simple API commands.
+#. Create the "gslb" subdomain.
+
+   .. image:: /_static/class1/dc01_new_delegation_create_gslb.png
+      :align: left
+
+#. Step through the Delegation Wizard. Add "ns1.example.com - 203.0.113.8"
+
+   .. image:: /_static/class2/dc01_new_delegate_add_ns1.png
+      :align: left
+
+   Repeat to add ns2.example.com
+
+   .. image:: /_static/class1/dc01_new_delegation_ns1ns2.png
+      :align: left
+
+#. Also add "ns2.example.com - 198.51.100.40"
+
+   .. image:: /_static/class1/dc01_new_delegation_ns1ns2_create.png
+      :align: left
+
+#. Make sure both ns1.example.com and ns2.example.com are added
+
+   .. image:: /_static/class1/dc01_new_delegation_ns1ns2_create_finish.png
+      :align: left
+
+#. Click "Finish"
+
+   .. image:: /_static/class1/dc01_new_delegation_create_gslb_finish.png
+      :align: left

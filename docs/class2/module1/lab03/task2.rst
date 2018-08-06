@@ -1,50 +1,52 @@
-Device Trust
-###############################################
+DNS Profile
+############################################
 
-A group of F5 DNS servers need to exchange keys to establish a trusted mechanism for HA communicationsa and Config Sync. In this task we will establish device trust between gtm1.site1 and gtm1.site2. For more information on device trust, please refer to the link below. 
+We are now going to configure a DNS profile to associate with the listener we have just created. The DNS profile is where we define how to handle the DNS traffic received by the listener, this includes DNS specific features such as DNSSEC, DNS Express and many others. For more informaton on DNS profiles, please refer to the link below.
 
-|device-trust_link|
+|dns-profile_link|
 
-.. |device-trust_link| raw:: html
+.. |dns-profile_link| raw:: html
 
-   <a href="https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-redundant-systems-config-11-2-0/3.html" target="_blank">More information on Device Trust</a>
+   <a href="https://support.f5.com/csp/article/K21520582" target="_blank">More information on DNS profiles</a>
 
+.. note::  **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
 
-.. image:: /_static/class1/establish_trust.png
+|site1_create_dns-profile|
+
+.. |site1_create_dns-profile| raw:: html
+
+   On gtm1.site<b>1</b> navigate to: <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/profile/dns/create.jsp" target="_blank">DNS ›› Delivery : Profiles : DNS</a>
+
+|site2_create_dns-profile|
+
+.. |site2_create_dns-profile| raw:: html
+
+   On gtm1.site<b>2</b> navigate to: <a href="https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/profile/dns/create.jsp" target="_blank">DNS ›› Delivery : Profiles : DNS</a>
+
+.. image:: /_static/class1/dns_profile_flyout.png
    :align: left
 
-#. Launch Putty and login to gtm1.SITE1
+Create a new DNS profile as shown in the following table.
 
-   Run the following command, and when prompted for a password use "default"
+.. csv-table::
+   :header: "Field", "Value"
+   :widths: 15, 15
 
-   .. admonition:: TMSH
+   "Name", "example.com_dns_profile"
+   "DNSSEC", "Disabled"
+   "DNS Express", "Disabled"
+   "Unhandled Query Action", "Drop"
+   "Use BIND Server on Big-IP", "Disabled"
+   "Logging", "Enabled"
+   "Logging Profile", "example_dns_logging_profile"
+   "AVR statistics Sample Rate", "Enabled, 1/1 queries sampled"
 
-      bigip_add
+.. image:: /_static/class1/dns_profile_settings.png
+   :align: left
 
-   .. image:: /_static/class1/putty_gtm1_site1.png
-      :align: left
+TMSH command for both gtm1.site1 and gtm1.site2:
 
-#. Observe the exchanged certificates
+.. admonition:: TMSH
 
-   |site1-view-trust-certs_link|
-
-   .. |site1-view-trust-certs_link| raw:: html
-
-      On gtm1.site<b>1</b> navigate to: <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/locallb/ssl_certificate/properties.jsp?certificate_name=server&store=iquery" target="_blank">DNS  ››  GSLB : Servers : Trusted Server Certificates</a>
-
-   .. image:: /_static/class1/gslb_dataceter_servers_trusted_certificates.png
-      :align: left
-
-#. Observe the server status
-
-   |site1-view-server_status_link|
-
-   .. |site1-view-server_status_link| raw:: html
-
-      On gtm1.site<b>1</b> navigate to: <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/server/list.jsp" target="_blank">DNS  ››  GSLB : Servers : Server List</a>
-
-   .. image:: /_static/class1/green_green_green.png
-      :align: left
-      
-.. note::  **If your server list is not green, do not proceed to the next step. Please confirm that the device trust is complete and troubleshoot the issue.**
+   tmsh create ltm profile dns example.com_dns_profile use-local-bind no unhandled-query-action drop log-profile example_dns_logging_profile enable-logging yes avr-dnsstat-sample-rate 1 enable-dns-express no enable-dnssec no
 

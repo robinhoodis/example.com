@@ -1,18 +1,45 @@
-Sync Group
-==================================
+UDP Profile
+============================
 
-After the BIG-IP DNS server in the site 2 data center is joined to the sync group, an administrator may make changes on any of the F5 DNS servers, and changes will be automatically replicated across all F5 DNS servers.
+Next, we are going to define a UDP profile. The UDP profile will instruct the BIG-IP DNS listener on how to handle UDP traffic. The DNS profile we created earlier instructs the BIG-IP DNS on how to process the layer 7 data isnide of the UDP packets, but not how to handle the UDP protocol itself. For more information on UDP profiles, please refer to the link below. 
 
-From the Jumpbox Launch Putty and log in to gtm1.site2
+|udp-profile_link|
 
-In the Putty terminal logged into gtm1.site2 run the command "gtm_add 203.0.113.7", and enter the password "default" when prompted.
+.. |udp-profile_link| raw:: html
 
-Select "y" to allow the bigip-ip to join the mesh.
+   <a href="https://support.f5.com/csp/article/K7535" target="_blank">More information on UDP profiles</a>
 
-.. note::  **A word of caution. Running this command will PULL configuration from the remote BIG-IP DNS and overwrite the local DNS configuration.**
+.. note::  **It is required to complete the following task on both gtm1.site1 and gtm1.site2**
 
-.. image:: /_static/class1/putty_gtm1_site2.png
+|site1-udp-profile_link|
+
+.. |site1-udp-profile_link| raw:: html
+
+   On gtm1.site<b>1</b> navigate to: <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/dns/profile/udp/create.jsp" target="_blank">DNS  ››  Delivery : Profiles : Protocol : UDP</a>
+
+|site2-udp-profile_link|
+
+.. |site2-udp-profile_link| raw:: html
+
+   On gtm1.site<b>2</b> navigate to: <a href="https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/dns/profile/udp/create.jsp" target="_blank">DNS  ››  Delivery : Profiles : Protocol : UDP</a>
+
+.. image:: /_static/class1/udp-dns_profile_flyout.png
+   :align: left
+
+Create a new UDP profile as shown in the following table:
+
+.. csv-table::
+   :header: "Field", "Value"
+   :widths: 15, 15
+
+   "Name", "example.com_udp-dns_profile"
+   "Parent Profile", "udp_gtm_dns"
+
+.. image:: /_static/class1/udp-dns_profile.png
+   :align: left
+
+TMSH command for both gtm1.site1 and gtm1.site2:
 
 .. admonition:: TMSH
 
-   gtm_add 203.0.113.7
+   tmsh create ltm profile udp example.com_udp-dns_profile defaults-from udp_gtm_dns

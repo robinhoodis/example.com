@@ -1,26 +1,16 @@
-API - Part 4
-=====================
+CNAME
+=================================
 
-You have seen how easy is to create new configurations on the BIG-IP DNS via iControlREST using Postman. In this step we will create a brand new configuration element that is relevant to our disaster recovery design; we will convert site 2 to a standby site.
+A CNAME (Canonical name record) functions as an alias for another domain name. In this task, we will create a CNAME for "www" an as alias to www.gslb.example.com. When configured, this will allow a querier of www.example.com to be directed to the name www.gslb.example.com where a subsequent A record query will be required.
 
-We can make site 2 a standby site by modifying the load balancing method of each of its pools from Preferred to Global Availability. We will then demonstrate the new behavior using dig.
+#. Make sure "Forward Lookup Zones" and "EXAMPLE.COM" is expanded. Right click on "www", and select delete.
 
-Open Postman once again and click on Find Pool Syntax and then Send the POST command. By running this command, you will see how easy it is to find the REST command we require by analyzing the body of the response.
+   .. image:: /_static/class1/dc01_new_delegation_delete_www.png
 
-  .. image:: /_static/API4-a.png
-     :align: left
+#. Right click on "EXAMPLE.COM", and select "New Alias (CNAME)"
 
-Proceed to the next command and once again analyze the body of the response.
+   .. image:: /_static/class1/dc01_new_delegation_create_cname.png
 
-  .. image:: /_static/API4-b.png
-     :align: left
+#. Add "www - www.gslb.example.com"
 
-And finally, proceed to the next and analyze the body of the response.
-
-  .. image:: /_static/API4-c.png
-   :align: left
-
-We now have the full paths that we need to issue our REST commands. Please run the last two commands which will alter the GSLB load balancing method.
-
-  .. image:: /_static/API4-d.png
-   :align: left
+   .. image:: /_static/class1/dc01_new_delegation_create_cname_finish.png
