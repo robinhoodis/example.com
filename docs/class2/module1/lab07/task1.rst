@@ -3,11 +3,6 @@ API - Part 2
 
 Now that we have the authentication token, we will make use of it to create new BIG-IP DNS configurations. Given that we are creating a new FTP service, we need to create a new pool and a Wide-IP.
 
-.. toctree::
-   :hidden:
-   :maxdepth: 2
-   :glob:
-
 In Postman, inside of the "API" collection, navigate to each of the next 4 requests and click Send for each.
 
 .. image:: /_static/API2.png

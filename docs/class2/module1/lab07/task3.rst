@@ -20,7 +20,7 @@ And finally, proceed to the next and analyze the body of the response.
   .. image:: /_static/API4-c.png
    :align: left
 
-We now have the full paths that we need to issue our REST commands. Please run the last two commands which will alter the load balancing method.
+We now have the full paths that we need to issue our REST commands. Please run the last two commands which will alter the GSLB load balancing method.
 
   .. image:: /_static/API4-d.png
    :align: left
