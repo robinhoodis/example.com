@@ -8,25 +8,31 @@ BIG-IP DNS in Action
 
    task*
 
-From the Workstation command prompt type "dig www.example.com"
+Remember, we now have an active/standby disaster recovery topology; we should receive only a single, consistent response when we query www.example.com. From the Workstation command prompt type "dig www.example.com"
 
    .. image:: /_static/class1/dc01_new_delegation_create_cname_results.png
 
-Observe WIDEIP statistics on gtm1.site1: **Statistics  ››  Module Statistics : DNS : GSLB  ››  Wide IPs : www.gslb.example.com : A**
 
-   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A
+|wip1_link|
 
-   .. image:: /_static/class1/gtm1_site1_wideip_statistics_flyout.png
+.. |wip1_link| raw:: html
 
-   .. image:: /_static/class1/gtm1_site1_wideip_statistics_detail.png
+ Observe Wide-IP statistics on gtm1.site1:   <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A" target="_blank">Statistics  ››  Module Statistics : DNS : GSLB  ››  Wide IPs : www.gslb.example.com : A</a> 
 
-   .. admonition:: TMSH
+
+.. image:: /_static/class1/gtm1_site1_wideip_statistics_flyout.png
+
+.. image:: /_static/class1/gtm1_site1_wideip_statistics_detail.png
+
+|wip2_link|
+
+.. |wip2_link| raw:: html
+
+Observe Wide-IP statistics on gtm1.site2:  <a href="https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A" target="_blank">Statistics  ››  Module Statistics : DNS : GSLB  ››  Wide IPs : www.gslb.example.com : A</a> 
+
+.. admonition:: TMSH
 
       tmsh show gtm wideip a www.gslb.example.com
-
-Observe WIDEIP statistics on gtm1.site2: **Statistics  ››  Module Statistics : DNS : GSLB  ››  Wide IPs : www.gslb.example.com : A**
-
-   https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A
 
 Troubleshooting
 =================================

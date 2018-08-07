@@ -5,7 +5,7 @@ Now that we have the authentication token, we will make use of it to create new 
 
 In Postman, inside of the "API" collection, navigate to each of the next 4 requests and click Send for each.
 
-.. image:: /_static/API2.png
+.. image:: /_static/API2-a.png
    :align: left
 
 Once complete, login to gtm1.site1 via Web interface and look for the new configuration elements to confirm that they were successfully created. Do the same on gtm1.site2.
