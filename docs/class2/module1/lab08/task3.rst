@@ -10,17 +10,30 @@ Open Postman once again and click on Find Pool Syntax and then Send the POST com
   .. image:: /_static/API4-a.png
      :align: left
 
-Proceed to the next command and once again analyze the body of the response.
 
   .. image:: /_static/API4-b.png
      :align: left
 
-And finally, proceed to the next and analyze the body of the response.
+Click and send the next POST command and once again analyze the body of the response.
 
   .. image:: /_static/API4-c.png
    :align: left
 
-We now have the full paths that we need to issue our REST commands. Please run the last two PATCH commands which will alter the GSLB load balancing method.
-
   .. image:: /_static/API4-d.png
+   :align: left
+
+Click and send the next POST command and once again analyze the body of the response.
+
+  .. image:: /_static/API4-e.png
+   :align: left
+
+  .. image:: /_static/API4-f.png
+   :align: left
+
+We now have the full paths that we need to issue our REST commands. Please send the last two PATCH commands which will alter the GSLB load balancing method. Take a look at the URL defined in the command, this is the URL we found in the previous few steps.
+
+  .. image:: /_static/API4-g.png
+   :align: left
+
+  .. image:: /_static/API4-h.png
    :align: left
