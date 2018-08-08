@@ -17,7 +17,7 @@ Remember, we now have an active/standby disaster recovery topology; we should re
 
 .. |wip1_link| raw:: html
 
- Observe Wide-IP statistics on gtm1.site1:   <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A" target="_blank">Statistics  ››  Module Statistics : DNS : GSLB  ››  Wide IPs : www.gslb.example.com : A</a> 
+   Observe Wide-IP statistics on gtm1.site1:   <a href="https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A" target="_blank">Statistics  ››  Module Statistics : DNS : GSLB  ››  Wide IPs : www.gslb.example.com : A</a> 
 
 
 .. image:: /_static/class1/gtm1_site1_wideip_statistics_flyout.png
@@ -28,11 +28,11 @@ Remember, we now have an active/standby disaster recovery topology; we should re
 
 .. |wip2_link| raw:: html
 
-Observe Wide-IP statistics on gtm1.site2:  <a href="https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A" target="_blank">Statistics  ››  Module Statistics : DNS : GSLB  ››  Wide IPs : www.gslb.example.com : A</a> 
+   Observe Wide-IP statistics on gtm1.site2:  <a href="https://gtm1.site2.example.com/tmui/Control/jspmap/tmui/globallb/stats/wideip/stats_detail.jsp?name=%2FCommon%2Fwww.gslb.example.com&type=1&identity=www.gslb.example.com+%3A+A" target="_blank">Statistics  ››  Module Statistics : DNS : GSLB  ››  Wide IPs : www.gslb.example.com : A</a> 
 
 .. admonition:: TMSH
 
-      tmsh show gtm wideip a www.gslb.example.com
+   tmsh show gtm wideip a www.gslb.example.com
 
 Troubleshooting
 =================================
