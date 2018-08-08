@@ -1,11 +1,11 @@
-API - Part 3
+POST
 =====================
 
-Now lets test the new service we created. The related configuration on the BIG-IP LTM and on the Microsoft DNS server are already complete for you. Open up FileZilla from your client workstation and connect to the DNS service ftp.example.com. This is a CNAME for FTP.example.com
+Now that we have the authentication token, we will make use of it to create new BIG-IP DNS configurations. Given that we are creating a new FTP service, we need to create a new pool and a Wide-IP.
 
-.. note::  **Use FTP credentials admin/admin**
+In Postman, inside of the "API" collection, navigate to each of the next 4 requests and click Send for each.
 
-.. image:: /_static/API3-a.png
+.. image:: /_static/API2-a.png
    :align: left
 
-You've just successfully created a new highly available service on BIG-IP DNS all with only a few very simple API commands.
+Once complete, login to gtm1.site1 via Web interface and look for the new configuration elements to confirm that they were successfully created. Do the same on gtm1.site2.

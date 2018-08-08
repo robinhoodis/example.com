@@ -1,11 +1,19 @@
-API - Part 2
+Authenticate
 =====================
 
-Now that we have the authentication token, we will make use of it to create new BIG-IP DNS configurations. Given that we are creating a new FTP service, we need to create a new pool and a Wide-IP.
+From your RDP session to client01, open up Postman (It should have loaded automatically) and navigate to the "API" section under the Collections on the left. In order to use the iControlREST API, we must first authenticate with the BIG-IP. 
 
-In Postman, inside of the "API" collection, navigate to each of the next 4 requests and click Send for each.
+Click on "Authenticate and Obtain Token from gtm1.site1". 
 
-.. image:: /_static/API2-a.png
+.. image:: /_static/API1-a.png
    :align: left
 
-Once complete, login to gtm1.site1 via Web interface and look for the new configuration elements to confirm that they were successfully created. Do the same on gtm1.site2.
+Click on the "Send" button in the top right. 
+
+.. image:: /_static/API1-b.png
+   :align: left
+
+Open the respone body and look for the received token. Please note that this token value is dynamic and your result will not be the same as that depicted. The token we received will be used for all authenticated actions with the BIG-IP DNS going forward.
+
+.. image:: /_static/API1-c.png
+   :align: left
