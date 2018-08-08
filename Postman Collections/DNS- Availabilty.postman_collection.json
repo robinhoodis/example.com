@@ -1,0 +1,1054 @@
+{
+	"info": {
+		"_postman_id": "868b788a-367a-44b0-b03f-af0aa74a290e",
+		"name": "DNS: Availabilty",
+		"description": "Please see folder descriptions for details.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "dc14e44c-15ea-41df-9e93-3f8e8f7908c7",
+			"name": "DNS_Availability",
+			"item": [
+				{
+					"_postman_id": "4909b1d4-2ecd-4cab-9677-555e5f724dfb",
+					"name": "Step 1: HTTP BASIC Authentication Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"kind\", ",
+									"            \"value\":\"tm:ltm:ltmcollectionstate\" ",
+									"        }",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{gtm1.site1}}/mgmt/tm/ltm",
+							"protocol": "https",
+							"host": [
+								"{{gtm1.site1}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "8194200d-4fe6-4370-a4bd-87dedcc99f14",
+					"name": "Authenticate and Obtain Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var populate_vars = [",
+									"        {name:\"bigip_token\", value:\"token.token\"}",
+									"    ];",
+									"    ",
+									"f5_populate_env_vars(populate_vars);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{bigip_username}}\",\n  \"password\": \"{{bigip_password}}\",\n  \"loginProvidername\":\"tmos\"\n}\n"
+						},
+						"url": {
+							"raw": "https://{{gtm1.site1}}/mgmt/shared/authn/login",
+							"protocol": "https",
+							"host": [
+								"{{gtm1.site1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authn",
+								"login"
+							]
+						},
+						"description": "Perform authentication and populate the variable specified in the {{bigip_token_var}} variable."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "70fe9460-7d4f-496d-8751-162ea79af23d",
+					"name": "Verify Authentication Works",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        {path:\"token\", value:environment.bigip_token}",
+									"    ];",
+									"    ",
+									"f5_check_response(check_vals);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "TIBAS4MPOMBIDLFY53MUKLGSDB"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"admin\"\n}"
+						},
+						"url": {
+							"raw": "https://{{gtm1.site1}}/mgmt/shared/authz/tokens/{{bigip_token}}",
+							"protocol": "https",
+							"host": [
+								"{{gtm1.site1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authz",
+								"tokens",
+								"{{bigip_token}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "f73776f7-44ae-423b-a0ed-26c287a5ed66",
+					"name": "Set Authentication Token Timeout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        {path:\"timeout\", value:environment.bigip_token_timeout}",
+									"    ];",
+									"    ",
+									"f5_check_response(check_vals);",
+									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"if(typeof environment.bigip_token_timeout === 'undefined') {",
+									"    postman.setEnvironmentVariable('bigip_token_timeout', 1200);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"timeout\":\"{{bigip_token_timeout}}\"\n}"
+						},
+						"url": {
+							"raw": "https://{{gtm1.site1}}/mgmt/shared/authz/tokens/{{bigip_token}}",
+							"protocol": "https",
+							"host": [
+								"{{gtm1.site1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authz",
+								"tokens",
+								"{{bigip_token}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "de3efa84-3830-454f-96ac-d47292853681",
+					"name": "Get Software Version",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var f5_find_version = function(resp, attr) {",
+									"    //console.log(resp);",
+									"    for(var i=0; i < resp.items.length; i++) {",
+									"        //console.log(resp.items[i]);",
+									"        if(resp.items[i].active === true) {",
+									"            return resp.items[i][attr];",
+									"        }",
+									"    }",
+									"};",
+									"",
+									"var populate_vars = [",
+									"    {",
+									"        \"name\":\"bigip_version\",",
+									"        \"value\":f5_find_version,",
+									"        \"args\":[\"version\"]",
+									"    },",
+									"    {",
+									"        \"name\":\"bigip_build\",",
+									"        \"value\":f5_find_version,",
+									"        \"args\":[\"build\"]",
+									"    }",
+									"];",
+									"",
+									"f5_check_response();",
+									"f5_populate_env_vars(populate_vars);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{gtm1.site1}}/mgmt/tm/sys/software/volume",
+							"protocol": "https",
+							"host": [
+								"{{gtm1.site1}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"sys",
+								"software",
+								"volume"
+							]
+						},
+						"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}} \tBIG-IP Pool Name\n {{bigip_parition}}\t\tBIG-IP Partition Name\n "
+					},
+					"response": [
+						{
+							"id": "46002186-f07e-4038-a4a1-855509a893a7",
+							"name": "Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{bigip_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/sys/software/volume",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"sys",
+										"software",
+										"volume"
+									]
+								},
+								"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}} \tBIG-IP Pool Name\n {{bigip_parition}}\t\tBIG-IP Partition Name\n "
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-store, no-cache, must-revalidate",
+									"name": "Cache-Control",
+									"description": ""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": ""
+								},
+								{
+									"key": "Content-Length",
+									"value": "710",
+									"name": "Content-Length",
+									"description": ""
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": ""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Dec 2016 23:33:06 GMT",
+									"name": "Date",
+									"description": ""
+								},
+								{
+									"key": "Expires",
+									"value": "-1",
+									"name": "Expires",
+									"description": ""
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache",
+									"name": "Pragma",
+									"description": ""
+								},
+								{
+									"key": "Server",
+									"value": "webd",
+									"name": "Server",
+									"description": ""
+								},
+								{
+									"key": "X-Real-IP",
+									"value": "192.168.0.20",
+									"name": "X-Real-IP",
+									"description": ""
+								},
+								{
+									"key": "accept-encoding",
+									"value": "gzip, deflate",
+									"name": "accept-encoding",
+									"description": ""
+								}
+							],
+							"cookie": [],
+							"body": "{\"username\":\"admin\",\"loginReference\":{\"link\":\"https://localhost/mgmt/cm/system/authn/providers/local/login\"},\"loginProviderName\":\"local\",\"token\":{\"token\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"name\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"userName\":\"admin\",\"authProviderName\":\"local\",\"user\":{\"link\":\"https://localhost/mgmt/shared/authz/users/admin\"},\"groupReferences\":[],\"timeout\":1200,\"startTime\":\"2016-12-19T15:33:06.668-0800\",\"address\":\"192.168.0.20\",\"partition\":\"[All]\",\"generation\":1,\"lastUpdateMicros\":1482190386668185,\"expirationMicros\":1482191586668000,\"kind\":\"shared:authz:tokens:authtokenitemstate\",\"selfLink\":\"https://localhost/mgmt/shared/authz/tokens/BTKMOGLPSSAPSIXJAI76XFFCE7\"},\"generation\":0,\"lastUpdateMicros\":0}"
+						}
+					]
+				},
+				{
+					"_postman_id": "57ca0383-0b18-4f98-b9c4-452ee8f06014",
+					"name": "gtm_settings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8ff8caa2-3fe9-46a9-b036-e29763c15649",
+								"type": "text/javascript",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"kind\", ",
+									"            \"value\":\"tm:gtm:global-settings:general:generalstate\" ",
+									"        }",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/global-settings/general",
+							"protocol": "https",
+							"host": [
+								"{{gtm1.site1}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"gtm",
+								"global-settings",
+								"general"
+							]
+						},
+						"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}}   BIG-IP Pool Name\n {{bigip_parition}}    BIG-IP Partition Name\n "
+					},
+					"response": [
+						{
+							"id": "60494d75-ad71-4c39-abbb-5b6a6488d1e0",
+							"name": "Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{bigip_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/global-settings/general",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"global-settings",
+										"general"
+									]
+								},
+								"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}}   BIG-IP Pool Name\n {{bigip_parition}}    BIG-IP Partition Name\n "
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-store, no-cache, must-revalidate",
+									"name": "Cache-Control",
+									"description": ""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": ""
+								},
+								{
+									"key": "Content-Length",
+									"value": "710",
+									"name": "Content-Length",
+									"description": ""
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": ""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Dec 2016 23:33:06 GMT",
+									"name": "Date",
+									"description": ""
+								},
+								{
+									"key": "Expires",
+									"value": "-1",
+									"name": "Expires",
+									"description": ""
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache",
+									"name": "Pragma",
+									"description": ""
+								},
+								{
+									"key": "Server",
+									"value": "webd",
+									"name": "Server",
+									"description": ""
+								},
+								{
+									"key": "X-Real-IP",
+									"value": "192.168.0.20",
+									"name": "X-Real-IP",
+									"description": ""
+								},
+								{
+									"key": "accept-encoding",
+									"value": "gzip, deflate",
+									"name": "accept-encoding",
+									"description": ""
+								}
+							],
+							"cookie": [],
+							"body": "{\"username\":\"admin\",\"loginReference\":{\"link\":\"https://localhost/mgmt/cm/system/authn/providers/local/login\"},\"loginProviderName\":\"local\",\"token\":{\"token\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"name\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"userName\":\"admin\",\"authProviderName\":\"local\",\"user\":{\"link\":\"https://localhost/mgmt/shared/authz/users/admin\"},\"groupReferences\":[],\"timeout\":1200,\"startTime\":\"2016-12-19T15:33:06.668-0800\",\"address\":\"192.168.0.20\",\"partition\":\"[All]\",\"generation\":1,\"lastUpdateMicros\":1482190386668185,\"expirationMicros\":1482191586668000,\"kind\":\"shared:authz:tokens:authtokenitemstate\",\"selfLink\":\"https://localhost/mgmt/shared/authz/tokens/BTKMOGLPSSAPSIXJAI76XFFCE7\"},\"generation\":0,\"lastUpdateMicros\":0}"
+						}
+					]
+				},
+				{
+					"_postman_id": "b758f506-dfdd-4442-a5a5-5a50596581a6",
+					"name": "Get GTM Pools",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0ab4a537-b5b5-4aca-988d-04d9a1bdc2c9",
+								"type": "text/javascript",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"kind\", ",
+									"            \"value\":\"tm:gtm:pool:a:acollectionstate\" ",
+									"        }",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/pool/a",
+							"protocol": "https",
+							"host": [
+								"{{gtm1.site1}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"gtm",
+								"pool",
+								"a"
+							]
+						},
+						"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}}   BIG-IP Pool Name\n {{bigip_parition}}    BIG-IP Partition Name\n "
+					},
+					"response": [
+						{
+							"id": "6f16b21b-39c4-4661-9475-c97bc30a7f66",
+							"name": "Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{bigip_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/pool/a",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"pool",
+										"a"
+									]
+								},
+								"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}}   BIG-IP Pool Name\n {{bigip_parition}}    BIG-IP Partition Name\n "
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-store, no-cache, must-revalidate",
+									"name": "Cache-Control",
+									"description": ""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": ""
+								},
+								{
+									"key": "Content-Length",
+									"value": "710",
+									"name": "Content-Length",
+									"description": ""
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": ""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Dec 2016 23:33:06 GMT",
+									"name": "Date",
+									"description": ""
+								},
+								{
+									"key": "Expires",
+									"value": "-1",
+									"name": "Expires",
+									"description": ""
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache",
+									"name": "Pragma",
+									"description": ""
+								},
+								{
+									"key": "Server",
+									"value": "webd",
+									"name": "Server",
+									"description": ""
+								},
+								{
+									"key": "X-Real-IP",
+									"value": "192.168.0.20",
+									"name": "X-Real-IP",
+									"description": ""
+								},
+								{
+									"key": "accept-encoding",
+									"value": "gzip, deflate",
+									"name": "accept-encoding",
+									"description": ""
+								}
+							],
+							"cookie": [],
+							"body": "{\"username\":\"admin\",\"loginReference\":{\"link\":\"https://localhost/mgmt/cm/system/authn/providers/local/login\"},\"loginProviderName\":\"local\",\"token\":{\"token\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"name\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"userName\":\"admin\",\"authProviderName\":\"local\",\"user\":{\"link\":\"https://localhost/mgmt/shared/authz/users/admin\"},\"groupReferences\":[],\"timeout\":1200,\"startTime\":\"2016-12-19T15:33:06.668-0800\",\"address\":\"192.168.0.20\",\"partition\":\"[All]\",\"generation\":1,\"lastUpdateMicros\":1482190386668185,\"expirationMicros\":1482191586668000,\"kind\":\"shared:authz:tokens:authtokenitemstate\",\"selfLink\":\"https://localhost/mgmt/shared/authz/tokens/BTKMOGLPSSAPSIXJAI76XFFCE7\"},\"generation\":0,\"lastUpdateMicros\":0}"
+						}
+					]
+				},
+				{
+					"_postman_id": "ff80d71e-5029-474a-a3d6-238fc59c549c",
+					"name": "Create a Pool",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cf5d9afd-5554-4b4b-924b-703054501ba3",
+								"type": "text/javascript",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"name\",",
+									"            \"value\":\"Foo_pool\"",
+									"        }",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Foo_pool\",\n    \"kind\": \"tm:gtm:pool:a:astate\",\n  \"members\": [\"site1_ha-pair:/Common/isp1_site1_www.example.com_tcp_https_virtual\",\"site2_ha-pair:/Common/isp2_site2_www.example.com_tcp_https_virtual\"]\n}"
+						},
+						"url": {
+							"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/pool/a",
+							"protocol": "https",
+							"host": [
+								"{{gtm1.site1}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"gtm",
+								"pool",
+								"a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "e4d4a9bc-4dce-4aea-b4c3-062e01c0043e",
+					"name": "Set System Global-Settings Syncronization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c4df5240-c9f1-4b49-be0b-9177e935f7ba",
+								"type": "text/javascript",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"synchronization\", ",
+									"            \"value\":\"yes\" ",
+									"        },",
+									"        {",
+									"            \"path\":\"synchronizationGroupName\",",
+									"            \"value\":\"EXAMPLE_group\"",
+									"        },",
+									"        {",
+									"            \"path\":\"synchronizeZoneFiles\",",
+									"            \"value\":\"yes\"",
+									"        }",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"synchronization\": \"yes\",\n  \"synchronization-group-name\": \"EXAMPLE_group\",\n  \"synchronize-zone-files\": \"yes\"\n}"
+						},
+						"url": {
+							"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/global-settings/general",
+							"protocol": "https",
+							"host": [
+								"{{gtm1.site1}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"gtm",
+								"global-settings",
+								"general"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "ddba7b24-16f1-447e-87c6-2134d37d16b2",
+					"name": "Create Log Publisher",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2b915d40-1a0e-49ca-8691-ab7269fab694",
+								"type": "text/javascript",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"name\",",
+									"            \"value\":\"local-syslog-publisher\"",
+									"        }",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"local-syslog-publisher\",\n    \"destinations\": \"local-syslog\"\n}"
+						},
+						"url": {
+							"raw": "https://{{gtm1.site1}}/mgmt/tm/sys/log-config/publisher",
+							"protocol": "https",
+							"host": [
+								"{{gtm1.site1}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"sys",
+								"log-config",
+								"publisher"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "ebcb7e1c-c3eb-48b6-bfd1-33e0e69d8ace",
+					"name": "Create DNS Logging Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "70746628-4390-4006-9fb4-4e5ef96ad454",
+								"type": "text/javascript",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"name\",",
+									"            \"value\":\"ZZZexample_dns_logging_profile\"",
+									"        }",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"ZZZexample_dns_logging_profile\",\n    \"enable-response-logging\": \"yes\",\n    \"include-query-id\": \"yes\",\n    \"log-publisher\": \"local-syslog-publisher\"\n}"
+						},
+						"url": {
+							"raw": "https://{{gtm1.site1}}/mgmt/tm/ltm/profile/dns-logging",
+							"protocol": "https",
+							"host": [
+								"{{gtm1.site1}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"profile",
+								"dns-logging"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "66772865-1a90-463f-8a13-759bc2131037",
+					"name": "Create DNS Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dcc1becc-8dbc-4d17-adfe-66f0f8bae466",
+								"type": "text/javascript",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"name\",",
+									"            \"value\":\"ZZZexample.com_dns_profile\"",
+									"        }",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"ZZZexample.com_dns_profile\",\n    \"use-local-bind\": \"no\",\n    \"unhandled-query-action\": \"drop\",\n    \"log-profile\": \"example_dns_logging_profile\",\n    \"enable-logging\": \"yes\",\n    \"avr-dnsstat-sample-rate\": \"1\"\n}"
+						},
+						"url": {
+							"raw": "https://{{gtm1.site1}}/mgmt/tm/ltm/profile/dns",
+							"protocol": "https",
+							"host": [
+								"{{gtm1.site1}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"profile",
+								"dns"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Authenticate to a BIG-IP device.\n\nInput Variables:\nbigip_mgmt      BIG-IP management address\nbigip_username    Username\nbigip_password    Password\nbigip_token_timeout  [OPTIONAL] Timeout for the auth token\n\nOutput Variables:\nbigip_token      Authentication token"
+		}
+	]
+}

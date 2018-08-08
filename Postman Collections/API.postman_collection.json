@@ -1,0 +1,387 @@
+{
+	"info": {
+		"_postman_id": "51043a1b-1490-4d44-bc2b-fa5150f75881",
+		"name": "API",
+		"description": "This collection is intended for use in BIG-IP DNS lab.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "c982a72b-9a00-4d5b-9320-81b70613b354",
+			"name": "Authenticate and Obtain a Token gtm1.site1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4b5f37a2-d13b-42f7-adbd-8b75111b2857",
+						"type": "text/javascript",
+						"exec": [
+							"// This is a Postman post-request request test script.",
+							"//",
+							"// The Javascript code below is executed AFTER a response is ",
+							"// received by the Postman client.  This code can do all sorts",
+							"// of interesting things.",
+							"",
+							"// Parse the JSON response body and save the result in the resp variable",
+							"var resp = JSON.parse(responseBody);",
+							"",
+							"// Set an environemnt variable based on the value in the response JSON",
+							"postman.setEnvironmentVariable(\"gtm1.site1_auth_token\", resp.token.token);",
+							"",
+							"// Populate a Postman test item",
+							"tests[\"Populate Auth Token\"] = 0;",
+							"if(resp.token.token.length > 0) {",
+							"    tests[\"Populate Auth Token\"] = 1;",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin\",\n  \"loginProvidername\":\"tmos\"\n}"
+				},
+				"url": {
+					"raw": "https://{{gtm1.site1}}/mgmt/shared/authn/login",
+					"protocol": "https",
+					"host": [
+						"{{gtm1.site1}}"
+					],
+					"path": [
+						"mgmt",
+						"shared",
+						"authn",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "1a159c7f-1053-49a8-9ab8-ae47cad9956a",
+			"name": "Verify Authentication works gtm1.site1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-F5-Auth-Token",
+						"value": "{{gtm1.site1_auth_token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://{{gtm1.site1}}/mgmt/shared/authz/tokens/{{gtm1.site1_auth_token}}",
+					"protocol": "https",
+					"host": [
+						"{{gtm1.site1}}"
+					],
+					"path": [
+						"mgmt",
+						"shared",
+						"authz",
+						"tokens",
+						"{{gtm1.site1_auth_token}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "32fa4063-cd48-4e2c-9caa-8db1b9de6f1a",
+			"name": "Set Authentication Token Timeout gtm1.site1",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-F5-Auth-Token",
+						"value": "{{gtm1.site1_auth_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"timeout\":\"36000\"\n}"
+				},
+				"url": {
+					"raw": "https://{{gtm1.site1}}/mgmt/shared/authz/tokens/{{gtm1.site1_auth_token}}",
+					"protocol": "https",
+					"host": [
+						"{{gtm1.site1}}"
+					],
+					"path": [
+						"mgmt",
+						"shared",
+						"authz",
+						"tokens",
+						"{{gtm1.site1_auth_token}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "6d714893-e457-44c7-bae6-0de524586cd8",
+			"name": "Create Pool gtm1.site1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-F5-Auth-Token",
+						"value": "{{gtm1.site1_auth_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"ftp.example.com_pool\",\n    \"kind\": \"tm:gtm:pool:a:astate\",\n    \"monitor\": \"tcp\",\n  \"members\": [\"site1_ha-pair:/Common/isp1_site1_www.example.com_tcp_ftp_virtual\",\"site2_ha-pair:/Common/isp2_site2_www.example.com_tcp_ftp_virtual\"]\n}"
+				},
+				"url": {
+					"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/pool/a",
+					"protocol": "https",
+					"host": [
+						"{{gtm1.site1}}"
+					],
+					"path": [
+						"mgmt",
+						"tm",
+						"gtm",
+						"pool",
+						"a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "4dc42d07-dd16-42de-b950-4fc67bb6ef45",
+			"name": "Create Wide-IP gtm1.site1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-F5-Auth-Token",
+						"value": "{{gtm1.site1_auth_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"ftp.example.com\",\n    \"pools\": \"ftp.example.com_pool\",\n    \"aliases\": [ \"gslb2.example.com\" ],\n    \"loadBalancingDecisionLogVerbosity\": [\n                \"pool-selection\",\n                \"pool-traversal\",\n                \"pool-member-selection\",\n                \"pool-member-traversal\"\n                ]\n}"
+				},
+				"url": {
+					"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/wideip/a",
+					"protocol": "https",
+					"host": [
+						"{{gtm1.site1}}"
+					],
+					"path": [
+						"mgmt",
+						"tm",
+						"gtm",
+						"wideip",
+						"a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "35aae768-b059-4ca2-86b6-d7ad7d2a159d",
+			"name": "Find Pool Syntax",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-F5-Auth-Token",
+						"value": "{{gtm1.site1_auth_token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm",
+					"protocol": "https",
+					"host": [
+						"{{gtm1.site1}}"
+					],
+					"path": [
+						"mgmt",
+						"tm",
+						"gtm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "adf6de65-1df6-43a7-9f2a-c2e8aebe1543",
+			"name": "Find Pool Syntax Pt.2",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-F5-Auth-Token",
+						"value": "{{gtm1.site1_auth_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n            \"kind\": \"tm:gtm:link:linkstate\",\n            \"name\": \"198.51.100.33\",\n            \"partition\": \"Common\",\n            \"fullPath\": \"/Common/198.51.100.33\",\n            \"generation\": 1286,\n            \"datacenter\": \"/Common/site2_datacenter\",\n            \"datacenterReference\": {\n                \"link\": \"https://localhost/mgmt/tm/gtm/datacenter/~Common~site2_datacenter?ver=13.1.0.8\"\n            },\n            \"duplexBilling\": \"enabled\",\n            \"enabled\": true,\n            \"limitMaxInboundBps\": 0,\n            \"limitMaxInboundBpsStatus\": \"disabled\",\n            \"limitMaxOutboundBps\": 0,\n            \"limitMaxOutboundBpsStatus\": \"disabled\",\n            \"limitMaxTotalBps\": 0,\n            \"limitMaxTotalBpsStatus\": \"disabled\",\n            \"linkRatio\": 1,\n            \"monitor\": \"/Common/bigip_link \",\n            \"prepaidSegment\": 0,\n            \"uplinkAddress\": \"any6\",\n            \"weighting\": \"ratio\",\n            \"routerAddresses\": [\n                {\n                    \"name\": \"198.51.100.33\",\n                    \"translation\": \"none\"\n                }\n            ]\n }"
+				},
+				"url": {
+					"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/pool/",
+					"protocol": "https",
+					"host": [
+						"{{gtm1.site1}}"
+					],
+					"path": [
+						"mgmt",
+						"tm",
+						"gtm",
+						"pool",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "4aa4160e-0917-43f4-a0fc-e4379943b6e6",
+			"name": "Find Pool Syntax Pt.3",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-F5-Auth-Token",
+						"value": "{{gtm1.site1_auth_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n            \"kind\": \"tm:gtm:link:linkstate\",\n            \"name\": \"198.51.100.33\",\n            \"partition\": \"Common\",\n            \"fullPath\": \"/Common/198.51.100.33\",\n            \"generation\": 1286,\n            \"datacenter\": \"/Common/site2_datacenter\",\n            \"datacenterReference\": {\n                \"link\": \"https://localhost/mgmt/tm/gtm/datacenter/~Common~site2_datacenter?ver=13.1.0.8\"\n            },\n            \"duplexBilling\": \"enabled\",\n            \"enabled\": true,\n            \"limitMaxInboundBps\": 0,\n            \"limitMaxInboundBpsStatus\": \"disabled\",\n            \"limitMaxOutboundBps\": 0,\n            \"limitMaxOutboundBpsStatus\": \"disabled\",\n            \"limitMaxTotalBps\": 0,\n            \"limitMaxTotalBpsStatus\": \"disabled\",\n            \"linkRatio\": 1,\n            \"monitor\": \"/Common/bigip_link \",\n            \"prepaidSegment\": 0,\n            \"uplinkAddress\": \"any6\",\n            \"weighting\": \"ratio\",\n            \"routerAddresses\": [\n                {\n                    \"name\": \"198.51.100.33\",\n                    \"translation\": \"none\"\n                }\n            ]\n }"
+				},
+				"url": {
+					"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/pool/",
+					"protocol": "https",
+					"host": [
+						"{{gtm1.site1}}"
+					],
+					"path": [
+						"mgmt",
+						"tm",
+						"gtm",
+						"pool",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "dbd21746-73dd-429f-a907-1f0a3daa6b08",
+			"name": "Change LB Method WWW",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-F5-Auth-Token",
+						"value": "{{gtm1.site1_auth_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"loadBalancingMode\": \"global-availability\" \n}"
+				},
+				"url": {
+					"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/pool/a/~Common~www.example.com_pool",
+					"protocol": "https",
+					"host": [
+						"{{gtm1.site1}}"
+					],
+					"path": [
+						"mgmt",
+						"tm",
+						"gtm",
+						"pool",
+						"a",
+						"~Common~www.example.com_pool"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "fb35ea73-78b7-47b0-8d05-03b5adc7000c",
+			"name": "Change LB Method FTP",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-F5-Auth-Token",
+						"value": "{{gtm1.site1_auth_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"loadBalancingMode\": \"global-availability\" \n}"
+				},
+				"url": {
+					"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/pool/a/~Common~ftp.example.com_pool",
+					"protocol": "https",
+					"host": [
+						"{{gtm1.site1}}"
+					],
+					"path": [
+						"mgmt",
+						"tm",
+						"gtm",
+						"pool",
+						"a",
+						"~Common~ftp.example.com_pool"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,4560 @@
+{
+	"info": {
+		"_postman_id": "ed59d093-6435-459a-b46e-7f1a451049ec",
+		"name": "DNS",
+		"description": "Please see folder descriptions for details.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "12570e40-2624-4d59-92ed-8d25b73f799e",
+			"name": "DNS Availability",
+			"item": [
+				{
+					"_postman_id": "454dd812-49ad-422b-8b1d-3d090aa93215",
+					"name": "Settings",
+					"item": [
+						{
+							"_postman_id": "4cb860e1-e95e-4bbd-92e6-b3f47fccead2",
+							"name": "Authenticate and Obtain Token gtm1.site1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "96ef578e-4e7e-4f7b-a9f0-0c084785214a",
+										"type": "text/javascript",
+										"exec": [
+											"// This is a Postman post-request request test script.",
+											"//",
+											"// The Javascript code below is executed AFTER a response is ",
+											"// received by the Postman client.  This code can do all sorts",
+											"// of interesting things.",
+											"",
+											"// Parse the JSON response body and save the result in the resp variable",
+											"var resp = JSON.parse(responseBody);",
+											"",
+											"// Set an environemnt variable based on the value in the response JSON",
+											"postman.setEnvironmentVariable(\"gtm1.site1_auth_token\", resp.token.token);",
+											"",
+											"// Populate a Postman test item",
+											"tests[\"Populate Auth Token\"] = 0;",
+											"if(resp.token.token.length > 0) {",
+											"    tests[\"Populate Auth Token\"] = 1;",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin\",\n  \"loginProvidername\":\"tmos\"\n}\n"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/shared/authn/login",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"authn",
+										"login"
+									]
+								},
+								"description": "Perform authentication and populate the variable specified in the {{bigip_token_var}} variable."
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "97b4ff6c-86c0-49a3-9fc8-ba271e4a510f",
+							"name": "Authenticate and Obtain Token gtm1.site2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cc1807b2-cdd9-4f3a-a379-293e77830369",
+										"type": "text/javascript",
+										"exec": [
+											"// This is a Postman post-request request test script.",
+											"//",
+											"// The Javascript code below is executed AFTER a response is ",
+											"// received by the Postman client.  This code can do all sorts",
+											"// of interesting things.",
+											"",
+											"// Parse the JSON response body and save the result in the resp variable",
+											"var resp = JSON.parse(responseBody);",
+											"",
+											"// Set an environemnt variable based on the value in the response JSON",
+											"postman.setEnvironmentVariable(\"gtm1.site2_auth_token\", resp.token.token);",
+											"",
+											"// Populate a Postman test item",
+											"tests[\"Populate Auth Token\"] = 0;",
+											"if(resp.token.token.length > 0) {",
+											"    tests[\"Populate Auth Token\"] = 1;",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin\",\n  \"loginProvidername\":\"tmos\"\n}\n"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site2}}/mgmt/shared/authn/login",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site2}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"authn",
+										"login"
+									]
+								},
+								"description": "Perform authentication and populate the variable specified in the {{bigip_token_var}} variable."
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "b6af8024-cbae-4db8-83b6-aad6bb87a1ec",
+							"name": "Verify Authentication Works gtm1.site1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        {path:\"token\", value:environment.bigip_token}",
+											"    ];",
+											"    ",
+											"f5_check_response(check_vals);",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"admin\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/shared/authz/tokens/{{gtm1.site1_auth_token}}",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"authz",
+										"tokens",
+										"{{gtm1.site1_auth_token}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "ce3994fe-16e6-4a26-88d6-e20bbcab1d8f",
+							"name": "Verify Authentication Works gtm1.site2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        {path:\"token\", value:environment.bigip_token}",
+											"    ];",
+											"    ",
+											"f5_check_response(check_vals);",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site2_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"admin\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site2}}/mgmt/shared/authz/tokens/{{gtm1.site2_auth_token}}",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site2}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"authz",
+										"tokens",
+										"{{gtm1.site2_auth_token}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "2ed3a494-2343-44b3-8b98-fb708b0af3d4",
+							"name": "Set Authentication Token Timeout gtm1.site1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        {path:\"timeout\", value:environment.bigip_token_timeout}",
+											"    ];",
+											"    ",
+											"f5_check_response(check_vals);",
+											""
+										]
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"if(typeof environment.bigip_token_timeout === 'undefined') {",
+											"    postman.setEnvironmentVariable('bigip_token_timeout', 1200);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"timeout\":\"36000\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/shared/authz/tokens/{{gtm1.site1_auth_token}}",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"authz",
+										"tokens",
+										"{{gtm1.site1_auth_token}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "ddd87e33-0ea3-4116-a73a-b0d4c9c211d4",
+							"name": "Set Authentication Token Timeout gtm1.site2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        {path:\"timeout\", value:environment.bigip_token_timeout}",
+											"    ];",
+											"    ",
+											"f5_check_response(check_vals);",
+											""
+										]
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"if(typeof environment.bigip_token_timeout === 'undefined') {",
+											"    postman.setEnvironmentVariable('bigip_token_timeout', 1200);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site2_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"timeout\":\"36000\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site2}}/mgmt/shared/authz/tokens/{{gtm1.site2_auth_token}}",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site2}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"authz",
+										"tokens",
+										"{{gtm1.site2_auth_token}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "e8faba12-2086-43da-a7b4-5f60c1a6ce4b",
+							"name": "Get Software Version",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var f5_find_version = function(resp, attr) {",
+											"    //console.log(resp);",
+											"    for(var i=0; i < resp.items.length; i++) {",
+											"        //console.log(resp.items[i]);",
+											"        if(resp.items[i].active === true) {",
+											"            return resp.items[i][attr];",
+											"        }",
+											"    }",
+											"};",
+											"",
+											"var populate_vars = [",
+											"    {",
+											"        \"name\":\"bigip_version\",",
+											"        \"value\":f5_find_version,",
+											"        \"args\":[\"version\"]",
+											"    },",
+											"    {",
+											"        \"name\":\"bigip_build\",",
+											"        \"value\":f5_find_version,",
+											"        \"args\":[\"build\"]",
+											"    }",
+											"];",
+											"",
+											"f5_check_response();",
+											"f5_populate_env_vars(populate_vars);",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/sys/software/volume",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"sys",
+										"software",
+										"volume"
+									]
+								},
+								"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}}   BIG-IP Pool Name\n {{bigip_parition}}    BIG-IP Partition Name\n "
+							},
+							"response": [
+								{
+									"id": "f3809321-fb14-4705-9ab3-d72e804e93ae",
+									"name": "Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "X-F5-Auth-Token",
+												"value": "{{bigip_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://{{gtm1.site1}}/mgmt/tm/sys/software/volume",
+											"protocol": "https",
+											"host": [
+												"{{gtm1.site1}}"
+											],
+											"path": [
+												"mgmt",
+												"tm",
+												"sys",
+												"software",
+												"volume"
+											]
+										},
+										"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}} \tBIG-IP Pool Name\n {{bigip_parition}}\t\tBIG-IP Partition Name\n "
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Cache-Control",
+											"value": "no-store, no-cache, must-revalidate",
+											"name": "Cache-Control",
+											"description": ""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive",
+											"name": "Connection",
+											"description": ""
+										},
+										{
+											"key": "Content-Length",
+											"value": "710",
+											"name": "Content-Length",
+											"description": ""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": ""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 Dec 2016 23:33:06 GMT",
+											"name": "Date",
+											"description": ""
+										},
+										{
+											"key": "Expires",
+											"value": "-1",
+											"name": "Expires",
+											"description": ""
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache",
+											"name": "Pragma",
+											"description": ""
+										},
+										{
+											"key": "Server",
+											"value": "webd",
+											"name": "Server",
+											"description": ""
+										},
+										{
+											"key": "X-Real-IP",
+											"value": "192.168.0.20",
+											"name": "X-Real-IP",
+											"description": ""
+										},
+										{
+											"key": "accept-encoding",
+											"value": "gzip, deflate",
+											"name": "accept-encoding",
+											"description": ""
+										}
+									],
+									"cookie": [],
+									"body": "{\"username\":\"admin\",\"loginReference\":{\"link\":\"https://localhost/mgmt/cm/system/authn/providers/local/login\"},\"loginProviderName\":\"local\",\"token\":{\"token\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"name\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"userName\":\"admin\",\"authProviderName\":\"local\",\"user\":{\"link\":\"https://localhost/mgmt/shared/authz/users/admin\"},\"groupReferences\":[],\"timeout\":1200,\"startTime\":\"2016-12-19T15:33:06.668-0800\",\"address\":\"192.168.0.20\",\"partition\":\"[All]\",\"generation\":1,\"lastUpdateMicros\":1482190386668185,\"expirationMicros\":1482191586668000,\"kind\":\"shared:authz:tokens:authtokenitemstate\",\"selfLink\":\"https://localhost/mgmt/shared/authz/tokens/BTKMOGLPSSAPSIXJAI76XFFCE7\"},\"generation\":0,\"lastUpdateMicros\":0}"
+								}
+							]
+						},
+						{
+							"_postman_id": "5ba149b7-d0a0-4391-a401-cf5dd15b626c",
+							"name": "gtm_settings",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8ff8caa2-3fe9-46a9-b036-e29763c15649",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"kind\", ",
+											"            \"value\":\"tm:gtm:global-settings:general:generalstate\" ",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/global-settings/general",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"global-settings",
+										"general"
+									]
+								},
+								"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}}   BIG-IP Pool Name\n {{bigip_parition}}    BIG-IP Partition Name\n "
+							},
+							"response": [
+								{
+									"id": "408f9387-4d80-429d-851a-cf235bc51ba1",
+									"name": "Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "X-F5-Auth-Token",
+												"value": "{{bigip_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/global-settings/general",
+											"protocol": "https",
+											"host": [
+												"{{gtm1.site1}}"
+											],
+											"path": [
+												"mgmt",
+												"tm",
+												"gtm",
+												"global-settings",
+												"general"
+											]
+										},
+										"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}} \tBIG-IP Pool Name\n {{bigip_parition}}\t\tBIG-IP Partition Name\n "
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Cache-Control",
+											"value": "no-store, no-cache, must-revalidate",
+											"name": "Cache-Control",
+											"description": ""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive",
+											"name": "Connection",
+											"description": ""
+										},
+										{
+											"key": "Content-Length",
+											"value": "710",
+											"name": "Content-Length",
+											"description": ""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": ""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 Dec 2016 23:33:06 GMT",
+											"name": "Date",
+											"description": ""
+										},
+										{
+											"key": "Expires",
+											"value": "-1",
+											"name": "Expires",
+											"description": ""
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache",
+											"name": "Pragma",
+											"description": ""
+										},
+										{
+											"key": "Server",
+											"value": "webd",
+											"name": "Server",
+											"description": ""
+										},
+										{
+											"key": "X-Real-IP",
+											"value": "192.168.0.20",
+											"name": "X-Real-IP",
+											"description": ""
+										},
+										{
+											"key": "accept-encoding",
+											"value": "gzip, deflate",
+											"name": "accept-encoding",
+											"description": ""
+										}
+									],
+									"cookie": [],
+									"body": "{\"username\":\"admin\",\"loginReference\":{\"link\":\"https://localhost/mgmt/cm/system/authn/providers/local/login\"},\"loginProviderName\":\"local\",\"token\":{\"token\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"name\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"userName\":\"admin\",\"authProviderName\":\"local\",\"user\":{\"link\":\"https://localhost/mgmt/shared/authz/users/admin\"},\"groupReferences\":[],\"timeout\":1200,\"startTime\":\"2016-12-19T15:33:06.668-0800\",\"address\":\"192.168.0.20\",\"partition\":\"[All]\",\"generation\":1,\"lastUpdateMicros\":1482190386668185,\"expirationMicros\":1482191586668000,\"kind\":\"shared:authz:tokens:authtokenitemstate\",\"selfLink\":\"https://localhost/mgmt/shared/authz/tokens/BTKMOGLPSSAPSIXJAI76XFFCE7\"},\"generation\":0,\"lastUpdateMicros\":0}"
+								}
+							]
+						},
+						{
+							"_postman_id": "ab9f4618-c1e5-4479-bb4c-861cf16bc87e",
+							"name": "Get GTM Pools",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0ab4a537-b5b5-4aca-988d-04d9a1bdc2c9",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"kind\", ",
+											"            \"value\":\"tm:gtm:pool:a:acollectionstate\" ",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/pool/a",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"pool",
+										"a"
+									]
+								},
+								"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}}   BIG-IP Pool Name\n {{bigip_parition}}    BIG-IP Partition Name\n "
+							},
+							"response": [
+								{
+									"id": "03309c16-1362-442b-801e-e300e905db81",
+									"name": "Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "X-F5-Auth-Token",
+												"value": "{{bigip_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/pool/a",
+											"protocol": "https",
+											"host": [
+												"{{gtm1.site1}}"
+											],
+											"path": [
+												"mgmt",
+												"tm",
+												"gtm",
+												"pool",
+												"a"
+											]
+										},
+										"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}} \tBIG-IP Pool Name\n {{bigip_parition}}\t\tBIG-IP Partition Name\n "
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Cache-Control",
+											"value": "no-store, no-cache, must-revalidate",
+											"name": "Cache-Control",
+											"description": ""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive",
+											"name": "Connection",
+											"description": ""
+										},
+										{
+											"key": "Content-Length",
+											"value": "710",
+											"name": "Content-Length",
+											"description": ""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": ""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 Dec 2016 23:33:06 GMT",
+											"name": "Date",
+											"description": ""
+										},
+										{
+											"key": "Expires",
+											"value": "-1",
+											"name": "Expires",
+											"description": ""
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache",
+											"name": "Pragma",
+											"description": ""
+										},
+										{
+											"key": "Server",
+											"value": "webd",
+											"name": "Server",
+											"description": ""
+										},
+										{
+											"key": "X-Real-IP",
+											"value": "192.168.0.20",
+											"name": "X-Real-IP",
+											"description": ""
+										},
+										{
+											"key": "accept-encoding",
+											"value": "gzip, deflate",
+											"name": "accept-encoding",
+											"description": ""
+										}
+									],
+									"cookie": [],
+									"body": "{\"username\":\"admin\",\"loginReference\":{\"link\":\"https://localhost/mgmt/cm/system/authn/providers/local/login\"},\"loginProviderName\":\"local\",\"token\":{\"token\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"name\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"userName\":\"admin\",\"authProviderName\":\"local\",\"user\":{\"link\":\"https://localhost/mgmt/shared/authz/users/admin\"},\"groupReferences\":[],\"timeout\":1200,\"startTime\":\"2016-12-19T15:33:06.668-0800\",\"address\":\"192.168.0.20\",\"partition\":\"[All]\",\"generation\":1,\"lastUpdateMicros\":1482190386668185,\"expirationMicros\":1482191586668000,\"kind\":\"shared:authz:tokens:authtokenitemstate\",\"selfLink\":\"https://localhost/mgmt/shared/authz/tokens/BTKMOGLPSSAPSIXJAI76XFFCE7\"},\"generation\":0,\"lastUpdateMicros\":0}"
+								}
+							]
+						},
+						{
+							"_postman_id": "f8672b8b-5c9c-4f9d-b5bc-fe6471d766aa",
+							"name": "Get GTM servers",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "757a678c-9fd4-4cff-94f2-777765c804df",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"kind\", ",
+											"            \"value\":\"tm:gtm:server:servercollectionstate\" ",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/server",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"server"
+									]
+								},
+								"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}}   BIG-IP Pool Name\n {{bigip_parition}}    BIG-IP Partition Name\n "
+							},
+							"response": [
+								{
+									"id": "ad965bb1-17fd-4180-bf67-4a246633c81c",
+									"name": "Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "X-F5-Auth-Token",
+												"value": "{{bigip_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/pool/a",
+											"protocol": "https",
+											"host": [
+												"{{gtm1.site1}}"
+											],
+											"path": [
+												"mgmt",
+												"tm",
+												"gtm",
+												"pool",
+												"a"
+											]
+										},
+										"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}} \tBIG-IP Pool Name\n {{bigip_parition}}\t\tBIG-IP Partition Name\n "
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Cache-Control",
+											"value": "no-store, no-cache, must-revalidate",
+											"name": "Cache-Control",
+											"description": ""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive",
+											"name": "Connection",
+											"description": ""
+										},
+										{
+											"key": "Content-Length",
+											"value": "710",
+											"name": "Content-Length",
+											"description": ""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": ""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 Dec 2016 23:33:06 GMT",
+											"name": "Date",
+											"description": ""
+										},
+										{
+											"key": "Expires",
+											"value": "-1",
+											"name": "Expires",
+											"description": ""
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache",
+											"name": "Pragma",
+											"description": ""
+										},
+										{
+											"key": "Server",
+											"value": "webd",
+											"name": "Server",
+											"description": ""
+										},
+										{
+											"key": "X-Real-IP",
+											"value": "192.168.0.20",
+											"name": "X-Real-IP",
+											"description": ""
+										},
+										{
+											"key": "accept-encoding",
+											"value": "gzip, deflate",
+											"name": "accept-encoding",
+											"description": ""
+										}
+									],
+									"cookie": [],
+									"body": "{\"username\":\"admin\",\"loginReference\":{\"link\":\"https://localhost/mgmt/cm/system/authn/providers/local/login\"},\"loginProviderName\":\"local\",\"token\":{\"token\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"name\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"userName\":\"admin\",\"authProviderName\":\"local\",\"user\":{\"link\":\"https://localhost/mgmt/shared/authz/users/admin\"},\"groupReferences\":[],\"timeout\":1200,\"startTime\":\"2016-12-19T15:33:06.668-0800\",\"address\":\"192.168.0.20\",\"partition\":\"[All]\",\"generation\":1,\"lastUpdateMicros\":1482190386668185,\"expirationMicros\":1482191586668000,\"kind\":\"shared:authz:tokens:authtokenitemstate\",\"selfLink\":\"https://localhost/mgmt/shared/authz/tokens/BTKMOGLPSSAPSIXJAI76XFFCE7\"},\"generation\":0,\"lastUpdateMicros\":0}"
+								}
+							]
+						},
+						{
+							"_postman_id": "e513a7ac-048f-4233-947d-4c7d9694b18f",
+							"name": "Set System Global-Settings Syncronization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c4df5240-c9f1-4b49-be0b-9177e935f7ba",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"synchronization\", ",
+											"            \"value\":\"yes\" ",
+											"        },",
+											"        {",
+											"            \"path\":\"synchronizationGroupName\",",
+											"            \"value\":\"EXAMPLE_group\"",
+											"        },",
+											"        {",
+											"            \"path\":\"synchronizeZoneFiles\",",
+											"            \"value\":\"yes\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"synchronization\": \"yes\",\n  \"synchronization-group-name\": \"EXAMPLE_group\",\n  \"synchronize-zone-files\": \"yes\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/global-settings/general",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"global-settings",
+										"general"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "8c9b3410-5f20-4a21-b24c-476a5754d38d",
+					"name": "Listeners",
+					"item": [
+						{
+							"_postman_id": "398e3e0b-adb5-4425-ac65-19d7b5fd9d20",
+							"name": "Create Log Publisher gtm1.site",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2b915d40-1a0e-49ca-8691-ab7269fab694",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"local-syslog-publisher\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"local-syslog-publisher\",\n    \"destinations\": \"local-syslog\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/sys/log-config/publisher",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"sys",
+										"log-config",
+										"publisher"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "b3eda4a6-29e7-4c90-9b45-7a46bd80b84a",
+							"name": "Create Log Publisher gtm1.site2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2b915d40-1a0e-49ca-8691-ab7269fab694",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"local-syslog-publisher\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site2_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"local-syslog-publisher\",\n    \"destinations\": \"local-syslog\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site2}}/mgmt/tm/sys/log-config/publisher",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site2}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"sys",
+										"log-config",
+										"publisher"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "68b12754-74f6-42e1-b070-427978384797",
+							"name": "Create DNS Logging Profile gtm1.site1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "62b21315-8dec-4fb0-b190-dfee2f22af91",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example_dns_logging_profile\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"example_dns_logging_profile\",\n    \"enable-response-logging\": \"yes\",\n    \"include-query-id\": \"yes\",\n    \"log-publisher\": \"local-syslog-publisher\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/ltm/profile/dns-logging",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"profile",
+										"dns-logging"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "433d493b-fb4e-497b-bcc5-9864c325b8a2",
+							"name": "Create DNS Logging Profile gtm1.site2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "62b21315-8dec-4fb0-b190-dfee2f22af91",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example_dns_logging_profile\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site2_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"example_dns_logging_profile\",\n    \"enable-response-logging\": \"yes\",\n    \"include-query-id\": \"yes\",\n    \"log-publisher\": \"local-syslog-publisher\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site2}}/mgmt/tm/ltm/profile/dns-logging",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site2}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"profile",
+										"dns-logging"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "d49b9ad1-05dc-467d-aa1f-46bb9954e19d",
+							"name": "Create DNS Profile gtm1.site1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1ab6cb4e-2c4a-498f-a466-b5d1690bf1d2",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example.com_dns_profile\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"example.com_dns_profile\",\n    \"use-local-bind\": \"no\",\n    \"unhandled-query-action\": \"drop\",\n    \"log-profile\": \"example_dns_logging_profile\",\n    \"enable-logging\": \"yes\",\n    \"avr-dnsstat-sample-rate\": \"1\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/ltm/profile/dns",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"profile",
+										"dns"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "eae2167c-18f6-4cea-b4f6-bb64f43d5d39",
+							"name": "Create DNS Profile gtm1.site2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1ab6cb4e-2c4a-498f-a466-b5d1690bf1d2",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example.com_dns_profile\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site2_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"example.com_dns_profile\",\n    \"use-local-bind\": \"no\",\n    \"unhandled-query-action\": \"drop\",\n    \"log-profile\": \"example_dns_logging_profile\",\n    \"enable-logging\": \"yes\",\n    \"avr-dnsstat-sample-rate\": \"1\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site2}}/mgmt/tm/ltm/profile/dns",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site2}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"profile",
+										"dns"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "a2f482da-41da-4d6c-8dac-88c78f5d429b",
+							"name": "Create UDP Profile gtm1.site1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "741108f0-4ccb-4cc1-a480-4ab0fbaf18ce",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example.com_udp-dns_profile\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"example.com_udp-dns_profile\",\n  \"defaultsFrom\": \"udp_gtm_dns\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/ltm/profile/udp",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"profile",
+										"udp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "fe594d90-31ab-40a8-873e-b673142000d6",
+							"name": "Create UDP Profile gtm1.site2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "741108f0-4ccb-4cc1-a480-4ab0fbaf18ce",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example.com_udp-dns_profile\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site2_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"example.com_udp-dns_profile\",\n  \"defaultsFrom\": \"udp_gtm_dns\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site2}}/mgmt/tm/ltm/profile/udp",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site2}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"profile",
+										"udp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "7c9638a5-4952-4732-832a-72ecf620af53",
+							"name": "Create TCP Profile gtm1.site1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "22be0c01-83d0-411d-9416-63e7d81305aa",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example.com_tcp-dns_profile\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"example.com_tcp-dns_profile\",\n  \"defaultsFrom\": \"tcp-wan-optimized\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/ltm/profile/tcp",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"profile",
+										"tcp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "497a71a4-b11b-490b-9943-333e71753bba",
+							"name": "Create TCP Profile gtm1.site2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "22be0c01-83d0-411d-9416-63e7d81305aa",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example.com_tcp-dns_profile\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site2_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"example.com_tcp-dns_profile\",\n  \"defaultsFrom\": \"tcp-wan-optimized\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site2}}/mgmt/tm/ltm/profile/tcp",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site2}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"profile",
+										"tcp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "4e793576-ccb9-4797-8499-1b6c05814940",
+							"name": "Create UDP Listener gtm1.site1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "06c45a62-0f29-494d-b622-e34c7544a6b6",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"isp1_site1_ns1.example.com_udp_53_virtual\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\":\"isp1_site1_ns1.example.com_udp_53_virtual\",\n  \"address\": \"203.0.113.8\",\n  \"ip-protocol\": \"udp\",\n  \"mask\": \"255.255.255.255\",\n  \"port\": \"53\",\n  \"profiles\": \"example.com_dns_profile\",\n  \"profiles\": \"example.com_udp-dns_profile\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/listener",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"listener"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "f925b94b-72c5-4fee-832c-88e7101c2e68",
+							"name": "Create UDP Listener gtm1.site2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "06c45a62-0f29-494d-b622-e34c7544a6b6",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"isp1_site1_ns1.example.com_udp_53_virtual\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site2_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"isp1_site2_ns2.example.com_udp_53_virtual\",\n  \"address\": \"198.51.100.40\",\n  \"ip-protocol\": \"udp\",\n  \"mask\": \"255.255.255.255\",\n  \"port\": \"53\",\n  \"profiles\": \"example.com_dns_profile\",\n  \"profiles\": \"example.com_udp-dns_profile\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site2}}/mgmt/tm/gtm/listener",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site2}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"listener"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "23a1691c-aa43-4aed-bf48-4ed26ea2378e",
+							"name": "Create TCP Listener gtm1.site1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "693e1a24-7701-4954-8bc2-7cece8f8fe12",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"isp1_site1_ns1.example.com_tcp_53_virtual\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"isp1_site1_ns1.example.com_tcp_53_virtual\",\n  \"address\": \"203.0.113.8\",\n  \"ip-protocol\": \"tcp\",\n  \"mask\": \"255.255.255.255\",\n  \"port\": \"53\",\n  \"profiles\": \"example.com_dns_profile\",\n  \"profiles\": \"example.com_tcp-dns_profile\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/listener",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"listener"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "41efed01-449a-46f3-8db1-6cede91746c6",
+							"name": "Create TCP Listener gtm1.site2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "693e1a24-7701-4954-8bc2-7cece8f8fe12",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"isp1_site1_ns1.example.com_tcp_53_virtual\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site2_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"isp1_site2_ns2.example.com_tcp_53_virtual\",\n  \"address\": \"198.51.100.40\",\n  \"ip-protocol\": \"tcp\",\n  \"mask\": \"255.255.255.255\",\n  \"port\": \"53\",\n  \"profiles\": \"example.com_dns_profile\",\n  \"profiles\": \"example.com_tcp-dns_profile\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site2}}/mgmt/tm/gtm/listener",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site2}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"listener"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "baa0ee7c-d308-4ec0-9109-4597cb852de6",
+					"name": "Datacenters",
+					"item": [
+						{
+							"_postman_id": "a9c88e7a-5faa-422c-8541-f1fffa33b5ae",
+							"name": "Create Datacenter Site 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "798f8400-da65-4e3d-90e8-6eb11f1db65e",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"site1_datacenter\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"site1_datacenter\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/datacenter",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"datacenter"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "8e78e6fe-2bc4-4d2f-b161-cf5df3283c0b",
+							"name": "Create Datacenter Site 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a57f1e6d-0f96-4f65-800a-86e762569a6b",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"site2_datacenter\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"site2_datacenter\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/datacenter",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"datacenter"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "38af155e-242a-42fb-9dd3-3a98013392ac",
+							"name": "Create GTM1.Site1 Server Object",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "38be13db-bcad-4675-8a8f-5b6ba95a4497",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"gtm1.site1_server\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"gtm1.site1_server\",\n    \"datacenter\": \"site1_datacenter\",\n\n    \"addresses\":  [\n                {\n                    \"name\": \"203.0.113.7\",\n                    \"deviceName\": \"gtm1.site1.example.com\",\n                    \"translation\": \"none\"\n                }\n            ],\n    \"monitor\": \"bigip\",\n    \"product\": \"bigip\"\n  \n}\n"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/server",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"server"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "b5d1701c-d4da-4302-895c-32814d27b172",
+							"name": "Create GTM1.Site2 Server Object",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "138dd1c3-4213-4057-90d8-df274812a16e",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"gtm1.site2_server\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"gtm1.site2_server\",\n    \"datacenter\": \"site2_datacenter\",\n\n    \"addresses\":  [\n                {\n                    \"name\": \"198.51.100.39\",\n                    \"deviceName\": \"gtm1.site2.example.com\",\n                    \"translation\": \"none\"\n                }\n            ],\n    \"monitor\": \"bigip\",\n    \"product\": \"bigip\"\n  \n}\n"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/server",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"server"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "a9b0679f-5cec-402a-a644-a04ede8f1e5b",
+							"name": "Create Site1 HA Pair",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cfdc8430-a803-4d59-8922-5890c23c0389",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"site1_ha-pair\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"site1_ha-pair\",\n    \"datacenter\": \"site1_datacenter\",\n\n    \"addresses\":  [\n                {\n                    \"name\": \"203.0.113.5\",\n                    \"deviceName\": \"bigip1.site1.example.com\",\n                    \"translation\": \"none\"\n                },\n                {\n                    \"name\": \"203.0.113.6\",\n                    \"deviceName\": \"bigip2.site1.example.com\",\n                    \"translation\": \"none\"\n                }\n            ],\n    \"monitor\": \"bigip\",\n    \"product\": \"bigip\",\n    \"link-discovery\": \"enabled\",\n    \"virtual-server-discovery\": \"enabled\"\n  \n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/server",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"server"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "b105083e-464c-44f7-99f3-2275c5e35eac",
+							"name": "Create Site2 HA Pair",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "36d0bce3-4faf-4389-aaeb-1aada7005a0a",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"site2_ha-pair\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"site2_ha-pair\",\n    \"datacenter\": \"site2_datacenter\",\n    \"addresses\":  [\n                {\n                    \"name\": \"198.51.100.37\",\n                    \"deviceName\": \"bigip1.site2.example.com\",\n                    \"translation\": \"none\"\n                },\n                {\n                    \"name\": \"198.51.100.38\",\n                    \"deviceName\": \"bigip2.site2.example.com\",\n                    \"translation\": \"none\"\n                }\n            ],\n    \"monitor\": \"bigip\",\n    \"product\": \"bigip\",\n    \"link-discovery\": \"enabled\",\n    \"virtual-server-discovery\": \"enabled\"\n  \n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/server",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"server"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "5ca84db9-ef0d-4c7b-b134-9b6880adf380",
+					"name": "Pools",
+					"item": [
+						{
+							"_postman_id": "9acd1079-38f8-4ae0-8199-375d1cc4eca7",
+							"name": "Create a Pool",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bfbdb8dc-a2f2-401a-b7b5-3cbcc66982e6",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"www.example.com_pool\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{ltm1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"www.example.com_pool\",\n    \"kind\": \"tm:gtm:pool:a:astate\",\n  \"members\": [\"site1_ha-pair:/Common/isp1_site1_www.example.com_tcp_https_virtual\",\"site2_ha-pair:/Common/isp2_site2_www.example.com_tcp_https_virtual\"]\n}"
+								},
+								"url": {
+									"raw": "https://{{ltm1}}//mgmt/tm/ltm/pool",
+									"protocol": "https",
+									"host": [
+										"{{ltm1}}"
+									],
+									"path": [
+										"",
+										"mgmt",
+										"tm",
+										"ltm",
+										"pool"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "74abe8af-9864-487c-a525-136e3a387cdb",
+					"name": "FQDN",
+					"item": [
+						{
+							"_postman_id": "170c6ba2-9cf5-4375-8a38-6a706ff516c1",
+							"name": "Create a WIDE-IP",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "36eb1fd4-6434-4917-889f-8f58d98f4a8e",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"www.gslb.example.com\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"www.example.com\",\n    \"pools\": \"www.example.com_pool\"\n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/wideip/a",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"wideip",
+										"a"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "60feb6b9-3aa1-4ede-9e86-979455d5cbf7",
+					"name": "Persistence",
+					"item": [
+						{
+							"_postman_id": "2d98fc20-a880-4551-a74e-2b4516542b70",
+							"name": "Change Persistence to Enabled",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "686a5390-f5b4-456a-a7a5-e82822929fff",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        {path:\"persistence\", value:\"enabled\"}",
+											"    ];",
+											"    ",
+											"f5_check_response(check_vals);",
+											""
+										]
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "125917c5-57fb-426c-ac00-9923859f776e",
+										"type": "text/javascript",
+										"exec": [
+											"if(typeof environment.bigip_token_timeout === 'undefined') {",
+											"    postman.setEnvironmentVariable('bigip_token_timeout', 1200);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"persistence\": \"enabled\" \n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/wideip/a/~Common~www.gslb.example.com",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"wideip",
+										"a",
+										"~Common~www.gslb.example.com"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "a1077b27-006f-4a55-8fc6-7353f7de8be2",
+					"name": "LB Methods",
+					"item": [
+						{
+							"_postman_id": "ad488cb0-814f-45df-abec-a89f255f3961",
+							"name": "Change LB Method to Global Availability",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f750c883-4b7c-4e3b-88d2-e40ccb6711bc",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        {path:\"loadBalancingMode\", value:\"global-availability\"}",
+											"    ];",
+											"    ",
+											"f5_check_response(check_vals);",
+											""
+										]
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "125917c5-57fb-426c-ac00-9923859f776e",
+										"type": "text/javascript",
+										"exec": [
+											"if(typeof environment.bigip_token_timeout === 'undefined') {",
+											"    postman.setEnvironmentVariable('bigip_token_timeout', 1200);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{gtm1.site1_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"loadBalancingMode\": \"global-availability\" \n}"
+								},
+								"url": {
+									"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/pool/a/~Common~www.example.com_pool",
+									"protocol": "https",
+									"host": [
+										"{{gtm1.site1}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"pool",
+										"a",
+										"~Common~www.example.com_pool"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "Authenticate to a BIG-IP device.\n\nInput Variables:\nbigip_mgmt      BIG-IP management address\nbigip_username    Username\nbigip_password    Password\nbigip_token_timeout  [OPTIONAL] Timeout for the auth token\n\nOutput Variables:\nbigip_token      Authentication token"
+		},
+		{
+			"_postman_id": "a6af4484-62eb-4af2-ba89-ddbb39c4d9e4",
+			"name": "DNS Security",
+			"item": [
+				{
+					"_postman_id": "1930f689-acd2-42c4-a9c6-dcfe18d0c9a7",
+					"name": "Settings",
+					"item": [
+						{
+							"_postman_id": "8708d459-5b25-42a8-8ed8-1c743dacd0d3",
+							"name": "Authenticate and Obtain Token router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c7f505de-5dec-4007-b5b8-434195f1ef3f",
+										"type": "text/javascript",
+										"exec": [
+											"// This is a Postman post-request request test script.",
+											"//",
+											"// The Javascript code below is executed AFTER a response is ",
+											"// received by the Postman client.  This code can do all sorts",
+											"// of interesting things.",
+											"",
+											"// Parse the JSON response body and save the result in the resp variable",
+											"var resp = JSON.parse(responseBody);",
+											"",
+											"// Set an environemnt variable based on the value in the response JSON",
+											"postman.setEnvironmentVariable(\"router01.branch01_auth_token\", resp.token.token);",
+											"",
+											"// Populate a Postman test item",
+											"tests[\"Populate Auth Token\"] = 0;",
+											"if(resp.token.token.length > 0) {",
+											"    tests[\"Populate Auth Token\"] = 1;",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin\",\n  \"loginProvidername\":\"tmos\"\n}\n"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/shared/authn/login",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"authn",
+										"login"
+									]
+								},
+								"description": "Perform authentication and populate the variable specified in the {{bigip_token_var}} variable."
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "3d8f76bf-1f73-422e-ae73-aca0c922112b",
+							"name": "Verify Authentication Works router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        {path:\"token\", value:environment.bigip_token}",
+											"    ];",
+											"    ",
+											"f5_check_response(check_vals);",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"admin\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/shared/authz/tokens/{{router01.branch01_auth_token}}",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"authz",
+										"tokens",
+										"{{router01.branch01_auth_token}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "a2f4c315-58d3-415e-a6e7-1cd7a34e12e8",
+							"name": "Set Authentication Token Timeout router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "333c3b25-e153-4df6-b5eb-e3373132a08a",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        {path:\"timeout\", value:environment.bigip_token_timeout}",
+											"    ];",
+											"    ",
+											"f5_check_response(check_vals);",
+											""
+										]
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "8cf6a9d9-4336-4e54-b5aa-d69d778a6638",
+										"type": "text/javascript",
+										"exec": [
+											"if(typeof environment.bigip_token_timeout === 'undefined') {",
+											"    postman.setEnvironmentVariable('bigip_token_timeout', 1200);",
+											"}"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"timeout\":\"36000\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/shared/authz/tokens/{{router01.branch01_auth_token}}",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"shared",
+										"authz",
+										"tokens",
+										"{{router01.branch01_auth_token}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "e474206a-6e95-4f5e-97ae-ebbf13d58ccf",
+							"name": "Get Software Version",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var f5_find_version = function(resp, attr) {",
+											"    //console.log(resp);",
+											"    for(var i=0; i < resp.items.length; i++) {",
+											"        //console.log(resp.items[i]);",
+											"        if(resp.items[i].active === true) {",
+											"            return resp.items[i][attr];",
+											"        }",
+											"    }",
+											"};",
+											"",
+											"var populate_vars = [",
+											"    {",
+											"        \"name\":\"bigip_version\",",
+											"        \"value\":f5_find_version,",
+											"        \"args\":[\"version\"]",
+											"    },",
+											"    {",
+											"        \"name\":\"bigip_build\",",
+											"        \"value\":f5_find_version,",
+											"        \"args\":[\"build\"]",
+											"    }",
+											"];",
+											"",
+											"f5_check_response();",
+											"f5_populate_env_vars(populate_vars);",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/sys/software/volume",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"sys",
+										"software",
+										"volume"
+									]
+								},
+								"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}}   BIG-IP Pool Name\n {{bigip_parition}}    BIG-IP Partition Name\n "
+							},
+							"response": [
+								{
+									"id": "1ed6806e-4bfb-4881-b102-d001d9d1ee7e",
+									"name": "Example",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "X-F5-Auth-Token",
+												"value": "{{bigip_token}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://{{gtm1.site1}}/mgmt/tm/sys/software/volume",
+											"protocol": "https",
+											"host": [
+												"{{gtm1.site1}}"
+											],
+											"path": [
+												"mgmt",
+												"tm",
+												"sys",
+												"software",
+												"volume"
+											]
+										},
+										"description": "Check the specified pool exists:\n\nVariables Used:\n\n {{bigip_vs_name}} \tBIG-IP Pool Name\n {{bigip_parition}}\t\tBIG-IP Partition Name\n "
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Cache-Control",
+											"value": "no-store, no-cache, must-revalidate",
+											"name": "Cache-Control",
+											"description": ""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive",
+											"name": "Connection",
+											"description": ""
+										},
+										{
+											"key": "Content-Length",
+											"value": "710",
+											"name": "Content-Length",
+											"description": ""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": ""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 Dec 2016 23:33:06 GMT",
+											"name": "Date",
+											"description": ""
+										},
+										{
+											"key": "Expires",
+											"value": "-1",
+											"name": "Expires",
+											"description": ""
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache",
+											"name": "Pragma",
+											"description": ""
+										},
+										{
+											"key": "Server",
+											"value": "webd",
+											"name": "Server",
+											"description": ""
+										},
+										{
+											"key": "X-Real-IP",
+											"value": "192.168.0.20",
+											"name": "X-Real-IP",
+											"description": ""
+										},
+										{
+											"key": "accept-encoding",
+											"value": "gzip, deflate",
+											"name": "accept-encoding",
+											"description": ""
+										}
+									],
+									"cookie": [],
+									"body": "{\"username\":\"admin\",\"loginReference\":{\"link\":\"https://localhost/mgmt/cm/system/authn/providers/local/login\"},\"loginProviderName\":\"local\",\"token\":{\"token\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"name\":\"BTKMOGLPSSAPSIXJAI76XFFCE7\",\"userName\":\"admin\",\"authProviderName\":\"local\",\"user\":{\"link\":\"https://localhost/mgmt/shared/authz/users/admin\"},\"groupReferences\":[],\"timeout\":1200,\"startTime\":\"2016-12-19T15:33:06.668-0800\",\"address\":\"192.168.0.20\",\"partition\":\"[All]\",\"generation\":1,\"lastUpdateMicros\":1482190386668185,\"expirationMicros\":1482191586668000,\"kind\":\"shared:authz:tokens:authtokenitemstate\",\"selfLink\":\"https://localhost/mgmt/shared/authz/tokens/BTKMOGLPSSAPSIXJAI76XFFCE7\"},\"generation\":0,\"lastUpdateMicros\":0}"
+								}
+							]
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "dc65080f-e4b2-403e-9521-f7034e0ae46d",
+					"name": "Transparent Cache",
+					"item": [
+						{
+							"_postman_id": "c376c889-b077-4627-ab77-401f7ef10ad7",
+							"name": "Create DNS Transparent Cache",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fc0c61df-5844-418a-8f67-fbc77e1501b4",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"transparent_cache\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"transparent_cache\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/dns/cache/transparent",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"dns",
+										"cache",
+										"transparent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "a619b7c7-772d-4e00-9ee3-c8b65d173fdc",
+							"name": "Create DNS Monitor",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4a63db52-4b69-4bf5-9132-b4388d440b99",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example.com_dns_monitor\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"example.com_dns_monitor\",\n    \"qname\": \"www.example.com\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/monitor/dns",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"monitor",
+										"dns"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "f81d5399-9a6d-46b1-80d8-0900d53e6c34",
+							"name": "Create a Pool ",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "777cf90d-c95b-4883-ae9f-a95c41be3dc5",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"branch01_dns_pool\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"branch01_dns_pool\",\n    \"monitor\":\"example.com_dns_monitor\",\n  \"members\": [\n   { \n     \"name\": \"dc01.branch01.example.com_node:53\",\n     \"address\": \"10.1.70.200\"\n   },\n   {\n   \"name\": \"dc21.branch01.example.com_node:53\",\n     \"address\": \"10.1.70.210\"  \n   }\n]\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/pool",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"pool"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "da69d10b-185b-49da-b43c-3aca59aeaa46",
+					"name": "Listeners",
+					"item": [
+						{
+							"_postman_id": "6916f847-65b9-4c3d-8d27-451ca4928d2a",
+							"name": "Create Log Publisher router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2b915d40-1a0e-49ca-8691-ab7269fab694",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"local-syslog-publisher\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"local-syslog-publisher\",\n    \"destinations\": \"local-syslog\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/sys/log-config/publisher",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"sys",
+										"log-config",
+										"publisher"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "f8f2c90a-5fe2-419d-baab-5e467ad64049",
+							"name": "Create DNS Logging Profile router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "62b21315-8dec-4fb0-b190-dfee2f22af91",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example_dns_logging_profile\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"example_dns_logging_profile\",\n    \"enable-response-logging\": \"yes\",\n    \"include-query-id\": \"yes\",\n    \"log-publisher\": \"local-syslog-publisher\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/profile/dns-logging",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"profile",
+										"dns-logging"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "71909b1a-8469-461d-b7d0-d2e68972d2e9",
+							"name": "Create DNS Profile router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1ab6cb4e-2c4a-498f-a466-b5d1690bf1d2",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example.com_dns_profile\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"example.com_dns_profile\",\n    \"enableCache\": \"yes\",\n    \"cache\": \"transparent_cache\",\n    \"useLocalBind\": \"no\",\n    \"log-profile\": \"example_dns_logging_profile\",\n    \"enable-logging\": \"yes\",\n    \"avr-dnsstat-sample-rate\": \"1\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/profile/dns",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"profile",
+										"dns"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "522c8ef4-baa7-4de0-93b4-079938548bfa",
+							"name": "Create UDP Profile router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "741108f0-4ccb-4cc1-a480-4ab0fbaf18ce",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example.com_udp-dns_profile\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"example.com_udp-dns_profile\",\n  \"defaultsFrom\": \"udp_gtm_dns\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/profile/udp",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"profile",
+										"udp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "4aaae3b7-730d-4d45-be9b-913883122364",
+							"name": "Create TCP Profile router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6d7d8efc-6a07-4c19-bb06-7c5a9af65d5f",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example.com_tcp-dns_profile\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"example.com_tcp-dns_profile\",\n  \"defaultsFrom\": \"f5-tcp-lan\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/profile/tcp",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"profile",
+										"tcp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "4b80d3e7-9468-48bc-a971-233dbffc71ce",
+							"name": "Create DC1 UDP Listener router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8f294131-055e-422e-a23b-b34f74baa7fe",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"DC01_udp_53_virtual\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\":\"DC01_udp_53_virtual\",\n  \"address\": \"10.1.70.200\",\n  \"ip-protocol\": \"udp\",\n  \"mask\": \"255.255.255.255\",\n  \"pool\": \"branch01_dns_pool\",\n  \"port\": 53,\n  \"vlansEnabled\": true,\n   \"vlans\": [\n                \"/Common/branch01_vlan\"\n            ],\n  \"profiles\": \"example.com_udp-dns_profile\",\n  \"profiles\": \"example.com_dns_profile\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/gtm/listener",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"listener"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "b0ff132f-3da7-4748-b471-5e62f8904b82",
+							"name": "Create DC2 UDP Listener router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9f56eeac-d3fb-4dc6-818f-bb135aa137d1",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"DC02_udp_53_virtual\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\":\"DC02_udp_53_virtual\",\n  \"address\": \"10.1.70.210\",\n  \"ip-protocol\": \"udp\",\n  \"mask\": \"255.255.255.255\",\n  \"pool\": \"branch01_dns_pool\",\n  \"port\": 53,\n  \"vlansEnabled\": true,\n   \"vlans\": [\n                \"/Common/branch01_vlan\"\n            ],\n  \"profiles\": \"example.com_udp-dns_profile\",\n  \"profiles\": \"example.com_dns_profile\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/gtm/listener",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"listener"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "178c26d8-0d5c-46f7-9253-43beb1012f1e",
+							"name": "Create DC1 TCPListener router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5c5b9742-1c93-4c57-b7ce-d4b3e1db5512",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"DC01_tcp_53_virtual\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\":\"DC01_tcp_53_virtual\",\n  \"address\": \"10.1.70.200\",\n  \"ip-protocol\": \"tcp\",\n  \"mask\": \"255.255.255.255\",\n  \"pool\": \"branch01_dns_pool\",\n  \"port\": 53,\n  \"vlansEnabled\": true,\n  \"vlans\": [\n                \"/Common/branch01_vlan\"\n            ],\n  \"profiles\": \"example.com_tcp-dns_profile\",\n  \"profiles\": \"example.com_dns_profile\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/gtm/listener",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"listener"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "649719c5-da6d-4686-9c84-911ed4181c4b",
+							"name": "Create DC2 TCPListener router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7df56c76-8c56-445f-af48-5b7e4ba8e579",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"DC02_tcp_53_virtual\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\":\"DC02_tcp_53_virtual\",\n  \"address\": \"10.1.70.210\",\n  \"ip-protocol\": \"tcp\",\n  \"mask\": \"255.255.255.255\",\n  \"pool\": \"branch01_dns_pool\",\n  \"port\": 53,\n  \"vlansEnabled\": true,\n   \"vlans\": [\n                \"/Common/branch01_vlan\"\n            ],\n  \"profiles\": \"example.com_tcp-dns_profile\",\n  \"profiles\": \"example.com_dns_profile\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/gtm/listener",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"listener"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "b3129646-d080-4cd7-a8da-403038372cc4",
+					"name": "Hidden Master",
+					"item": [
+						{
+							"_postman_id": "04f4dd67-8c22-4289-bb7c-aedda5f7640a",
+							"name": "Create Name Server router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "40436fe1-574b-440a-9275-d189094d922e",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"dc01.example.com\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\":\"dc01.example.com\",\n  \"address\": \"10.1.70.200\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/dns/nameserver",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"dns",
+										"nameserver"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "5aad6933-aac4-46c8-8c6b-205de28c41c7",
+							"name": "Create DNS Express Zone router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "79118f0c-a55a-4b75-b5b1-4fa8df18590a",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example.com\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\":\"example.com\",\n  \"dnsExpressServer\": \"dc01.example.com\",\n  \"dnsExpressNotifyTsigVerify\": \"no\",\n  \"dnsExpressAllowNotify\": [ \"10.1.70.200\" ]\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/dns/zone",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"dns",
+										"zone"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "770df15c-f71d-4cd2-9c95-719d2eecbd8f",
+					"name": "DNSSEC",
+					"item": [
+						{
+							"_postman_id": "b55063bf-3ba0-4e09-9b9b-d4ee48c2923c",
+							"name": "Create DNSSEC zsk router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6e645c0d-65c5-40e0-bb06-e6608c13dd8b",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example.com_zsk\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\":\"example.com_zsk\",\n  \"keyType\": \"zsk\",\n  \"certificateFile\": \"default.crt\",\n  \"keyFile\": \"default.key\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/dns/dnssec/key",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"dns",
+										"dnssec",
+										"key"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "113c5bbf-2522-4687-b9a7-3cef8de85814",
+							"name": "Create DNSSEC ksk router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3232a0e1-a0d1-4d6e-8998-b317c9f84f80",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example.com_ksk\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\":\"example.com_ksk\",\n  \"keyType\": \"ksk\",\n  \"certificateFile\": \"default.crt\",\n  \"keyFile\": \"default.key\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/dns/dnssec/key",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"dns",
+										"dnssec",
+										"key"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "067ad632-024a-45ab-847f-eee2204f04ee",
+							"name": "Create DNSSEC zone router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ce9c06c6-548e-4bad-bb67-badbaaae575a",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"example.com\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"example.com\",\n  \"keys\": [\n    \"example.com_ksk\",\n    \"example.com_zsk\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/dns/dnssec/zone",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"dns",
+										"dnssec",
+										"zone"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "b70f1cd7-32b4-4c60-accf-6f01577db6b9",
+					"name": "Validating Resolver",
+					"item": [
+						{
+							"_postman_id": "e2b0fd14-779a-4e01-ace3-17ba0374571c",
+							"name": "Create DNS Validating Resolver Cache router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "53d318f2-c1cf-4ff7-abe0-d395263d4c3b",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"validating-resolver_cache\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"validating-resolver_cache\",\n  \"answerDefaultZones\": \"yes\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/dns/cache/validating-resolver",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"dns",
+										"cache",
+										"validating-resolver"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "e58f751e-d719-4ba2-9c8d-517f588cdc1c",
+							"name": "Add DNS Trust Anchors router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6490386e-6638-4975-a5b9-829e5fc77979",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"trustAnchors\",",
+											"            \"value\": \". IN DS 19036 8 1 B256BD09DC8DD59F0E0F0D8541B8328DD986DF6E\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"trustAnchors\": [\n    \". IN DS 19036 8 1 B256BD09DC8DD59F0E0F0D8541B8328DD986DF6E\"\n  \". IN DS 19036 8 2 49AAC11D7B6F6446702E54A1607371607A1A41855200FD2CE1CDDE32F24E8FB5\"\n  \". IN DS 20326 8 1 AE1EA5B974D4C858B740BD03E3CED7EBFCBD1724\"\n  \". IN DS 20326 8 2 E06D44B80B8F1D39A95C0B0D7C65D08458E880409BBC683457104237C7F8EC8D\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/dns/cache/validating-resolver/validating-resolver_cache",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"dns",
+										"cache",
+										"validating-resolver",
+										"validating-resolver_cache"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "d370b9f2-4abe-43c1-8cf6-32ef2e002ec9",
+							"name": "Modify DNS Profile router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5ffc255c-8f31-4d69-937a-a32a5b22ef97",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"cache\",",
+											"            \"value\":\"validating-resolver_cache\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"cache\": \"validating-resolver_cache\"}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/profile/dns/example.com_dns_profile",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"profile",
+										"dns",
+										"example.com_dns_profile"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "1d776982-e2ff-4473-a5de-4b936eaa9a36",
+					"name": "RPZ",
+					"item": [
+						{
+							"_postman_id": "60c4d228-e550-4d11-ab13-9aedffe3a967",
+							"name": "Create Name Server router01.branch0",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a1613cf8-e435-473c-a8ef-6977265ed477",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"localhost\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\":\"localhost\",\n  \"address\": \"127.0.0.1\"\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/dns/nameserver",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"dns",
+										"nameserver"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "052aa37f-c1df-4807-a08f-dc27f1eff0f6",
+							"name": "Create DNS Express Zone router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1f6af9ee-1789-4a14-a0ce-f328bcf4abe6",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"rpz.example.com\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\":\"rpz.example.com\",\n  \"dnsExpressServer\": \"localhost\",\n  \"responsePolicy\": \"yes\",\n  \"dnsExpressNotifyTsigVerify\": \"no\",\n  \"dnsExpressAllowNotify\": [ \"127.0.0.1\" ]\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/dns/zone",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"dns",
+										"zone"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "6ac87820-78de-4581-8469-5c7c45132d04",
+							"name": "DOESN'T WORK Add DNS Local Zone router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "53d318f2-c1cf-4ff7-abe0-d395263d4c3b",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"name\",",
+											"            \"value\":\"validating-resolver_cache\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \n  \"localZones\": [\n        {\n            \"tmName\": \"sorry.example.com\",\n            \"records\": [\n                \"sorry.example.com. IN A 10.1.71.21\"\n            ],\n            \"type\": \"static\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/dns/cache/validating-resolver/validating-resolver_cache",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"dns",
+										"cache",
+										"validating-resolver",
+										"validating-resolver_cache"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "ed4be41a-82d7-41db-8fe9-be6945bd4b61",
+							"name": "Add DNS RPZ router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d3d27214-1486-4eb6-8265-95872e0f027e",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"responsePolicyZones\",",
+											"            \"value\":\"rpz.example.com\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \n  \"responsePolicyZones\": [\n        {\n      \"name\": \"rpz.example.com\",\n      \"action\": \"walled-garden\",\n      \"walledGarden\": \"sorry.example.com\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/ltm/dns/cache/validating-resolver/validating-resolver_cache",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"ltm",
+										"dns",
+										"cache",
+										"validating-resolver",
+										"validating-resolver_cache"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "01efdfb3-7d98-42da-89c1-5a06bbb1f07d",
+					"name": "URL Categorization",
+					"item": [
+						{
+							"_postman_id": "2afbc669-bcfd-40f6-aa6e-7c07f2515b24",
+							"name": "Add iRule DC1 UDP Listener router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f5bf2d80-2b50-4cbb-af25-2bb727a38bc5",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"rules\",",
+											"            \"value\":\"/Common/DNS-query-filtering\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rules\": [\n    \"DNS-query-filtering\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/gtm/listener/DC01_udp_53_virtual",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"listener",
+										"DC01_udp_53_virtual"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "440630ba-6d22-4ac7-8240-c8a5df0d8824",
+							"name": "Add iRule DC1 TCP Listener router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e402dd50-e127-45c9-b8b2-ac3524283b29",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"rules\",",
+											"            \"value\":\"/Common/DNS-query-filtering\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rules\": [\n    \"DNS-query-filtering\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/gtm/listener/DC01_tcp_53_virtual",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"listener",
+										"DC01_tcp_53_virtual"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "0f116206-9de3-467e-aa85-3b5ffe075777",
+							"name": "Add iRule DC2 UDP Listener router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2a2a89a5-ac2a-43e9-a584-b37c5f1dcec9",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"rules\",",
+											"            \"value\":\"/Common/DNS-query-filtering\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rules\": [\n    \"DNS-query-filtering\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/gtm/listener/DC02_udp_53_virtual",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"listener",
+										"DC02_udp_53_virtual"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "73260dbe-4e0a-41a7-a086-59ef940b12ec",
+							"name": "Add iRule DC2 TCP Listener router01.branch01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "27267265-9500-4fdc-94c5-364a1a52a82e",
+										"type": "text/javascript",
+										"exec": [
+											"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+											"",
+											"var check_vals = [",
+											"        { ",
+											"            \"path\":\"rules\",",
+											"            \"value\":\"/Common/DNS-query-filtering\"",
+											"        }",
+											"    ];",
+											"",
+											"f5_check_response(check_vals);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-F5-Auth-Token",
+										"value": "{{router01.branch01_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rules\": [\n    \"DNS-query-filtering\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{router01.branch01}}/mgmt/tm/gtm/listener/DC02_tcp_53_virtual",
+									"protocol": "https",
+									"host": [
+										"{{router01.branch01}}"
+									],
+									"path": [
+										"mgmt",
+										"tm",
+										"gtm",
+										"listener",
+										"DC02_tcp_53_virtual"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "Authenticate to a BIG-IP device.\n\nInput Variables:\nbigip_mgmt      BIG-IP management address\nbigip_username    Username\nbigip_password    Password\nbigip_token_timeout  [OPTIONAL] Timeout for the auth token\n\nOutput Variables:\nbigip_token      Authentication token"
+		}
+	]
+}
