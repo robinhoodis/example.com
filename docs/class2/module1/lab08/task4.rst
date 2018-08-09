@@ -1,11 +1,11 @@
-task 4
+Good Title
 =====================
 
-You have seen how easy is to create new configurations on the BIG-IP DNS via iControlREST using Postman. In this step we will create a brand new configuration element that is relevant to our disaster recovery design; we will convert site 2 to a standby site.
+Create a brand new configuration element that is relevant to a disaster recovery design, where site 2 is converted to a standby site.
 
-We can make site 2 a standby site by modifying the load balancing method of each of its pools from Preferred to Global Availability. We will then demonstrate the new behavior using dig.
+In order to make site2 a standby site, modify the load balancing method of each of its pools from "Preferred" to "Global Availability". Demonstrate the behavior using the dig command on the Jumpbox.
 
-Open Postman once again and click on Find Pool Syntax and then Send the POST command. By running this command, you will see how easy it is to find the REST command we require by analyzing the body of the response.
+Open Postman and select the "Find Pool Syntax" and then click "Send" in order to "POST" the command command. Find the REST command by analyzing the body of the response.
 
   .. image:: /_static/API4-a.png
      :align: left
