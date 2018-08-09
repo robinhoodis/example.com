@@ -1,7 +1,7 @@
 A Records
 =================================
 
-An A record is by far the most common DNS query. In this type of query, 'A' refers to an IP address - the querier is asking for the IP address of the domain name being queried. Below we will create two A records, one for each BIG-IP DNS server.
+An A record is the most common DNS query. In this type of query, 'A' refers to an IP address - the cleint is asking for the IP address of the domain name being queried. Create two A records, one for each BIG-IP DNS server.
 
 #. Expand the sub-menus to expose EXAMPLE.COM in the "Forward Lookup Zones"
 

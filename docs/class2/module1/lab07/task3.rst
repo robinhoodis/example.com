@@ -1,7 +1,7 @@
 CNAME
 =================================
 
-A CNAME (Canonical name record) functions as an alias for another domain name. In this task, we will create a CNAME for "www" an as alias to www.gslb.example.com. When configured, this will allow a querier of www.example.com to be directed to the name www.gslb.example.com where a subsequent A record query will be required.
+A CNAME (Canonical name record) functions as an alias for another domain name. Create a CNAME for "www" an as alias to www.gslb.example.com. When configured, this will result in a query for www.example.com to be directed to the name www.gslb.example.com where a subsequent A record query will be resolved.
 
 #. Make sure "Forward Lookup Zones" and "EXAMPLE.COM" is expanded. Right click on "www", and select delete.
 

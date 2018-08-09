@@ -8,7 +8,7 @@ Failure Condition
 
    task*
 
-Having followed the excercises up to this point will create an active/standby disaster recovery topology. A consistent response is received when querying www.example.com. From the command prompt in the Jumpbox type "dig ftp.example.com"
+Having followed the excercises up to this point will have resulted in the creation of an active/standby disaster recovery topology. A consistent response is received when querying www.example.com. From the command prompt in the Jumpbox type "dig www.example.com". Repeat dig commands and observe the TTL counting down.
 
 .. image:: /_static/class1/dc01_new_delegation_create_cname_results.png
    :align: left
@@ -49,16 +49,6 @@ Having followed the excercises up to this point will create an active/standby di
 
    .. admonition:: TMSH
 
-      tmsh modify interface 1.6 enabled
+      tmsh modify interface all enabled
 
-   .. note:: Even though you re-enabled the primary site1, a persistence record from the previous lab is still in place.
-
-|links_link|
-
-.. |links_link| raw:: html
-
-   <a href="https://support.f5.com/csp/article/K13827" target="_blank">More information on DNS Delegation</a>
-
-.. image:: /_static/class1/gtm_global_settings.png
-   :align: left
 
