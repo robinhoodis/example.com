@@ -5,11 +5,6 @@ From the Jumpbox, open up Postman (It should have loaded automatically) and navi
 
 .. note::  **Config Sync has been enabled in previous lab tasks. Due to this, all of the iControlREST configuration changes will be performed only on gtm1.site1 as they wi
 ll become automatically synchronized to gtm1.site2**
-<<<<<<< HEAD
-
-Click on "Authenticate and Obtain Token from gtm1.site1". 
-=======
->>>>>>> f8342a2d2db9b4c62911f19cbb040204b003d1fb
 
 #. Click on "Authenticate and Obtain Token from gtm1.site1". 
 
