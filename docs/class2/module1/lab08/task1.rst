@@ -3,6 +3,9 @@ Authenticate
 
 From the Jumpbox, open up Postman (It should have loaded automatically) and navigate to the "API" section under the Collections on the left. In order to use the iControlREST API, we must first authenticate with the BIG-IP. 
 
+.. note::  **Config Sync has been enabled in previous lab tasks. Due to this, all of the iControlREST configuration changes will be performed only on gtm1.site1 as they wi
+ll become automatically synchronized to gtm1.site2**
+
 #. Click on "Authenticate and Obtain Token from gtm1.site1". 
 
    .. image:: /_static/API1-a.png
