@@ -15,13 +15,14 @@ Having followed the excercises up to this point will have resulted in the creati
 
 #. Introduce a network problem for the SITE1 ADC
 
-   Log into Active ADC device in SITE1 and disable all interfaces.
+   Log into both the Active and the Standby ADC device in SITE1 and disable all interfaces.
 
    https://router01.branch01.example.com/tmui/Control/jspmap/tmui/locallb/network/interface/list.jsp
 
-   .. image:: /_static/class1/router_disable_isp1_site_interface.png
+   .. image:: /_static/class2/site1_bigip1_disabled-interface.png
+      :align: left
 
-   TMSH command to run on bigip1.site1 and bigip2.site1 to simulate an ISP failure   
+   TMSH command to run on bigip1.site1 and bigip2.site1 to simulate a network failure
 
    .. admonition:: TMSH
 
@@ -32,6 +33,7 @@ Having followed the excercises up to this point will have resulted in the creati
    Log into gtm1.site1 and observe the status of "Link" objects:
 
    .. image:: /_static/class1/dns_gslb1_site2_links.png
+      :align: left
 
    https://gtm1.site1.example.com/tmui/Control/jspmap/xsl/gtm_link/list
 
@@ -46,6 +48,7 @@ Having followed the excercises up to this point will have resulted in the creati
    https://router01.branch01.example.com/tmui/Control/jspmap/tmui/locallb/network/interface/list.jsp
 
    .. image:: /_static/class1/router_enable_isp1_site_interface.png
+      :align: left
 
    .. admonition:: TMSH
 
