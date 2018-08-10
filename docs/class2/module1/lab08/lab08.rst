@@ -43,6 +43,9 @@ Having followed the excercises up to this point will have resulted in the creati
 
       tmsh show gtm server
 
+   .. image:: /_static/class2/dig_results_failure.png
+      :align: left
+
 #. Set the site1 interfaces to enabled
 
    Log into bigip1.site1 and bigip2.site1 and enable all interfaces
