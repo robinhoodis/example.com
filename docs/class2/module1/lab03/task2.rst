@@ -1,7 +1,7 @@
 DNS Profile
 ############################################
 
-We will now configure a DNS profile to associate with the listener we have just created. The DNS profile is where we define how to handle the DNS traffic received by the listener, this includes DNS specific features such as DNSSEC, DNS Express and many others. For more informaton on DNS profiles, please refer to the link below.
+Configure a DNS profile to associate with the listener we have just created. The DNS profile is where we define how to handle the DNS traffic received by the listener, this includes DNS specific features such as DNSSEC, DNS Express and many others. For more informaton on DNS profiles, please refer to the link below.
 
 |dns-profile_link|
 
