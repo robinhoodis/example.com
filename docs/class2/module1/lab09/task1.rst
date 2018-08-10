@@ -12,7 +12,7 @@ From the Jumpbox using the Postman application navigate to the "API" section und
 
 #. Click on "Authenticate and Obtain Token from gtm1.site1". 
 
-   .. image:: /_static/API1-a.png
+   .. image:: /_static/API-Authenticate-Complete.png
       :align: left
 
 #. Click on the "Send" button in the top right. 
