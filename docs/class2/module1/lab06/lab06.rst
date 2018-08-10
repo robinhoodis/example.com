@@ -46,7 +46,9 @@ TMSH command to run on only gtm1.site1:
 
 **Results**
 
-From the Jumpbox use "dig" from the CMD prompt. The first command below will query 203.0.113.8 for the A record of www.example.com. You will then query 203.0.113.8 for www.gslb.example.com.
+Use the "dig" command to query directly to the GTM to test the configuration. DIG will bypass locally configured DNS servers when specifying an "@203.0.113.8" argument.
+
+From the Jumpbox use "dig" from the CMD prompt. The first command below will query 203.0.113.8 for the A record of www.example.com, then query @203.0.113.8 for www.gslb.example.com.
 
 .. note::  **Your result may differ from below**
 
