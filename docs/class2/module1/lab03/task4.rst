@@ -1,7 +1,7 @@
 TCP Profile
 ============================
 
-Similarily, we will need to define a TCP profile. The TCP profile will instruct the BIG-IP DNS listener on how to handle TCP traffic. For more information on TCP profiles, please refer to the link below.
+Similarily, we will need to define a TCP profile. A TCP profile will instruct the BIG-IP DNS listener on how to handle TCP traffic. For more information on TCP profiles, please refer to the link below.
 
 |tpc-profile_link|
 
