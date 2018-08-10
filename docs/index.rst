@@ -1,7 +1,7 @@
 Reference Architecture
 =======================
 
-.. image:: /_static/html_front_cover.png
+.. image:: /_static/html_front_cover3.png
 
 .. toctree::
    :hidden:
