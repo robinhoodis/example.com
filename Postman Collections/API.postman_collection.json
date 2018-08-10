@@ -7,7 +7,6 @@
 	},
 	"item": [
 		{
-			"_postman_id": "c982a72b-9a00-4d5b-9320-81b70613b354",
 			"name": "Authenticate and Obtain a Token gtm1.site1",
 			"event": [
 				{
@@ -66,7 +65,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "1a159c7f-1053-49a8-9ab8-ae47cad9956a",
 			"name": "Verify Authentication works gtm1.site1",
 			"request": {
 				"method": "GET",
@@ -99,7 +97,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "32fa4063-cd48-4e2c-9caa-8db1b9de6f1a",
 			"name": "Set Authentication Token Timeout gtm1.site1",
 			"request": {
 				"method": "PATCH",
@@ -135,7 +132,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "6d714893-e457-44c7-bae6-0de524586cd8",
 			"name": "Create Pool gtm1.site1",
 			"request": {
 				"method": "POST",
@@ -171,7 +167,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "4dc42d07-dd16-42de-b950-4fc67bb6ef45",
 			"name": "Create Wide-IP gtm1.site1",
 			"request": {
 				"method": "POST",
@@ -187,7 +182,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"ftp.example.com\",\n    \"pools\": \"ftp.example.com_pool\",\n    \"aliases\": [ \"gslb2.example.com\" ],\n    \"loadBalancingDecisionLogVerbosity\": [\n                \"pool-selection\",\n                \"pool-traversal\",\n                \"pool-member-selection\",\n                \"pool-member-traversal\"\n                ]\n}"
+					"raw": "{\n    \"name\":\"ftp.example.com\",\n    \"pools\": \"ftp.example.com_pool\",\n    \"aliases\": [ \"ftp.gslb.example.com\" ],\n    \"loadBalancingDecisionLogVerbosity\": [\n                \"pool-selection\",\n                \"pool-traversal\",\n                \"pool-member-selection\",\n                \"pool-member-traversal\"\n                ]\n}"
 				},
 				"url": {
 					"raw": "https://{{gtm1.site1}}/mgmt/tm/gtm/wideip/a",
@@ -207,7 +202,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "35aae768-b059-4ca2-86b6-d7ad7d2a159d",
 			"name": "Find Pool Syntax",
 			"request": {
 				"method": "GET",
@@ -238,7 +232,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "adf6de65-1df6-43a7-9f2a-c2e8aebe1543",
 			"name": "Find Pool Syntax Pt.2",
 			"request": {
 				"method": "GET",
@@ -274,7 +267,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "4aa4160e-0917-43f4-a0fc-e4379943b6e6",
 			"name": "Find Pool Syntax Pt.3",
 			"request": {
 				"method": "GET",
@@ -310,7 +302,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "dbd21746-73dd-429f-a907-1f0a3daa6b08",
 			"name": "Change LB Method WWW",
 			"request": {
 				"method": "PATCH",
@@ -347,7 +338,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "fb35ea73-78b7-47b0-8d05-03b5adc7000c",
 			"name": "Change LB Method FTP",
 			"request": {
 				"method": "PATCH",
