@@ -51,9 +51,6 @@ Having followed the excercises up to this point will have resulted in the creati
 
    https://bigip2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/interface/list.jsp
 
-   .. image:: /_static/class1/router_enable_isp1_site_interface.png
-      :align: left
-
    .. admonition:: TMSH
 
       tmsh modify interface all enabled
