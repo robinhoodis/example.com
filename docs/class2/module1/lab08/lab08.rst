@@ -8,7 +8,7 @@ Failure Condition
 
    task*
 
-Having followed the excercises up to this point will have resulted in the creation of an active/active disaster recovery topology. A consistent response is received when querying www.example.com. From the command prompt in the Jumpbox type "dig www.example.com". Repeat dig commands and observe the TTL counting down.
+Having followed the excercises up to this point will have resulted in the creation of an active/active disaster recovery topology. An alternating response is received when querying www.example.com. From the command prompt in the Jumpbox type "dig www.example.com". Repeat dig commands and observe the TTL counting down.
 
 .. image:: /_static/class1/dc01_new_delegation_create_cname_results.png
    :align: left
