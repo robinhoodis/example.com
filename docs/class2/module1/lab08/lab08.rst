@@ -17,7 +17,9 @@ Having followed the excercises up to this point will have resulted in the creati
 
    Log into both the Active and the Standby ADC device in SITE1 and disable all interfaces.
 
-   https://router01.branch01.example.com/tmui/Control/jspmap/tmui/locallb/network/interface/list.jsp
+   https://bigip1.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/interface/list.jsp
+
+   https://bigip2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/interface/list.jsp
 
    .. image:: /_static/class2/site1_bigip1_disabled-interface.png
       :align: left
@@ -30,22 +32,24 @@ Having followed the excercises up to this point will have resulted in the creati
 
 #. View the effect
 
-   Log into gtm1.site1 and observe the status of "Link" objects:
+   Log into gtm1.site1 and observe the status of "Server" objects:
 
-   .. image:: /_static/class1/dns_gslb1_site2_links.png
+   .. image:: /_static/class2/site1_adc_failure.png
       :align: left
 
-   https://gtm1.site1.example.com/tmui/Control/jspmap/xsl/gtm_link/list
+   https://gtm1.site1.example.com/tmui/Control/jspmap/tmui/globallb/server/list.jsp
 
    .. admonition:: TMSH
 
-      tmsh show gtm link
+      tmsh show gtm server
 
 #. Set the site1 interfaces to enabled
 
-   Log into bigip1.site1 and bigip2.site1 nad enable all interfaces
+   Log into bigip1.site1 and bigip2.site1 and enable all interfaces
 
-   https://router01.branch01.example.com/tmui/Control/jspmap/tmui/locallb/network/interface/list.jsp
+   https://bigip1.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/interface/list.jsp
+
+   https://bigip2.site1.example.com/tmui/Control/jspmap/tmui/locallb/network/interface/list.jsp
 
    .. image:: /_static/class1/router_enable_isp1_site_interface.png
       :align: left
