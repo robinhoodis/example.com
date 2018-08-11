@@ -8,7 +8,7 @@ Settings
    
    task*
 
-First of all, we will begin to configure a Sync-Group between our BIG-IP DNS servers. This will allow for DNS-related configurations to be kept in a consistent state between both BIG-IP DNS servers at all times. Please see the article below for more information on BIG-IP DNS synchronization.
+Configure a Sync-Group between our BIG-IP DNS servers. DNS-related configurations will replicate and be in a consistent state between both BIG-IP DNS servers at all times. Please see the article below for more information on BIG-IP DNS synchronization.
 
 |settings_KB_link|
 

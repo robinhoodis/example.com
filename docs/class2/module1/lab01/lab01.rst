@@ -1,7 +1,7 @@
 System
 ############################################
 
-Before getting into the details of DNS confguration, we are first going to create a DNS logging profile. In order to allow for the logging of DNS queries and responses, we must first create a log publisher and a DNS logging profile and then tie them together. The DNS logging profile we create will then be associated to a DNS listener in a later task. For more informaton on DNS logging, please refer to the link below.
+The BIGIP System needs to be prepared before creating a GSLB configurtion. A BIGIP System should have SNMP/DNS/NTP settings confugured. The lab already everything ready to with the exception of creating a "Logging Profile". Create a log publisher and a DNS logging profile and then associate the two objects. The DNS logging profile will then be associated to a DNS listener in a later task. For more informaton on DNS logging, please refer to the link below.
 
 |location_link|
 
