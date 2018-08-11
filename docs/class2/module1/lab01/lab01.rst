@@ -1,7 +1,7 @@
 System
 ############################################
 
-A BIGIP System needs to be prepared before creating a GSLB configurtion. Administrative tasks including SNMP/DNS/NTP settings have already been completed. The task of creating a "Logging Profile" is the beginning of this class. Create a log publisher and a DNS logging profile and then associate the two objects. The DNS logging profile will then be associated to a DNS listener in a later task. For more informaton on DNS logging, please refer to the link below.
+A BIGIP System needs to be prepared before creating a GSLB configuration. Administrative tasks including SNMP/DNS/NTP settings have already been completed. The task of creating a "Logging Profile" is the beginning of this class. Create a log publisher and a DNS logging profile and then associate the two objects. The DNS logging profile will then be associated to a DNS listener in a later task. For more informaton on DNS logging, please refer to the link below.
 
 |location_link|
 
