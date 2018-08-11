@@ -3,7 +3,7 @@ Reference Architecture
 
 .. image:: /_static/class2/agility-2018-homepage-lg.png
 
-`<http://http://training.f5agility.com/>`_
+`<http://training.f5agility.com/>`_
 
 .. toctree::
    :hidden:
