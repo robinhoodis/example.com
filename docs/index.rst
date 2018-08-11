@@ -11,6 +11,6 @@ Reference Architecture
    :titlesonly:
    :glob:
 
-   intro.rst
+   class2/module1/intro.rst
    class2/module1/module1.rst
    google68a0f3f25ab55c69.rst
