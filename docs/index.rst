@@ -1,7 +1,7 @@
 Reference Architecture
 =======================
 
-.. image:: /_static/agility-2018-homepage-lg.png
+.. image:: /_static/class2/agility-2018-homepage-lg.png
 
 `<http://http://training.f5agility.com/>`_
 
