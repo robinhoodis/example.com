@@ -16,7 +16,7 @@ F5 supports many APIs (Application Programmable Interfaces) including TMSH, WebU
 
    <a href="https://devcentral.f5.com/d/icontrolr-rest-api-user-guide-version-1300-241" target="_blank">More information on the BIG-IP REST interface</a>
 
-.. note::  **We are using Postman for demonstration purposes. All of the REST commands could also be issued via curl as well.**
+.. note::  **We are using Postman for demonstration purposes. All of the REST commands could also be issued via curl if desired.**
 
 .. image:: /_static/class2/jumpbox_open-postman.png
    :align: left
