@@ -6,11 +6,9 @@ Reference Architecture
 `<http://http://training.f5agility.com/>`_
 
 .. toctree::
-   :hidden:
    :maxdepth: 5
    :titlesonly:
    :glob:
 
-   intro.rst
-   class2/class*
+   class2/class2.rst
    google68a0f3f25ab55c69.rst

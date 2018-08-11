@@ -1,6 +1,13 @@
 Data Center Availability Services Using BIG-IP DNS
 =====================================================
 
+.. toctree::
+   :glob:
+   :hidden:
+
+   intro.rst
+   lab*/lab*
+
 .. image:: /_static/class1/class1_availability.png
 
 * Students will configure F5 DNS servers to support GSLB (Global Services Load Balancing) on a single device in site1.
@@ -13,8 +20,3 @@ Data Center Availability Services Using BIG-IP DNS
 
 By the end of the lab students will have configured F5 GSLB DNS servers to alternately resolve www.example.com to 203.0.113.9 and 198.51.100.41. At the end of the lab, students will then have an opportunity to simulate a real-life failure scenario and observe how BIG-IP DNS responds to mitigate the service outage.
 
-.. toctree::
-   :glob:
-   :hidden:
-
-   lab*/lab*
