@@ -1,6 +1,12 @@
 Network Map
 ===============
 
+.. toctree::
+   :hidden:
+   :maxdepth: 5
+   :titlesonly:
+   :glob:
+
 .. image:: /_static/site1_site2_remote.png
 
 .. image:: /_static/orientation_RDP_to_branchoffice.png
