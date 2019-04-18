@@ -11,4 +11,4 @@ Reference Architecture
    :titlesonly:
    :glob:
 
-   class2/module1/module1.rst
+   class2/class2.rst
