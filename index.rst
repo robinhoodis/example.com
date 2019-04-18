@@ -11,4 +11,6 @@ Reference Architecture
    :glob:
 
    class2/class2.rst
+   class3/class3.rst
+   
    google68a0f3f25ab55c69.rst
