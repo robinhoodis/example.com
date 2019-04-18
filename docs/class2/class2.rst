@@ -8,6 +8,6 @@ DNS
    :maxdepth: 2
    :glob:
 
-   module1/module*
+   module*/module*
 
 
